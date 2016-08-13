@@ -16,6 +16,17 @@
   <url>http://maven.apache.org</url>
   
   <dependencies>
+  
+         <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
+		
          <dependency>
 			 <groupId>aopalliance</groupId>
 		     <artifactId>aopalliance</artifactId>
@@ -291,6 +302,11 @@
 			</dependency>
 			
 			<!-- struts -->
+			<dependency>
+					  <groupId>org.apache.struts</groupId>
+					  <artifactId>struts2-convention-plugin</artifactId>
+			</dependency>
+			
 			<dependency>
 					  <groupId>org.apache.struts</groupId>
 					  <artifactId>struts2-core</artifactId>
