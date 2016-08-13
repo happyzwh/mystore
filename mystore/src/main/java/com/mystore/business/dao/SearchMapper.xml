@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.SearchMapper">
+
+    <select id="selectDocPoJo" resultType="docPoJo">
+	    SELECT 
+		    0 AS 'type',
+		    p.id,
+		    p.name,
+		    p.id_brand,
+		    p.id_cate,
+		    p.entitle AS 'enTitle',
+		    p.rome,
+		    p.jianpin AS 'jianPin',
+		    p.keywords AS 'keyWords',
+		    p.sn,
+		    p.shorttitle AS 'shortTitle',
+		    p.subtitle AS 'subTitle',
+		    (SELECT pir.path_img FROM productimage pir WHERE pir.id_pro = p.id ORDER BY sort ASC LIMIT 0,1) AS 'path_pic',
+		    pp.markprice AS 'markPrice',
+ 		    pp.shopprice AS 'shopPrice',
+		    p.onoroffsaletime AS 'onSaleTime',
+		    (SELECT pa.id_attr  FROM productattr pa, cateattri ca WHERE pa.id_pro = p.id AND pa.id_cateattr = ca.id AND ca.id_cate = p.id_cate AND ca.id_attr = 6) AS 'id_country',
+		    (SELECT pa.id_attr FROM productattr pa, cateattri ca WHERE pa.id_pro = p.id AND pa.id_cateattr = ca.id AND ca.id_cate = p.id_cate AND ca.id_attr = 3)  AS 'id_province',
+ 		    p.sort
+ 		FROM product p
+ 		JOIN productprice pp  ON pp.id_pro = p.id
+ 		WHERE p.status = '1' AND p.isshow = '1' AND p.isonsale = '1' 
+ 		UNION
+ 		SELECT 
+ 		    1 AS 'type',
+ 		    id,
+ 		    NAME,
+ 		    NULL AS 'id_brand',
+ 		    NULL AS 'id_cate',
+ 		    enname AS 'enTitle',
+ 		    rome,
+ 		    jianpin AS 'jianPin',
+ 		    keywords AS 'keyWords',
+ 		    NULL AS 'sn',
+ 		    NULL AS 'shortTitle',
+ 		    NULL AS 'subTitle',
+ 		    NULL AS 'path_pic',
+ 		    NULL AS 'markPrice',
+ 		    NULL AS 'shopPrice',
+ 		    NULL AS 'onSaleTime',
+ 		    NULL AS 'id_country',
+ 		    NULL AS 'id_province',
+ 		    sort
+ 		FROM category
+ 		WHERE STATUS = '1'
+ 		UNION
+ 		SELECT 
+ 		    2 AS 'type',
+ 		    id,
+ 		    NAME,
+ 		    NULL AS 'id_brand',
+ 		    NULL AS 'id_cate',
+ 		    enname AS 'enTitle',
+ 		    rome,
+ 		    jianpin AS 'jianPin',
+ 		    keywords AS 'keyWords',
+ 		    NULL AS 'sn',
+ 		    NULL AS 'shortTitle',
+ 		    NULL AS 'subTitle',
+ 		    NULL AS 'path_pic',
+ 		    NULL AS 'markPrice',
+ 		    NULL AS 'shopPrice',
+ 		    NULL AS 'onSaleTime',
+ 		    NULL AS 'id_country',
+ 		    NULL AS 'id_province',
+ 		    sort
+ 		FROM brand
+ 		WHERE STATUS = '1'
+	</select>
+
+	
+</mapper>

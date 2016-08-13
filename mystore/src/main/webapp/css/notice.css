@@ -1,0 +1,30 @@
+.notice{
+	width:100%;
+	height:auot;
+	margin:20px auto;
+}
+.notice .title{
+	width:100%;
+	text-align:center;
+	height:50px;
+	line-height:50px;
+	color: #666;
+	font-size:16px;
+	font-weight: bold;
+	
+}
+.notice .time{
+	width:100%;
+	text-align:right;
+	padding-right:20px;
+	height:30px;
+	font-size:12px;
+}
+.notice .detail{
+	width:100%;
+	height:auto;
+	text-align:left;
+	color: #666;
+	font-size:14px;
+	margin:10px auto;
+}

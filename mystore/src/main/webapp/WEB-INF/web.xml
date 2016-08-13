@@ -1,7 +1,69 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		        classpath:spring.xml,
+		        classpath:spring-quartz.xml,
+		        classpath:spring-redis.xml
+	    </param-value>
+	</context-param> 
+	<filter>
+		 <filter-name>CharacterEncodingFilter</filter-name>
+		 <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		 <init-param>
+				 <param-name>encoding</param-name>
+				 <param-value>UTF-8</param-value>
+		 </init-param>
+		  <init-param>
+	             <param-name>forceEncoding</param-name>
+	             <param-value>true</param-value>
+	      </init-param>
+	 </filter>  
+	 
+	<filter>
+		<filter-name>struts</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter> 
+    <filter-mapping>
+		 <filter-name>CharacterEncodingFilter</filter-name>
+		 <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>struts</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>  
+        <dispatcher>FORWARD</dispatcher> 
+	</filter-mapping>
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+	<servlet>
+   		<servlet-name>jcaptcha</servlet-name>
+   		<servlet-class>com.mystore.business.jcaptcha.ImageCaptchaServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+   		<servlet-name>jcaptcha</servlet-name>
+   		<url-pattern>/CheckCode.pic</url-pattern>
+  	</servlet-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> 
+	
+	<listener>
+	   <listener-class>com.mystore.business.common.JobListener</listener-class>
+	</listener>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<welcome-file-list>
+	     <welcome-file>/page/toindex.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

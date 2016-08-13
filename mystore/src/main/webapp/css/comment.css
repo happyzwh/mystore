@@ -1,0 +1,221 @@
+.p10 {
+    padding: 10px;
+}
+.comment_total .mt {
+    background-color: #f2f2f2;
+    height: 28px;
+    line-height: 28px;
+    text-align:left;
+}
+.comment_total h2 {
+    font-size: 14px;
+    padding: 0 12px;
+}
+.comment_total .mc {
+    overflow: hidden;
+    padding: 10px 0;
+}
+.comment_total .rate {
+    float: left;
+    padding: 20px 0 0;
+    text-align: center;
+    width: 120px;
+}
+.comment_total .rate strong {
+    color: #cc0000;
+    font: 46px/30px arial;
+}
+.comment_total .rate span {
+    color: #999999;
+    font-family: arial;
+}
+.comment_total .percent dl {
+    overflow: hidden;
+    padding: 2px 0;
+}
+.comment_total .percent dt {
+    float: left;
+    width: 70px;
+}
+.comment_total .percent span {
+    color: #9c9a9c;
+}
+.comment_total .percent {
+    border-right: 1px solid #e4e4e4;
+    float: left;
+    height: 74px;
+    padding: 8px 0;
+    width: 186px;
+}
+.comment_total .percent dd div {
+    background: #a50000 none repeat scroll 0 0;
+    float: left;
+    height: 10px;
+    overflow: hidden;
+    width: 0;
+}
+.blank {
+    clear: both;
+    height: 8px;
+    line-height: 8px;
+    visibility: hidden;
+}
+div {
+    margin: 0 auto;
+    padding: 0;
+}
+.comments-list .ctitbar {
+    background: #f5f5f5 none repeat scroll 0 0;
+    border-bottom: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-top: 2px solid #ccc;
+    font-size: 12px;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    overflow: visible;
+}
+.comments-list .ctitbar ul.tab {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+.goods_base ul {
+    display: block;
+    padding: 10px;
+}
+.ctitbar .tab .curr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #dddddd;
+    border-image: none;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    cursor: default;
+}
+.ctitbar .tab li {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #dedede;
+    border-image: none;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    cursor: pointer;
+    line-height: 27px;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+.tab li, .tab-item {
+    float: left;
+    text-align: center;
+}
+.ctitbar .tab .curr a {
+    background: #ffffff none repeat scroll 0 0;
+    padding-bottom: 2px;
+    position: relative;
+}
+.ctitbar .tab li a {
+    float: left;
+    padding: 0 10px;
+}
+.ctitbar .tab a {
+    height: 27px;
+    padding: 0 10px;
+}
+.commentDetail{
+	margin-top:10px;
+}
+.commentDetail .item {
+    background: #ffffff none repeat scroll 0 0;
+    padding: 5px 5px 5px 130px;
+    position: relative;
+    border:1px solid #f5f5f5;
+    border-top:0px;
+}
+.commentDetail .user {
+    color: #999999;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    width: 130px;
+}
+.commentDetail .u-icon img {
+    border: 2px solid #eaeaea;
+    height: 50px;
+    width: 50px;
+}
+.commentDetail .i-item {
+    background: #fffcf5 none repeat scroll 0 0;
+    border: 1px solid #f3e6c6;
+    padding: 10px 15px 5px;
+}
+.commentDetail .o-topic {
+    border-bottom: 1px solid #f9f0db;
+    overflow: hidden;
+    padding: 0 0 2px;
+}
+.commentDetail .topic {
+    float: left;
+}
+.commentDetail .star {
+    float: left;
+    margin: 0 0 0 5px;
+    width: 75px;
+}
+.Pagination {
+    margin: 10px 0 0;
+    padding: 5px 0;
+    text-align: right;
+}
+.Pagination a:link, .Pagination a:visited {
+    border: 1px solid #cccccc;
+    color: #666666;
+    text-decoration: none;
+}
+.Pagination a {
+    display: inline-block;
+    margin-left: 2px;
+    padding: 3px 7px 0;
+}
+.commentsList {
+	margin-top:20px;
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    clear: both;
+    padding: 10px;
+    text-align: left;
+}
+.contarea {
+    background: rgba(0, 0, 0, 0) url("../images/pl.png") no-repeat scroll center center;
+    border: 1px dotted #ccc;
+    height: 80px;
+    padding: 10px;
+    width: 95%;
+    font-size:12px;
+}
+.comment_total .percent dd {
+    background: #efefef none repeat scroll 0 0;
+    float: left;
+    height: 10px;
+    margin-top: 6px;
+    overflow: hidden;
+    text-align: left;
+    width: 100px;
+}
+.comment-content{
+	text-align:left;
+	padding:10px 0px;
+}
+.comment-reply{
+	border-top:1px solid #f9f0db;
+}
+.date-comment{
+	float:right;
+	margin-right:20px;
+}

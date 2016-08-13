@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.AdvProModuleMapper">
+    <select id="getAdvProModuleListByPid" parameterType="java.util.Map" resultType="advProModule">
+		select
+		    t.id,
+		    t.pid,
+		    t.id_pro,
+		    t.name,
+		    t.starttime as 'startTime',
+		    t.endtime as 'endTime',
+		    t.sort,
+		    t.status,
+		    t.createdate as 'createDate',
+		    t.lastdate as 'lastDate',
+		    (select img.path_img from productimage img where img.id_pro = pro.id limit 0,1) as 'path_img',
+		    price.markprice,
+		    price.shopprice,
+		    price.activeprice
+		from adv_promodule t,adv_pagetype p,product pro,productprice price
+		where t.pid = p.id and t.status = '1' and t.id_pro = pro.id and pro.isshow = '1' and pro.isonsale = '1' and pro.status = '1' and price.id_pro = pro.id
+		<if test="pid != null and pid != ''">  
+		   and t.pid = #{pid} 
+		</if>
+		<if test="bh != null and bh != ''">  
+		   and p.bh = #{bh} 
+		</if>
+		order by sort asc
+	</select>
+</mapper>

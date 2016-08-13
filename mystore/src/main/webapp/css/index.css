@@ -1,0 +1,347 @@
+.mainBanner {
+    background: #f9f9f9 none repeat scroll 0 0;
+    height: 470px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 11;
+    text-align:center;
+}
+.mainBanner .bigImg {
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+.mainBanner .bigImg ul {
+    width: 100% !important;
+    text-align:center;
+}
+.mainBanner .bigImg li {
+    height: 470px;
+    overflow: hidden;
+    text-align: center;
+    width: 100% !important;
+}
+.mainBanner .bigImg li .focusArea {
+    display: block;
+    height: 470px;
+}
+.ban_cter {
+    width: 1000px;
+}
+.mav {
+    height: 470px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 190px;
+    z-index: 7;
+}
+.mav a {
+    display: block;
+    height: 156px;
+    margin-bottom: 1px;
+    position: relative;
+    width: 190px;
+    z-index: 8;
+}
+.mav a.last {
+    margin-bottom: 0;
+}
+.mav span {
+    background: #fff none repeat scroll 0 0;
+    display: none;
+    height: 156px;
+    opacity: 0.75;
+    position: absolute;
+    width: 190px;
+    z-index: 7;
+}
+.mask1 {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.mask2 {
+    left: 0;
+    position: absolute;
+    top: 157px;
+}
+.mask3 {
+    left: 0;
+    position: absolute;
+    top: 314px;
+}
+.smallBtn {
+    height: 20px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 435px;
+    width: 100%;
+    z-index: 20;
+}
+.smallBtn .smallUl {
+    height: 20px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    z-index: 21;
+}
+.smallBtn .smallUl li {
+    background: #000 none repeat scroll 0 0;
+    border-radius: 50%;
+    box-shadow: 0 0 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 8px;
+    opacity: 0.8;
+    overflow: hidden;
+    text-align: center;
+    width: 20px;
+}
+.smallBtn .smallUl li.on {
+    background: #dd102e none repeat scroll 0 0;
+}
+.hotSale{
+	width:800px;
+	border: 1px solid #ececec;
+    overflow: hidden;
+    margin:10px 0px;
+    float:left;
+}
+.hotSale .title{
+	width:100%;
+	border-bottom: 1px solid #ececec;
+	height:50px;
+	padding:5px 0px;
+}
+.hotSale .title .left{
+	float:left;
+	width:200px;
+	text-align:center;
+	height:50px;
+	line-height:50px;
+	color: #666;
+	font-size:16px;
+	font-weight: bold;
+}
+.hotSale .title .right{
+	float:left;
+	width:600px;
+	text-align:center;
+	height:30px;
+	line-height:30px;
+	padding:10px 0px;
+}
+.hotSale .title .right .box{
+	float:right;
+	height:30px;
+	line-height:30px;
+	text-align:right;
+}
+.hotSale .title .right .box span{
+	width:auto;
+	padding:2px 10px;
+	color: #666;
+	font-size:12px;
+}
+.hotSale .box{
+	width:100%;
+}
+.hotSale .box li{
+	margin:2px;
+	float:left;
+	width:194px;
+	height:250px;
+    border: 1px solid #ececec;
+}
+.enty{
+	
+}
+.enty img{
+	height: 168px;
+    padding: 5px;
+    width: 168px;
+}
+.enty .price {
+    color: #c71b51;
+    font-size: 16px;
+    font-weight: bold;
+}
+.enty .f3 {
+    color: #9e9e9e;
+}
+.enty p {
+    color: #333;
+    margin-top: 3px;
+    text-align: center;
+}
+.f91 {
+    color: #c71b51;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 50px;
+}
+.pl15 {
+    padding-left: 15px;
+}
+.f92 {
+    color: #666;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 2px;
+}
+.notice{
+	 float: left;
+	 width:198px;
+	 margin:10px 0px 0px 0px;
+}
+.txtTit {
+    border-bottom: 2px solid #e4e4e4;
+    height: 33px;
+}
+.txtTit .f93 {
+    border-bottom: 2px solid #f39;
+    margin-bottom: -2px;
+}
+.f93 {
+    color: #c71b51;
+    font-size: 14px;
+    line-height: 33px;
+}
+.pl15 {
+    padding-left: 15px;
+}
+.f94 {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 33px;
+    padding-left: 2px;
+}
+.fl {
+    float: left;
+}
+
+.txtList {
+    background: #ffffff none repeat scroll 0 0;
+    padding: 8px 8px 0;
+}
+.tc {
+    text-align: center;
+}
+.txtList li {
+    border-bottom: 1px dashed #e0e0e0;
+    line-height: 1.6em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.txtList li a {
+    color: #333333;
+    display: block;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+    word-break: keep-all;
+}
+
+.dot {
+    color: #aaa;
+    font-family: "宋体";
+    font-size: 12px;
+    font-weight: normal;
+}
+.f1 {
+    color: #c71b51;
+}
+.cl::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.cl img{
+	width:1000px;
+	 height:154px; 
+	 border:0px;
+}
+.fc_sale_rank{
+     float: left;
+	 width:198px;
+	 margin:10px 0px 0px 0px;
+}
+.fc_sale_rank ul .item {
+    border-bottom: 1px dashed #d9d9d9;
+    margin-bottom: -1px;
+}
+.fc_sale_rank ul .hover .tit {
+    height: 42px;
+    white-space: normal;
+}
+.fc_sale_rank ul .item .tit {
+    height: 29px;
+    line-height: 18px;
+    white-space: nowrap;
+}
+.fc_sale_rank ul  em {
+    background-position: -167px -321px;
+}
+
+.fc_sale_rank ul .item em {
+    background: rgba(0, 0, 0, 0) url("../images/rankbg.png") no-repeat scroll -181px -304px;
+    color: #fff;
+    display: inline;
+    float: left;
+    font-weight: bold;
+    height: 17px;
+    line-height: 17px;
+    margin-left: 10px;
+    margin-top: 7px;
+    text-align: center;
+    width: 18px;
+}
+.fc_sale_rank ul .hover em {
+    background-position: -181px -321px;
+}
+.fc_sale_rank ul .item .tit a {
+    color: #666;
+    display: inline;
+    float: left;
+    margin-left: 5px;
+    margin-top: 7px;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    width: 165px;
+    word-break: keep-all;
+}
+.fc_sale_rank ul .item .sr_con{
+	display:none;
+}
+.fc_sale_rank ul .hover .sr_con{
+	display:inline;
+}
+.fc_sale_rank ul .item .sr_con .sr_img img {
+    height: 120px;
+    width: 120px;
+}
+.fc_sale_rank ul .item .text {
+    color: #ed145b;
+    height: 14px;
+    overflow: hidden;
+    padding: 6px 0;
+}
+
+.fc_sale_rank ul .item .text span {
+    color: #666;
+    margin-left: 10px;
+}

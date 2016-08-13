@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.AdvResourceModuleMapper">
+    <select id="getAdvResourceModuleListByPid" parameterType="java.util.Map" resultType="advResourceModule">
+		select
+		    t.id,
+		    t.pid,
+		    t.id_pro,
+		    t.sn,
+		    t.name,
+		    t.sort,
+		    t.url,
+		    t.path_pic,
+		    t.content,
+		    t.ismarkshow as 'isMarkShow',
+		    t.isshow as 'isShow',
+		    t.status,
+		    t.createdate as 'createDate',
+		    t.lastdate as 'lastDate'
+		from adv_resourcemodule t,adv_pagetype p
+		where t.pid = p.id and t.status = '1'
+		<if test="pid != null and pid != ''">  
+		   and t.pid = #{pid} 
+		</if>
+		<if test="bh != null and bh != ''">  
+		   and p.bh = #{bh} 
+		</if>
+		order by sort asc
+	</select>
+</mapper>

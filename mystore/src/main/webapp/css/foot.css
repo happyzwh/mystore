@@ -1,0 +1,140 @@
+.foot_out{
+   width:100%;
+   height:auot;
+   clear:both;
+   margin-top:10px;
+}
+.foot_in{
+   margin-bottom:0px;
+}
+.footer {
+    background: #fbfbfb url("../images/foot_bg.jpg") repeat-x scroll center top;
+    display: block;
+    font-family: "Microsoft YaHei",Tahoma,Arial,sans-serif;
+    height: 380px;
+    padding-top: 32px;
+}
+
+.footer .row01 {
+    height: 140px;
+    margin: 0 auto;
+    padding: 0;
+    width: 1000px;
+}
+
+.fitem {
+    float: left;
+    width: 115px;
+}
+.fitem span.t1 {
+    color: #666;
+    font-size: 16px;
+    font-weight: bold;
+}
+.fitem span.t {
+    font-family: "Microsoft YaHei",Tahoma,Arial,sans-serif;
+    height: 20px;
+    margin: 0 0 6px 10px;
+    width: 74px;
+}
+.fitem span, .fitem a {
+    clear: both;
+    color: #888;
+    float: left;
+    font-family: "宋体";
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.fitem span, .fitem a {
+    clear: both;
+    color: #888;
+    float: left;
+    font-family: "宋体";
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.footer .row02 {
+    border-bottom: 1px solid #eee;
+    margin: 0 auto;
+    padding: 10px 0;
+    text-align: center;
+    width: 1000px;
+}
+.footer .row02 .row02bg {
+    background-image: url("../images/footbg2.png");
+    background-position: 0 -55px;
+    display: block;
+    height: 40px;
+    margin: 0 auto;
+    width: 733px;
+}
+.tel {
+    border-left: 1px solid #dedede;
+    color: #666;
+    display: block;
+    float: left;
+    height: 140px;
+    padding-left: 14px;
+    width: 180px;
+}
+.tel_bg1 {
+    background-image: url("../images/footbg2.png");
+    background-position: -784px -90px;
+    display: block;
+    height: 47px;
+    margin-left: 5px;
+    width: 175px;
+}
+
+.share {
+    color: #999;
+    height: 20px;
+    line-height: 20px;
+}
+
+.share a.tencent {
+    background-position: 0 3px;
+}
+.share a {
+    background: rgba(0, 0, 0, 0) url("../images/share.png") no-repeat scroll 0 0;
+    color: #666;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    text-indent: -9999px;
+    width: 20px;
+}
+.share a.sina {
+    background-position: 0 -61px;
+}
+
+.share a.qzone {
+    background-position: 0 -105px;
+}
+
+.share a.ewm {
+    background-position: 0 -39px;
+    position: relative;
+    z-index: 9;
+}
+
+.footer .row03 {
+    line-height: 25px;
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+    width: 1000px;
+}
+.footer .row03 span {
+    color: #ccc;
+}
+.tel_bg2 {
+    background-image: url("../images/footbg2.png");
+    background-position: right top;
+    display: block;
+    height: 64px;
+    margin-left: 5px;
+    width: 64px;
+}

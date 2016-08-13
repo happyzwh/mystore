@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>  
+
+   <typeAliases>  
+      <typeAlias alias="docPoJo" type="com.mystore.business.dto.DocPoJo"/>  
+      <typeAlias alias="category" type="com.mystore.business.dto.Category"/>  
+      
+      <typeAlias alias="advProModule" type="com.mystore.business.dto.AdvProModule"/>
+      <typeAlias alias="advResourceModule" type="com.mystore.business.dto.AdvResourceModule"/>
+      <typeAlias alias="advImg" type="com.mystore.business.dto.AdvImg"/>
+      <typeAlias alias="info" type="com.mystore.business.dto.Info"/>
+      
+      <typeAlias alias="basicAttri" type="com.mystore.business.dto.BasicAttri"/>
+      <typeAlias alias="basicAttriValue" type="com.mystore.business.dto.BasicAttriValue"/>
+           
+      <typeAlias alias="category" type="com.mystore.business.dto.Category"/>
+      <typeAlias alias="cateAttri" type="com.mystore.business.dto.CateAttri"/>
+      
+      <typeAlias alias="product" type="com.mystore.business.dto.Product"/>
+      <typeAlias alias="proInfo" type="com.mystore.business.dto.ProInfo"/>
+      <typeAlias alias="proPrice" type="com.mystore.business.dto.ProPrice"/>
+      <typeAlias alias="proImg" type="com.mystore.business.dto.ProImg"/>
+      <typeAlias alias="proAttr" type="com.mystore.business.dto.ProAttr"/>
+      
+      <typeAlias alias="brand" type="com.mystore.business.dto.Brand"/>
+      <typeAlias alias="brandInfo" type="com.mystore.business.dto.BrandInfo"/>
+      
+      <typeAlias alias="comment" type="com.mystore.business.dto.Comment"/>
+      <typeAlias alias="commentReply" type="com.mystore.business.dto.CommentReply"/>
+      <typeAlias alias="consult" type="com.mystore.business.dto.Consult"/>
+      <typeAlias alias="consultReply" type="com.mystore.business.dto.ConsultReply"/>
+   </typeAliases>  
+   <mappers>  
+      <mapper resource="com/mystore/business/dao/SearchMapper.xml" />   
+      <mapper resource="com/mystore/business/dao/CategoryMapper.xml" />  
+      
+      <mapper resource="com/mystore/business/dao/AdvProModuleMapper.xml" />
+      <mapper resource="com/mystore/business/dao/AdvResourceModuleMapper.xml" />
+      <mapper resource="com/mystore/business/dao/AdvImgMapper.xml" />
+      <mapper resource="com/mystore/business/dao/InfoMapper.xml" />
+      
+      <mapper resource="com/mystore/business/dao/ProductMapper.xml" />
+      
+      <mapper resource="com/mystore/business/dao/CommentMapper.xml" />
+      <mapper resource="com/mystore/business/dao/ConsultMapper.xml" />
+   </mappers>  
+</configuration>  

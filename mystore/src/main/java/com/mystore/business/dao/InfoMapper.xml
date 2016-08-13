@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.InfoMapper">
+	<select id="getInfoList" parameterType="string" resultType="info">
+		select
+		    i.id,
+		    i.id_cate,
+		    i.title,
+		    i.sort,
+		    i.content,
+		    i.status,
+		    i.createdate as 'createDate',
+		    i.lastdate as 'lastDate'
+		from info i,info_cate c 
+		<include refid="queryInfoCondition"/>
+		order by status desc, sort asc
+	    <if test="pageIndex != null and pageSize != null">
+               limit #{pageIndex},#{pageSize}
+        </if> 
+	</select>
+	<select id="getInfoCount" parameterType="string" resultType="int">
+	    select  count(*)
+		from info i,info_cate c 
+		<include refid="queryInfoCondition"/>
+	</select>
+	<select id="getInfoById" parameterType="int" resultType="info">
+		select
+		    id,
+		    id_cate,
+		    title,
+		    sort,
+		    content,
+		    status,
+		    createdate as 'createDate',
+		    lastdate as 'lastDate'
+		from info
+		where id = #{value}
+	</select>
+	<sql id="queryInfoCondition">
+	    <trim prefix="WHERE" prefixOverrides="AND">
+	          c.id = i.id_cate
+              <if test="id != null">
+                  	and i.id = #{id}
+              </if>  
+              <if test="id_cate != null">
+                  	and i.id_cate = #{id_cate}
+              </if>  
+              <if test="title != null">
+                	and  i.title like CONCAT('%',#{title},'%')  
+              </if>
+              <if test="status != null">
+	        		and i.status = #{status}
+		      </if> 
+		      <if test="bh != null">
+	        		and c.bh = #{bh}
+		      </if>                       
+		</trim>
+	</sql>
+
+</mapper>

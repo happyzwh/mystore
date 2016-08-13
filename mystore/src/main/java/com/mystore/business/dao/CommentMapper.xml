@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.CommentMapper">
+	<resultMap type="comment" id="commentMap">
+		<result property="id" column="id" />
+		<result property="id_pro" column="id_pro" />
+		<result property="id_user" column="id_user" />
+		<result property="userName" column="userName" />
+		<result property="score" column="score" />
+		<result property="content" column="content" />
+		<result property="status" column="status" />
+		<result property="createDate" column="createDate" />
+		<result property="lastDate" column="lastDate" />
+		<collection property="replys" select="getProCommentReplyByPid" column="id"/>
+	</resultMap>
+	<resultMap type="commentReply" id="commentReplyMap">
+		<result property="id" column="id" />
+		<result property="id_adm_user" column="id_adm_user" />
+		<result property="userName" column="userName" />
+		<result property="content" column="content" />
+		<result property="status" column="status" />
+		<result property="createDate" column="createDate" />
+		<result property="lastDate" column="lastDate" />
+	</resultMap>
+	<select id="getProCommentReplyByPid" parameterType="int" resultMap="commentReplyMap">
+	    select  id,
+			    id_adm_user,
+			    username as 'userName',
+			    content,
+			    status,
+			    createdate as 'createDate',
+			    lastdate as 'lastDate'
+		from commentreply
+	    where pid = #{value}
+	</select>
+	<insert id="addComment" parameterType="comment" useGeneratedKeys="true" keyProperty="id">
+		insert into comment(
+		    id_pro,
+			id_user,
+			username,
+			score,
+			content,
+			createdate,
+			lastdate
+		 )values(
+		    #{id_pro},
+		    #{id_user},
+		    #{userName},
+		    #{score},
+		    #{content},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<select id="getProCommentByProId" parameterType="comment" resultMap="commentMap">
+	    select  id,
+		        id_pro,
+			    id_user,
+			    username as 'userName',
+			    score,
+			    content,
+			    isreply as 'isReply',
+			    status,
+			    createdate as 'createDate',
+			    lastdate as 'lastDate'
+		from comment p
+	    where id_pro = #{id_pro} and status = '1'
+	    <if test="type != null">
+	          <if test="type == 3">
+               	and score = 1
+              </if> 
+              <if test="type == 2">
+               	and ( score = 2 or score = 3 )
+              </if> 
+              <if test="type == 1">
+               	and ( score = 4 or score = 5 )
+              </if> 
+        </if> 
+	    order by createdate desc
+	    <if test="pageIndex != null and pageSize != null">
+               limit #{pageIndex},#{pageSize}
+        </if> 
+	</select>
+	<select id="getProCommentCountByProId" parameterType="comment" resultType="int">
+	    select  count(*)
+		from comment
+	    where id_pro = #{id_pro} and status = '1'
+	    <if test="type != null">
+	          <if test="type == 3">
+               	and score = 1
+              </if> 
+              <if test="type == 2">
+               	and ( score = 2 or score = 3 )
+              </if> 
+              <if test="type == 1">
+               	and ( score = 4 or score = 5 )
+              </if> 
+        </if> 
+	</select>
+	<select id="getCommentStatisByProId" parameterType="int" resultType="java.util.Map">
+	    SELECT t.count,t.hight,t.mid,t.low,ROUND(t.hight/t.count*100,0) AS 'hr',ROUND(t.mid/t.count*100,0) AS 'mr',ROUND(100 - ROUND(t.hight/t.count*100,0) - ROUND(t.mid/t.count*100,0),0) AS 'lr' FROM(
+		    SELECT COUNT(*) AS 'count',
+		           COUNT(CASE WHEN score = 4 OR score = 5 THEN 1 END) AS 'hight',
+		           COUNT(CASE WHEN score = 2 OR score = 3 THEN 1 END) AS 'mid',
+		           COUNT(CASE WHEN score = 1 THEN 1 END) AS 'low'
+		    FROM comment
+		    WHERE  id_pro = #{value} and status = '1'
+	    ) t
+	</select>
+</mapper>

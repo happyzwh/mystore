@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.ConsultMapper">
+	<resultMap type="consult" id="consultMap">
+		<result property="id" column="id" />
+		<result property="id_pro" column="id_pro" />
+		<result property="id_user" column="id_user" />
+		<result property="userName" column="userName" />
+		<result property="type" column="type" />
+		<result property="content" column="content" />
+		<result property="status" column="status" />
+		<result property="createDate" column="createDate" />
+		<result property="lastDate" column="lastDate" />
+		<collection property="replys" select="getProConsultReplyByPid" column="id"/>
+	</resultMap>
+	<resultMap type="consultReply" id="consultReplyMap">
+		<result property="id" column="id" />
+		<result property="id_adm_user" column="id_adm_user" />
+		<result property="userName" column="userName" />
+		<result property="content" column="content" />
+		<result property="status" column="status" />
+		<result property="createDate" column="createDate" />
+		<result property="lastDate" column="lastDate" />
+	</resultMap>
+	<select id="getProConsultReplyByPid" parameterType="int" resultMap="consultReplyMap">
+	    select  id,
+			    id_adm_user,
+			    username as 'userName',
+			    content,
+			    status,
+			    createdate as 'createDate',
+			    lastdate as 'lastDate'
+		from consultreply
+	    where pid = #{value}
+	</select>
+	<insert id="addConsult" parameterType="consult" useGeneratedKeys="true" keyProperty="id">
+		insert into consult(
+		    id_pro,
+			id_user,
+			username,
+			type,
+			content,
+			createdate,
+			lastdate
+		 )values(
+		    #{id_pro},
+		    #{id_user},
+		    #{userName},
+		    #{type},
+		    #{content},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<select id="getProConsultByProId" parameterType="consult" resultMap="consultMap">
+	    select  id,
+		        id_pro,
+		        type,
+			    id_user,
+			    username as 'userName',
+			    content,
+			    isreply as 'isReply',
+			    status,
+			    createdate as 'createDate',
+			    lastdate as 'lastDate'
+		from consult p
+	    where id_pro = #{id_pro} and status = '1'
+	    <if test="type != null and type != 0">
+           and  type = #{type}
+        </if> 
+	    order by createdate desc
+	    <if test="pageIndex != null and pageSize != null">
+               limit #{pageIndex},#{pageSize}
+        </if> 
+	</select>
+	<select id="getProConsultCountByProId" parameterType="consult" resultType="int">
+	    select  count(*)
+		from consult
+	    where id_pro = #{id_pro} and status = '1'
+	    <if test="type != null and type != 0">
+           and  type = #{type}
+        </if> 
+	</select>
+	<select id="getConsultStatisByProId" parameterType="int" resultType="java.util.Map">
+		    SELECT COUNT(*) AS 'count',
+		           COUNT(CASE WHEN type = 1 THEN 1 END) AS 'pro',
+		           COUNT(CASE WHEN type = 2 THEN 1 END) AS 'pay',
+		           COUNT(CASE WHEN type = 3 THEN 1 END) AS 'sale'
+		    FROM consult
+		    WHERE  id_pro = #{value} and status = '1'
+	</select>
+</mapper>

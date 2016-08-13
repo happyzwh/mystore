@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <constant name="struts.devMode" value="false" />  
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.objectFactory" value="spring" /> 
+    <constant name="struts.custom.i18n.resources" value="applicationResource"/> 
+
+   <package name="index" namespace="/index" extends="struts-default">   
+       <action name="indexAction" class="indexAction">
+			<result name="index">/page/index.jsp</result>
+		</action>
+   </package>
+   
+   <package name="search" namespace="/search" extends="struts-default">   
+       <action name="searchAction" class="searchAction">
+			<result name="index">/page/index.jsp</result>
+		</action>
+   </package>
+   
+   <package name="top" namespace="/top" extends="struts-default">   
+       <action name="topAction" class="topAction">
+			<result name="top">/page/top.jsp</result>
+		</action>
+   </package>
+   
+   <package name="info" namespace="/info" extends="struts-default">   
+       <action name="infoAction" class="infoAction">
+			<result name="detail">/page/notice/detail.jsp</result>
+		</action>
+   </package>
+   
+   <package name="product" namespace="/product" extends="struts-default">   
+       <action name="productAction" class="productAction">
+			<result name="detail">/page/product/detail.jsp</result>
+		</action>
+   </package>
+   
+   <package name="comment" namespace="/comment" extends="struts-default">   
+       <action name="commentAction" class="commentAction">
+			<result name="commentPage">/page/product/proComment.jsp</result>
+		</action>
+   </package>
+   
+   <package name="consult" namespace="/consult" extends="struts-default">   
+       <action name="consultAction" class="consultAction">
+			<result name="consultPage">/page/product/proConsult.jsp</result>
+		</action>
+   </package>
+   
+   <package name="register" namespace="/register" extends="struts-default">   
+       <action name="registerAction" class="registerAction">
+			<result name="goRegister">/page/user/register.jsp</result>
+		</action>
+   </package>
+    
+</struts>

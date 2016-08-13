@@ -1,0 +1,573 @@
+.topout{
+	width:100%;
+	height:auto;
+}
+.topadv{
+	width:100%;
+	height:auto;
+}
+.topadv a{
+	background:url(http://img10.jiuxian.com/bill/2015/0509/b2cd597496804303b8eb04323c9c3440.jpg) no-repeat top center scroll; 
+	display:block; 
+	height:90px; 
+	width:100%;
+}
+.topnavigate_out{
+	width:100%;
+    height:auto;  
+    text-align:center; 
+}
+.topnavigate{
+    width:1000px;
+    height:auto;
+    margin:0 auto; 
+}
+.topnavigate li{
+    height:27px;
+    line-height:27px;
+    float:left;
+    margin-right:20px;
+}
+.topnavigate_left{
+    width:30%;
+	height:27px;
+	float:left;
+}
+.topnavigate_right{
+    width:70%;
+	height:27px;
+	float:left;
+}
+.topnavigate_right li{
+    float:right;
+    margin-right:0px;
+    margin-left:10px;
+    font-size:12px;
+    color:#333;
+}
+.topnavigate_right li i{
+	font-style: normal;
+    height: 27px;
+    width: 1px;
+}
+.logo_out{
+   width:100%;
+   height:auto;  
+   text-align:center; 
+}
+.logo_in{
+    width:1000px;
+    height:90px;
+    margin:0 auto; 
+}
+.logo_wap{
+    width:250px;
+    display: block;
+    height: 60px;
+    padding:20px 0;
+    float:left;
+}
+.logo{
+    background: url("http://www.huimeigou.com/themes/default/images/logo.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 60px;
+    width: 240px;
+}
+.search_out{
+   margin-top:25px;
+   float:left;
+}
+.search_form{
+   height:36px;
+}
+.search_form .text{
+	border-color: #b61d1d;
+    border-style: solid;
+    border-width: 2px 0 2px 2px;
+    color: #666;
+    float: left;
+    font-family: "microsoft yahei";
+    font-size: 14px;
+    height: 24px;
+    line-height: 24px;
+    margin-bottom: 4px;
+    outline: 0 none;
+    padding: 4px;
+    width: 300px;
+}
+.search_form .button{
+    background: none repeat scroll 0 0 #b61d1d;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    height: 36px;
+    line-height: 1;
+    width: 82px;
+}
+.search_form .cw-icon i {
+	height: 36px;
+    left: 0;
+    top: 0;
+    width: 82px;
+}
+.search_text{
+	 clear:both;
+}
+.search_text li{
+	 float:left;
+     margin:5px 0;
+     margin-right:10px;
+     height:20px;
+     ling-height:30px;
+}
+.searchrightadv_out{
+	width:300px;
+	float:right;
+}
+.searchrightadv{
+   	padding:20px 0;
+}
+.searchrightadv a{
+    background: url("http://www.huimeigou.com/themes/default/images/top_tc.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 60px;
+    float:right;
+    width:290px;
+}
+.navi_out{
+    height: 35px;
+    text-align:center;
+    background: none repeat scroll 0 0 #b1191a;
+}
+.navi_in{
+    height: 35px;
+    position: relative;
+    z-index: 9;
+    width:1000px;
+    margin:0 auto;
+}
+.navi_left_out{
+    float: left;
+    height: 35px;
+    overflow: visible;
+    position: relative;
+    width: 190px;
+    z-index: 200;
+}
+.navi_left{
+   margin:0px auto;
+   padding:0px;
+   text-align:center;
+   position: relative;
+}
+.navi_left a{
+    background: none repeat scroll 0 0 #ce171f;
+    display: block;
+    font: 400 14px/35px "microsoft yahei";
+    height: 35px;
+    text-decoration: none;
+    width: 190px;
+}
+.navi_middle{
+   width:500px;
+   float:left;
+   height: 35px;
+}
+.navi_middle li{
+   float:left;
+}
+.navi_middle li a{
+    color:#ffffff;
+    font: 400 14px/35px "microsoft yahei";
+    height: 30px;
+    padding: 0 20px;
+    text-align: center;
+    text-decoration: none;
+}
+.navi_right{
+   float:right;
+}
+.navi_right a{
+    height:35px;
+	margin:0 auto;
+	position:relative;
+	 display: inline-block;
+}
+.navi_right em{
+	color:#ffffff;
+	font-style: normal;
+	margin-top:0 auto;
+	font: 400 14px/20px "microsoft yahei";
+	padding:0px;
+	float:left;
+	width:120px;
+    height:20px;
+	margin:7px auto;
+}
+.navi_right em.ar2 {
+    background: rgba(0, 0, 0, 0) url("../images/arrows_w.png") no-repeat scroll center 4px;
+    display: block;
+    height: 12px;
+    position: absolute;
+    right: 6px;
+    top: 4px;
+    width: 12px;
+    z-index: 29999;
+}
+.list_pro_search{
+	 display:none;
+     position:absolute;
+     border:1px solid #003365;
+     background-color:#c0d2e0;
+     top:35px;
+     left:0px;
+     width:390px;
+     height:auto;
+     z-index: 999;
+}
+.list_pro_search li{
+   padding-left:10px;
+   border-bottom:1px solid #003365;
+   cursor:pointer;
+   height:30px;
+   line-height:30px;
+}
+.list_pro_search li.li_last{
+   border:0px;
+}
+.cccc {
+    color: #ccc;
+}
+.icon_t1, .icon_t2, .icon_t3 {
+    background: rgba(0, 0, 0, 0) url("../images/icon_1.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 21px;
+    line-height: 21px;
+    margin-top: 7px;
+    padding-left: 21px;
+    vertical-align: text-bottom;
+}
+.icon_t4, .icon_t5, .icon_t6, .icon_t7 {
+    background: rgba(0, 0, 0, 0) url("../images/icon_1.png") no-repeat scroll 0 0;
+    color: #333;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    height: 21px;
+    line-height: 21px;
+    margin: 4px 0 5px 5px;
+    padding-left: 30px;
+    vertical-align: text-bottom;
+    width: 152px;
+}
+.icon_t1 {
+    background-position: 0 -2px;
+}
+.icon_t2 {
+    background-position: 2px -21px
+}
+.icon_t3 {
+    background-position: 0 -42px;
+}
+.icon_t4 {
+    background-position: 0 -63px;
+}
+.icon_t5 {
+    background-position: 0 -84px;
+}
+.icon_t6 {
+    background-position: 0 -105px;
+}
+.icon_t7 {
+    background-position: 0 -126px;
+}
+.cart_num {
+    background: rgba(0, 0, 0, 0) url("../images/cart_numbg.gif") no-repeat scroll 0 0;
+    display: block;
+    font-family: Tahoma,Geneva,sans-serif;
+    font-size: 1em;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2px 0 1px;
+    position: absolute;
+    right: -9px;
+    text-align: center;
+    top: -2px;
+    width: 28px;
+    z-index: 29999;
+}
+.categoryBox {
+    border: medium none;
+    height: 470px;
+    width: 190px;
+    clear:both;
+}
+.categoryBox li {
+    width: 190px;
+}
+.categoryBox li {
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #e4e4e4;
+    border-left: 1px solid #fff;
+    float: left;
+    height: 81px;
+    width: 186px;
+}
+.categoryBox li .catItemCon {
+    height: 81px;
+    padding: 0px;
+    width: 186px;
+}
+.categoryBox li h3 {
+    color: #333;
+    font-size: 14px;
+    font-weight: normal;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+    padding-top: 3px;
+    padding-left: 17px;
+    float:left;
+}
+.categoryBox li .categoryCon {
+    overflow: hidden;
+    position: relative;
+    width: 186px;
+}
+.categoryBox li .categoryCon p {
+    height: 20px;
+    overflow: hidden;
+    width: 170px;
+}
+.categoryBox li .categoryCon p a.on {
+    background: #f90 none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    line-height: 16px;
+}
+.categoryBox li .categoryCon p a.on:hover {
+    color: #fff;
+}
+.categoryBox li.on {
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+.menuBox {
+    left: 190px;
+}
+.menuBox {
+    box-shadow: 0 0 4px 0 #ccc;
+    height: 470px;
+    left: 180px;
+    position: absolute;
+    top: 0px;
+    width: 615px;
+    z-index: 301;
+}
+.menuBox .menuCon {
+    background: #f1f1f1 none repeat scroll 0 0;
+    display: inline-block;
+    float: left;
+    height: 470px;
+    overflow: hidden;
+    width: 400px;
+}
+.menuItem .menuItemTitle {
+    border-top: 1px solid #f1f1f1;
+    float: left;
+    line-height: 22px;
+    padding: 10px 10px 10px 20px;
+    text-align: right;
+    width: 60px;
+}
+.menuItem.first .menuItemTitle {
+    border-top: 0 none;
+}
+.menuItem .menuItemTitle h4 {
+    color: #333;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    font-weight: normal;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.menuItem .menuItemCon {
+    background: #fff none repeat scroll 0 0;
+    float: left;
+}
+.menuItem .menuItemCon .menuCon-list {
+    border-top: 1px dotted #ccc;
+    margin: 0 15px;
+    overflow: hidden;
+    padding: 10px 0;
+    width: 280px;
+}
+.menuItem.first .menuItemCon .menuCon-list {
+    border-top: 0 none;
+    padding: 15px 0 10px;
+}
+.menuHeight .menuItemTitle {
+    float: left;
+    height: 1px;
+    line-height: 1px;
+    width: 90px;
+}
+.menuHeight .menuItemCon {
+    background: #fff none repeat scroll 0 0;
+    float: left;
+}
+.menuHeight .menuItemCon .menuCon-list {
+    height: 0;
+    margin: 0 15px;
+    width: 280px;
+}
+.menuCon-list p {
+    line-height: 22px;
+    margin: 0 0 0 -1px;
+    max-height: 176px;
+    overflow: hidden;
+}
+.menuCon-list p a {
+    background: rgba(0, 0, 0, 0) url("../../img/newIndexImg/menuLine.jpg") no-repeat scroll left center;
+    display: inline-block;
+    float: left;
+    padding: 0 8px;
+    white-space: nowrap;
+}
+.menuCon-list p a.hot {
+    color: #f60;
+}
+.menuCon-list p a:hover {
+    text-decoration: none;
+}
+.menuCon-list p a.more {
+    color: #f60;
+    font-family: "宋体";
+}
+.menuCon-list p.menuCon-brand a {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 center;
+    margin: 0 8px;
+    overflow: hidden;
+    padding: 0;
+    width: 71px;
+}
+.menuFoc {
+    float: left;
+    height: 470px;
+    position: relative;
+    width: 215px;
+    z-index: 201;
+}
+.menuFoc a {
+    display: block;
+    height: 470px;
+    position: absolute;
+    right: -5px;
+    top: 0;
+    width: 220px;
+}
+.menuBox.notFoc .menuCon {
+    width: 615px;
+}
+.menuBox.notFoc .menuItem .menuCon-list {
+    width: 495px;
+}
+.menuBox.notFoc .menuFoc {
+    display: none;
+}
+.menuBox.notFoc .menuHeight .menuCon-list {
+    margin: 0 15px;
+    width: 495px;
+}
+.menuBox.menuLiquor .menuItem .menuItemTitle {
+    padding: 10px 10px 10px 14px;
+    width: 36px;
+}
+.menuBox.menuLiquor .menuItem.first .menuItemTitle {
+    padding: 15px 10px 10px 14px;
+}
+.menuBox.menuLiquor .menuHeight .menuItemTitle {
+    width: 60px;
+}
+.menuBox.notFoc.menuLiquor .menuItem .menuCon-list {
+    width: 525px;
+}
+.menuBox.notFoc.menuLiquor .menuHeight .menuCon-list {
+    margin: 0 15px;
+    width: 525px;
+}
+.menuCon-filter {
+    height: 18px;
+    overflow: hidden;
+    padding: 5px 0 12px;
+    width: 525px;
+}
+.menuCon-filter ul {
+    width: 535px;
+}
+.menuCon-filter ul li {
+    float: left;
+}
+.menuCon-filter ul li a {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 5px;
+    position: relative;
+    z-index: 202;
+}
+.menuCon-filter ul li a:hover {
+    color: #cc0001;
+    text-decoration: none;
+}
+.menuCon-filter ul li.boutique a {
+    margin-right: 2px;
+    padding: 0 4px;
+}
+.menuCon-filter ul li.on a {
+    background: #cc0001 none repeat scroll 0 0;
+    color: #fff;
+}
+.menuCon-filter ul li.on a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.menuCon-filter ul li a i {
+    background-position: -114px 0;
+    bottom: -4px;
+    display: none;
+    height: 5px;
+    left: 3px;
+    overflow: hidden;
+    position: absolute;
+    width: 11px;
+}
+.menuCon-filter ul li.boutique a i {
+    left: 24px;
+}
+.menuCon-filter ul li.on a i {
+    display: inline-block;
+}
+.categoryBox_out{
+    float: left;
+    position: relative;
+    width: 190px;
+    z-index: 200;
+}
+.categoryBox li h3 i.seleWine {
+    background-position: -73px -260px;
+}
+.categoryBox li h3 i {
+    display: inline-block;
+    height: 20px;
+    margin-right: 10px;
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+    width: 14px;
+}
+.publicIcon {
+    background: rgba(0, 0, 0, 0) url("../images/public-24.png") no-repeat scroll 0 0;
+}

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.ProductMapper">
+	<resultMap type="comment" id="commentMap">
+		<result property="id" column="id" />
+		<result property="id_pro" column="id_pro" />
+		<result property="id_user" column="id_user" />
+		<result property="userName" column="userName" />
+		<result property="score" column="score" />
+		<result property="content" column="content" />
+		<result property="status" column="status" />
+		<result property="createDate" column="createDate" />
+		<result property="lastDate" column="lastDate" />
+		<collection property="replys" ofType="CommentReply" column="pid"/>
+	</resultMap>
+	<resultMap type="consult" id="consultMap">
+		<result property="id" column="id" />
+		<result property="id_pro" column="id_pro" />
+		<result property="id_user" column="id_user" />
+		<result property="userName" column="userName" />
+		<result property="type" column="type" />
+		<result property="content" column="content" />
+		<result property="status" column="status" />
+		<result property="createDate" column="createDate" />
+		<result property="lastDate" column="lastDate" />
+		<collection property="replys" ofType="ConsultReply" column="pid"/>
+	</resultMap>
+	<select id="getProById" parameterType="int" resultType="product">
+		 select p.id,
+		        p.id_cate,
+		        c.name as 'cateName',
+			    p.id_brand,
+			    b.name as 'brandName',
+			    p.name,
+			    p.sn,
+			    p.shorttitle as 'shortTitle',
+			    p.subtitle as 'subTitle',
+			    p.entitle as 'enTitle',
+			    p.rome,
+			    p.jianpin as 'jianPin',
+			    p.keywords as 'keyWords',
+			    p.path_img,
+			    p.descr,
+			    p.isshow as 'isShow',
+			    p.isonsale as 'isOnSale',
+			    p.isshipping as 'isShipping',
+			    p.onoroffsaletime as 'onOrOffSaleTime',
+			    p.sort,
+			    p.status,
+			    p.createdate as 'createDate',
+			    p.lastdate as 'lastDate'
+		from product p, category c,brand b
+		where p.id = #{value} and p.id_cate = c.id and p.id_brand = b.id
+	</select>
+	<select id="getProAttrByProId" parameterType="int" resultType="proAttr">
+		 select id,
+		        id_pro,
+			    id_cateattr as 'id_cateAttr',
+			    id_attr,
+			    attrvalue as 'attrValue',
+			    sort,
+			    status,
+			    createdate as 'createDate',
+			    lastdate as 'lastDate'
+		from productattr
+		where id_pro = #{value}
+	</select>
+	<select id="getProImgListByProId" parameterType="int" resultType="proImg">
+		 select id,
+		        id_pro,
+			    path_img,
+	            sort,
+			    status,
+			    createdate,
+			    lastdate
+		from productimage
+		where id_pro = #{value}
+		order by sort asc
+	</select>
+	<select id="getProInfoByProId" parameterType="int" resultType="proInfo">
+		 select id,
+		        id_pro,
+			    provider,
+			    descr,
+			    feature,
+			    proshow,
+			    areaintroduce,
+			    qualification,
+			    usemethod,
+			    brandculture,
+			    honor,
+			    providerintroduce,
+			    status,
+			    createdate,
+			    lastdate
+		from productinfo
+		where id_pro = #{value}
+	</select>
+	<select id="getProPriceByProId" parameterType="int" resultType="proPrice">
+		 select id,
+		        id_pro,
+			    markprice as 'markPrice',
+			    shopprice as 'shopPrice',
+			    activeprice as 'activePrice',
+			    status,
+			    createdate,
+			    lastdate
+		from productprice
+		where id_pro = #{value}
+	</select>
+	<select id="getProCommentByProId" parameterType="comment" resultMap="commentMap">
+	    select  id,
+		        id_pro,
+			    id_user,
+			    username as 'userName',
+			    score,
+			    content,
+			    isreply as 'isReply',
+			    status,
+			    createdate as 'createDate',
+			    lastdate as 'lastDate'
+		from product p
+	    where id_pro = #{id_pro} and status = 1
+	    order createdate desc
+	    <if test="pageIndex != null and pageSize != null">
+               limit #{pageIndex},#{pageSize}
+        </if> 
+	</select>
+	<select id="getProCommentCountByProId" parameterType="int" resultType="int">
+	    select  count(*)
+		from comment
+	    where id_pro = #{value} and status = 1
+	</select>
+	<select id="getProConsultByProId" parameterType="consult" resultMap="consultMap">
+	    select  id,
+		        id_pro,
+		        type,
+			    id_user,
+			    username as 'userName',
+			    content,
+			    isreply as 'isReply',
+			    status,
+			    createdate as 'createDate',
+			    lastdate as 'lastDate'
+		from product p
+	    where id_pro = #{id_pro} and status = 1
+	    <if test="type != null">
+           and  type = #{type}
+        </if> 
+	    order createdate desc
+	    <if test="pageIndex != null and pageSize != null">
+               limit #{pageIndex},#{pageSize}
+        </if> 
+	</select>
+	<select id="getProConsultCountByProId" parameterType="consult" resultType="int">
+	    select  count(*)
+		from cousult
+	    where id_pro = #{id_pro} and status = 1
+	    <if test="type != null">
+           and  type = #{type}
+        </if> 
+	</select>
+	<select id="getProAttrMapByProId" parameterType="int" resultType="java.util.Map">
+	    SELECT t.id AS paid,b.id AS baid,GROUP_CONCAT(DISTINCT b.name) AS name, CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT v.value) ELSE GROUP_CONCAT(DISTINCT t.attrvalue) END AS value
+		FROM productattr t,cateattri c,basicattri b,basicattrivalue v
+		WHERE t.id_pro = #{value} AND t.id_cateattr = c.id AND c.id_attr = b.id AND 
+		CASE WHEN b.showtype = '3' THEN  CONCAT(',',v.id,',') REGEXP CONCAT(',(',REPLACE(SUBSTRING(t.attrvalue,2,LENGTH(t.attrvalue)-2),',','|'),'),') WHEN b.showtype = '1' OR b.showtype = '2' THEN v.id = t.id_attr ELSE t.id_attr IS NULL END
+		GROUP BY t.id,b.id
+		ORDER BY c.sort
+	</select>
+</mapper>
