@@ -10,7 +10,8 @@
 		<param-value>
 		        classpath:spring.xml,
 		        classpath:spring-quartz.xml,
-		        classpath:spring-redis.xml
+		        classpath:spring-redis.xml,
+		        classpath:spring-biz.xml
 	    </param-value>
 	</context-param> 
 	<filter>

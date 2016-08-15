@@ -5,6 +5,7 @@
 }
 .container-con {
     width: 100%;
+    padding-top:50px;
 }
 .register-cont-h2 {
     color: #333;
@@ -25,4 +26,158 @@
 	float:left;
 	width:50%;
 	text-align:center;
+}
+.register-cont-left ul{
+	margin:20px auto;
+}
+.register-cont-left ul li{
+	color: #5b5b5b;
+    position: relative;
+}
+.register-cont-left ul li .errorTip{
+	padding-left: 160px;
+	text-align:left;
+	height: 21px;
+    line-height: 21px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    clear:both;
+}
+.register-cont-left ul li .errorTip .btip {
+    background: rgba(0, 0, 0, 0) url("../../images/valid.png") no-repeat scroll 0 -75px;
+    display: inline-block;
+    height: 12px;
+    margin-right: 5px;
+    width: 12px;
+}
+#codeImg {
+    background: rgba(0, 0, 0, 0) url("../../images/validCode.png") no-repeat scroll 0 0;
+    height: 46px;
+    overflow: hidden;
+    padding: 1px 0;
+    position: absolute;
+    right: -1px;
+    text-align: center;
+    top: 0;
+    width: 111px;
+}
+#codeImg .btn {
+    height: 45px;
+    margin-top: 0;
+    width: 111px;
+    background: transparent none repeat scroll 0 0;
+    color: #fff;
+}
+.sendMoblieBtn {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    color: #fff;
+    height: 46px;
+    padding: 0;
+    width: 110px;
+}
+#verifyCode{
+	width:173px;
+}
+#phone_code{
+	width:173px;
+}
+.register-cont-left ul li .hidden{
+	 background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    text-indent: -9999px;
+}
+.form-label{
+	float:left;
+	display: inline-block;
+    font-size: 14px;
+    padding-right: 16px;
+    text-align: right;
+    width:25%;
+    height: 41px;
+    line-height: 41px;
+}
+.form-label s{
+	color: #ed3030;
+    padding-right: 7px;
+}
+.form-element{
+	float:left;
+	 background: #fff none repeat scroll 0 0;
+    border: 1px solid #bfbfbf;
+    border-radius: 6px;
+    position: relative;
+    vertical-align: middle;
+    width: 301px;
+    margin-left:20px;
+    text-align:left;
+}
+
+.form-element input{
+	border: 0 none;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    height: 41px;
+    line-height: 41px;
+    margin: 2px 8px;
+    width: 280px;
+    color: #c4c4c4;
+}
+.ullist .loginBtn .imgRoundBtn, .imgRoundBtn {
+    background: rgba(0, 0, 0, 0) url("../../images/tx_bg.png") no-repeat scroll 0 -243px;
+    border: 0 none;
+    color: #ffffff;
+    display: inline-block;
+    font-family: "Microsoft YaHei";
+    font-size: 18px;
+    height: 45px;
+    line-height: 45px;
+    outline: medium none;
+    padding: 0;
+    width: 300px;
+    margin:20px auto;
+}
+.itemli {
+    color: #5b5b5b;
+    position: relative;
+}
+.toReg {
+	font-size:14px;
+    margin-bottom: 8px;
+    padding-bottom: 0;
+}
+.mt5 {
+    margin-top: 5px;
+}
+.pswarp {
+    margin-left: 260px;
+}
+.pswarp {
+    border: 1px solid #e5e4e4;
+    border-radius: 2px;
+    display: inline-block;
+    height: 18px;
+    overflow: hidden;
+    padding: 2px 1px;
+}
+.s_box {
+    background: #cecece none repeat scroll 0 0;
+    color: #fff;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    margin-right: 1px;
+    text-align: center;
+    width: 52px;
+}
+.s_box_active{
+    background:#65e9a7;
+}
+.s_box_active1{
+    background:#65e9a7;
+}
+.s_box_active2{
+    background:#42d88c;
+}
+.s_box_active3{
+    background:#21c070;
 }
