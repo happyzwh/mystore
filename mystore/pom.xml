@@ -362,6 +362,12 @@
 				<artifactId>fastjson</artifactId>
 			</dependency>
 			
+			<dependency>
+			  	<groupId>com.sms</groupId>
+			  	<artifactId>service-sms</artifactId>
+			  	<classifier>client</classifier>
+			</dependency>
+			
   </dependencies>
   <build>
     <finalName>mystore</finalName>

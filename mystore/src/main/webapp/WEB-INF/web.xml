@@ -11,7 +11,8 @@
 		        classpath:spring.xml,
 		        classpath:spring-quartz.xml,
 		        classpath:spring-redis.xml,
-		        classpath:spring-biz.xml
+		        classpath:spring-biz.xml,
+		        classpath:dubbo-client.xml
 	    </param-value>
 	</context-param> 
 	<filter>
