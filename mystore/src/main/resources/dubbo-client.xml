@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    
+    <dubbo:application name="dubbo-service"/>
+    
+    <dubbo:registry  protocol="zookeeper" address="192.168.190.144:2181,192.168.190.144:2182"/>
+
+    <dubbo:monitor protocol="registry"/>
+
+    <dubbo:reference id="smsApiService" interface="com.jlc.mkt.sms.interfaceapi.service.SmsApiService"/>
+
+    <dubbo:consumer timeout="30000"/>
+    
+</beans>
