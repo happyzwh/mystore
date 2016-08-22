@@ -54,6 +54,7 @@
    <package name="register" namespace="/register" extends="struts-default">   
        <action name="registerAction" class="registerAction">
 			<result name="goRegister">/page/user/register.jsp</result>
+			<result name="index">/page/index.jsp</result>
 		</action>
    </package>
     

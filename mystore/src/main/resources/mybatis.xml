@@ -30,6 +30,8 @@
       <typeAlias alias="commentReply" type="com.mystore.business.dto.CommentReply"/>
       <typeAlias alias="consult" type="com.mystore.business.dto.Consult"/>
       <typeAlias alias="consultReply" type="com.mystore.business.dto.ConsultReply"/>
+      
+      <typeAlias alias="user" type="com.mystore.business.dto.User"/>
    </typeAliases>  
    <mappers>  
       <mapper resource="com/mystore/business/dao/SearchMapper.xml" />   
@@ -44,5 +46,7 @@
       
       <mapper resource="com/mystore/business/dao/CommentMapper.xml" />
       <mapper resource="com/mystore/business/dao/ConsultMapper.xml" />
+      
+      <mapper resource="com/mystore/business/dao/UserMapper.xml" />
    </mappers>  
 </configuration>  

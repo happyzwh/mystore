@@ -16,13 +16,13 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class Gimpy
+/*    */ public class Gimpys
 /*    */   extends ImageCaptcha
 /*    */   implements Serializable
 /*    */ {
 /*    */   private String response;
 /*    */   
-/*    */   Gimpy(String question, BufferedImage challenge, String response)
+/*    */   Gimpys(String question, BufferedImage challenge, String response)
 /*    */   {
 /* 27 */     super(question, challenge);
 /* 28 */     this.response = response;

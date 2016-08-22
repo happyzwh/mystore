@@ -181,3 +181,11 @@
 .s_box_active3{
     background:#21c070;
 }
+.sys-error{
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	margin-left:50px;
+	color:red;
+	display:none;
+}

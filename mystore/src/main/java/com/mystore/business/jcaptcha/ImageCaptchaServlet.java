@@ -2,6 +2,7 @@ package com.mystore.business.jcaptcha;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletConfig;
@@ -10,6 +11,9 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.context.ContextLoader;
 
 import com.octo.captcha.service.CaptchaServiceException;
 
@@ -41,11 +45,16 @@ public class ImageCaptchaServlet extends HttpServlet {
         response.setContentType("image/jpeg");  
         ServletOutputStream out = response.getOutputStream();  
         try {  
-            String captchaId = request.getSession(true).getId();  
-            BufferedImage challenge = (BufferedImage)  CaptchaServiceSingleton.getInstance().getChallengeForID(captchaId, request.getLocale());
-            /*CaptchaService cs = new CaptchaService();
-            Boolean boolean1 = cs.validateResponseForID(captchaId, "SFWSF");
-            System.out.println(boolean1);*/
+            String captchaId = request.getSession(true).getId();
+            
+            CaptchaService instance = (CaptchaService)CaptchaServiceSingleton.getInstance();
+            BufferedImage challenge = (BufferedImage)instance.getChallengeForID(captchaId, request.getLocale());
+            
+            RedisTemplate<String, Serializable> redisTemplate = (RedisTemplate<String, Serializable>)ContextLoader.getCurrentWebApplicationContext().getBean("redisTemplate");
+            
+            String code = instance.getResponse(captchaId);
+            redisTemplate.opsForHash().put("checkCodeMap", captchaId, code);          
+            
             ImageIO.write(challenge, "jpg", out);  
             out.flush();  
         } catch (CaptchaServiceException e) {  

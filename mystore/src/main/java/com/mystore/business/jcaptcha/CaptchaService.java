@@ -1,16 +1,19 @@
 package com.mystore.business.jcaptcha;
 
+import java.io.Serializable;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
+
 import com.octo.captcha.engine.CaptchaEngine;
-import com.mystore.business.captcha.image.gimpy.Gimpy;
+import com.octo.captcha.image.gimpy.Gimpy;
 import com.octo.captcha.service.captchastore.CaptchaStore;
 import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
 
 public class CaptchaService extends DefaultManageableImageCaptchaService {
 	
-	private Boolean autoTest = false;
+	private RedisTemplate<String, Serializable> redisTemplate;
 	
-	private String autoTestCode;
-
 	public CaptchaService() {
 		super();
 	}
@@ -37,15 +40,14 @@ public class CaptchaService extends DefaultManageableImageCaptchaService {
 	 */
 	@Override
 	public Boolean validateResponseForID(String ID, Object response) {
-		Boolean isHuman;
+		Boolean isHuman = false;
 
 		try {
-			//自动化测试
-//			if(autoTest && response.toString().equals(autoTestCode)){
-//				return  true;
-//			}
-			//自动化测试
-			isHuman = super.validateResponseForID(ID, response);
+			String code = (String)redisTemplate.opsForHash().get("checkCodeMap", ID);
+			if(response != null && StringUtils.isNotBlank(code) && ((String)response).equals(code)){
+				isHuman = true;
+			}
+			redisTemplate.opsForHash().delete("checkCodeMap", ID);
 		} catch (Exception e) {
 			isHuman = false;
 		}
@@ -58,20 +60,12 @@ public class CaptchaService extends DefaultManageableImageCaptchaService {
 		return gimpy != null?gimpy.getResponse():"";
 	}
 
-	public Boolean getAutoTest() {
-		return autoTest;
+	public RedisTemplate<String, Serializable> getRedisTemplate() {
+		return redisTemplate;
 	}
 
-	public void setAutoTest(Boolean autoTest) {
-		this.autoTest = autoTest;
-	}
-
-	public String getAutoTestCode() {
-		return autoTestCode;
-	}
-
-	public void setAutoTestCode(String autoTestCode) {
-		this.autoTestCode = autoTestCode;
+	public void setRedisTemplate(RedisTemplate<String, Serializable> redisTemplate) {
+		this.redisTemplate = redisTemplate;
 	} 
 	
 }

@@ -35,6 +35,7 @@
 		<constructor-arg index="4">
 			<value>75000</value>
 		</constructor-arg>
+		<property name="redisTemplate" ref="redisTemplate" />
 	</bean> 
   
 </beans>

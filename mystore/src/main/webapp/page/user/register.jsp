@@ -9,19 +9,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>用户注册</title>
-<link rel="stylesheet" href="<%=path%>/css/common.css" type="text/css"/>
-<link rel="stylesheet" href="<%=path%>/css/user/register.css" type="text/css"/>
-<script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
-<script src="<%=path%>/js/user/register.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="<%=path%>/css/common.css" />
+<link type="text/css" rel="stylesheet" href="<%=path%>/css/user/register.css" />
 </head>
 <input type="hidden" id="bathPath" value="<%=path%>" />
+<input type="hidden" id = "exponent" value="${model.exponent}"/>
+<input type="hidden" id="modulus" value="${model.modulus}"/>
 <body style="background: #eaedf1 none repeat scroll 0 0;">
  <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
  	  <div class="container-con register-cont">
-	    <h2 class="register-cont-h2">欢迎注册</h2>
+	    <h2 class="register-cont-h2">欢迎注册 <span class="sys-error">欢迎注册</span></h2>
 	    <div class="register-cont-box">
-	        <div class="register-cont-left">               
+	        <div class="register-cont-left">
+	            <form action="/regist_regist.html" method="post" class="registerForm" name="mobileForm" id="regForm">            
 	            	<ul class="m-form">
 	                    <li>
 	                        <div class="form-label">
@@ -29,10 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            <label>用&nbsp;&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;&nbsp;名</label>                        
 	                        </div>
 	                        <div class="form-element">
-	                            <input type="text" nullmsg="用户名/手机号码/邮箱" errormsg="手机号码不正确" datatype="m" placeholder="用户名/手机号码/邮箱" id="userName">                           
+	                            <input type="text" nullmsg="用户名" class="required" datatype="m" placeholder="用户名" maxlength="50" id="userName" name="userName">                           
 	                        </div>
 	                        <div class="errorTip hidden">
-	                            <b class="btip"></b>请输入用户名
+	                            <b class="btip"></b><span>请输入用户名</span>
 	                        </div>
 	                    </li>
 	                    <li>
@@ -41,12 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>                        
 	                        </div>
 	                        <div class="form-element">
-	                            <input type="password" nullmsg="请填写密码" errormsg="密码为数字,字母,特殊字符任意组合的6-16位字符" datatype="psw" placeholder="数字,字母,特殊字符任意组合的6-16位字符" id="password"> 
-	                            <input type="text" nullmsg="请填写密码" errormsg="密码为数字,字母,特殊字符任意组合的6-16位字符" datatype="psw" placeholder="数字,字母,特殊字符任意组合的6-16位字符" id="password1" style="display:none;"> 
+	                            <input type="password" nullmsg="请填写密码" class="required" errormsg="密码为数字,字母,特殊字符任意组合的6-16位字符" maxlength="16" datatype="psw" placeholder="数字,字母,特殊字符任意组合的6-16位字符" name = "password" id="password"> 
+	                            <input type="text" nullmsg="请填写密码" class="required" errormsg="密码为数字,字母,特殊字符任意组合的6-16位字符" maxlength="16" datatype="psw" placeholder="数字,字母,特殊字符任意组合的6-16位字符" id="password1" style="display:none;"> 
 	                            <img id="changepwd" src="<%=path%>/images/pwdicon.png" style="position: absolute; right: 4px; top: 16px; cursor: pointer;">                     
 	                        </div>
 	                        <div class="errorTip hidden">
-	                            <b class="btip"></b>请输入密码
+	                            <b class="btip"></b><span>请输入密码</span>
 	                        </div>
 	                        <div id="pwdStatus" class="mt5">
                                     <div class="pswarp">
@@ -62,10 +63,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            <label>请确认密码</label>                        
 	                        </div>
 	                        <div class="form-element">
-	                            <input type="password" nullmsg="请填写密码" errormsg="您两次输入的账号密码不一致！" datatype="psw" recheck="RegisterForm[password]" placeholder="再次输入密码" id="comfirm_password">                            
+	                            <input type="password" nullmsg="请填写密码" errormsg="您两次输入的账号密码不一致！" class="required equalTo" datatype="psw" maxlength="16" id="comfirm_password" name="comfirm_password">                            
 	                        </div>
 	                        <div class="errorTip hidden">
-	                            <b class="btip"></b>请输入确认密码
+	                            <b class="btip"></b><span>请输入确认密码</span>
 	                        </div>
 	                    </li>
 	                    <li>
@@ -74,15 +75,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            <label>验&nbsp;&nbsp;&nbsp;&nbsp;证&nbsp;&nbsp;&nbsp;&nbsp;码</label>                        
 	                            </div>
 	                        <div class="form-element">
-	                            <input type="text" nullmsg="请输入验证码" errormsg="验证码不正确！" datatype="*" placeholder="请输入验证码" id="verifyCode">
+	                            <input type="text" nullmsg="请输入验证码" maxlength="6" errormsg="验证码不正确！" class="required" datatype="*" placeholder="请输入验证码" id="verifyCode" name="verifyCode">
 	                            <div id="codeImg">
-	                           		 <img width="108" height="42" alt="" src="<%=path%>/CheckCode.pic" id="yw0" valign="middle" style="right:105px;">    
+	                           		 <img width="108" height="42" alt="看不清？请刷新"  src="<%=path%>/CheckCode.pic?" id="flushcode" valign="middle" style="right:105px;cursor: pointer;"/>    
 	                            </div>                       
 	                        </div>
 	                        <div class="errorTip hidden">
-	                            <b class="btip"></b>请输入验证码
+	                            <b class="btip"></b><span>请输入验证码</span>
 	                        </div>
 	                    </li>
+	                    <!-- 
 	                     <li>
 	                        <div class="form-label">
 	                            <s>*</s>
@@ -98,11 +100,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            <b class="btip"></b>请输入短信验证码
 	                        </div>
 	                    </li>
+	                     -->
 	                    <li stype="margin:0 auto;">
 	                        <div stype="text-align:center;width:50%;margin-bottom:20px;">
-	                            <div class="checkbox_div" stype="margin-left:50px;"><input type="checkbox" value="1" autocomplete="off" data-label="我已阅读并同意" class="checkbox" id="agreeProtocol" checked="checked"><span class="m-check checked"></span><span class="checklabel checked">&nbsp;&nbsp;我已阅读并同意</span><a style="color: #297bc7;cursor: pointer;text-decoration: none;" href="javascript:;">《用户协议》</a></div> 
+	                            <div class="checkbox_div" stype="margin-left:50px;">
+	                               <input type="checkbox" data-label="我已阅读并同意" class="checkbox required" id="agreeProtocol"  name="agreeProtocol" checked="checked">
+	                               <span class="checklabel checked">&nbsp;&nbsp;我已阅读并同意</span>
+	                               <a style="color: #297bc7;cursor: pointer;text-decoration: none;" href="javascript:;">《用户协议》</a>
+	                             </div> 
 	                        </div>
-	                        <button class="imgRoundBtn" type="submit" id="loginButton">同意协议并注册</button>
+	                        <div class="errorTip hidden">
+	                            <b class="btip"></b><span>请选择</span>
+	                        </div>
+	                        <button class="imgRoundBtn" type="submit" id="registerButton">同意协议并注册</button>
 	                    </li>
 	                    <li class="itemli">
                                 <div class="toReg">
@@ -111,6 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
 	                </ul>
 	                <div style="clear:both;"></div>
+	             </form>
 	        </div>
 	        <div class="register-cont-right">
 	            
@@ -121,4 +132,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </div>
  <jsp:include page="/page/foot.jsp" />
 </body>
+<script type="text/javascript" language="javascript" src="<%=path%>/js/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="<%=path%>/js/jquery-validation/dist/jquery.validate.js"></script>
+<script type="text/javascript" src="<%=path%>/js/jquery-validation/dist/additional-methods.min.js"></script>
+<script type="text/javascript" src="<%=path%>/js/jquery-validation/localization/messages_zh.js"></script>
+<link rel="stylesheet" href="<%=path%>/js/jquery-validation/css/validate.css" />
+<script type="text/javascript" language="javascript" src="<%=path%>/js/user/register.js"></script>
+<script type="text/javascript" language="javascript" src="<%=path%>/js/encryption/security.js"></script>
+<style type="text/css">
+        input.error{
+			border:0px;
+		}
+</style>
 </html>
