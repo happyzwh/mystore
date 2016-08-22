@@ -13,5 +13,7 @@ public class Constans {
 	public static final String DATE_FORMATE_24h2b = "yyyy-MM-dd HH:mm:ss";
 	
 	public static final String DATE_FORMATE = "yyyyMMddHHmmss";
+	
+	public static final String KEY_VERIFYCODE="key_verifycode";
 
 }
