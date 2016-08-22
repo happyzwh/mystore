@@ -16,4 +16,12 @@
 		    now()
 		 )
 	</insert>
+	<select id="getUserByAccount" parameterType="string" resultType="user">
+		 select id,
+		        username as 'userName',
+			    password as 'password',
+			    status
+		from user_user
+		where username = #{value}
+	</select>
 </mapper>

@@ -9,49 +9,6 @@ $(function(){
 	     }
 	);
 	
-	//密码强度验证
-	$("#password").bind("blur keydown",function() {
-		var a = $("#pwdStatus span");
-		a.removeClass().addClass('s_box');
-		switch ( checkStrong($(this).val()) ) {
-			case 1:
-				a.eq(0).addClass("s_box_active1");
-				break;
-			case 2:
-				a.eq(0).addClass("s_box_active1");
-				a.eq(1).addClass("s_box_active2");
-				break;
-			case 3:
-				a.eq(0).addClass("s_box_active1");
-				a.eq(1).addClass("s_box_active2");
-				a.eq(2).addClass("s_box_active3");
-				break
-			default :
-		}
-	});
-	function checkStrong(sPW) {
-	    Modes=0;
-	    for (i=0;i<sPW.length;i++) {
-	     Modes|=CharMode(sPW.charCodeAt(i));
-	   }
-	   return bitTotal(Modes);
-	}
-	function CharMode(iN) {
-	   if (iN>=48 && iN <=57) return 1;//数字
-	   if (iN>=65 && iN <=90) return 2;//大写字母
-	   if (iN>=97 && iN <=122) return 4;//小写
-	   else return 8; //特殊字符
-	}
-	function bitTotal(num) {
-	   modes=0;
-	   for (i=0;i<4;i++) {
-	    if (num & 1) modes++;
-	     num>>>=1;
-	    }
-	   return modes;
-	}
-	//密码强度验证 end
-	
 	$("#changepwd").click(function(){
 		tochangimg();
 	});
@@ -92,7 +49,7 @@ $(function(){
 				var publicKey = RSAUtils.getKeyPair(exponent, '',modulus);
 				var password = RSAUtils.encryptedString(publicKey, $.trim($("#password").val()));
 				$.ajax({
-					url: $("#basePath").val()+'/user/userAction!register.dhtml',
+					url: $("#basePath").val()+'/user/userAction!login.dhtml',
 					type: 'post',
 					data: {'userName':$.trim($("#userName").val()),'password':password,'verifyCode':$.trim($("#verifyCode").val())},
 					async: true,
@@ -100,13 +57,17 @@ $(function(){
 					success:function(data){
 						$("#flushcode").attr("src",$("#flushcode").attr("src").substr(0,$("#flushcode").attr("src").indexOf("?")+1)+new Date().getTime());
 						if(data == 1){
-							$(".sys-error").text("注册成功！").show();
+							$(".sys-error").text("登录成功！").show();
 						}else if(data == -1){
 							$(".sys-error").text("系统异常请重试！").show();
 						}else if(data == -2){
 							$(".sys-error").text("参数错误！").show();
 						}else if(data == -3){
 							$(".sys-error").text("验证码错误！").show();
+						}else if(data == -4){
+							$(".sys-error").text("用户名或密码错误！").show();
+						}else if(data == -5){
+							$(".sys-error").text("用户暂不可用，请联系联服！").show();
 						}
 					},
 					error:function(){
@@ -165,11 +126,10 @@ $(function(){
 	        	userName:{
 	        		required: true,
 	        		minLength:6,
-	        		isAccountExist:true
 	        	},
 	        	password:{
 	        		required: true,
-	        		minLength:6
+	        		minLength:6,
 	        	},
 	        	comfirm_password:{
 				    required: true,
@@ -178,7 +138,7 @@ $(function(){
 				 },
 				 verifyCode:{
 		        	required: true,
-		        	minLength:4
+		        	minLength:4,
 		         },
 				 agreeProtocol: {
 					required: true
@@ -208,7 +168,6 @@ function rechangtopwd(){
 	$("#password1").hide();
 	$("#password").show();
 }
-
 jQuery.validator.addMethod("minLength", function(value, element, param) {  
 	var length = value.length;  
 	for ( var i = 0; i < value.length; i++) {  
@@ -218,31 +177,3 @@ jQuery.validator.addMethod("minLength", function(value, element, param) {
 	}  
 	return this.optional(element) || (length >= param);  
 }, $.validator.format("长度不能小于{0}!")); 
-
-jQuery.validator.addMethod("isAccountExist", function(value, element, param) {  
-	if(jQuery.trim(value) != ''){
-        return !isAccountExist(jQuery.trim(value)); 
-    }
-    return true; 
-}, $.validator.format("用户名已存在!")); 
-
-function isAccountExist(value){
-    var tf = false;
-    jQuery.ajax({
-            type:'post',
-            url:$("#bathPath").val()+'/user/userAction!isAccountExist.dhtml',
-            data:{'userName':jQuery.trim(value)},
-            dataType:'text',
-            cache:false,
-            async:false,
-            success:function(data){
-                if(data == 1){
-					tf = true;
-				}
-            },
-            error:function(){
-            	
-            }
-       });
-       return tf;
-}

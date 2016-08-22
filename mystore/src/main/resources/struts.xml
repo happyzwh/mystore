@@ -51,10 +51,11 @@
 		</action>
    </package>
    
-   <package name="register" namespace="/register" extends="struts-default">   
-       <action name="registerAction" class="registerAction">
+   <package name="user" namespace="/user" extends="struts-default">   
+       <action name="userAction" class="userAction">
 			<result name="goRegister">/page/user/register.jsp</result>
 			<result name="index">/page/index.jsp</result>
+			<result name="goLogin">/page/user/login.jsp</result>
 		</action>
    </package>
     

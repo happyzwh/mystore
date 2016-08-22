@@ -19,4 +19,10 @@ public class UserServiceImpl implements UserService{
 		return UserMapper.addUser(user);
 	}
 
+	@Override
+	public User getUserByAccount(String account) {
+		// TODO Auto-generated method stub
+		return UserMapper.getUserByAccount(account);
+	}
+
 }
