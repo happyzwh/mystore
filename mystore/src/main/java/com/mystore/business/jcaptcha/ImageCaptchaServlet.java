@@ -3,6 +3,7 @@ package com.mystore.business.jcaptcha;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletConfig;
@@ -54,7 +55,8 @@ public class ImageCaptchaServlet extends HttpServlet {
             RedisTemplate<String, Serializable> redisTemplate = (RedisTemplate<String, Serializable>)ContextLoader.getCurrentWebApplicationContext().getBean("redisTemplate");
             
             String code = instance.getResponse(captchaId);
-            redisTemplate.opsForHash().put(Constans.KEY_VERIFYCODE, captchaId, code);          
+            redisTemplate.opsForHash().put(Constans.KEY_VERIFYCODE, captchaId, code);  
+            redisTemplate.expire(Constans.KEY_VERIFYCODE, 2, TimeUnit.MINUTES);
             
             ImageIO.write(challenge, "jpg", out);  
             out.flush();  
