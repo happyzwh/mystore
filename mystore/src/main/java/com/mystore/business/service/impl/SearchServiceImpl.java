@@ -287,11 +287,11 @@ public class SearchServiceImpl implements SearchService{
     }
     
     /**
-     *  分类-品牌-国籍-产地-价格区间-排序属性-排序
+     *  分类-品牌-国籍-产地-价格(低)-价格(高)-排序属性-排序
      * 
      * 
      * */
-    public Pager<SearchProPoJo> search(Integer id_category,Integer id_brand,Integer id_country,Integer id_province,Integer price_low,Integer price_high,Integer type_sort,Integer type_asc,Integer pageNo,Integer pageSize){
+    public Pager<SearchProPoJo> search(Integer id_category,Integer id_brand,Integer id_country,Integer id_province,Double price_low,Double price_high,Integer type_sort,Integer type_asc,Integer pageNo,Integer pageSize){
     	
     	Pager<SearchProPoJo> pager = new Pager<SearchProPoJo>();
     	List<SearchProPoJo> list = new ArrayList<SearchProPoJo>();
@@ -307,8 +307,7 @@ public class SearchServiceImpl implements SearchService{
 			IndexSearcher isearcher = new IndexSearcher(ireader);
 			
 			BooleanQuery booleanQuery = new BooleanQuery();
-			Sort sort = null;
-			SortField[] sortField = new SortField[2];
+			
 			if(id_category != null && id_category != 0){
 				QueryParser ids_cate_queryParser = new QueryParser(Version.LUCENE_47, "ids_cate", analyzer);
 				Query ids_cate_query = ids_cate_queryParser.parse(String.valueOf(id_category));
@@ -333,15 +332,18 @@ public class SearchServiceImpl implements SearchService{
 				booleanQuery.add(id_province_query, BooleanClause.Occur.MUST);
 			}
 			
-			if(price_low != null ||  price_high != null){
+			if(price_low != null || price_high != null){
 				
-				boolean boolean_price_low = price_low==null?false:true;
-				boolean boolean_price_high = price_high==null?false:true;
+				boolean boolean_price_low = (price_low == null || price_low == 0)?false:true;
+				boolean boolean_price_high = (price_high==null || price_high == 0)?false:true;
 				
-				Query shopPrice_query = NumericRangeQuery.newDoubleRange("shopPrice", price_low != null?Double.valueOf(price_low):null, price_high!= null?Double.valueOf(price_high):null, boolean_price_low, boolean_price_high);
+				Query shopPrice_query = NumericRangeQuery.newDoubleRange("shopPrice", ( price_low != null && price_low > 0)?Double.valueOf(price_low):null, (price_high != null && price_high > 0)?Double.valueOf(price_high):null, boolean_price_low, boolean_price_high);
 				
 				booleanQuery.add(shopPrice_query, BooleanClause.Occur.MUST);
 			}
+			
+			Sort sort = null;
+			SortField[] sortField = new SortField[2];
     		
 			if(type_sort != null && type_sort != 0){
 				String sortFieldName = null;
@@ -354,9 +356,11 @@ public class SearchServiceImpl implements SearchService{
 					type = SortField.Type.STRING;
 				}
 				sortField[0]=new SortField(sortFieldName, type, ( type_asc==null || type_asc==0 )?true:false);
+			}else{
+				sortField[0]=new SortField("shopPrice", SortField.FIELD_SCORE.getType(), true);
 			}
 			
-			sortField[1]=new SortField("sort", SortField.Type.INT , true);
+			sortField[1]=new SortField("onSaleTime", SortField.FIELD_SCORE.getType() , true);
 			
 			sort = new Sort(sortField);
 			
@@ -379,11 +383,11 @@ public class SearchServiceImpl implements SearchService{
 //	        	}
 //			}
 			
-			TopFieldCollector c = TopFieldCollector.create(sort, pageNo*pageSize, false, false, false, false);
 			System.out.println(booleanQuery.toString());
+			TopFieldCollector c = TopFieldCollector.create(sort, pageNo*pageSize, true, true, true, false);
 			isearcher.search(booleanQuery, c);
 	        ScoreDoc[] hits = c.topDocs((pageNo-1)*pageSize, pageSize).scoreDocs;
-	        if (hits == null || hits.length < 1){
+	        if (hits != null && hits.length > 0){
 	        	pager.setRowCount(c.getTotalHits());
 	        	System.out.println("-------------总记录:"+c.getTotalHits());
 	        	for (int i = 0; i < hits.length; i++){
@@ -465,11 +469,11 @@ public class SearchServiceImpl implements SearchService{
 	        	     list.add(searchProPoJo);
 
 	        	     if(Integer.valueOf(document.get("type")) == 0){
-	        	    	 searchProPoJo.setUrl("/pro/proAction!detail.dhtml?id="+document.get("id"));
+	        	    	 searchProPoJo.setUrl("/product/productAction!detail.dhtml?id="+document.get("id"));
 	        	     }else if(Integer.valueOf(document.get("type")) == 1){
-	        	    	 searchProPoJo.setUrl("/pro/proAction!list.dhtml?keys="+document.get("id")+"_"+0+"_"+0+"_"+0+"_"+0+"_"+0+"_"+0+"_"+0);
+	        	    	 searchProPoJo.setUrl("/search/searchAction!list.dhtml?keys="+document.get("id")+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0);
 	        	     }else if(Integer.valueOf(document.get("type")) == 2){
-	        	    	 searchProPoJo.setUrl("/pro/proAction!list.dhtml?keys="+0+"_"+document.get("id")+"_"+0+"_"+0+"_"+0+"_"+0+"_"+0+"_"+0);
+	        	    	 searchProPoJo.setUrl("/search/searchAction!list.dhtml?keys="+document.get("id_cate")+"-"+document.get("id")+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0);
 	        	     }
 	        	     searchProPoJo.setName(document.get("name"));
 	        	}

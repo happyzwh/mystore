@@ -2,8 +2,13 @@ package com.mystore.business.common;
 
 import java.util.List;
 
-public class Pager<T>
+public class Pager<T> implements java.io.Serializable
 {
+  /**
+   * 
+  */
+  private static final long serialVersionUID = 1L;
+  
   protected int[] pageSizeList = { 5, 10, 25, 50, 100, 200, 500, 1000 };
   protected int pageSize = 10;
   protected int pageNo = 1;

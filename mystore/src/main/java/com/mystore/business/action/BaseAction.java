@@ -9,9 +9,9 @@ public class BaseAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected Integer pageNo;
+	protected Integer pageNo = 1;
 	
-	protected Integer pageSize;
+	protected Integer pageSize = 20;
 	
 	protected String pageInfo;
 

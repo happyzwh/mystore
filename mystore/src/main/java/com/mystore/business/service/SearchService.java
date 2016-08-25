@@ -18,7 +18,7 @@ public interface SearchService {
 	 * 条件检索
 	 * 
 	 * */
-	public Pager<SearchProPoJo> search(Integer id_category,Integer id_brand,Integer id_country,Integer id_province,Integer price_low,Integer price_high,Integer type_sort_attr,Integer type_sort,Integer pageNo,Integer pageSize) throws Exception;
+	public Pager<SearchProPoJo> search(Integer id_category,Integer id_brand,Integer id_country,Integer id_province,Double price_low,Double price_high,Integer type_sort_attr,Integer type_sort,Integer pageNo,Integer pageSize) throws Exception;
 
 	/**
 	 * 

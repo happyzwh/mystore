@@ -57,7 +57,7 @@
  		    id,
  		    NAME,
  		    NULL AS 'id_brand',
- 		    NULL AS 'id_cate',
+ 		    id_cate AS 'id_cate',
  		    enname AS 'enTitle',
  		    rome,
  		    jianpin AS 'jianPin',

@@ -17,7 +17,7 @@
    
    <package name="search" namespace="/search" extends="struts-default">   
        <action name="searchAction" class="searchAction">
-			<result name="index">/page/index.jsp</result>
+			<result name="list">/page/product/list.jsp</result>
 		</action>
    </package>
    
