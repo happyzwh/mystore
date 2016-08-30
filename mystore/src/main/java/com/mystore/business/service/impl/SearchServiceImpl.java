@@ -69,7 +69,7 @@ public class SearchServiceImpl implements SearchService{
 					 Document doc = new Document();
 					 
 					 FieldType type_fieldType = new FieldType(); 
-					 type_fieldType.setIndexed(false);
+					 type_fieldType.setIndexed(true);
 					 type_fieldType.setTokenized(false);
 					 type_fieldType.setStored(true); 
 					 Field type_field = new Field("type", String.valueOf(docPojo.getType()), type_fieldType); 
@@ -308,31 +308,52 @@ public class SearchServiceImpl implements SearchService{
 			
 			BooleanQuery booleanQuery = new BooleanQuery();
 			
+			QueryParser type_queryParser = new QueryParser(Version.LUCENE_47, "type", analyzer);
+			Query type_query = type_queryParser.parse("0");
+			
+			booleanQuery.add(type_query, BooleanClause.Occur.MUST);
+			
 			if(id_category != null && id_category != 0){
+				
+				BooleanQuery idCateBooleanQuery = new BooleanQuery();
+				
 				QueryParser ids_cate_queryParser = new QueryParser(Version.LUCENE_47, "ids_cate", analyzer);
+				ids_cate_queryParser.setDefaultOperator(QueryParser.OR_OPERATOR);
 				Query ids_cate_query = ids_cate_queryParser.parse(String.valueOf(id_category));
-				booleanQuery.add(ids_cate_query, BooleanClause.Occur.MUST);
+				
+				idCateBooleanQuery.add(ids_cate_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser id_cate_queryParser = new QueryParser(Version.LUCENE_47, "id_cate", analyzer);
+				Query id_cate_query = id_cate_queryParser.parse(String.valueOf(id_category));
+				
+				idCateBooleanQuery.add(id_cate_query, BooleanClause.Occur.SHOULD);
+				
+				
+				booleanQuery.add(idCateBooleanQuery, BooleanClause.Occur.MUST);
 			}
 			
 			if(id_brand != null && id_brand != 0){
 				QueryParser id_brand_queryParser = new QueryParser(Version.LUCENE_47, "id_brand", analyzer);
 				Query id_brand_query = id_brand_queryParser.parse(String.valueOf(id_brand));
+				
 				booleanQuery.add(id_brand_query, BooleanClause.Occur.MUST);
 			}
 			
 			if(id_country != null && id_country != 0){
 				QueryParser id_country_queryParser = new QueryParser(Version.LUCENE_47, "id_country", analyzer);
 				Query id_country_query = id_country_queryParser.parse(String.valueOf(id_country));
+				
 				booleanQuery.add(id_country_query, BooleanClause.Occur.MUST);
 			}
 			
 			if(id_province != null && id_province != 0){
 				QueryParser id_province_queryParser = new QueryParser(Version.LUCENE_47, "id_province", analyzer);
 				Query id_province_query = id_province_queryParser.parse(String.valueOf(id_province));
+				
 				booleanQuery.add(id_province_query, BooleanClause.Occur.MUST);
 			}
 			
-			if(price_low != null || price_high != null){
+			if( (price_low != null && price_low > 0) || (price_high != null && price_high > 0) ){
 				
 				boolean boolean_price_low = (price_low == null || price_low == 0)?false:true;
 				boolean boolean_price_high = (price_high==null || price_high == 0)?false:true;
@@ -364,6 +385,8 @@ public class SearchServiceImpl implements SearchService{
 			
 			sort = new Sort(sortField);
 			
+			System.out.println(booleanQuery.toString());
+			
 //			TopDocs hits = isearcher.search(booleanQuery,100);
 //			ScoreDoc[] hit = hits.scoreDocs;
 //			if (hit != null && hit.length > 0){
@@ -382,8 +405,7 @@ public class SearchServiceImpl implements SearchService{
 //	        	     searchProPoJo.setShopPrice(document.get("shopPrice"));
 //	        	}
 //			}
-			
-			System.out.println(booleanQuery.toString());
+	
 			TopFieldCollector c = TopFieldCollector.create(sort, pageNo*pageSize, true, true, true, false);
 			isearcher.search(booleanQuery, c);
 	        ScoreDoc[] hits = c.topDocs((pageNo-1)*pageSize, pageSize).scoreDocs;
@@ -402,6 +424,8 @@ public class SearchServiceImpl implements SearchService{
 	        	     searchProPoJo.setPath_pic(document.get("path_pic"));
 	        	     searchProPoJo.setMarkPrice(document.get("markPrice"));
 	        	     searchProPoJo.setShopPrice(document.get("shopPrice"));
+	        	     
+	        	     System.out.println(searchProPoJo.getType()+" "+searchProPoJo.getId()+" "+searchProPoJo.getName()+" "+searchProPoJo.getPath_pic()+" "+searchProPoJo.getMarkPrice()+" "+searchProPoJo.getShopPrice()+" "+searchProPoJo.getUrl());
 	        	}
 	        }
 	        

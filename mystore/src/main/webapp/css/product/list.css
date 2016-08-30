@@ -1,0 +1,585 @@
+.list_left{
+	float:left;
+	width:200px;
+	height:auto;
+}
+.list_right{
+	padding:5px;
+	float:left;
+	width:790px;
+	height:auto;
+}
+.box{
+	width:198px;
+	border:1px solid #ddd;
+	margin-bottom:10px;
+}
+.title{
+	background-color: #fafafa;
+	color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 7px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+.content{
+	width:100%;
+}
+.li{
+	padding:5px;
+	text-align:left;
+}
+.li img{
+	width:188px;
+	height:188px;
+	margin-bottom: 10px;
+}
+.p-name {
+    display: block;
+    height: 36px;
+    line-height: 18px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.p-price {
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+.p-price .price {
+    color: #e4393c;
+    float: left;
+    font-family: verdana;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 6px;
+}
+.p-review {
+    color: #999;
+}
+.p-review .number {
+    color: #005aa0;
+}
+.nav{
+	width:100%;
+	border-top:2px solid #c41921;
+	height:40px;
+}
+.nav .rela {
+    float: right;
+}
+.rela em {
+    font-style: normal;
+}
+.rela span {
+    color: #cf010e;
+}
+.nav .square {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll 0 0;
+    height: 11px;
+    margin: 11px 13px auto 17px;
+    width: 11px;
+}
+.nav .arrow {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -13px 0;
+    height: 15px;
+    margin: 9px;
+    width: 8px;
+}
+.nav .li{
+	float:left;
+}
+.selected {
+    background: #f7f5f5 none repeat scroll 0 0;
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+.selected .tit {
+    color: #999;
+    display: inline-block;
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    width: 115px;
+}
+.options a {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #cf010e;
+    color: #666;
+    display: inline-block;
+    float: left;
+    height: 18px;
+    margin: 7px 8px auto 0;
+    overflow: hidden;
+    padding-left: 5px;
+    white-space: nowrap;
+}
+.options .remove {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -87px -13px;
+    display: inline-block;
+    height: 18px;
+    margin-left: 2px;
+    width: 16px;
+}
+.options span{
+    vertical-align: top;
+}
+.select {
+    background-color: #f6f6f6;
+    border: 1px solid #eaeaea;
+    height: auto;
+    position: relative;
+    z-index: 88;
+}
+.select .selectLine2, .select .selectLine1 {
+    border-top: 1px dotted #ccc;
+}
+.selectLine1, .selectLine2, .selectLine3 {
+    overflow: hidden;
+}
+.select .proLeft {
+    color: #cf010e;
+    display: inline-block;
+    float: left;
+    height: auto;
+    line-height: 39px;
+    padding-left: 13px;
+    width: 100px;
+}
+.select .proRight {
+    background-color: #fff;
+    display: inline-block;
+    float: left;
+    height: auto;
+    padding: 10px 0;
+    width: 675px;
+}
+.proRight a {
+    display: inline-block;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 8px;
+    padding: 0 6px;
+}
+.moreS {
+    background-color: #f5f5f5;
+    height: 39px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.moreS .tit {
+    color: #cf010e;
+    display: inline-block;
+    float: left;
+    height: 39px;
+    line-height: 39px;
+    padding-left: 15px;
+    width: 100px;
+}
+.moreOption {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: #e5e5e5 -moz-use-text-color #e5e5e5 #e5e5e5;
+    border-image: none;
+    border-style: solid none solid solid;
+    border-width: 1px medium 1px 1px;
+    display: inline-block;
+    float: left;
+    height: 27px;
+    left: 0;
+    margin-top: 10px;
+    position: relative;
+    top: 0;
+    z-index: 59;
+}
+.moreOption .choose {
+    border-right: 1px solid #e5e5e5;
+    display: inline-block;
+    float: left;
+    height: 12px;
+    line-height: 1;
+    padding: 8px 12px 7px;
+    text-align: center;
+    width: 70px;
+}
+
+.moreOption i {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -86px -53px;
+    display: inline-block;
+    float: right;
+    height: 5px;
+    margin-left: 10px;
+    margin-top: 3px;
+    width: 9px;
+}
+.moreOption .box {
+    width: 853px;
+}
+.moreOption .box {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    display: none;
+    height: auto;
+    left: -1px;
+    padding: 10px;
+    position: absolute;
+    top: 27px;
+    width: 653px;
+    z-index: 100;
+}
+.box li {
+    display: inline-block;
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+.moreOption i {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -86px -53px;
+    display: inline-block;
+    float: right;
+    height: 5px;
+    margin-left: 10px;
+    margin-top: 3px;
+    width: 9px;
+}
+.order {
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    position: relative;
+    top: 0 !important;
+    width: 788px;
+    z-index: 58;
+}
+.order li, .order_fixed li {
+    display: inline-block;
+    float: left;
+}
+.order .tab a, .order_fixed .tab a {
+    border-right: 1px solid #ddd;
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 70px;
+}
+.order .first a, .order_fixed .first a {
+    background-color: #c41921;
+    color: #fff;
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 66px;
+}
+.order .tab a i, .order_fixed .tab a i {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -65px -108px;
+    display: inline-block;
+    height: 10px;
+    margin-left: 3px;
+    margin-top: 13px;
+    width: 9px;
+}
+.order .priceArea, .order_fixed .priceArea {
+    height: 36px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 250px;
+}
+.priceArea * {
+    display: inline-block;
+    float: left;
+}
+.order .page .btn, .order_fixed .page .btn {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll 0 0;
+    border: 0 none;
+    height: 24px;
+    width: 24px;
+}
+.order .page .btn.prev, .order_fixed .page .btn.prev {
+    background-position: 0 -142px;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+.order .page .btn.next, .order_fixed .page .btn.next {
+    background-position: -35px -142px;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+.priceArea .left {
+    border: 1px solid #aaa;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    margin-left: 6px;
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 66px;
+}
+.priceArea i {
+    line-height: 20px;
+    margin: 0 4px;
+}
+.priceArea input {
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+}
+.priceArea .zhi {
+    border-bottom: 1px solid #aaa;
+    display: inline-block;
+    float: left;
+    height: 0;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 19px;
+    width: 7px;
+}
+.priceArea .right {
+    border: 1px solid #aaa;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    margin-right: 6px;
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 66px;
+}
+.priceArea .sure {
+    background-color: #fff;
+    border-top: medium none;
+    float: left;
+    height: 28px;
+    margin-top: 6px;
+    overflow: hidden;
+    width: 62px;
+    z-index: 9;
+}
+.priceArea .sure a {
+    border: 1px solid #aaa;
+    display: inline-block;
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 10px;
+    margin-top: 2px;
+    overflow: hidden;
+    text-align: center;
+    width: 45px;
+}
+.clearfix::after {
+    clear: both;
+    content: "...";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix::after {
+    clear: both;
+    content: "...";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.order .page, .order_fixed .page {
+    display: inline-block;
+    float: right;
+    height: 36px;
+    margin-right: 10px;
+}
+.page p .cur {
+    color: #cf010e;
+    padding-right: 5px;
+}
+.order .page .btn.prev, .order_fixed .page .btn.prev {
+    background-position: 0 -142px;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+.order .page .btn.next, .order_fixed .page .btn.next {
+    background-position: -35px -142px;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+.new_distBox {
+    background-color: #fffdf1;
+    border-top: 1px solid #e0e0e0;
+    height: 36px;
+}
+.new_distBox .new_lab {
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    top: 8px;
+    margin-left:20px;
+    float:left;
+}
+.new_distBox .new_lab input {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    height: 14px;
+    margin-right: 4px;
+    margin-top: -1px;
+    overflow: hidden;
+    position: relative;
+    width: 14px;
+}
+.proListSearch .content {
+    background: #fff none repeat scroll 0 0;
+    height: 390px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 263px;
+    z-index: 10;
+    float:left;
+}
+.collect.collect2 {
+    background-color: #a60000;
+    color: #fff;
+}
+.content .collect {
+    border-radius: 10px;
+    cursor: pointer;
+    height: 18px;
+    left: 15px;
+    padding: 2px 0;
+    position: absolute;
+    top: 200px;
+    width: 72px;
+    z-index: 1;
+}
+.collect i {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 12px;
+    margin: 3px 9px auto 11px;
+    width: 12px;
+}
+.content .img {
+    display: block;
+    height: 220px;
+    left: 0;
+    margin: 10px auto;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    width: 220px;
+}
+
+.proListSearch li .cxtag {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -116px 0;
+    color: #fff;
+    font-size: 14px;
+    height: 53px;
+    line-height: 46px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 46px;
+    z-index: 5;
+}
+.content .img img {
+    height: 220px;
+    width: 220px;
+}
+.content .proName {
+    color: #000;
+    display: block;
+    height: 36px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    width: 220px;
+}
+.content .proName .slogan {
+    color: #cf010e;
+    vertical-align: baseline;
+}
+.content .priceArea {
+    margin: 0 auto 7px;
+    width: 220px;
+}
+.priceArea .price {
+    color: #cf010e;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.priceArea .yh {
+    background-color: #cf010e;
+    color: #fff;
+    height: 18px;
+    line-height: 18px;
+    margin-left: 6px;
+    margin-top: 2px;
+    text-align: center;
+    width: 41px;
+}
+.content .judge {
+    color: #005aa0;
+    display: block;
+    margin: 0 auto 7px;
+    width: 220px;
+    text-align:left;
+}
+.content .buyArea {
+    margin: 7px auto 0;
+    width: 220px;
+}
+.buyArea input {
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    display: inline-block;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    margin-right: 2px;
+    text-align: center;
+    width: 28px;
+}
+.buyArea .edit {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -185px -138px;
+    border-radius: 3px;
+    display: inline-block;
+    float: left;
+    height: 28px;
+    overflow: hidden;
+    width: 16px;
+}
+.edit a {
+    display: block;
+    height: 14px;
+    width: 16px;
+}
+.buyArea .cart {
+    background: rgba(0, 0, 0, 0) url("../../images/srpIcons.png") no-repeat scroll -252px -2px;
+    border: 1px solid #ddd;
+    color: #cf010e;
+    display: inline-block;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    margin-left: 8px;
+    padding-left: 32px;
+    width: 76px;
+}
