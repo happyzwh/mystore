@@ -13,7 +13,7 @@ public class Pager<T> implements java.io.Serializable
   protected int pageSize = 10;
   protected int pageNo = 1;
   protected int rowCount = 0;
-  protected int pageCount = 1;
+  protected int pageCount = 0;
   protected int startIndex = 1;
   protected int endIndex = 1;
   protected int firstPageNo = 1;
@@ -84,6 +84,13 @@ public class Pager<T> implements java.io.Serializable
   
   public int getPageCount()
   {
+	if(this.pageCount == 0 && this.rowCount != 0){
+		if (rowCount % pageSize == 0) {
+		      this.pageCount = (rowCount / pageSize);
+		} else {
+		      this.pageCount = (rowCount / pageSize + 1);
+		}
+	}  
     return this.pageCount;
   }
   

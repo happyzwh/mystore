@@ -238,18 +238,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="hidden" id="AB" value="0">
 					<input type="hidden" id="ruleKey" value="a">
 					<input type="hidden" id="assKey" value="">
-				
+				    <!-- 
 					<li class="page">
 						<p><span class="cur">1</span><span>/</span><span class="total">2</span></p>											
 				    	<a style="background-position: 0px -142px; " href="javascript:;" class="btn prev"></a> 
 				    	<a style="background-position: -35px -142px; " href="/1-4-0-0-0-0-0-0-0-0-0-0.htm?pageNum=2&amp;area=2" class="btn next"></a>
 				    </li>
+				    -->
 				</ul>
 				<div class="new_distBox">
 					<label class="new_lab"><input type="checkbox" id="ynProduct">&nbsp;仅显示有货</label>
 				</div>
 			</div>
       		<div class="proListSearch">
+      		    <div class="Pagination">    
+					<div style="float:right;">
+							${pageInfo}					
+					</div>
+				</div>
       			<div class="content"> 
 					<div class="collect_box">
 						<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
@@ -351,6 +357,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
       		</div>
+      		<div class="Pagination">    
+				<div style="float:right;">
+						${pageInfo}					
+				</div>
+			</div>
       </div>
  </div>
  <jsp:include page="/page/foot.jsp" />

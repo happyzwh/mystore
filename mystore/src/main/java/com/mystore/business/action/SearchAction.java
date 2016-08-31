@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.mystore.business.common.PageInfo;
 import com.mystore.business.common.Pager;
 import com.mystore.business.dto.SearchProPoJo;
 import com.mystore.business.service.SearchService;
@@ -32,7 +33,7 @@ public class SearchAction extends BaseAction{
 	
 	private String keys;
 	
-	private Pager<SearchProPoJo> pager;
+	private List<SearchProPoJo> list;
 	
 	public void mhSearch() throws IOException, JSONException{
 		JSONObject data = new JSONObject();
@@ -92,7 +93,12 @@ public class SearchAction extends BaseAction{
 			Integer type_sort_attr = Integer.valueOf(key[6]);
 			Integer type_sort = Integer.valueOf(key[7]);
 			
-			pager =  searchService.search(id_category, id_brand, id_country, id_province, price_low, price_high, type_sort_attr, type_sort, pageNo, pageSize);
+			Pager<SearchProPoJo> pager =  searchService.search(id_category, id_brand, id_country, id_province, price_low, price_high, type_sort_attr, type_sort, pageNo, pageSize);
+			
+			if(pager != null && pager.getResultList() != null && pager.getResultList().size() > 0){
+				  list = pager.getResultList();
+				  pageInfo = PageInfo.setPage(pager.getPageNo(), pager.getPageSize(), pager.getPageCount(), pager.getRowCount());
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -108,12 +114,13 @@ public class SearchAction extends BaseAction{
 		this.keys = keys;
 	}
 
-	public Pager<SearchProPoJo> getPager() {
-		return pager;
+	public List<SearchProPoJo> getList() {
+		return list;
 	}
 
-	public void setPager(Pager<SearchProPoJo> pager) {
-		this.pager = pager;
+	public void setList(List<SearchProPoJo> list) {
+		this.list = list;
 	}
+
 
 }
