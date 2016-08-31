@@ -7,8 +7,8 @@ public class PageInfo{
 	                 StringBuilder page= new StringBuilder("<div class=\"pager\"><div class=\"a\">");
 	                 if(totalPages==1){
 	                	 page.append("<a href=\"javascript:void(0);\" title=\"上一页\">上一页</a>&nbsp;&nbsp;");
-	                	 	page.append("<b>1</b>&nbsp;");
-	                			 page.append("&nbsp;<a href=\"javascript:void(0);\" title=\"下一页\">下一页</a>");
+	                	 page.append("<b>1</b>&nbsp;");
+	                	 page.append("&nbsp;<a href=\"javascript:void(0);\" title=\"下一页\">下一页</a>");
 	                 }
 	                 int totle=5;
 	                 if(totalPages>1){
@@ -72,10 +72,10 @@ public class PageInfo{
 	                    	 page.append("&nbsp;<a href=\"javascript:void(0);\" title=\"下一页\" onclick=\"javascrpt:jumppage("+(pageNo+1)+");\">下一页</a>&nbsp;");
 	                     }
 	                     else if(pageNo==totalPages){
-	                    	 page.append("&nbsp;<a href=\"javascript:void(0);\" title=\"下一页\">下一页</a>&nbsp;");;
+	                    	 page.append("&nbsp;<a href=\"javascript:void(0);\" title=\"下一页\">下一页</a>&nbsp;");
 	                     }
 	                 }
-	                 page.append("</div></div>");;
+	                 page.append("</div></div>");
 	                 return page.toString();  
 	}
 	
