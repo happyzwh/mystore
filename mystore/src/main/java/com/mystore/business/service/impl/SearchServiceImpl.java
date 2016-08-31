@@ -422,8 +422,8 @@ public class SearchServiceImpl implements SearchService{
 	        	     searchProPoJo.setId(Integer.valueOf(document.get("id")));
 	        	     searchProPoJo.setName(document.get("name"));
 	        	     searchProPoJo.setPath_pic(document.get("path_pic"));
-	        	     searchProPoJo.setMarkPrice(document.get("markPrice"));
-	        	     searchProPoJo.setShopPrice(document.get("shopPrice"));
+	        	     searchProPoJo.setMarkPrice(StringUtils.isNotBlank(document.get("markPrice"))?Double.valueOf(document.get("markPrice")):0);
+	        	     searchProPoJo.setShopPrice(StringUtils.isNotBlank(document.get("shopPrice"))?Double.valueOf(document.get("shopPrice")):0);
 	        	     
 //	        	     System.out.println(searchProPoJo.getType()+" "+searchProPoJo.getId()+" "+searchProPoJo.getName()+" "+searchProPoJo.getPath_pic()+" "+searchProPoJo.getMarkPrice()+" "+searchProPoJo.getShopPrice()+" "+searchProPoJo.getUrl());
 	        	}

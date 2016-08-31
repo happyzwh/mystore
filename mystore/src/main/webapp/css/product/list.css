@@ -452,6 +452,7 @@
     width: 263px;
     z-index: 10;
     float:left;
+    text-align:left;
 }
 .collect.collect2 {
     background-color: #a60000;

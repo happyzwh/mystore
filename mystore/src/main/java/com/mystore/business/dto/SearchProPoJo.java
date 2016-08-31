@@ -18,9 +18,9 @@ public class SearchProPoJo extends BasicDto{
 	
 	private String path_pic;
 	
-	private String markPrice;
+	private Double markPrice;
 	
-	private String shopPrice;
+	private Double shopPrice;
 
 	public Integer getType() {
 		return type;
@@ -62,19 +62,19 @@ public class SearchProPoJo extends BasicDto{
 		path_pic = pathPic;
 	}
 
-	public String getMarkPrice() {
+	public Double getMarkPrice() {
 		return markPrice;
 	}
 
-	public void setMarkPrice(String markPrice) {
+	public void setMarkPrice(Double markPrice) {
 		this.markPrice = markPrice;
 	}
 
-	public String getShopPrice() {
+	public Double getShopPrice() {
 		return shopPrice;
 	}
 
-	public void setShopPrice(String shopPrice) {
+	public void setShopPrice(Double shopPrice) {
 		this.shopPrice = shopPrice;
 	}
 	

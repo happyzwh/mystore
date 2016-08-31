@@ -255,112 +255,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div style="float:right;">
 							${pageInfo}					
 					</div>
+			        <div style="clear:both;"></div>
 				</div>
-      			<div class="content"> 
-					<div class="collect_box">
-						<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
-						<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html  " class="img clearfix"> 
-						<span style="display:none" class="cxtag tj" id="mark_24268"></span> 
-						<img src="http://img06.jiuxian.com/2015/1109/222e1223a82a4b4794e268642008e6af4.jpg" proimgid="24268"></a> 
-					</div>
-					<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html " class="proName">【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml<span class="slogan" id="promote_24268">正统汾酒集团，两瓶送原厂礼袋</span></a>
-					<div class="priceArea">
-						<p id="product_24268" class="price">¥69.00 </p>
-						<div id="activity_24268"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
-					</div>
-					<a target="_blank" title="" href="http://www.jiuxian.com/goods-24268.html#answerArea" class="judge">已有<span>462</span>人评价</a>
-					<div class="buyArea clearfix">
-						<span>
-							<input type="text" name="" value="1" onkeyup="changeNum(this.value,24268)" id="InputNum24268" gname="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" gid="24268">
-						</span>
-						<div class="edit"> 
-							<a href="javascript:;" class="increase"></a> 
-							<a href="javascript:;" class="decrease"></a> 
+				<s:iterator value="list" status="ind">
+	      			<div class="content"> 
+						<div class="collect_box">
+							<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
+							<a target="_blank" title='<s:property value="name" />' href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="img clearfix"> 
+							<span style="display:none" class="cxtag tj" id="mark_24268"></span> 
+							<img src='<%=ConfigReader.getPath_pic_service()%>/<s:property value="path_pic" />' proimgid="24268"></a> 
 						</div>
-						<a href="javascript:;" class="cart clearfix prtlt_btn2">加入购物车</a> 
-					</div>
-				</div>
-				
-				<div class="content"> 
-					<div class="collect_box">
-						<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
-						<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html  " class="img clearfix"> 
-						<span style="display:none" class="cxtag tj" id="mark_24268"></span> 
-						<img src="http://img06.jiuxian.com/2015/1109/222e1223a82a4b4794e268642008e6af4.jpg" proimgid="24268"></a> 
-					</div>
-					<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html " class="proName">【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml<span class="slogan" id="promote_24268">正统汾酒集团，两瓶送原厂礼袋</span></a>
-					<div class="priceArea">
-						<p id="product_24268" class="price">¥69.00 </p>
-						<div id="activity_24268"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
-					</div>
-					<a target="_blank" title="" href="http://www.jiuxian.com/goods-24268.html#answerArea" class="judge">已有<span>462</span>人评价</a>
-					<div class="buyArea clearfix">
-						<span>
-							<input type="text" name="" value="1" onkeyup="changeNum(this.value,24268)" id="InputNum24268" gname="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" gid="24268">
-						</span>
-						<div class="edit"> 
-							<a href="javascript:;" class="increase"></a> 
-							<a href="javascript:;" class="decrease"></a> 
+						<a target="_blank" title='<s:property value="name" />' href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="proName"><s:property value="name" /><span class="slogan" id="promote_24268"><s:property value="name" /></span></a>
+						<div class="priceArea">
+							<p id="product_24268" class="price">¥<s:text name="format.number"><s:param value="shopPrice"/></s:text></p>
+							<div id="activity_24268"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
 						</div>
-						<a href="javascript:;" class="cart clearfix prtlt_btn2">加入购物车</a> 
-					</div>
-				</div>
-				
-				<div class="content"> 
-					<div class="collect_box">
-						<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
-						<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html  " class="img clearfix"> 
-						<span style="display:none" class="cxtag tj" id="mark_24268"></span> 
-						<img src="http://img06.jiuxian.com/2015/1109/222e1223a82a4b4794e268642008e6af4.jpg" proimgid="24268"></a> 
-					</div>
-					<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html " class="proName">【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml<span class="slogan" id="promote_24268">正统汾酒集团，两瓶送原厂礼袋</span></a>
-					<div class="priceArea">
-						<p id="product_24268" class="price">¥69.00 </p>
-						<div id="activity_24268"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
-					</div>
-					<a target="_blank" title="" href="http://www.jiuxian.com/goods-24268.html#answerArea" class="judge">已有<span>462</span>人评价</a>
-					<div class="buyArea clearfix">
-						<span>
-							<input type="text" name="" value="1" onkeyup="changeNum(this.value,24268)" id="InputNum24268" gname="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" gid="24268">
-						</span>
-						<div class="edit"> 
-							<a href="javascript:;" class="increase"></a> 
-							<a href="javascript:;" class="decrease"></a> 
+						<a target="_blank" title="" href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="judge">已有<span>462</span>人评价</a>
+						<div class="buyArea clearfix">
+							<span>
+								<input type="text" name="" value="1" onkeyup="changeNum(this.value,24268)" id="InputNum24268" gname='<s:property value="name" />' gid="24268">
+							</span>
+							<div class="edit"> 
+								<a href="javascript:;" class="increase"></a> 
+								<a href="javascript:;" class="decrease"></a> 
+							</div>
+							<a href="javascript:;" class="cart clearfix prtlt_btn2">加入购物车</a> 
 						</div>
-						<a href="javascript:;" class="cart clearfix prtlt_btn2">加入购物车</a> 
 					</div>
-				</div>
-				
-				<div class="content"> 
-					<div class="collect_box">
-						<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
-						<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html  " class="img clearfix"> 
-						<span style="display:none" class="cxtag tj" id="mark_24268"></span> 
-						<img src="http://img06.jiuxian.com/2015/1109/222e1223a82a4b4794e268642008e6af4.jpg" proimgid="24268"></a> 
-					</div>
-					<a target="_blank" title="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" href=" http://www.jiuxian.com/goods-24268.html " class="proName">【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml<span class="slogan" id="promote_24268">正统汾酒集团，两瓶送原厂礼袋</span></a>
-					<div class="priceArea">
-						<p id="product_24268" class="price">¥69.00 </p>
-						<div id="activity_24268"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
-					</div>
-					<a target="_blank" title="" href="http://www.jiuxian.com/goods-24268.html#answerArea" class="judge">已有<span>462</span>人评价</a>
-					<div class="buyArea clearfix">
-						<span>
-							<input type="text" name="" value="1" onkeyup="changeNum(this.value,24268)" id="InputNum24268" gname="【酒仙独家】53°汾酒集团原浆（臻品升级版）475ml" gid="24268">
-						</span>
-						<div class="edit"> 
-							<a href="javascript:;" class="increase"></a> 
-							<a href="javascript:;" class="decrease"></a> 
-						</div>
-						<a href="javascript:;" class="cart clearfix prtlt_btn2">加入购物车</a> 
-					</div>
-				</div>
-				
+				</s:iterator>
       		</div>
       		<div class="Pagination">    
 				<div style="float:right;">
 						${pageInfo}					
 				</div>
+				<div style="clear:both;"></div>
 			</div>
       </div>
  </div>
