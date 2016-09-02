@@ -21,6 +21,15 @@ public class SearchProPoJo extends BasicDto{
 	private Double markPrice;
 	
 	private Double shopPrice;
+	//库存
+	private Integer count_stock;
+	//评论数量
+	private Integer count_comment;
+	//销量
+	private Integer count_sale;
+	//信用
+	private float credit;
+
 
 	public Integer getType() {
 		return type;
@@ -77,7 +86,37 @@ public class SearchProPoJo extends BasicDto{
 	public void setShopPrice(Double shopPrice) {
 		this.shopPrice = shopPrice;
 	}
-	
-	
+
+	public Integer getCount_stock() {
+		return count_stock;
+	}
+
+	public void setCount_stock(Integer count_stock) {
+		this.count_stock = count_stock;
+	}
+
+	public Integer getCount_comment() {
+		return count_comment;
+	}
+
+	public void setCount_comment(Integer count_comment) {
+		this.count_comment = count_comment;
+	}
+
+	public Integer getCount_sale() {
+		return count_sale;
+	}
+
+	public void setCount_sale(Integer count_sale) {
+		this.count_sale = count_sale;
+	}
+
+	public float getCredit() {
+		return credit;
+	}
+
+	public void setCredit(float credit) {
+		this.credit = credit;
+	}
 	
 }

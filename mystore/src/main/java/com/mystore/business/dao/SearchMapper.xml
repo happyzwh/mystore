@@ -24,9 +24,15 @@
 		    p.onoroffsaletime AS 'onSaleTime',
 		    (SELECT pa.id_attr  FROM productattr pa, cateattri ca WHERE pa.id_pro = p.id AND pa.id_cateattr = ca.id AND ca.id_cate = p.id_cate AND ca.id_attr = 6) AS 'id_country',
 		    (SELECT pa.id_attr FROM productattr pa, cateattri ca WHERE pa.id_pro = p.id AND pa.id_cateattr = ca.id AND ca.id_cate = p.id_cate AND ca.id_attr = 3)  AS 'id_province',
- 		    p.sort
+ 		    p.sort,
+ 		    ps.count_total - ps.count_lock as 'count_stock',
+ 		    pt.count_sale,
+ 		    pt.count_comment,
+ 		    pt.count_sale*pt.count_comment_good/pt.count_comment as 'credit'
  		FROM product p
  		JOIN productprice pp  ON pp.id_pro = p.id
+ 		left join productstock ps on ps.id_pro = p.id
+ 		left join productstatis pt on pt.id_pro = p.id
  		WHERE p.status = '1' AND p.isshow = '1' AND p.isonsale = '1' 
  		UNION
  		SELECT 
@@ -48,7 +54,11 @@
  		    NULL AS 'onSaleTime',
  		    NULL AS 'id_country',
  		    NULL AS 'id_province',
- 		    sort
+ 		    sort,
+ 		    NULL as 'count_stock',
+ 		    NULL as 'count_sale',
+ 		    NULL as 'count_comment',
+ 		    NULL as 'credit'
  		FROM category
  		WHERE STATUS = '1'
  		UNION
@@ -71,7 +81,11 @@
  		    NULL AS 'onSaleTime',
  		    NULL AS 'id_country',
  		    NULL AS 'id_province',
- 		    sort
+ 		    sort,
+ 		    NULL as 'count_stock',
+ 		    NULL as 'count_sale',
+ 		    NULL as 'count_comment',
+ 		    NULL as 'credit'
  		FROM brand
  		WHERE STATUS = '1'
 	</select>

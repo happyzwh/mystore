@@ -48,6 +48,14 @@ public class DocPoJo implements java.io.Serializable{
 	private Integer id_province;
 	
 	private Integer sort;
+	
+	private Integer count_stock;
+	
+	private Integer count_sale;
+	
+	private Integer count_comment;
+	
+	private Float credit;
 
 	public Integer getType() {
 		return type;
@@ -207,6 +215,38 @@ public class DocPoJo implements java.io.Serializable{
 
 	public void setSort(Integer sort) {
 		this.sort = sort;
+	}
+
+	public Integer getCount_stock() {
+		return count_stock;
+	}
+
+	public void setCount_stock(Integer count_stock) {
+		this.count_stock = count_stock;
+	}
+
+	public Integer getCount_sale() {
+		return count_sale;
+	}
+
+	public void setCount_sale(Integer count_sale) {
+		this.count_sale = count_sale;
+	}
+
+	public Integer getCount_comment() {
+		return count_comment;
+	}
+
+	public void setCount_comment(Integer count_comment) {
+		this.count_comment = count_comment;
+	}
+
+	public Float getCredit() {
+		return credit;
+	}
+
+	public void setCredit(Float credit) {
+		this.credit = credit;
 	}
 	
 }

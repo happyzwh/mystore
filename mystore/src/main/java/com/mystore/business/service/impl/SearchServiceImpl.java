@@ -3,6 +3,7 @@ package com.mystore.business.service.impl;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.analysis.Analyzer;
@@ -35,6 +36,7 @@ import org.wltea.analyzer.lucene.IKAnalyzer;
 import com.mystore.business.common.ConfigReader;
 import com.mystore.business.common.Pager;
 import com.mystore.business.dao.CategoryMapper;
+import com.mystore.business.dao.ProductMapper;
 import com.mystore.business.dao.SearchMapper;
 import com.mystore.business.dto.Category;
 import com.mystore.business.dto.DocPoJo;
@@ -51,6 +53,10 @@ public class SearchServiceImpl implements SearchService{
 	@Autowired
 	private CategoryMapper categoryMapper;
 
+	
+	@Autowired
+	private ProductMapper productMapper;
+	
 	@Override
 	public void createIndex() throws Exception{
 		// TODO Auto-generated method stub
@@ -254,6 +260,86 @@ public class SearchServiceImpl implements SearchService{
 							 doc.add(ids_catefield);
 							 
 						 }
+						 
+						 if(docPojo.getSort() != null){
+							 FieldType sortfieldType = new FieldType(); 
+							 sortfieldType.setIndexed(false);
+							 sortfieldType.setTokenized(false);
+							 sortfieldType.setStored(true); 
+							 Field sortfield = new Field("sort", String.valueOf(docPojo.getSort()), sortfieldType); 
+							 doc.add(sortfield);
+						 }
+						 
+						 if(docPojo.getCount_sale() != null){
+							 FieldType countSalefieldType = new FieldType(); 
+							 countSalefieldType.setIndexed(false);
+							 countSalefieldType.setTokenized(false);
+							 countSalefieldType.setStored(true); 
+							 Field countSalefield = new Field("count_sale", String.valueOf(docPojo.getCount_sale()), countSalefieldType); 
+							 doc.add(countSalefield);
+						 }
+						 
+						 if(docPojo.getCount_comment() != null){
+							 FieldType countCommentfieldType = new FieldType(); 
+							 countCommentfieldType.setIndexed(false);
+							 countCommentfieldType.setTokenized(false);
+							 countCommentfieldType.setStored(true); 
+							 Field countCommentfield = new Field("count_comment", String.valueOf(docPojo.getCount_comment()), countCommentfieldType); 
+							 doc.add(countCommentfield);
+						 }
+						 
+						 if(docPojo.getCredit() != null){
+							 FieldType creditfieldType = new FieldType(); 
+							 creditfieldType.setIndexed(false);
+							 creditfieldType.setTokenized(false);
+							 creditfieldType.setStored(true); 
+							 Field creditfield = new Field("credit", String.valueOf(docPojo.getCredit()), creditfieldType); 
+							 doc.add(creditfield);
+						 }
+						 
+						 List<Map<String,Object>> attrMap = productMapper.getProAttrMapByProId(docPojo.getId());
+						 
+						 if(attrMap != null && attrMap.size() > 0){
+							 
+							 StringBuilder attrName = new StringBuilder("");
+							 StringBuilder attrValue = new StringBuilder("");
+							 StringBuilder attrValueId = new StringBuilder("");
+							 
+							 for(Map<String,Object> map:attrMap ){
+								 attrName.append(String.valueOf(map.get("name"))).append(" ");
+								 attrValue.append(String.valueOf(map.get("value"))).append(" ");
+								 attrValueId.append(String.valueOf(map.get("vid"))).append(" ");
+							 }
+							 
+							 if(StringUtils.isNotBlank(attrName)){
+								  FieldType attrNamefieldType = new FieldType(); 
+								  attrNamefieldType.setIndexed(true);
+								  attrNamefieldType.setTokenized(true);
+								  attrNamefieldType.setStored(true); 
+								  Field attrNamefield = new Field("attrName", attrName.toString(), attrNamefieldType); 
+								  doc.add(attrNamefield);
+							 }
+							 
+							 if(StringUtils.isNotBlank(attrValue)){
+								  FieldType attrValuefieldType = new FieldType(); 
+								  attrValuefieldType.setIndexed(true);
+								  attrValuefieldType.setTokenized(true);
+								  attrValuefieldType.setStored(true); 
+								  Field attrValuefield = new Field("attrValue", attrValue.toString(), attrValuefieldType); 
+								  doc.add(attrValuefield);
+							 }
+							 
+							 if(StringUtils.isNotBlank(attrValueId)){
+								  FieldType attrValueIdfieldType = new FieldType(); 
+								  attrValueIdfieldType.setIndexed(true);
+								  attrValueIdfieldType.setTokenized(true);
+								  attrValueIdfieldType.setStored(true); 
+								  Field attrValueIdfield = new Field("attrValueId", attrValueId.toString(), attrValueIdfieldType); 
+								  doc.add(attrValueIdfield);
+							 }
+							 
+						 }
+						 
 					 }
 					 
 				     iwriter.addDocument(doc);
@@ -481,6 +567,14 @@ public class SearchServiceImpl implements SearchService{
 			QueryParser subTitle_queryParser = new QueryParser(Version.LUCENE_47, "subTitle", analyzer);
 			Query subTitle_query = subTitle_queryParser.parse(String.valueOf(keys));
 			booleanQuery.add(subTitle_query, BooleanClause.Occur.SHOULD);
+			
+			QueryParser attrName_queryParser = new QueryParser(Version.LUCENE_47, "attrName", analyzer);
+			Query attrName_query = attrName_queryParser.parse(String.valueOf(keys));
+			booleanQuery.add(attrName_query, BooleanClause.Occur.SHOULD);
+			
+			QueryParser attrValue_queryParser = new QueryParser(Version.LUCENE_47, "attrValue", analyzer);
+			Query attrValue_query = attrValue_queryParser.parse(String.valueOf(keys));
+			booleanQuery.add(attrValue_query, BooleanClause.Occur.SHOULD);
     		
 			TopDocs hits = isearcher.search(booleanQuery,100);
 			ScoreDoc[] hit = hits.scoreDocs;
