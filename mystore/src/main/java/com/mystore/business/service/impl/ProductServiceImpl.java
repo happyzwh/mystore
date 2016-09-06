@@ -56,4 +56,10 @@ public class ProductServiceImpl implements ProductService{
 		return productMapper.getProPriceByProId(proId);
 	}
 
+	@Override
+	public List<Map<String, Object>> getProAttrMapByCateId(Integer cateId) {
+		// TODO Auto-generated method stub
+		return productMapper.getProAttrMapBycateId(cateId);
+	}
+
 }

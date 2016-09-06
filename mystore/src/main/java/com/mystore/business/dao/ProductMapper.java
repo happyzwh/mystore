@@ -49,6 +49,12 @@ public interface ProductMapper {
 	 * */
 	public List<Map<String,Object>> getProAttrMapByProId(Integer proId);
 	
+	/**
+	 * 根据分类id得商品属性
+	 * 
+	 * */
+	public List<Map<String,Object>> getProAttrMapBycateId(Integer cateId);
+	
 
 }
 

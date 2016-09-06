@@ -35,12 +35,13 @@ import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import com.mystore.business.common.ConfigReader;
 import com.mystore.business.common.Pager;
-import com.mystore.business.dao.CategoryMapper;
 import com.mystore.business.dao.ProductMapper;
 import com.mystore.business.dao.SearchMapper;
 import com.mystore.business.dto.Category;
 import com.mystore.business.dto.DocPoJo;
 import com.mystore.business.dto.SearchProPoJo;
+import com.mystore.business.pojo.SearchPojo;
+import com.mystore.business.service.CategoryService;
 import com.mystore.business.service.SearchService;
 import com.mystore.business.util.CommUtils;
 
@@ -51,7 +52,7 @@ public class SearchServiceImpl implements SearchService{
 	private SearchMapper searchMapper;
 	
 	@Autowired
-	private CategoryMapper categoryMapper;
+	private CategoryService categoryService;
 
 	
 	@Autowired
@@ -246,7 +247,7 @@ public class SearchServiceImpl implements SearchService{
 					 }
 					 
 					 if(docPojo.getType() == 0){
-						 List<Category> cate_list = getAllParentCategoryById(docPojo.getId_cate());
+						 List<Category> cate_list = categoryService.getAllParentCategoryById(docPojo.getId_cate());
 						 if(cate_list != null && cate_list.size() > 0){
 							 StringBuilder ids_cate = new StringBuilder("");
 							 for(Category cate:cate_list){
@@ -354,23 +355,6 @@ public class SearchServiceImpl implements SearchService{
 		
 	}
 
-	private List<Category> getAllParentCategoryById(Integer id){
-		List<Category> list = new ArrayList<Category>();
-	    if(id != null){
-	    	getCategoryById(list,id);
-	    }
-		return list;
-	}
-	
-    private void getCategoryById(List<Category> list,Integer id){
-    	Category cate = categoryMapper.getCateById(id);
-    	if(cate != null){
-	    	list.add(cate);
-	    	if(cate.getPid() != null){
-	    		getCategoryById(list,cate.getPid());
-	    	}
-    	}
-    }
     
     /**
      *  分类-品牌-国籍-产地-价格(低)-价格(高)-排序属性-排序
@@ -603,7 +587,148 @@ public class SearchServiceImpl implements SearchService{
     	return list;
     	
     }
+
+	@Override
+	public Pager<SearchProPoJo> search(SearchPojo searchPojo,Integer pageNo,Integer pageSize) throws Exception {
+		// TODO Auto-generated method stub
+		Pager<SearchProPoJo> pager = new Pager<SearchProPoJo>();
+    	List<SearchProPoJo> list = new ArrayList<SearchProPoJo>();
+    	pager.setResultList(list);
+    	pager.setPageNo(pageNo);
+    	pager.setPageSize(pageSize);
+    	
+    	try{
+    		Analyzer analyzer = new IKAnalyzer(true);
+			Directory directory = FSDirectory.open(new File(ConfigReader.getPath_index()));
+//    		Directory directory = FSDirectory.open(new File("d:/index"));
+			IndexReader ireader = DirectoryReader.open(directory);
+			IndexSearcher isearcher = new IndexSearcher(ireader);
+			
+			BooleanQuery booleanQuery = new BooleanQuery();
+			
+			QueryParser type_queryParser = new QueryParser(Version.LUCENE_47, "type", analyzer);
+			Query type_query = type_queryParser.parse("0");
+			
+			booleanQuery.add(type_query, BooleanClause.Occur.MUST);
+			
+			if(searchPojo.getCateId() != null){
+				
+				BooleanQuery idCateBooleanQuery = new BooleanQuery();
+				
+				QueryParser ids_cate_queryParser = new QueryParser(Version.LUCENE_47, "ids_cate", analyzer);
+				ids_cate_queryParser.setDefaultOperator(QueryParser.OR_OPERATOR);
+				Query ids_cate_query = ids_cate_queryParser.parse(String.valueOf(searchPojo.getCateId()));
+				
+				idCateBooleanQuery.add(ids_cate_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser id_cate_queryParser = new QueryParser(Version.LUCENE_47, "id_cate", analyzer);
+				Query id_cate_query = id_cate_queryParser.parse(String.valueOf(searchPojo.getCateId()));
+				
+				idCateBooleanQuery.add(id_cate_query, BooleanClause.Occur.SHOULD);
+				
+				
+				booleanQuery.add(idCateBooleanQuery, BooleanClause.Occur.MUST);
+			}
+			
+			if(searchPojo.getBrandIds() != null && searchPojo.getBrandIds().size() > 0){
+				
+				BooleanQuery brandBooleanQuery = new BooleanQuery();
+				
+				for(Integer brandid:searchPojo.getBrandIds()){
+					QueryParser id_brand_queryParser = new QueryParser(Version.LUCENE_47, "id_brand", analyzer);
+					Query id_brand_query = id_brand_queryParser.parse(String.valueOf(brandid));
+					
+					brandBooleanQuery.add(id_brand_query, BooleanClause.Occur.SHOULD);
+				}
+				
+				booleanQuery.add(brandBooleanQuery, BooleanClause.Occur.MUST);
+			}
+			
+			if(searchPojo.getAttrValueIds() != null && searchPojo.getAttrValueIds().size() > 0){
+				
+				BooleanQuery attrValueBooleanQuery = new BooleanQuery();
+				
+				for(Integer attrValueId:searchPojo.getAttrValueIds()){
+					QueryParser attrValueIdQueryParser = new QueryParser(Version.LUCENE_47, "attrValueId", analyzer);
+					Query attrValuequery = attrValueIdQueryParser.parse(String.valueOf(attrValueId));
+					
+					attrValueBooleanQuery.add(attrValuequery, BooleanClause.Occur.SHOULD);
+				}
+				
+				booleanQuery.add(attrValueBooleanQuery, BooleanClause.Occur.MUST);
+			}
+			
+			if( (searchPojo.getLowPrice() != null && searchPojo.getLowPrice() > 0) || (searchPojo.getHighPrice() != null && searchPojo.getHighPrice() > 0) ){
+				
+				boolean boolean_price_low = (searchPojo.getLowPrice() == null || searchPojo.getLowPrice() == 0)?false:true;
+				boolean boolean_price_high = (searchPojo.getHighPrice()==null || searchPojo.getHighPrice() == 0)?false:true;
+				
+				Query shopPrice_query = NumericRangeQuery.newDoubleRange("shopPrice", ( searchPojo.getLowPrice() != null && searchPojo.getLowPrice() > 0 )?searchPojo.getLowPrice():null, (searchPojo.getHighPrice() != null && searchPojo.getHighPrice() > 0)?searchPojo.getHighPrice():null, boolean_price_low, boolean_price_high);
+				
+				booleanQuery.add(shopPrice_query, BooleanClause.Occur.MUST);
+			}
+			
+			Sort sort = null;
+			SortField[] sortField = new SortField[1];
+    		
+			if(searchPojo.getOrderType() != null){
+				String sortFieldName = null;
+				SortField.Type type = null;
+				if(searchPojo.getOrderType() == 0){
+					sortFieldName="count_sale";
+					type = SortField.Type.INT;
+				}else if(searchPojo.getOrderType() == 1){
+					sortFieldName="shopPrice";
+					type = SortField.Type.DOUBLE;
+				}else if(searchPojo.getOrderType() == 2){
+					sortFieldName="count_comment";
+					type = SortField.Type.INT;
+				}else if(searchPojo.getOrderType() == 4){
+					sortFieldName="onSaleTime";
+					type = SortField.Type.STRING;
+				}
+				sortField[0]=new SortField(sortFieldName, type, ( searchPojo.getAsc() ==null || searchPojo.getAsc() ==0 )?true:false);
+			}else{
+				sortField[0]=new SortField("count_sale", SortField.Type.INT, true);
+			}
+			
+			sort = new Sort(sortField);
+			
+			System.out.println(booleanQuery.toString());
+	
+			TopFieldCollector c = TopFieldCollector.create(sort, pageNo*pageSize, true, true, true, false);
+			isearcher.search(booleanQuery, c);
+	        ScoreDoc[] hits = c.topDocs((pageNo-1)*pageSize, pageSize).scoreDocs;
+	        if (hits != null && hits.length > 0){
+	        	pager.setRowCount(c.getTotalHits());
+	        	System.out.println("-------------总记录:"+c.getTotalHits());
+	        	for (int i = 0; i < hits.length; i++){
+	        		int num = hits[i].doc;
+	        	    Document document = isearcher.doc(num);	
+	        	    
+	        	     SearchProPoJo searchProPoJo = new SearchProPoJo();
+	        	     list.add(searchProPoJo);
+	        	     
+	        	     searchProPoJo.setId(Integer.valueOf(document.get("id")));
+	        	     searchProPoJo.setName(document.get("name"));
+	        	     searchProPoJo.setPath_pic(document.get("path_pic"));
+	        	     searchProPoJo.setMarkPrice(StringUtils.isNotBlank(document.get("markPrice"))?Double.valueOf(document.get("markPrice")):0);
+	        	     searchProPoJo.setShopPrice(StringUtils.isNotBlank(document.get("shopPrice"))?Double.valueOf(document.get("shopPrice")):0);
+	        	     
+//	        	     System.out.println(searchProPoJo.getType()+" "+searchProPoJo.getId()+" "+searchProPoJo.getName()+" "+searchProPoJo.getPath_pic()+" "+searchProPoJo.getMarkPrice()+" "+searchProPoJo.getShopPrice()+" "+searchProPoJo.getUrl());
+	        	}
+	        }
+	        
+	        
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
     
+    	return pager;
+	}
+	
+	
+	
 	public static void main(String[] args) throws Exception{
 		
 		SearchServiceImpl service = new SearchServiceImpl();
@@ -625,4 +750,6 @@ public class SearchServiceImpl implements SearchService{
 			}
 		}
 	}
+
+	
 }

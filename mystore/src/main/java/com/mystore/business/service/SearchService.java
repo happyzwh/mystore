@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.mystore.business.common.Pager;
 import com.mystore.business.dto.SearchProPoJo;
+import com.mystore.business.pojo.SearchPojo;
 
 public interface SearchService {
+	
 	/**
 	 * 
 	 * 创建索引
@@ -26,4 +28,13 @@ public interface SearchService {
 	 * 
 	 * */
     public List<SearchProPoJo> mhSearch(String keys);
+    
+	/**
+	 * 
+	 * 条件检索
+	 * 
+	 * */
+	public Pager<SearchProPoJo> search(SearchPojo searchPojo,Integer pageNo,Integer pageSize) throws Exception;
+
+	
 }

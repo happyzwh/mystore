@@ -45,4 +45,10 @@ public interface ProductService {
 	 * 
 	 * */
 	public ProPrice getProPriceByProId(Integer proId);
+	
+	/**
+	 * 根据分类id得商品属性
+	 * 
+	 * */
+	public List<Map<String,Object>> getProAttrMapByCateId(Integer cateId);
 }

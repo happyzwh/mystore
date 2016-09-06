@@ -1,6 +1,7 @@
 package com.mystore.business.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class Category extends BasicDto{
 
@@ -32,6 +33,10 @@ public class Category extends BasicDto{
 	private Date createDate;
 	
 	private Date lastDate;
+	
+	private Category parent;
+	
+	private List<Category> sons;
 
 	public Integer getId() {
 		return id;
@@ -127,6 +132,22 @@ public class Category extends BasicDto{
 
 	public void setJianPin(String jianPin) {
 		this.jianPin = jianPin;
+	}
+
+	public Category getParent() {
+		return parent;
+	}
+
+	public void setParent(Category parent) {
+		this.parent = parent;
+	}
+
+	public List<Category> getSons() {
+		return sons;
+	}
+
+	public void setSons(List<Category> sons) {
+		this.sons = sons;
 	}
 
 }
