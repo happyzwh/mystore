@@ -104,35 +104,119 @@ public class SearchAction extends BaseAction{
 	public String list(){
 		
 		if(StringUtils.isBlank(keys)){
-			return "list";
+			keys = "0-0-0-0-0-0-0-0";
 		}
 		
 		String[] key = keys.split("-");
 		
 		if(key.length < 8){
-			return "list";
+			keys = "0-0-0-0-0-0-0-0";
 		}
 		
 		try{
 			
-			Integer id_category = Integer.valueOf(key[0]);
-			Integer id_brand = Integer.valueOf(key[1]);
+			cateId = Integer.valueOf(key[0]);
+			Integer brandId = Integer.valueOf(key[1]);
+			
+			brandIds = brandId.toString();
+			
 			Integer id_country = Integer.valueOf(key[2]);
 			Integer id_province = Integer.valueOf(key[3]);
 			
-			double price_low = Double.valueOf(key[4]);
-			double price_high = Double.valueOf(key[5]);
+			double lowPrice = Double.valueOf(key[4]);
+			double highPrice = Double.valueOf(key[5]);
 			
-			Integer type_sort_attr = Integer.valueOf(key[6]);
-			Integer type_sort = Integer.valueOf(key[7]);
+			Integer orderType = Integer.valueOf(key[6]);
+			Integer asc = Integer.valueOf(key[7]);
 			
-			Pager<SearchProPoJo> pager =  searchService.search(id_category, id_brand, id_country, id_province, price_low, price_high, type_sort_attr, type_sort, pageNo, pageSize);
+			Pager<SearchProPoJo> pager =  searchService.search(cateId, brandId, id_country, id_province, lowPrice, highPrice, orderType, asc, pageNo, pageSize);
 			
 			if(pager != null && pager.getResultList() != null && pager.getResultList().size() > 0){
 				  list = pager.getResultList();
 				  pageInfo = PageInfo.setPage(pager.getPageNo(), pager.getPageSize(), pager.getPageCount(), pager.getRowCount());
 			}
 			
+			searchPojo = new SearchPojo();
+			searchPojo.setCateId(cateId);
+			searchPojo.setBrandIds(new ArrayList<Integer>(brandId));
+			searchPojo.setLowPrice(lowPrice);
+			searchPojo.setHighPrice(highPrice);
+			searchPojo.setOrderType(orderType);
+			searchPojo.setAsc(asc);
+			
+			searchPojo.setSelectedCates(categoryService.getAllParentCategoryById(cateId));
+			
+			searchPojo.setSelectCates(categoryService.getAllSonCategoryById(cateId));
+			
+			if(StringUtils.isNotBlank(brandIds)){
+				String[] ids = brandIds.split(",");
+				searchPojo.setSelectedBrands(new ArrayList<Brand>());
+				for(String s:ids){
+					searchPojo.getSelectedBrands().add(brandService.getBrandById(Integer.valueOf(s)));
+				}
+			}
+			
+			List<Brand> allBrandlist = brandService.selectBrandListByCateId(cateId);
+			if(allBrandlist != null && allBrandlist.size() > 0){
+				for(Brand brand:allBrandlist){
+					if((","+brandIds+",").indexOf(","+String.valueOf(brand.getId())+",") != -1){
+						allBrandlist.remove(brand);
+					}
+				}
+			}
+			
+			searchPojo.setSelectBrands(allBrandlist);
+			
+			List<Map<String,Object>> allAttrValue = productService.getProAttrMapByCateId(cateId);
+			
+			if(allAttrValue != null && allAttrValue.size() > 0){
+				
+				Map<String, String> selectCateAttrNames = new HashMap<String, String>();
+				searchPojo.setSelectCateAttrNames(selectCateAttrNames);
+				
+				for(Map<String,Object> map:allAttrValue){
+					searchPojo.getSelectCateAttrNames().put(map.get("baid").toString(), map.get("name").toString());
+				}
+			}
+			
+			if(allAttrValue != null && allAttrValue.size() > 0){
+				
+				List<Map<String,String>> selectedCateAttrNames = new ArrayList<Map<String,String>>();
+				Map<String,List<Map<String,Object>>> selectCateAttrs = new HashMap<String,List<Map<String,Object>>>();
+				
+				searchPojo.setSelectedCateAttrNames(selectedCateAttrNames);
+				searchPojo.setSelectCateAttrs(selectCateAttrs);
+				
+				for(Map<String,Object> map:allAttrValue){
+					
+					String baid = map.get("baid").toString();
+					String name = map.get("name").toString();
+					String[] vids = map.get("vid").toString().split(",");
+					String[] values = map.get("value").toString().split(",");
+					for(int i=0;i<vids.length;i++){
+						String vid = vids[i];
+						String value = values[i];
+						if((","+attrValueIds+",").indexOf(","+vid+",") != -1){
+							Map<String,String> seledAttrMap = new HashMap<String,String>();
+							searchPojo.getSelectedCateAttrNames().add(seledAttrMap);
+							seledAttrMap.put("baid", baid);
+							seledAttrMap.put("name", name);
+							seledAttrMap.put("vid", vid);
+							seledAttrMap.put("value", value);	
+						}else{
+							if(!searchPojo.getSelectCateAttrs().containsKey(baid)){
+								searchPojo.getSelectCateAttrs().put(baid, new ArrayList<Map<String,Object>>());
+							}
+							
+							Map<String,Object> selectAttrMap = new HashMap<String,Object>();
+							searchPojo.getSelectCateAttrs().get(baid).add(selectAttrMap);
+							
+							selectAttrMap.put("vid", vid);
+							selectAttrMap.put("value", value);
+						}
+					}
+				}
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -144,7 +228,7 @@ public class SearchAction extends BaseAction{
 		
 		try{
 			
-			SearchPojo searchPojo = new SearchPojo();
+			searchPojo = new SearchPojo();
 			searchPojo.setCateId(cateId);
 			searchPojo.setLowPrice(lowPrice);
 			searchPojo.setHighPrice(highPrice);
@@ -191,7 +275,7 @@ public class SearchAction extends BaseAction{
 			List<Brand> allBrandlist = brandService.selectBrandListByCateId(cateId);
 			if(allBrandlist != null && allBrandlist.size() > 0){
 				for(Brand brand:allBrandlist){
-					if(brandIds.indexOf(String.valueOf(brand.getId())) != -1){
+					if((","+brandIds+",").indexOf(","+String.valueOf(brand.getId())+",") != -1){
 						allBrandlist.remove(brand);
 					}
 				}
@@ -200,40 +284,55 @@ public class SearchAction extends BaseAction{
 			searchPojo.setSelectBrands(allBrandlist);
 			
 			List<Map<String,Object>> allAttrValue = productService.getProAttrMapByCateId(cateId);
-			List<Map<String,Object>> selectedAttrValue = new ArrayList<Map<String,Object>>();
-			List<Map<String,Object>> selectAttrValue = new ArrayList<Map<String,Object>>();;
 			
 			if(allAttrValue != null && allAttrValue.size() > 0){
+				
+				Map<String, String> selectCateAttrNames = new HashMap<String, String>();
+				searchPojo.setSelectCateAttrNames(selectCateAttrNames);
+				
 				for(Map<String,Object> map:allAttrValue){
-					if(!map.isEmpty() && map.get("vid") != null){
-						String[] str = map.get("vid").toString().split(",");
-						boolean tf = false;
-						for(String s:str){
-							if((","+attrValueIds+",").indexOf(","+s+",") != -1){
-								selectedAttrValue.add(map);
-								tf = true;
-								break;
+					searchPojo.getSelectCateAttrNames().put(map.get("baid").toString(), map.get("name").toString());
+				}
+			}
+			
+			if(allAttrValue != null && allAttrValue.size() > 0){
+				
+				List<Map<String,String>> selectedCateAttrNames = new ArrayList<Map<String,String>>();
+				Map<String,List<Map<String,Object>>> selectCateAttrs = new HashMap<String,List<Map<String,Object>>>();
+				
+				searchPojo.setSelectedCateAttrNames(selectedCateAttrNames);
+				searchPojo.setSelectCateAttrs(selectCateAttrs);
+				
+				for(Map<String,Object> map:allAttrValue){
+					
+					String baid = map.get("baid").toString();
+					String name = map.get("name").toString();
+					String[] vids = map.get("vid").toString().split(",");
+					String[] values = map.get("value").toString().split(",");
+					for(int i=0;i<vids.length;i++){
+						String vid = vids[i];
+						String value = values[i];
+						if((","+attrValueIds+",").indexOf(","+vid+",") != -1){
+							Map<String,String> seledAttrMap = new HashMap<String,String>();
+							searchPojo.getSelectedCateAttrNames().add(seledAttrMap);
+							seledAttrMap.put("baid", baid);
+							seledAttrMap.put("name", name);
+							seledAttrMap.put("vid", vid);
+							seledAttrMap.put("value", value);	
+						}else{
+							if(!searchPojo.getSelectCateAttrs().containsKey(baid)){
+								searchPojo.getSelectCateAttrs().put(baid, new ArrayList<Map<String,Object>>());
 							}
-						}
-						if(!tf){
-							selectAttrValue.add(map);
+							
+							Map<String,Object> selectAttrMap = new HashMap<String,Object>();
+							searchPojo.getSelectCateAttrs().get(baid).add(selectAttrMap);
+							
+							selectAttrMap.put("vid", vid);
+							selectAttrMap.put("value", value);
 						}
 					}
 				}
 			}
-			
-			if(selectedAttrValue.size() > 0){
-				List<Map<String,Map<String,Object>>> selectedCateAttrs = new ArrayList<Map<String,Map<String,Object>>>();
-				searchPojo.setSelectedCateAttrs(selectedCateAttrs);
-				for(Map<String,Object> map : selectedAttrValue){
-					Map<String,Map<String,Object>> smap = new HashMap<String,Map<String,Object>>();
-					selectedCateAttrs.add(smap);
-					Map<String,Object> attr = new HashMap<String,Object>();
-//					smap.put("attr", map.get(""));
-				}
-			}
-			
-			
 			
 		}catch(Exception e){
 			e.printStackTrace();

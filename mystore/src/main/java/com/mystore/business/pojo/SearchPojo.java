@@ -37,14 +37,11 @@ public class SearchPojo implements java.io.Serializable{
 	//当前分类的已选属性名
 	private List<Map<String,String>> selectedCateAttrNames;
 	
-	//当前分类的已选属性值
-	private List<Map<String,Map<String,Object>>> selectedCateAttrs;
-	
 	//当前分类的所有属性名
-	private List<Map<String,String>> selectCateAttrNames;
+	private Map<String,String> selectCateAttrNames;
 	
     //当前分类的所有属性
-	private List<Map<String,List<Map<String,Object>>>> selectCateAttrs;
+	private Map<String,List<Map<String,Object>>> selectCateAttrs;
 	
 	private Double lowPrice;
 	
@@ -86,15 +83,6 @@ public class SearchPojo implements java.io.Serializable{
 		this.attrValueIds = attrValueIds;
 	}
 
-	public List<Map<String, Map<String, Object>>> getSelectedCateAttrs() {
-		return selectedCateAttrs;
-	}
-
-	public void setSelectedCateAttrs(
-			List<Map<String, Map<String, Object>>> selectedCateAttrs) {
-		this.selectedCateAttrs = selectedCateAttrs;
-	}
-
 	public List<Map<String, String>> getSelectedCateAttrNames() {
 		return selectedCateAttrNames;
 	}
@@ -104,20 +92,20 @@ public class SearchPojo implements java.io.Serializable{
 		this.selectedCateAttrNames = selectedCateAttrNames;
 	}
 
-	public List<Map<String, String>> getSelectCateAttrNames() {
+	public Map<String, String> getSelectCateAttrNames() {
 		return selectCateAttrNames;
 	}
 
-	public void setSelectCateAttrNames(List<Map<String, String>> selectCateAttrNames) {
+	public void setSelectCateAttrNames(Map<String, String> selectCateAttrNames) {
 		this.selectCateAttrNames = selectCateAttrNames;
 	}
 
-	public List<Map<String, List<Map<String, Object>>>> getSelectCateAttrs() {
+	public Map<String, List<Map<String, Object>>> getSelectCateAttrs() {
 		return selectCateAttrs;
 	}
 
 	public void setSelectCateAttrs(
-			List<Map<String, List<Map<String, Object>>>> selectCateAttrs) {
+			Map<String, List<Map<String, Object>>> selectCateAttrs) {
 		this.selectCateAttrs = selectCateAttrs;
 	}
 

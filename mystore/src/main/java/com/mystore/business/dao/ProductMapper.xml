@@ -168,7 +168,7 @@
 	    	b.id AS baid,
 	    	GROUP_CONCAT(DISTINCT b.name) AS name, 
 	    	CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT v.value) ELSE GROUP_CONCAT(DISTINCT t.attrvalue) END AS value,
-	    	CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT v.id) ELSE GROUP_CONCAT(DISTINCT (CONCAT('-',t.id,''))) END AS vid
+	    	CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT CAST(v.id AS CHAR)) ELSE GROUP_CONCAT(DISTINCT (CONCAT('-',CAST(t.id AS CHAR),''))) END AS vid
 		FROM productattr t,cateattri c,basicattri b,basicattrivalue v
 		WHERE t.id_pro = #{value} AND t.id_cateattr = c.id AND c.id_attr = b.id AND 
 		CASE WHEN b.showtype = '3' THEN  CONCAT(',',v.id,',') REGEXP CONCAT(',(',REPLACE(SUBSTRING(t.attrvalue,2,LENGTH(t.attrvalue)-2),',','|'),'),') WHEN b.showtype = '1' OR b.showtype = '2' THEN v.id = t.id_attr ELSE t.id_attr IS NULL END
@@ -178,10 +178,10 @@
 	<select id="getProAttrMapBycateId" parameterType="int" resultType="java.util.Map">
 	    SELECT 
 		     b.id AS baid,
-		     GROUP_CONCAT(DISTINCT b.name) AS NAME, 
-		     b.showtype AS TYPE,
-		     CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT v.value) ELSE GROUP_CONCAT(DISTINCT t.attrvalue) END AS VALUE,
-		     CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT v.id) ELSE GROUP_CONCAT(DISTINCT (CONCAT('-',t.id,''))) END AS vid
+		     GROUP_CONCAT(DISTINCT b.name) AS name, 
+		     b.showtype AS type,
+		     CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT v.value) ELSE GROUP_CONCAT(DISTINCT t.attrvalue) END AS value,
+		     CASE WHEN b.showtype != '0' THEN GROUP_CONCAT(DISTINCT CAST(v.id AS CHAR)) ELSE GROUP_CONCAT(DISTINCT (CONCAT('-',CAST(t.id AS CHAR),''))) END AS vid
 		FROM productattr t,cateattri c,basicattri b,basicattrivalue v,category ct
 		WHERE ct.id = #{value} AND c.id_cate = ct.id  AND t.id_cateattr = c.id AND c.id_attr = b.id AND 
 		CASE WHEN b.showtype = '3' THEN  CONCAT(',',v.id,',') REGEXP CONCAT(',(',REPLACE(SUBSTRING(t.attrvalue,2,LENGTH(t.attrvalue)-2),',','|'),'),') WHEN b.showtype = '1' OR b.showtype = '2' THEN v.id = t.id_attr ELSE t.id_attr IS NULL END

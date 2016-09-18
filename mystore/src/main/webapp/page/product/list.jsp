@@ -113,103 +113,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       <div class="list_right">
       		<div class="nav">
-      		   <div class="rela"><em>相关产品</em><span>44</span><em>件</em></div>
+      		  <!--  <div class="rela"><em>相关产品</em><span>44</span><em>件</em></div>  -->
       		   <div class="li">
 				   <i class="square"></i>
-				   <a class="level level1" title="全部" href=" /1-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm#v2 ">全部</a>
-				   <i class="arrow"></i>
-				   <a class="level level2" title="白酒 " href=" /1-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm#v2 ">白酒 </a>
+				   <a class="level level1" title="全部" href="<%=path%>/search/searchAction!list.dhtml">全部</a>
+				   <s:iterator value="searchPojo.selectedCates" status="ind">
+					   <i class="arrow"></i>
+					   <a class="level level2" title="<s:property value='name'/>" href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a>
+				   </s:iterator>
 			   </div>
       		</div>
       		<div class="selected">
       		    <p class="tit">你已选择：</p>
       		    <div class="options">
-					<a href="/1-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2"><span class="type">品牌：汾酒</span><span class="remove"></span></a>
-					<a href="/1-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2"><span class="type">品牌：宋河</span><span class="remove"></span></a>
+      		        <s:iterator value="searchPojo.selectedBrands" id="brand" status="ind">
+						<a href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='cateId'/>-<s:property value='#brand.id'/>-0-0-0-0-0-0"><span class="type">品牌：<s:property value='#brand.name'/></span><span name="<s:property value='#brand.id'/>" class="remove"></span></a>
+					</s:iterator>
+					<s:iterator value="searchPojo.selectedCateAttrNames" id="attr" status="ind">
+						<a href="javascript:void(0);"><span class="type"><s:property value='attr.name'/>：<s:property value='attr.value'/></span><span id="<s:property value='attr.vid'/>" class="remove"></span></a>
+					</s:iterator>
 				</div>
       		</div>
-      		<div class="select">
-      		    <div style="display:block" class="selectLine2">
-					<div class="proLeft">产区</div>
-					<div class="proRight">
-						<ul class="clearfix">
-							<li><a title="山西" href="/1-4-0-9488-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">山西</a></li>
-							<li><a title="山东" href="/1-4-0-9488-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">山东</a></li>
-						</ul>	
-					</div>
-			    </div>
-			    <div style="display:block" class="selectLine2">
-					<div class="proLeft">产区</div>
-					<div class="proRight">
-						<ul class="clearfix">
-							<li><a title="山西" href="/1-4-0-9488-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">山西</a></li>
-							<li><a title="山东" href="/1-4-0-9488-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">山东</a></li>
-						</ul>	
-					</div>
-			    </div>
-			    <div style="display:block" class="selectLine2">
-					<div class="proLeft">产区</div>
-					<div class="proRight">
-						<ul class="clearfix">
-							<li><a title="山西" href="/1-4-0-9488-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">山西</a></li>
-							<li><a title="山东" href="/1-4-0-9488-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">山东</a></li>
-						</ul>	
-					</div>
-			    </div>
-      		</div>
-      		<div class="moreS clearfix">
-      			<p class="tit">更多选项</p>
-				<div class="moreOption wine clearfix">
-					<a href="javascript:void(0)" class="choose">酒精度<i></i></a>
-					<div class="box" style="display: none;">
-						<ul class="clearfix">
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-1-0-0-0.htm?area=2#v2">35度以下</a>
-							</li>
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-2-0-0-0.htm?area=2#v2">35-39度</a>
-							</li>
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-3-0-0-0.htm?area=2#v2">40-49度</a>
-							</li>
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-4-0-0-0.htm?area=2#v2">50度以上</a>
-							</li>
-						</ul>
-					</div>
-					<a href="javascript:void(0)" class="choose">净含量<i></i></a>
-					<div class="box" style="display: none;">
-						<ul class="clearfix">
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-0-1-0-0.htm?area=2#v2">475m以下</a>
-							</li>
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-0-2-0-0.htm?area=2#v2">475ml</a>
-							</li>
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-0-3-0-0.htm?area=2#v2">500ml</a>
-							</li>
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-0-4-0-0.htm?area=2#v2">1L</a>
-							</li>
-							<li>
-								<a href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-0-5-0-0.htm?area=2#v2">1.5L以上</a>
-							</li>
-						</ul>
-					</div>
-					<a href="javascript:void(0)" class="choose clearfix">价格<i></i></a>
-					<div class="box" style="display: none;">
-						<ul class="clearfix">
-							<li><a href="/1-4-0-0-0-0-1-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">1-99元</a></li>
-							<li><a href="/1-4-0-0-0-0-2-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">100-299元</a></li>
-							<li><a href="/1-4-0-0-0-0-3-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">300-599元</a></li>
-							<li><a href="/1-4-0-0-0-0-4-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">600-999元</a></li>
-							<li><a href="/1-4-0-0-0-0-5-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">1000-1999元</a></li>
-							<li><a href="/1-4-0-0-0-0-6-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2">2000元以上</a></li>
-						</ul>
+      		<s:if test="searchPojo.selectBrands.size() > 0 || searchPojo.selectCates.size() > 0">
+	      		<div class="select">
+	      		     <s:if test="searchPojo.selectBrands.size() > 0">
+	      		         <div style="display:block" class="selectLine2">
+		      		            <div class="proLeft">品牌</div>
+								<div class="proRight">
+									<ul class="clearfix">
+									    <s:iterator value="searchPojo.selectBrands" id="brand">
+											<li><a title="<s:property value='#brand.name'/>" href="javascript:void(0);"><s:property value='#brand.name'/></a></li>
+										</s:iterator>
+									</ul>	
+								</div>
+						 </div>
+				     </s:if>
+					 <s:iterator value="searchPojo.selectCates" id="cate">
+					     <s:if test="#cate.sons.size() > 0">
+							  <div style="display:block" class="selectLine2">
+									<div class="proLeft"><s:property value='#cate.name'/></div>
+									<div class="proRight">
+										<ul class="clearfix">
+										    <s:iterator value="#cate.sons" id="son">
+												<li><a title="<s:property value='#son.name'/>" href="javascript:void(0);"><s:property value='#son.name'/></a></li>
+											</s:iterator>
+										</ul>	
+									</div>
+							  </div>
+						 </s:if>
+					 </s:iterator>
+	      		</div>
+      		</s:if>
+      		<s:if test="searchPojo.selectCateAttrs.size() > 0">
+	      		<div class="moreS clearfix">
+	      			<p class="tit">更多选项</p>
+					<div class="moreOption wine clearfix">
+						<s:iterator value="searchPojo.selectCateAttrs" id="column">
+							<a href="javascript:void(0)" class="choose"><s:property value='searchPojo.selectCateAttrNames.get(key)'/><i></i></a>
+							<div class="box" style="display: none;">
+								<ul class="clearfix">
+									<s:iterator value="value" id="attr">
+										<li>
+											<a href="javascript:void(0);"><s:property value='#attr.get("value")'/></a>
+										</li>
+									</s:iterator>
+								</ul>
+							</div>
+						</s:iterator>
 					</div>
 				</div>
-			</div>
+			</s:if>
       		<div id="order" class="order">
       			<ul class="clearfix">
 					<li class="tab  first ">
