@@ -127,10 +127,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		    <p class="tit">你已选择：</p>
       		    <div class="options">
       		        <s:iterator value="searchPojo.selectedBrands" id="brand" status="ind">
-						<a href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='cateId'/>-<s:property value='#brand.id'/>-0-0-0-0-0-0"><span class="type">品牌：<s:property value='#brand.name'/></span><span name="<s:property value='#brand.id'/>" class="remove"></span></a>
+						<a href="javascript:void(0);"><span class="type">品牌：<s:property value='#brand.name'/></span><span name="brand_<s:property value='#brand.id'/>" title="<s:property value='#brand.name'/>" class="remove"></span></a>
 					</s:iterator>
 					<s:iterator value="searchPojo.selectedCateAttrNames" id="attr" status="ind">
-						<a href="javascript:void(0);"><span class="type"><s:property value='attr.name'/>：<s:property value='attr.value'/></span><span id="<s:property value='attr.vid'/>" class="remove"></span></a>
+						<a href="javascript:void(0);"><span class="type"><s:property value='attr.name'/>：<s:property value='attr.value'/></span><span name="attr_<s:property value='attr.vid'/>" title="<s:property value='attr.value'/>" class="remove"></span></a>
 					</s:iterator>
 				</div>
       		</div>
@@ -142,7 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="proRight">
 									<ul class="clearfix">
 									    <s:iterator value="searchPojo.selectBrands" id="brand">
-											<li><a title="<s:property value='#brand.name'/>" href="javascript:void(0);"><s:property value='#brand.name'/></a></li>
+											<li class="selectable"><a <s:if  test="#brand.checked">class="item_checked"</s:if> alt="<s:property value='#brand.name'/>" name="brand_<s:property value='#brand.id'/>" href="javascript:void(0);"><s:property value='#brand.name'/></a></li>
 										</s:iterator>
 									</ul>	
 								</div>
@@ -155,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="proRight">
 										<ul class="clearfix">
 										    <s:iterator value="#cate.sons" id="son">
-												<li><a title="<s:property value='#son.name'/>" href="javascript:void(0);"><s:property value='#son.name'/></a></li>
+												<li><a alt="<s:property value='#son.name'/>"  href="javascript:void(0);"><s:property value='#son.name'/></a></li>
 											</s:iterator>
 										</ul>	
 									</div>
@@ -173,8 +173,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="box" style="display: none;">
 								<ul class="clearfix">
 									<s:iterator value="value" id="attr">
-										<li>
-											<a href="javascript:void(0);"><s:property value='#attr.get("value")'/></a>
+										<li  class="selectable">
+											<a alt="<s:property value='searchPojo.selectCateAttrNames.get(key)'/>_<s:property value='#attr.get("value")'/>" <s:if test='#attr.get("checked")'>class="item_checked"</s:if> name="attr_<s:property value='#attr.get("vid")'/>" href="javascript:void(0);"><s:property value='#attr.get("value")'/></a>
 										</li>
 									</s:iterator>
 								</ul>
@@ -185,20 +185,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</s:if>
       		<div id="order" class="order">
       			<ul class="clearfix">
-					<li class="tab  first ">
-						<a title="默认排序" href="/1-4-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2" rel="nofollow">默认排序</a>
+					<li class="tab first ">
+						<a title="默认排序" href="javascript:void(0);" class="sort" name="0" rel="nofollow">默认排序</a>
 					</li>
 					<li class="tab">
-						<a title=" 默认 " href="/1-4-0-0-0-0-0-1-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2" rel="nofollow">销量 <i></i> </a>
+						<a title=" 默认 " href="javascript:void(0);" class="sort"  name="0" rel="nofollow">销量 <i></i> </a>
 					</li>
 					<li class="tab jg">
-						<a title=" 默认 " href="/1-4-0-0-0-0-0-2-1-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2" rel="nofollow">价格 <i style="background-position: -86px -108px; "></i> </a>
+						<a title=" 默认 " href="javascript:void(0);" class="sort"  name="0" rel="nofollow">价格 <i></i> </a>
 					</li>
 					<li class="tab">
-						<a title=" 默认 " href="/1-4-0-0-0-0-0-3-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2" rel="nofollow">评价 <i></i> </a>
+						<a title=" 默认 " href="javascript:void(0);" class="sort"  name="0" rel="nofollow">评价 <i></i> </a>
 					</li>
 					<li class="tab sjsj">
-						<a title=" 默认 " href="/1-4-0-0-0-0-0-4-0-0-0-0-0-0-0-0-0-0-0.htm?area=2#v2" rel="nofollow">上架时间 <i></i> </a>
+						<a title=" 默认 " href="javascript:void(0);" class="sort" name="0" rel="nofollow">上架时间 <i></i> </a>
 					</li>
 					<li pricearea="0" class="priceArea clearfix">
 						<span class="left clearfix"><i>¥</i><input type="text" id="minPrice" value=""></span>
@@ -206,18 +206,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span class="right clearfix"><i>¥</i><input type="text" id="maxPrice" value=""></span>
 						<span class="sure"><a rel="nofollow" href="javascript:;" class="ok">确定</a></span>
 					</li>
-				
-					<input type="hidden" id="price" value="">
-					<input type="hidden" id="AB" value="0">
-					<input type="hidden" id="ruleKey" value="a">
-					<input type="hidden" id="assKey" value="">
-				    <!-- 
-					<li class="page">
-						<p><span class="cur">1</span><span>/</span><span class="total">2</span></p>											
-				    	<a style="background-position: 0px -142px; " href="javascript:;" class="btn prev"></a> 
-				    	<a style="background-position: -35px -142px; " href="/1-4-0-0-0-0-0-0-0-0-0-0.htm?pageNum=2&amp;area=2" class="btn next"></a>
-				    </li>
-				    -->
 				</ul>
 				<div class="new_distBox">
 					<label class="new_lab"><input type="checkbox" id="ynProduct">&nbsp;仅显示有货</label>
@@ -265,6 +253,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
       </div>
  </div>
+ <form id="search" action="<%=path%>/search/searchAction!lists.dhtml" target="_self">
+ 	<input type="hidden" name="cateId" id="cateId" value="<s:property value='cateId'/>" />
+ 	<input type="hidden" name="brandIds" id="brandIds" value="<s:property value='brandIds'/>" />
+ 	<input type="hidden" name="lowPrice" id="lowPrice" value="<s:property value='lowPrice'/>" />
+ 	<input type="hidden" name="highPrice" id="highPrice" value="<s:property value='highPrice'/>" />
+ 	<input type="hidden" name="attrValueIds" id="attrValueIds" value="<s:property value='attrValueIds'/>" />
+ 	<input type="hidden" name="orderType" id="orderType" value="<s:property value='orderType'/>" />
+ 	<input type="hidden" name="asc" id="asc" value="<s:property value='asc'/>" />
+ 	<input type="hidden" name="pageNo" id="pageNo" value="<s:property value='pageNo'/>" />
+ </form>
  <jsp:include page="/page/foot.jsp" />
 </body>
 </html>

@@ -42,6 +42,8 @@ public class Brand extends BasicDto{
 	private Date lastDate;
 	
 	private BrandInfo brandInfo;
+	
+	private boolean checked;
 
 	public Integer getId() {
 		return id;
@@ -177,6 +179,14 @@ public class Brand extends BasicDto{
 
 	public void setBrandInfo(BrandInfo brandInfo) {
 		this.brandInfo = brandInfo;
+	}
+
+	public boolean isChecked() {
+		return checked;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
 	}
 	
 }

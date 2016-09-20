@@ -674,13 +674,13 @@ public class SearchServiceImpl implements SearchService{
 			if(searchPojo.getOrderType() != null){
 				String sortFieldName = null;
 				SortField.Type type = null;
-				if(searchPojo.getOrderType() == 0){
+				if(searchPojo.getOrderType() == 0 || searchPojo.getOrderType() == 1){
 					sortFieldName="count_sale";
 					type = SortField.Type.INT;
-				}else if(searchPojo.getOrderType() == 1){
+				}else if(searchPojo.getOrderType() == 2){
 					sortFieldName="shopPrice";
 					type = SortField.Type.DOUBLE;
-				}else if(searchPojo.getOrderType() == 2){
+				}else if(searchPojo.getOrderType() == 3){
 					sortFieldName="count_comment";
 					type = SortField.Type.INT;
 				}else if(searchPojo.getOrderType() == 4){

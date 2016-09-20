@@ -584,3 +584,10 @@
     padding-left: 32px;
     width: 76px;
 }
+.item_checked{
+	background-color: #c41921;
+    color: #fff!important;
+    display: block;
+    text-align: center;
+    padding:1px 2px;
+}
