@@ -8,6 +8,18 @@ $(function(){
 	    	 $(".categoryBox_out").hide();
 	     }
 	);
+	
+	var sortIndex = $("#orderType").val();
+	var asc = $("#asc").val();
+	$(".order li:eq("+sortIndex+")").addClass("first");
+	if(asc == 0){
+		$(".order li:eq("+sortIndex+")").find("a").attr("name","0");
+		$(".order li:eq("+sortIndex+")").find("i").css("background-position","-65px -108px");
+	}else{
+		$(".order li:eq("+sortIndex+")").find("a").attr("name","1");
+		$(".order li:eq("+sortIndex+")").find("i").css("background-position","-86px -108px");
+	}
+	
 	$(".choose").hover(
 		function(){
 			$(this).addClass("item_checked");
@@ -108,6 +120,27 @@ $(function(){
 		$(this).parent().remove();
 		 
 	});
-	
+	$("#minPrice,#maxPrice").blur(function(){
+		var regExp = /^(([1-9]\d*)|0|([0-9]\d*\.\d{1,2}))$/; 
+		if(!regExp.test($.trim($(this).val()))){
+			$(this).val("");
+			alert("提示：价格只能为数值！");
+			return false;
+		}
+		if($.trim($("#minPrice").val()) != '' && $.trim($("#maxPrice").val())){
+			if(parseFloat($.trim($("#minPrice").val())) > parseFloat($.trim($("#maxPrice").val()))){
+				alert("提示：起始价格不能高于终止价格！");
+			}
+		}
+	});
 });
+function search(){
+	if($.trim($("#minPrice").val()) != ''){
+		$("#lowPrice").val($.trim($("#minPrice").val()));
+	}
+	if($.trim($("#maxPrice").val()) != ''){
+		$("#highPrice").val($.trim($("#maxPrice").val()));
+	}
+    $("#searchForm").submit();
+}
 

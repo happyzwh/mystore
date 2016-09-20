@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="javascript:void(0);"><span class="type">品牌：<s:property value='#brand.name'/></span><span name="brand_<s:property value='#brand.id'/>" title="<s:property value='#brand.name'/>" class="remove"></span></a>
 					</s:iterator>
 					<s:iterator value="searchPojo.selectedCateAttrNames" id="attr" status="ind">
-						<a href="javascript:void(0);"><span class="type"><s:property value='attr.name'/>：<s:property value='attr.value'/></span><span name="attr_<s:property value='attr.vid'/>" title="<s:property value='attr.value'/>" class="remove"></span></a>
+						<a href="javascript:void(0);"><span class="type"><s:property value='#attr.get("name")'/>：<s:property value='#attr.get("value")'/></span><span name="attr_<s:property value='#attr.get("vid")'/>" title="<s:property value='#attr.get("value")'/>" class="remove"></span></a>
 					</s:iterator>
 				</div>
       		</div>
@@ -185,26 +185,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</s:if>
       		<div id="order" class="order">
       			<ul class="clearfix">
-					<li class="tab first ">
+					<li class="tab">
 						<a title="默认排序" href="javascript:void(0);" class="sort" name="0" rel="nofollow">默认排序</a>
 					</li>
 					<li class="tab">
 						<a title=" 默认 " href="javascript:void(0);" class="sort"  name="0" rel="nofollow">销量 <i></i> </a>
 					</li>
-					<li class="tab jg">
+					<li class="tab">
 						<a title=" 默认 " href="javascript:void(0);" class="sort"  name="0" rel="nofollow">价格 <i></i> </a>
 					</li>
 					<li class="tab">
 						<a title=" 默认 " href="javascript:void(0);" class="sort"  name="0" rel="nofollow">评价 <i></i> </a>
 					</li>
-					<li class="tab sjsj">
+					<li class="tab">
 						<a title=" 默认 " href="javascript:void(0);" class="sort" name="0" rel="nofollow">上架时间 <i></i> </a>
 					</li>
 					<li pricearea="0" class="priceArea clearfix">
 						<span class="left clearfix"><i>¥</i><input type="text" id="minPrice" value=""></span>
 						<span class="zhi"></span>
 						<span class="right clearfix"><i>¥</i><input type="text" id="maxPrice" value=""></span>
-						<span class="sure"><a rel="nofollow" href="javascript:;" class="ok">确定</a></span>
+						<span class="sure"><a rel="nofollow" href="javascript:search();" class="ok">确定</a></span>
 					</li>
 				</ul>
 				<div class="new_distBox">
@@ -253,7 +253,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
       </div>
  </div>
- <form id="search" action="<%=path%>/search/searchAction!lists.dhtml" target="_self">
+ <form id="searchForm" action="<%=path%>/search/searchAction!lists.dhtml" method="post" target="_self">
  	<input type="hidden" name="cateId" id="cateId" value="<s:property value='cateId'/>" />
  	<input type="hidden" name="brandIds" id="brandIds" value="<s:property value='brandIds'/>" />
  	<input type="hidden" name="lowPrice" id="lowPrice" value="<s:property value='lowPrice'/>" />

@@ -245,7 +245,9 @@ public class SearchAction extends BaseAction{
 				List<Integer> brands = new ArrayList<Integer>();
 				String[] ids = brandIds.split(",");
 				for(String s:ids){
-					brands.add(Integer.valueOf(s));
+					if(StringUtils.isNotBlank(s)){
+						brands.add(Integer.valueOf(s));
+					}
 				}
 				searchPojo.setBrandIds(brands);
 			}
@@ -254,7 +256,9 @@ public class SearchAction extends BaseAction{
 				List<Integer> attrValues = new ArrayList<Integer>();
 				String[] ids = attrValueIds.split(",");
 				for(String s:ids){
-					attrValues.add(Integer.valueOf(s));
+					if(StringUtils.isNotBlank(s)){
+						attrValues.add(Integer.valueOf(s));
+					}
 				}
 				searchPojo.setAttrValueIds(attrValues);
 			}
@@ -274,15 +278,17 @@ public class SearchAction extends BaseAction{
 				String[] ids = brandIds.split(",");
 				searchPojo.setSelectedBrands(new ArrayList<Brand>());
 				for(String s:ids){
-					searchPojo.getSelectedBrands().add(brandService.getBrandById(Integer.valueOf(s)));
+					if(StringUtils.isNotBlank(s)){
+						searchPojo.getSelectedBrands().add(brandService.getBrandById(Integer.valueOf(s)));
+					}
 				}
 			}
 			
 			List<Brand> allBrandlist = brandService.selectBrandListByCateId(cateId);
 			if(allBrandlist != null && allBrandlist.size() > 0){
 				for(Brand brand:allBrandlist){
-					if((","+brandIds+",").indexOf(","+String.valueOf(brand.getId())+",") != -1){
-						allBrandlist.remove(brand);
+					if(brandIds.indexOf(","+String.valueOf(brand.getId())+",") != -1){
+						brand.setChecked(true);
 					}
 				}
 			}
@@ -318,24 +324,27 @@ public class SearchAction extends BaseAction{
 					for(int i=0;i<vids.length;i++){
 						String vid = vids[i];
 						String value = values[i];
-						if((","+attrValueIds+",").indexOf(","+vid+",") != -1){
+						
+						if(!searchPojo.getSelectCateAttrs().containsKey(baid)){
+							searchPojo.getSelectCateAttrs().put(baid, new ArrayList<Map<String,Object>>());
+						}
+							
+						Map<String,Object> selectAttrMap = new HashMap<String,Object>();
+						searchPojo.getSelectCateAttrs().get(baid).add(selectAttrMap);
+							
+						selectAttrMap.put("vid", vid);
+						selectAttrMap.put("value", value);
+						
+						if(StringUtils.isNotBlank(attrValueIds) && attrValueIds.indexOf(","+vid+",") != -1){
 							Map<String,String> seledAttrMap = new HashMap<String,String>();
 							searchPojo.getSelectedCateAttrNames().add(seledAttrMap);
 							seledAttrMap.put("baid", baid);
 							seledAttrMap.put("name", name);
 							seledAttrMap.put("vid", vid);
-							seledAttrMap.put("value", value);	
-						}else{
-							if(!searchPojo.getSelectCateAttrs().containsKey(baid)){
-								searchPojo.getSelectCateAttrs().put(baid, new ArrayList<Map<String,Object>>());
-							}
+							seledAttrMap.put("value", value);
 							
-							Map<String,Object> selectAttrMap = new HashMap<String,Object>();
-							searchPojo.getSelectCateAttrs().get(baid).add(selectAttrMap);
-							
-							selectAttrMap.put("vid", vid);
-							selectAttrMap.put("value", value);
-						}
+							selectAttrMap.put("checked", true);
+						}	
 					}
 				}
 			}
