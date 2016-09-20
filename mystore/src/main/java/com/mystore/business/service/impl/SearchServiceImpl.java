@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.DoubleField;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;
 import org.apache.lucene.index.DirectoryReader;
@@ -200,20 +201,22 @@ public class SearchServiceImpl implements SearchService{
 					 
 					 if(docPojo.getShopPrice() != null){
 						 FieldType shopPrice_fieldType = new FieldType(); 
+						 shopPrice_fieldType.setNumericType(FieldType.NumericType.DOUBLE);
 						 shopPrice_fieldType.setIndexed(true);
 						 shopPrice_fieldType.setTokenized(false);
 						 shopPrice_fieldType.setStored(true); 
-						 Field shopPrice_field = new Field("shopPrice", String.valueOf(docPojo.getShopPrice()), shopPrice_fieldType); 
+						 Field shopPrice_field = new DoubleField("shopPrice", docPojo.getShopPrice(), shopPrice_fieldType); 
 						 doc.add(shopPrice_field);
 						 
 					 }
 					 
 					 if(docPojo.getMarkPrice() != null){
 						 FieldType markPrice_fieldType = new FieldType(); 
+						 markPrice_fieldType.setNumericType(FieldType.NumericType.DOUBLE);
 						 markPrice_fieldType.setIndexed(true);
 						 markPrice_fieldType.setTokenized(false);
 						 markPrice_fieldType.setStored(true); 
-						 Field markPrice_field = new Field("markPrice", String.valueOf(docPojo.getMarkPrice()), markPrice_fieldType); 
+						 Field markPrice_field = new DoubleField("markPrice", docPojo.getMarkPrice(), markPrice_fieldType); 
 						 doc.add(markPrice_field);
 						 
 					 }
@@ -308,8 +311,16 @@ public class SearchServiceImpl implements SearchService{
 							 
 							 for(Map<String,Object> map:attrMap ){
 								 attrName.append(String.valueOf(map.get("name"))).append(" ");
-								 attrValue.append(String.valueOf(map.get("value"))).append(" ");
-								 attrValueId.append(String.valueOf(map.get("vid"))).append(" ");
+								 
+								 String[] values = String.valueOf(map.get("value")).split(",");
+								 for(String s:values){
+									 attrValue.append(s).append(" ");
+								 }
+								 
+								 String[] vids = String.valueOf(map.get("vid")).split(",");
+								 for(String s:vids){
+									 attrValueId.append(s).append(" ");
+								 }
 							 }
 							 
 							 if(StringUtils.isNotBlank(attrName)){

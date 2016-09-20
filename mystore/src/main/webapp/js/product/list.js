@@ -122,12 +122,12 @@ $(function(){
 	});
 	$("#minPrice,#maxPrice").blur(function(){
 		var regExp = /^(([1-9]\d*)|0|([0-9]\d*\.\d{1,2}))$/; 
-		if(!regExp.test($.trim($(this).val()))){
+		if($.trim($(this).val()) != '' && !regExp.test($.trim($(this).val()))){
 			$(this).val("");
 			alert("提示：价格只能为数值！");
 			return false;
 		}
-		if($.trim($("#minPrice").val()) != '' && $.trim($("#maxPrice").val())){
+		if($.trim($("#minPrice").val()) != '' && $.trim($("#maxPrice").val()) != ''){
 			if(parseFloat($.trim($("#minPrice").val())) > parseFloat($.trim($("#maxPrice").val()))){
 				alert("提示：起始价格不能高于终止价格！");
 			}
@@ -135,12 +135,26 @@ $(function(){
 	});
 });
 function search(){
-	if($.trim($("#minPrice").val()) != ''){
-		$("#lowPrice").val($.trim($("#minPrice").val()));
+	var regExp = /^(([1-9]\d*)|0|([0-9]\d*\.\d{1,2}))$/;
+	if($.trim($("#minPrice").val()) != '' && !regExp.test($.trim($("#minPrice").val()))){
+		$("#minPrice").val("");
+		alert("提示：价格只能为数值！");
+		return false;
 	}
-	if($.trim($("#maxPrice").val()) != ''){
-		$("#highPrice").val($.trim($("#maxPrice").val()));
+	if($.trim($("#maxPrice").val()) != '' && !regExp.test($.trim($("#maxPrice").val()))){
+		$("#maxPrice").val("");
+		alert("提示：价格只能为数值！");
+		return false;
 	}
-    $("#searchForm").submit();
+	if($.trim($("#minPrice").val()) != '' && $.trim($("#maxPrice").val())){
+		if(parseFloat($.trim($("#minPrice").val())) > parseFloat($.trim($("#maxPrice").val()))){
+			alert("提示：起始价格不能高于终止价格！");
+			return false;
+		}
+	}
+	$("#lowPrice").val($.trim($("#minPrice").val()));
+	$("#highPrice").val($.trim($("#maxPrice").val()));
+   
+	$("#searchForm").submit();
 }
 

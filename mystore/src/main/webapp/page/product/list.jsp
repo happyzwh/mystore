@@ -201,9 +201,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a title=" 默认 " href="javascript:void(0);" class="sort" name="0" rel="nofollow">上架时间 <i></i> </a>
 					</li>
 					<li pricearea="0" class="priceArea clearfix">
-						<span class="left clearfix"><i>¥</i><input type="text" id="minPrice" value=""></span>
+						<span class="left clearfix"><i>¥</i><input type="text" id="minPrice" value="<s:property value='lowPrice'/>"></span>
 						<span class="zhi"></span>
-						<span class="right clearfix"><i>¥</i><input type="text" id="maxPrice" value=""></span>
+						<span class="right clearfix"><i>¥</i><input type="text" id="maxPrice" value="<s:property value='highPrice'/>"></span>
 						<span class="sure"><a rel="nofollow" href="javascript:search();" class="ok">确定</a></span>
 					</li>
 				</ul>
