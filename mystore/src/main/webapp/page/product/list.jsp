@@ -127,7 +127,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		    <p class="tit">你已选择：</p>
       		    <div class="options">
       		        <s:iterator value="searchPojo.selectedBrands" id="brand" status="ind">
-						<a href="javascript:void(0);"><span class="type">品牌：<s:property value='#brand.name'/></span><span name="brand_<s:property value='#brand.id'/>" title="<s:property value='#brand.name'/>" class="remove"></span></a>
+      		            <s:if test="#brand.id != 0">
+							<a href="javascript:void(0);"><span class="type">品牌：<s:property value='#brand.name'/></span><span name="brand_<s:property value='#brand.id'/>" title="<s:property value='#brand.name'/>" class="remove"></span></a>
+					    </s:if>
 					</s:iterator>
 					<s:iterator value="searchPojo.selectedCateAttrNames" id="attr" status="ind">
 						<a href="javascript:void(0);"><span class="type"><s:property value='#attr.get("name")'/>：<s:property value='#attr.get("value")'/></span><span name="attr_<s:property value='#attr.get("vid")'/>" title="<s:property value='#attr.get("value")'/>" class="remove"></span></a>
@@ -155,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="proRight">
 										<ul class="clearfix">
 										    <s:iterator value="#cate.sons" id="son">
-												<li><a alt="<s:property value='#son.name'/>"  href="javascript:void(0);"><s:property value='#son.name'/></a></li>
+												<li><a alt="<s:property value='#son.name'/>"  href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='#son.id'/>-0-0-0-0-0-0-0"><s:property value='#son.name'/></a></li>
 											</s:iterator>
 										</ul>	
 									</div>

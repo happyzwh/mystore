@@ -28,10 +28,10 @@ public class CategoryServiceImpl implements CategoryService{
     private void getCategoryById(List<Category> list,Integer id){
     	Category cate = categoryMapper.getCateById(id);
     	if(cate != null){
-	    	list.add(cate);
 	    	if(cate.getPid() != null){
 	    		getCategoryById(list,cate.getPid());
 	    	}
+	    	list.add(cate);
     	}
     }
 	

@@ -118,7 +118,9 @@ public class SearchAction extends BaseAction{
 			cateId = Integer.valueOf(key[0]);
 			Integer brandId = Integer.valueOf(key[1]);
 			
-			brandIds = brandId.toString();
+			if(brandId != 0){
+				brandIds = brandId.toString();
+			}
 			
 			Integer id_country = Integer.valueOf(key[2]);
 			Integer id_province = Integer.valueOf(key[3]);
@@ -160,7 +162,7 @@ public class SearchAction extends BaseAction{
 			}
 			
 			List<Brand> allBrandlist = brandService.selectBrandListByCateId(cateId);
-			if(allBrandlist != null && allBrandlist.size() > 0){
+			if(StringUtils.isNotBlank(brandIds) && allBrandlist != null && allBrandlist.size() > 0){
 				for(Brand brand:allBrandlist){
 					if(brandIds.indexOf(","+String.valueOf(brand.getId())+",") != -1){
 						brand.setChecked(true);
@@ -263,7 +265,7 @@ public class SearchAction extends BaseAction{
 				searchPojo.setAttrValueIds(attrValues);
 			}
 			
-			Pager<SearchProPoJo> pager =  searchService.search(searchPojo, pageNo, 1);
+			Pager<SearchProPoJo> pager =  searchService.search(searchPojo, pageNo, pageSize);
 			
 			if(pager != null && pager.getResultList() != null && pager.getResultList().size() > 0){
 				  list = pager.getResultList();
@@ -285,7 +287,7 @@ public class SearchAction extends BaseAction{
 			}
 			
 			List<Brand> allBrandlist = brandService.selectBrandListByCateId(cateId);
-			if(allBrandlist != null && allBrandlist.size() > 0){
+			if(StringUtils.isNotBlank(brandIds) && allBrandlist != null && allBrandlist.size() > 0){
 				for(Brand brand:allBrandlist){
 					if(brandIds.indexOf(","+String.valueOf(brand.getId())+",") != -1){
 						brand.setChecked(true);
