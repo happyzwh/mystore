@@ -155,6 +155,12 @@ function search(){
 	$("#lowPrice").val($.trim($("#minPrice").val()));
 	$("#highPrice").val($.trim($("#maxPrice").val()));
    
+	$("#pageNo").val(1);
+	
+	$("#searchForm").submit();
+}
+function jumppage(pageNo){
+	$("#pageNo").val(pageNo);
 	$("#searchForm").submit();
 }
 

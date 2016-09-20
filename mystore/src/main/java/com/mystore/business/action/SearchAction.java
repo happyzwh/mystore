@@ -263,7 +263,7 @@ public class SearchAction extends BaseAction{
 				searchPojo.setAttrValueIds(attrValues);
 			}
 			
-			Pager<SearchProPoJo> pager =  searchService.search(searchPojo, pageNo, pageSize);
+			Pager<SearchProPoJo> pager =  searchService.search(searchPojo, pageNo, 1);
 			
 			if(pager != null && pager.getResultList() != null && pager.getResultList().size() > 0){
 				  list = pager.getResultList();
