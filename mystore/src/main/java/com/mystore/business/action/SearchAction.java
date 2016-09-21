@@ -178,9 +178,11 @@ public class SearchAction extends BaseAction{
 				
 				Map<String, String> selectCateAttrNames = new HashMap<String, String>();
 				searchPojo.setSelectCateAttrNames(selectCateAttrNames);
+				searchPojo.setSelectCateAttrIds(new ArrayList<String>());
 				
 				for(Map<String,Object> map:allAttrValue){
 					searchPojo.getSelectCateAttrNames().put(map.get("baid").toString(), map.get("name").toString());
+					searchPojo.getSelectCateAttrIds().add(map.get("baid").toString());
 				}
 			}
 			
@@ -198,6 +200,7 @@ public class SearchAction extends BaseAction{
 					String name = map.get("name").toString();
 					String[] vids = map.get("vid").toString().split(",");
 					String[] values = map.get("value").toString().split(",");
+					
 					for(int i=0;i<vids.length;i++){
 						String vid = vids[i];
 						String value = values[i];
@@ -317,12 +320,17 @@ public class SearchAction extends BaseAction{
 				searchPojo.setSelectedCateAttrNames(selectedCateAttrNames);
 				searchPojo.setSelectCateAttrs(selectCateAttrs);
 				
+				searchPojo.setSelectCateAttrIds(new ArrayList<String>());
+				
 				for(Map<String,Object> map:allAttrValue){
 					
 					String baid = map.get("baid").toString();
 					String name = map.get("name").toString();
 					String[] vids = map.get("vid").toString().split(",");
 					String[] values = map.get("value").toString().split(",");
+					
+					searchPojo.getSelectCateAttrIds().add(baid);
+					
 					for(int i=0;i<vids.length;i++){
 						String vid = vids[i];
 						String value = values[i];

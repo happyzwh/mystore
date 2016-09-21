@@ -166,22 +166,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 </s:iterator>
 	      		</div>
       		</s:if>
-      		<s:if test="searchPojo.selectCateAttrs.size() > 0">
+      		<s:if test="searchPojo.selectCateAttrIds.size() > 0">
 	      		<div class="moreS clearfix">
 	      			<p class="tit">更多选项</p>
 					<div class="moreOption wine clearfix">
-						<s:iterator value="searchPojo.selectCateAttrs" id="column">
-							<a href="javascript:void(0)" class="choose"><s:property value='searchPojo.selectCateAttrNames.get(key)'/><i></i></a>
-							<div class="box" style="display: none;">
-								<ul class="clearfix">
-									<s:iterator value="value" id="attr">
-										<li  class="selectable">
-											<a alt="<s:property value='searchPojo.selectCateAttrNames.get(key)'/>_<s:property value='#attr.get("value")'/>" <s:if test='#attr.get("checked")'>class="item_checked"</s:if> name="attr_<s:property value='#attr.get("vid")'/>" href="javascript:void(0);"><s:property value='#attr.get("value")'/></a>
-										</li>
-									</s:iterator>
-								</ul>
-							</div>
-						</s:iterator>
+						<s:iterator value="searchPojo.selectCateAttrIds" id="baid">
+								<a href="javascript:void(0)" class="choose"><s:property value='searchPojo.selectCateAttrNames.get(#baid)'/><i></i></a>
+								<div class="box" style="display: none;">
+									<ul class="clearfix">
+										<s:iterator value="searchPojo.selectCateAttrs.get(#baid)" id="attr">
+											<li  class="selectable">
+												<a alt="<s:property value='searchPojo.selectCateAttrNames.get(#baid)'/>_<s:property value='#attr.get("value")'/>" <s:if test='#attr.get("checked")'>class="item_checked"</s:if> name="attr_<s:property value='#attr.get("vid")'/>" href="javascript:void(0);"><s:property value='#attr.get("value")'/></a>
+											</li>
+										</s:iterator>
+									</ul>
+								</div>
+						</s:iterator>	
 					</div>
 				</div>
 			</s:if>
