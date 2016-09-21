@@ -150,10 +150,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 						 </div>
 				     </s:if>
+				     <s:if test="searchPojo.haseLeaf">
+						 <div style="display:block" class="selectLine2">
+							 <div class="proLeft">类型</div>
+							 <div class="proRight">
+								 <ul class="clearfix">  
+									 <s:iterator value="searchPojo.selectCates" id="cate">
+						     			 <s:if test="#cate.sons == null || #cate.sons.size() == 0"> 
+												<li><a alt="<s:property value='#cate.name'/>"  href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='#cate.id'/>-0-0-0-0-0-0-0"><s:property value='#cate.name'/></a></li>
+										 </s:if>
+						 			 </s:iterator>
+								 </ul>	
+							 </div>
+						 </div>
+					 </s:if>
 					 <s:iterator value="searchPojo.selectCates" id="cate">
 					     <s:if test="#cate.sons.size() > 0">
 							  <div style="display:block" class="selectLine2">
-									<div class="proLeft"><s:property value='#cate.name'/></div>
+									<div class="proLeft"><a style="color:#cf010e;" href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='#cate.id'/>-0-0-0-0-0-0-0"><s:property value='#cate.name'/></a></div>
 									<div class="proRight">
 										<ul class="clearfix">
 										    <s:iterator value="#cate.sons" id="son">

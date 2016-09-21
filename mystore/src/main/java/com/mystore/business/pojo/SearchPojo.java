@@ -46,6 +46,8 @@ public class SearchPojo implements java.io.Serializable{
 	//当前分类的所有属性id
 	private List<String> selectCateAttrIds;
 	
+	private Boolean haseLeaf;
+	
 	private Double lowPrice;
 	
 	private Double highPrice;
@@ -174,6 +176,24 @@ public class SearchPojo implements java.io.Serializable{
 
 	public void setSelectCateAttrIds(List<String> selectCateAttrIds) {
 		this.selectCateAttrIds = selectCateAttrIds;
+	}
+
+	public Boolean getHaseLeaf() {
+		if(haseLeaf != null)return haseLeaf;
+		if(selectCates != null && selectCates.size() > 0){
+			for(Category cate:selectCates){
+				if(cate.getSons() == null || cate.getSons().size() == 0){
+					haseLeaf = true;
+					return haseLeaf;
+				}
+			}
+			haseLeaf = false;
+		}
+		return haseLeaf;
+	}
+
+	public void setHaseLeaf(Boolean haseLeaf) {
+		this.haseLeaf = haseLeaf;
 	}
 	
 }
