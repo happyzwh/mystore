@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     <li class="li_last">3333</li>
 	                 </ul>
 	            </div>
-                <button class="button cw-icon" id="search" clstag="h|keycount|2015|03c"><i></i>搜索</button>
+                <button class="button cw-icon" id="topSearch" clstag="h|keycount|2015|03c"><i></i>搜索</button>
             </div>
             <div class="search_text">
                <ul>
@@ -306,5 +306,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
   </div>
 </div>
+<form id="topSearchForm" action="<%=path%>/search/searchAction!lists.dhtml" method="post" target="_self">
+	<input type="hidden" name="key" id="key" value="" />
+ 	<input type="hidden" name="pageNo" id="pageNo" value="1" />
+ </form>
 </body>
 </html>

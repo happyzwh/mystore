@@ -12,6 +12,8 @@ public class SearchPojo implements java.io.Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private String keys;
 
 	//选择的分类id
 	private Integer cateId;
@@ -194,6 +196,14 @@ public class SearchPojo implements java.io.Serializable{
 
 	public void setHaseLeaf(Boolean haseLeaf) {
 		this.haseLeaf = haseLeaf;
+	}
+
+	public String getKeys() {
+		return keys;
+	}
+
+	public void setKeys(String keys) {
+		this.keys = keys;
 	}
 	
 }

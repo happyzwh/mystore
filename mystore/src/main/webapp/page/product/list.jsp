@@ -136,8 +136,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:iterator>
 				</div>
       		</div>
-      		<s:if test="searchPojo.selectBrands.size() > 0 || searchPojo.selectCates.size() > 0">
-	      		<div class="select">
+ 
+	      	<div class="select">
+	      			<div style="display:block" class="selectLine2">
+		      		            <div class="proLeft">关键词</div>
+								<div class="proRight" style="padding:2px 0;">
+										<input type="text" style="float:left;margin-left:10px;height:30px;width:400px;border:1px solid #cf010e;" id="keywords" value="<s:property value='searchPojo.keys'/>"/>
+								</div>
+					</div>
 	      		     <s:if test="searchPojo.selectBrands.size() > 0">
 	      		         <div style="display:block" class="selectLine2">
 		      		            <div class="proLeft">品牌</div>
@@ -178,8 +184,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							  </div>
 						 </s:if>
 					 </s:iterator>
-	      		</div>
-      		</s:if>
+	      	</div>
+      		
       		<s:if test="searchPojo.selectCateAttrIds.size() > 0">
 	      		<div class="moreS clearfix">
 	      			<p class="tit">更多选项</p>
@@ -278,6 +284,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<input type="hidden" name="orderType" id="orderType" value="<s:property value='orderType'/>" />
  	<input type="hidden" name="asc" id="asc" value="<s:property value='asc'/>" />
  	<input type="hidden" name="pageNo" id="pageNo" value="<s:property value='pageNo'/>" />
+ 	<input type="hidden" name="key" id="keyword" value="<s:property value='searchPojo.keys'/>" />
  </form>
  <jsp:include page="/page/foot.jsp" />
 </body>

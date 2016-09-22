@@ -50,6 +50,8 @@ public class SearchAction extends BaseAction{
 	
 	private String keys;
 	
+	private String key;
+	
 	private Integer cateId;
 	
 	private String brandIds;
@@ -246,6 +248,8 @@ public class SearchAction extends BaseAction{
 			searchPojo.setOrderType(orderType);
 			searchPojo.setAsc(asc);
 			
+			searchPojo.setKeys(key);
+			
 			if(StringUtils.isNotBlank(brandIds)){
 				List<Integer> brands = new ArrayList<Integer>();
 				String[] ids = brandIds.split(",");
@@ -275,9 +279,11 @@ public class SearchAction extends BaseAction{
 				  pageInfo = PageInfo.setPage(pager.getPageNo(), pager.getPageSize(), pager.getPageCount(), pager.getRowCount());
 			}
 			
-			searchPojo.setSelectedCates(categoryService.getAllParentCategoryById(cateId));
+			if(cateId != null && cateId != 0){
+				searchPojo.setSelectedCates(categoryService.getAllParentCategoryById(cateId));
+			}
 			
-			searchPojo.setSelectCates(categoryService.getAllSonCategoryById(cateId==0?-1:cateId));
+			searchPojo.setSelectCates(categoryService.getAllSonCategoryById((cateId == null || cateId==0)?-1:cateId));
 			
 			if(StringUtils.isNotBlank(brandIds)){
 				String[] ids = brandIds.split(",");
@@ -452,6 +458,14 @@ public class SearchAction extends BaseAction{
 
 	public void setSearchPojo(SearchPojo searchPojo) {
 		this.searchPojo = searchPojo;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 }

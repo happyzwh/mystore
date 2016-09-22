@@ -651,6 +651,55 @@ public class SearchServiceImpl implements SearchService{
 			
 			booleanQuery.add(type_query, BooleanClause.Occur.MUST);
 			
+			String keys = searchPojo.getKeys();
+			if(StringUtils.isNotBlank(keys)){
+				
+				BooleanQuery keysBooleanQuery = new BooleanQuery();
+				
+				QueryParser name_queryParser = new QueryParser(Version.LUCENE_47, "name", analyzer);
+				Query name_query = name_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(name_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser enTitle_queryParser = new QueryParser(Version.LUCENE_47, "enTitle", analyzer);
+				Query enTitle_query = enTitle_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(enTitle_query, BooleanClause.Occur.SHOULD);
+	
+				QueryParser rome_queryParser = new QueryParser(Version.LUCENE_47, "rome", analyzer);
+				Query rome_query = rome_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(rome_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser jianPin_queryParser = new QueryParser(Version.LUCENE_47, "jianPin", analyzer);
+				Query jianPin_query = jianPin_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(jianPin_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser keyWords_queryParser = new QueryParser(Version.LUCENE_47, "keyWords", analyzer);
+				Query keyWords_query = keyWords_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(keyWords_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser sn_queryParser = new QueryParser(Version.LUCENE_47, "sn", analyzer);
+				Query sn_query = sn_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(sn_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser shortTitle_queryParser = new QueryParser(Version.LUCENE_47, "shortTitle", analyzer);
+				Query shortTitle_query = shortTitle_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(shortTitle_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser subTitle_queryParser = new QueryParser(Version.LUCENE_47, "subTitle", analyzer);
+				Query subTitle_query = subTitle_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(subTitle_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser attrName_queryParser = new QueryParser(Version.LUCENE_47, "attrName", analyzer);
+				Query attrName_query = attrName_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(attrName_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser attrValue_queryParser = new QueryParser(Version.LUCENE_47, "attrValue", analyzer);
+				Query attrValue_query = attrValue_queryParser.parse(String.valueOf(keys));
+				keysBooleanQuery.add(attrValue_query, BooleanClause.Occur.SHOULD);
+				
+				booleanQuery.add(keysBooleanQuery, BooleanClause.Occur.MUST);
+				
+			}
+			
 			if(searchPojo.getCateId() != null && searchPojo.getCateId() != 0){
 				
 				BooleanQuery idCateBooleanQuery = new BooleanQuery();

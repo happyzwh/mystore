@@ -156,6 +156,7 @@ function search(){
 	$("#highPrice").val($.trim($("#maxPrice").val()));
    
 	$("#pageNo").val(1);
+	$("#keyword").val($("#keywords").val());
 	
 	$("#searchForm").submit();
 }

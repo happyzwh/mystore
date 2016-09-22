@@ -74,4 +74,8 @@ $(function(){
 		    	 $(this).parent().parent().find(".catItem").eq($(this).index()-1).css({"border-left":"1px solid #ffffff"});
 		     }
      );
+     $("#topSearch").click(function(){
+    	 $("#key").val($.trim($("#keys").val()));
+    	 $("#topSearchForm").submit();
+     });
 });
