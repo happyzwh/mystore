@@ -651,7 +651,7 @@ public class SearchServiceImpl implements SearchService{
 			
 			booleanQuery.add(type_query, BooleanClause.Occur.MUST);
 			
-			if(searchPojo.getCateId() != null){
+			if(searchPojo.getCateId() != null && searchPojo.getCateId() != 0){
 				
 				BooleanQuery idCateBooleanQuery = new BooleanQuery();
 				
@@ -674,6 +674,8 @@ public class SearchServiceImpl implements SearchService{
 				BooleanQuery brandBooleanQuery = new BooleanQuery();
 				
 				for(Integer brandid:searchPojo.getBrandIds()){
+					
+					if(brandid == 0)continue;
 					
 					QueryParser id_brand_queryParser = new QueryParser(Version.LUCENE_47, "id_brand", analyzer);
 					Query id_brand_query = id_brand_queryParser.parse(String.valueOf(brandid));
