@@ -288,7 +288,7 @@ public class SearchServiceImpl implements SearchService{
 							 FieldType sortfieldType = new FieldType(); 
 							 sortfieldType.setIndexed(false);
 							 sortfieldType.setTokenized(false);
-							 sortfieldType.setStored(false); 
+							 sortfieldType.setStored(true); 
 							 Field sortfield = new Field("sort", String.valueOf(docPojo.getSort()), sortfieldType); 
 							 doc.add(sortfield);
 						 }

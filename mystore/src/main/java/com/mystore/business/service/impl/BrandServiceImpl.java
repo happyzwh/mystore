@@ -72,4 +72,10 @@ public class BrandServiceImpl implements BrandService{
 	    }	
     }
 
+	@Override
+	public List<Brand> selectAllBrandListByCateId(Integer cateId) {
+		// TODO Auto-generated method stub
+		return brandMapper.selectAllBrandListByCateId(cateId);
+	}
+
 }

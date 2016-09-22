@@ -19,6 +19,12 @@ public interface BrandService {
 	public List<Brand> selectBrandListByCateId(Integer cateId);
 	
 	/**
+	 * 根据分类求所有对象列表(含所有子分类)
+	 * 
+	 * */
+	public List<Brand> selectAllBrandListByCateId(Integer cateId);
+	
+	/**
 	 * 
 	 * 查询分类的所有父品牌
 	 * 

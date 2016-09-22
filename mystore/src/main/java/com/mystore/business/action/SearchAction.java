@@ -161,7 +161,7 @@ public class SearchAction extends BaseAction{
 				}
 			}
 			
-			List<Brand> allBrandlist = brandService.selectBrandListByCateId(cateId);
+			List<Brand> allBrandlist = brandService.selectAllBrandListByCateId(cateId);
 			if(StringUtils.isNotBlank(brandIds) && allBrandlist != null && allBrandlist.size() > 0){
 				for(Brand brand:allBrandlist){
 					if(brandIds.indexOf(","+String.valueOf(brand.getId())+",") != -1){
@@ -289,7 +289,7 @@ public class SearchAction extends BaseAction{
 				}
 			}
 			
-			List<Brand> allBrandlist = brandService.selectBrandListByCateId(cateId);
+			List<Brand> allBrandlist = brandService.selectAllBrandListByCateId(cateId);
 			if(StringUtils.isNotBlank(brandIds) && allBrandlist != null && allBrandlist.size() > 0){
 				for(Brand brand:allBrandlist){
 					if(brandIds.indexOf(","+String.valueOf(brand.getId())+",") != -1){

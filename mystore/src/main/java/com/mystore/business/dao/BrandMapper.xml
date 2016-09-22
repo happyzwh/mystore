@@ -47,6 +47,28 @@
 		from brand  
 		where id_cate = #{value}
 	</select>
+	<select id="selectAllBrandListByCateId" parameterType="int" resultType="brand">
+		select distinct
+		    b.id,
+		    b.id_cate,
+		    b.pid,
+		    b.pids,
+		    b.name,
+		    b.rome,
+		    b.jianpin as 'jianPin',
+		    b.enname as 'enName',
+		    b.keywords as 'keyWords',
+		    b.descr,
+		    b.status,
+		    b.path_logoimg_fir,
+		    b.path_logoimg_sec,
+		    b.url,
+		    b.sort,
+		    b.createdate as 'createDate',
+		    b.lastdate as 'lastDate'
+		from brand b ,category c
+		where b.id_cate IN (SELECT t.id FROM category t WHERE FIND_IN_SET(#{value},t.pids) ) OR b.id_cate = #{value};
+	</select>
 	<select id="selectBrandListByPid" parameterType="int" resultType="brand">
 		select
 		    id,

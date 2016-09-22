@@ -19,6 +19,12 @@ public interface BrandMapper {
 	public List<Brand> selectBrandListByCateId(Integer cateId);
 	
 	/**
+	 * 根据分类求所有对象列表(含所有子分类)
+	 * 
+	 * */
+	public List<Brand> selectAllBrandListByCateId(Integer cateId);
+	
+	/**
 	 * 根据父id求对象列表
 	 * 
 	 * */

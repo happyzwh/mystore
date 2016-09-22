@@ -165,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 </div>
 					 </s:if>
 					 <s:iterator value="searchPojo.selectCates" id="cate">
-					     <s:if test="#cate.sons.size() > 0">
+					     <s:if test="#cate.sons != null && #cate.sons.size() > 0">
 							  <div style="display:block" class="selectLine2">
 									<div class="proLeft"><a style="color:#cf010e;" href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='#cate.id'/>-0-0-0-0-0-0-0"><s:property value='#cate.name'/></a></div>
 									<div class="proRight">
