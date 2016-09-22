@@ -148,7 +148,7 @@ public class SearchAction extends BaseAction{
 			
 			searchPojo.setSelectedCates(categoryService.getAllParentCategoryById(cateId));
 			
-			searchPojo.setSelectCates(categoryService.getAllSonCategoryById(cateId));
+			searchPojo.setSelectCates(categoryService.getAllSonCategoryById(cateId==0?-1:cateId));
 			
 			if(StringUtils.isNotBlank(brandIds)){
 				brandIds=","+brandIds+",";
@@ -277,7 +277,7 @@ public class SearchAction extends BaseAction{
 			
 			searchPojo.setSelectedCates(categoryService.getAllParentCategoryById(cateId));
 			
-			searchPojo.setSelectCates(categoryService.getAllSonCategoryById(cateId));
+			searchPojo.setSelectCates(categoryService.getAllSonCategoryById(cateId==0?-1:cateId));
 			
 			if(StringUtils.isNotBlank(brandIds)){
 				String[] ids = brandIds.split(",");
