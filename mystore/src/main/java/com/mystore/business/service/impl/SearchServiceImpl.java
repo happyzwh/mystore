@@ -38,10 +38,12 @@ import com.mystore.business.common.ConfigReader;
 import com.mystore.business.common.Pager;
 import com.mystore.business.dao.ProductMapper;
 import com.mystore.business.dao.SearchMapper;
+import com.mystore.business.dto.Brand;
 import com.mystore.business.dto.Category;
 import com.mystore.business.dto.DocPoJo;
 import com.mystore.business.dto.SearchProPoJo;
 import com.mystore.business.pojo.SearchPojo;
+import com.mystore.business.service.BrandService;
 import com.mystore.business.service.CategoryService;
 import com.mystore.business.service.SearchService;
 import com.mystore.business.util.CommUtils;
@@ -54,7 +56,9 @@ public class SearchServiceImpl implements SearchService{
 	
 	@Autowired
 	private CategoryService categoryService;
-
+	
+	@Autowired
+	private BrandService brandService;
 	
 	@Autowired
 	private ProductMapper productMapper;
@@ -133,7 +137,7 @@ public class SearchServiceImpl implements SearchService{
 						 FieldType rome_fieldType = new FieldType(); 
 						 rome_fieldType.setIndexed(true);
 						 rome_fieldType.setTokenized(true);
-						 rome_fieldType.setStored(true); 
+						 rome_fieldType.setStored(false); 
 						 Field rome_field = new Field("rome", docPojo.getRome(), rome_fieldType); 
 						 doc.add(rome_field);
 						 
@@ -143,7 +147,7 @@ public class SearchServiceImpl implements SearchService{
 						 FieldType jianPin_fieldType = new FieldType(); 
 						 jianPin_fieldType.setIndexed(true);
 						 jianPin_fieldType.setTokenized(true);
-						 jianPin_fieldType.setStored(true); 
+						 jianPin_fieldType.setStored(false); 
 						 Field jianPin_field = new Field("jianPin", docPojo.getJianPin(), jianPin_fieldType); 
 						 doc.add(jianPin_field);
 						 
@@ -153,7 +157,7 @@ public class SearchServiceImpl implements SearchService{
 						 FieldType keyWords_fieldType = new FieldType(); 
 						 keyWords_fieldType.setIndexed(true);
 						 keyWords_fieldType.setTokenized(true);
-						 keyWords_fieldType.setStored(true); 
+						 keyWords_fieldType.setStored(false); 
 						 Field keyWords_field = new Field("keyWords", docPojo.getKeyWords(), keyWords_fieldType); 
 						 doc.add(keyWords_field);
 						 
@@ -235,7 +239,7 @@ public class SearchServiceImpl implements SearchService{
 						 FieldType id_countryfieldType = new FieldType(); 
 						 id_countryfieldType.setIndexed(true);
 						 id_countryfieldType.setTokenized(false);
-						 id_countryfieldType.setStored(true); 
+						 id_countryfieldType.setStored(false); 
 						 Field id_countryfield = new Field("id_country", String.valueOf(docPojo.getId_country()), id_countryfieldType); 
 						 doc.add(id_countryfield);
 					 }
@@ -244,7 +248,7 @@ public class SearchServiceImpl implements SearchService{
 						 FieldType id_provincefieldType = new FieldType(); 
 						 id_provincefieldType.setIndexed(true);
 						 id_provincefieldType.setTokenized(false);
-						 id_provincefieldType.setStored(true); 
+						 id_provincefieldType.setStored(false); 
 						 Field id_provincefield = new Field("id_province", String.valueOf(docPojo.getId_province()), id_provincefieldType); 
 						 doc.add(id_provincefield);
 					 }
@@ -259,9 +263,24 @@ public class SearchServiceImpl implements SearchService{
 							 FieldType ids_catefieldType = new FieldType(); 
 							 ids_catefieldType.setIndexed(true);
 							 ids_catefieldType.setTokenized(true);
-							 ids_catefieldType.setStored(true); 
+							 ids_catefieldType.setStored(false); 
 							 Field ids_catefield = new Field("ids_cate",ids_cate.toString() , ids_catefieldType); 
 							 doc.add(ids_catefield);
+							 
+						 }
+						 
+						 List<Brand> brand_list = brandService.getAllParentBrandById(docPojo.getId_brand());
+						 if(brand_list != null && brand_list.size() > 0){
+							 StringBuilder ids_brand = new StringBuilder("");
+							 for(Brand brand:brand_list){
+								 ids_brand.append(brand.getId()).append(" "); 
+							 }
+							 FieldType ids_BrandfieldType = new FieldType(); 
+							 ids_BrandfieldType.setIndexed(true);
+							 ids_BrandfieldType.setTokenized(true);
+							 ids_BrandfieldType.setStored(false); 
+							 Field ids_brandfield = new Field("ids_brand",ids_brand.toString() , ids_BrandfieldType); 
+							 doc.add(ids_brandfield);
 							 
 						 }
 						 
@@ -269,7 +288,7 @@ public class SearchServiceImpl implements SearchService{
 							 FieldType sortfieldType = new FieldType(); 
 							 sortfieldType.setIndexed(false);
 							 sortfieldType.setTokenized(false);
-							 sortfieldType.setStored(true); 
+							 sortfieldType.setStored(false); 
 							 Field sortfield = new Field("sort", String.valueOf(docPojo.getSort()), sortfieldType); 
 							 doc.add(sortfield);
 						 }
@@ -296,7 +315,7 @@ public class SearchServiceImpl implements SearchService{
 							 FieldType creditfieldType = new FieldType(); 
 							 creditfieldType.setIndexed(false);
 							 creditfieldType.setTokenized(false);
-							 creditfieldType.setStored(true); 
+							 creditfieldType.setStored(false); 
 							 Field creditfield = new Field("credit", String.valueOf(docPojo.getCredit()), creditfieldType); 
 							 doc.add(creditfield);
 						 }
@@ -327,7 +346,7 @@ public class SearchServiceImpl implements SearchService{
 								  FieldType attrNamefieldType = new FieldType(); 
 								  attrNamefieldType.setIndexed(true);
 								  attrNamefieldType.setTokenized(true);
-								  attrNamefieldType.setStored(true); 
+								  attrNamefieldType.setStored(false); 
 								  Field attrNamefield = new Field("attrName", attrName.toString(), attrNamefieldType); 
 								  doc.add(attrNamefield);
 							 }
@@ -336,7 +355,7 @@ public class SearchServiceImpl implements SearchService{
 								  FieldType attrValuefieldType = new FieldType(); 
 								  attrValuefieldType.setIndexed(true);
 								  attrValuefieldType.setTokenized(true);
-								  attrValuefieldType.setStored(true); 
+								  attrValuefieldType.setStored(false); 
 								  Field attrValuefield = new Field("attrValue", attrValue.toString(), attrValuefieldType); 
 								  doc.add(attrValuefield);
 							 }
@@ -345,7 +364,7 @@ public class SearchServiceImpl implements SearchService{
 								  FieldType attrValueIdfieldType = new FieldType(); 
 								  attrValueIdfieldType.setIndexed(true);
 								  attrValueIdfieldType.setTokenized(true);
-								  attrValueIdfieldType.setStored(true); 
+								  attrValueIdfieldType.setStored(false); 
 								  Field attrValueIdfield = new Field("attrValueId", attrValueId.toString(), attrValueIdfieldType); 
 								  doc.add(attrValueIdfield);
 							 }
@@ -398,26 +417,36 @@ public class SearchServiceImpl implements SearchService{
 				
 				BooleanQuery idCateBooleanQuery = new BooleanQuery();
 				
+				QueryParser id_cate_queryParser = new QueryParser(Version.LUCENE_47, "id_cate", analyzer);
+				Query id_cate_query = id_cate_queryParser.parse(String.valueOf(id_category));
+				
+				idCateBooleanQuery.add(id_cate_query, BooleanClause.Occur.SHOULD);
+				
 				QueryParser ids_cate_queryParser = new QueryParser(Version.LUCENE_47, "ids_cate", analyzer);
 				ids_cate_queryParser.setDefaultOperator(QueryParser.OR_OPERATOR);
 				Query ids_cate_query = ids_cate_queryParser.parse(String.valueOf(id_category));
 				
 				idCateBooleanQuery.add(ids_cate_query, BooleanClause.Occur.SHOULD);
 				
-				QueryParser id_cate_queryParser = new QueryParser(Version.LUCENE_47, "id_cate", analyzer);
-				Query id_cate_query = id_cate_queryParser.parse(String.valueOf(id_category));
-				
-				idCateBooleanQuery.add(id_cate_query, BooleanClause.Occur.SHOULD);
-				
-				
 				booleanQuery.add(idCateBooleanQuery, BooleanClause.Occur.MUST);
 			}
 			
 			if(id_brand != null && id_brand != 0){
+				
+				BooleanQuery idBrandBooleanQuery = new BooleanQuery();
+				
 				QueryParser id_brand_queryParser = new QueryParser(Version.LUCENE_47, "id_brand", analyzer);
 				Query id_brand_query = id_brand_queryParser.parse(String.valueOf(id_brand));
 				
-				booleanQuery.add(id_brand_query, BooleanClause.Occur.MUST);
+				idBrandBooleanQuery.add(id_brand_query, BooleanClause.Occur.SHOULD);
+				
+				QueryParser ids_brand_queryParser = new QueryParser(Version.LUCENE_47, "ids_brand", analyzer);
+				ids_brand_queryParser.setDefaultOperator(QueryParser.OR_OPERATOR);
+				Query ids_brand_query = ids_brand_queryParser.parse(String.valueOf(id_brand));
+				
+				idBrandBooleanQuery.add(ids_brand_query, BooleanClause.Occur.SHOULD);
+				
+				booleanQuery.add(idBrandBooleanQuery, BooleanClause.Occur.MUST);
 			}
 			
 			if(id_country != null && id_country != 0){
@@ -626,17 +655,16 @@ public class SearchServiceImpl implements SearchService{
 				
 				BooleanQuery idCateBooleanQuery = new BooleanQuery();
 				
+				QueryParser id_cate_queryParser = new QueryParser(Version.LUCENE_47, "id_cate", analyzer);
+				Query id_cate_query = id_cate_queryParser.parse(String.valueOf(searchPojo.getCateId()));
+				
+				idCateBooleanQuery.add(id_cate_query, BooleanClause.Occur.SHOULD);
+
 				QueryParser ids_cate_queryParser = new QueryParser(Version.LUCENE_47, "ids_cate", analyzer);
 				ids_cate_queryParser.setDefaultOperator(QueryParser.OR_OPERATOR);
 				Query ids_cate_query = ids_cate_queryParser.parse(String.valueOf(searchPojo.getCateId()));
 				
 				idCateBooleanQuery.add(ids_cate_query, BooleanClause.Occur.SHOULD);
-				
-				QueryParser id_cate_queryParser = new QueryParser(Version.LUCENE_47, "id_cate", analyzer);
-				Query id_cate_query = id_cate_queryParser.parse(String.valueOf(searchPojo.getCateId()));
-				
-				idCateBooleanQuery.add(id_cate_query, BooleanClause.Occur.SHOULD);
-				
 				
 				booleanQuery.add(idCateBooleanQuery, BooleanClause.Occur.MUST);
 			}
@@ -646,10 +674,18 @@ public class SearchServiceImpl implements SearchService{
 				BooleanQuery brandBooleanQuery = new BooleanQuery();
 				
 				for(Integer brandid:searchPojo.getBrandIds()){
+					
 					QueryParser id_brand_queryParser = new QueryParser(Version.LUCENE_47, "id_brand", analyzer);
 					Query id_brand_query = id_brand_queryParser.parse(String.valueOf(brandid));
 					
 					brandBooleanQuery.add(id_brand_query, BooleanClause.Occur.SHOULD);
+					
+					QueryParser ids_brand_queryParser = new QueryParser(Version.LUCENE_47, "ids_brand", analyzer);
+					ids_brand_queryParser.setDefaultOperator(QueryParser.OR_OPERATOR);
+					Query ids_brand_query = ids_brand_queryParser.parse(String.valueOf(brandid));
+					
+					brandBooleanQuery.add(ids_brand_query, BooleanClause.Occur.SHOULD);
+					
 				}
 				
 				booleanQuery.add(brandBooleanQuery, BooleanClause.Occur.MUST);

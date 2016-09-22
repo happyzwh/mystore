@@ -17,5 +17,11 @@ public interface BrandMapper {
 	 * 
 	 * */
 	public List<Brand> selectBrandListByCateId(Integer cateId);
+	
+	/**
+	 * 根据父id求对象列表
+	 * 
+	 * */
+	public List<Brand> selectBrandListByPid(Integer pid);
 
 }

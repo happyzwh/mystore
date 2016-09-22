@@ -7,6 +7,7 @@
 		select
 		    id,
 		    pid,
+		    pids,
 		    name,
 		    rome,
 		    jianpin as 'jianPin',
@@ -24,6 +25,7 @@
 		select
 		    id,
 		    pid,
+		    pids,
 		    name,
 		    rome,
 		    jianpin as 'jianPin',

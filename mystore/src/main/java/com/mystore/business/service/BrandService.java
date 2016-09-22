@@ -17,5 +17,19 @@ public interface BrandService {
 	 * 
 	 * */
 	public List<Brand> selectBrandListByCateId(Integer cateId);
+	
+	/**
+	 * 
+	 * 查询分类的所有父品牌
+	 * 
+	 * */
+	public List<Brand> getAllParentBrandById(Integer id) throws Exception;
+	
+	/**
+	 * 
+	 * 查询分类的所有子品牌
+	 * 
+	 * */
+	public List<Brand> getAllSonBrandById(Integer id) throws Exception;
 
 }

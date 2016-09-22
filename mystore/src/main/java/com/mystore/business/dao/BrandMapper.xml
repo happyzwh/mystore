@@ -8,6 +8,7 @@
 		    id,
 		    id_cate,
 		    pid,
+		    pids,
 		    name,
 		    rome,
 		    jianpin as 'jianPin',
@@ -29,6 +30,7 @@
 		    id,
 		    id_cate,
 		    pid,
+		    pids,
 		    name,
 		    rome,
 		    jianpin as 'jianPin',
@@ -44,5 +46,27 @@
 		    lastdate as 'lastDate'
 		from brand  
 		where id_cate = #{value}
+	</select>
+	<select id="selectBrandListByPid" parameterType="int" resultType="brand">
+		select
+		    id,
+		    id_cate,
+		    pid,
+		    pids,
+		    name,
+		    rome,
+		    jianpin as 'jianPin',
+		    enname as 'enName',
+		    keywords as 'keyWords',
+		    descr,
+		    status,
+		    path_logoimg_fir,
+		    path_logoimg_sec,
+		    url,
+		    sort,
+		    createdate as 'createDate',
+		    lastdate as 'lastDate'
+		from brand  
+		where pid = #{value}
 	</select>
 </mapper>

@@ -13,6 +13,8 @@ public class Brand extends BasicDto{
 	
 	private Integer pid;
 	
+	private String pids;
+	
 	private Integer id_cate;
 	
 	private String name;
@@ -187,6 +189,14 @@ public class Brand extends BasicDto{
 
 	public void setChecked(boolean checked) {
 		this.checked = checked;
+	}
+
+	public String getPids() {
+		return pids;
+	}
+
+	public void setPids(String pids) {
+		this.pids = pids;
 	}
 	
 }

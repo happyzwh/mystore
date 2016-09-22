@@ -14,6 +14,8 @@ public class Category extends BasicDto{
 	
 	private Integer pid;
 	
+	private String pids;
+	
 	private String name;
 	
 	private String rome;
@@ -148,6 +150,14 @@ public class Category extends BasicDto{
 
 	public void setSons(List<Category> sons) {
 		this.sons = sons;
+	}
+
+	public String getPids() {
+		return pids;
+	}
+
+	public void setPids(String pids) {
+		this.pids = pids;
 	}
 
 }
