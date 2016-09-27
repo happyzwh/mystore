@@ -56,7 +56,7 @@ public class ImageCaptchaServlet extends HttpServlet {
             
             String code = instance.getResponse(captchaId);
             redisTemplate.opsForHash().put(Constans.KEY_VERIFYCODE, captchaId, code);  
-            redisTemplate.expire(Constans.KEY_VERIFYCODE, 2, TimeUnit.MINUTES);
+            redisTemplate.expire(Constans.KEY_VERIFYCODE, Constans.VALUE_TIME_VERIFYCODE, TimeUnit.MINUTES);
             
             ImageIO.write(challenge, "jpg", out);  
             out.flush();  

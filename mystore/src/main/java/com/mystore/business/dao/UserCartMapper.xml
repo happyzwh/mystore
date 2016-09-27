@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.UserCartMapper">
+    <insert id="addCart" parameterType="userCart" useGeneratedKeys="true" keyProperty="id">
+		insert into user_cart(
+		    id_user,
+			cart,
+			createdate,
+			lastdate
+		 )values(
+		    #{id_user},
+		    #{cart},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<update id="updateCartByUserId" parameterType="userCart">
+		 update user_cart set cart = #{cart},lastdate = now()
+		 where id_user = #{id_user}
+	</update>
+	<select id="getCartByUserId" parameterType="int" resultType="userCart">
+		 select id,id_user,cart
+		 from user_cart
+		 where id_user = #{value}
+	</select>
+</mapper>

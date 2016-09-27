@@ -32,6 +32,8 @@
       <typeAlias alias="consultReply" type="com.mystore.business.dto.ConsultReply"/>
       
       <typeAlias alias="user" type="com.mystore.business.dto.User"/>
+      
+      <typeAlias alias="userCart" type="com.mystore.business.dto.UserCart"/>
    </typeAliases>  
    <mappers>  
       <mapper resource="com/mystore/business/dao/SearchMapper.xml" />   

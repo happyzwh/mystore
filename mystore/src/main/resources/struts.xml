@@ -58,5 +58,10 @@
 			<result name="goLogin">/page/user/login.jsp</result>
 		</action>
    </package>
+   
+   <package name="cart" namespace="/cart" extends="struts-default">   
+       <action name="cartAction" class="cartAction">
+	   </action>
+   </package>
     
 </struts>

@@ -1,8 +1,9 @@
+var regExp = /^[1-9]\d*$/;
 $(function(){
 	$(".categoryBox_out").hide();
 	$(".navi_left_out").hover(
    		 function(){
-   			$(".categoryBox_out").show();
+   			 $(".categoryBox_out").show();
 	     },
 	     function(){
 	    	 $(".categoryBox_out").hide();
@@ -132,6 +133,47 @@ $(function(){
 				alert("提示：起始价格不能高于终止价格！");
 			}
 		}
+	});
+	$(".increase").click(function(){
+		var num = $(this).parent().prev().find('input:eq(0)').val();
+		if(num == '')num=1;
+		if(!regExp.test(num)){
+			$(this).parent().prev().parent().find('input:eq(0)').val(1);
+			return false;
+		}
+		$(this).parent().prev().find('input:eq(0)').val(parseInt(num)+1);
+	});
+	$(".decrease").click(function(){
+		var num = $(this).parent().prev().find('input:eq(0)').val();
+		if(num == ''){
+			$(this).parent().prev().parent().find('input:eq(0)').val(1);
+			return false;
+		}
+		if(!regExp.test(num)){
+			$(this).parent().prev().parent().find('input:eq(0)').val(1);
+			return false;
+		}
+		num = parseInt(num-1);
+		if(num <= 0){
+			$(this).parent().prev().find('input:eq(0)').val(1);
+			return false;
+		}
+		$(this).parent().prev().find('input:eq(0)').val(num);
+	});
+	$(".goodsNum").keyup(function(){
+		if($.trim($(this).val()) == ''){
+			$(this).val(1);
+			return false;
+		}
+		if(!regExp.test($(this).val())){
+			$(this).val(1);
+			return false;
+		}
+	});
+	$(".cart").click(function(){
+		var proId = $.trim($(this).attr("name"));
+		var count = $(this).prev().prev().find('input:eq(0)').val();
+		addCart(proId,count);
 	});
 });
 function search(){

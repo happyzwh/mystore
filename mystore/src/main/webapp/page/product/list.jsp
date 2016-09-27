@@ -14,11 +14,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="<%=path%>/css/detail.css" type="text/css"/>
 <link rel="stylesheet" href="<%=path%>/css/product/list.css" type="text/css"/>
 <script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="<%=path%>/js/common.js" type="text/javascript"></script>
 <script src="<%=path%>/js/product/list.js" type="text/javascript"></script>
 </head>
 <body>
  <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
+      <input type="hidden" id="basePath" value="<%=path%>"/>
       <div class="list_left">
          <div class="box">
              <div class="title">热卖推荐</div>
@@ -141,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      			<div style="display:block" class="selectLine2">
 		      		            <div class="proLeft">关键词</div>
 								<div class="proRight" style="padding:2px 0;">
-										<input type="text" style="float:left;margin-left:10px;height:30px;width:400px;border:1px solid #cf010e;" id="keywords" value="<s:property value='searchPojo.keys'/>"/>
+										<input type="text" style="float:left;margin-left:10px;height:30px;width:400px;border:1px solid #cf010e;padding:0 5px;" id="keywords" value="<s:property value='searchPojo.keys'/>"/>
 								</div>
 					</div>
 	      		     <s:if test="searchPojo.selectBrands.size() > 0">
@@ -251,18 +253,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a target="_blank" title='<s:property value="name" />' href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="proName"><s:property value="name" /><span class="slogan" id="promote_24268"><s:property value="name" /></span></a>
 						<div class="priceArea">
 							<p id="product_24268" class="price">¥<s:text name="format.number"><s:param value="shopPrice"/></s:text></p>
-							<div id="activity_24268"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
+							<div id="activity_24268" style="display:none;"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
 						</div>
 						<a target="_blank" title="" href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="judge">已有<span>462</span>人评价</a>
 						<div class="buyArea clearfix">
 							<span>
-								<input type="text" name="" value="1" onkeyup="changeNum(this.value,24268)" id="InputNum24268" gname='<s:property value="name" />' gid="24268">
+								<input type="text" name="" value="1" class="goodsNum" />
 							</span>
 							<div class="edit"> 
-								<a href="javascript:;" class="increase"></a> 
-								<a href="javascript:;" class="decrease"></a> 
+								<a href="javascript:void(0);" class="increase"></a> 
+								<a href="javascript:void(0);" class="decrease"></a> 
 							</div>
-							<a href="javascript:;" class="cart clearfix prtlt_btn2">加入购物车</a> 
+							<a href="javascript:void(0);" name='<s:property value="id" />'  class="cart clearfix prtlt_btn2">加入购物车</a> 
 						</div>
 					</div>
 				</s:iterator>

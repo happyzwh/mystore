@@ -1,0 +1,154 @@
+package com.mystore.business.action;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Controller;
+
+import com.mystore.business.common.Constans;
+import com.mystore.business.dto.User;
+import com.mystore.business.dto.UserCart;
+import com.mystore.business.pojo.CacheCart;
+import com.mystore.business.pojo.SynCart;
+import com.mystore.business.service.UserCartService;
+import com.mystore.business.util.CookieUtil;
+
+@Controller("cartAction")
+@Scope("prototype")
+public class UserCartAction extends BaseAction{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Autowired
+	private UserCartService userCartService;
+	
+	@Autowired
+	private RedisTemplate<String, Serializable> redisTemplate;
+	
+	private Integer proId;
+	
+	private Integer count;
+	
+	public void addCart() throws IOException, JSONException{
+		int code = 1;
+		JSONObject data = new JSONObject();
+		
+		try{
+			if(proId == null || count ==null){
+				code = -2;
+				return;
+			}
+			
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
+			
+			CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+			
+			cacheCart = (cacheCart == null)?new CacheCart(true):cacheCart;
+			
+			cacheCart.setChanged(true);
+			if(cacheCart.getCart().containsKey(proId)){
+				cacheCart.getCart().put(proId,cacheCart.getCart().get(proId)+count);
+			}else{
+				cacheCart.getCart().put(proId,count);
+			}
+			
+			StringBuilder cart = new StringBuilder("");
+			
+			for(Integer key:cacheCart.getCart().keySet()){
+					if(cart.length() > 0){
+						cart.append(";");
+					}
+					cart.append(key).append("|").append(cacheCart.getCart().get(key));
+			} 
+			redisTemplate.delete(Constans.KEY_COOKIE_CART+"_"+sessionId);
+			redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+			redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+			
+			User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			if(user != null){
+				SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, user.getId());
+				if(synCart != null){
+					synCart.setCart(cart.toString());
+					synCart.setCount(synCart.getCount()+1);
+				}else{
+					synCart = new SynCart();
+					synCart.setCart(cart.toString());
+					synCart.setCount(1);
+					synCart.setTime(System.currentTimeMillis());
+				}
+				
+				redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, user.getId(),synCart);
+				
+			}
+			
+			CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constans.KEY_COOKIE_CART,cart.toString(),Constans.VALUE_TIME_COOKIE_CART.intValue()*60*60);
+		
+			data.put("count",cacheCart.getTotalCount());
+			
+		}catch(Exception e){
+			code = -1;
+		}finally{
+			HttpServletResponse response=ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=UTF-8");
+			data.put("code", code);
+			response.getWriter().print(data.toString());
+		}	
+	}
+
+	public void cartSyn(){
+		List<Object> list = (List<Object>)redisTemplate.opsForHash().values(Constans.KEY_CART_SYN_USER);
+		if(list != null && list.size() > 0){
+			for(Object o:list){
+				SynCart synCart = (SynCart)o;
+				if(synCart.getCount() >= Constans.COUNT_CART_SYN_USER || System.currentTimeMillis() <= synCart.getTime()+Constans.VALUE_CART_SYN_USER*60*1000){
+					
+					UserCart userCart = userCartService.getCartByUserId(synCart.getId_user());
+					if(userCart == null){
+						userCart = new UserCart();
+					}
+					
+					userCart.setCart(synCart.getCart());
+					
+					if(userCart.getId() != null){
+						userCartService.updateCartByUserId(userCart);
+					}else{
+						userCart.setId_user(synCart.getId_user());
+						userCartService.addCart(userCart);
+					}
+					
+					redisTemplate.opsForHash().delete(Constans.KEY_CART_SYN_USER, synCart.getId_user());
+				}
+			}
+		}
+	}
+	
+	public Integer getProId() {
+		return proId;
+	}
+
+	public void setProId(Integer proId) {
+		this.proId = proId;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
+}

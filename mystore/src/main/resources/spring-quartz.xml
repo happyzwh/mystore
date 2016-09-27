@@ -14,26 +14,44 @@
 	    default-autowire="byName">
 	    
 	  <!--配置调度具体执行的方法-->
-	  <bean id="addAttendanceAutoDetail"
+	  <bean id="searchIndexDetail"
 	    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 	    <property name="targetObject" ref="searchService" />
 	    <property name="targetMethod" value="createIndex" />
 	    <property name="concurrent" value="false" />
 	  </bean>
 	  <!--配置调度执行的触发的时间-->
-	  <bean id="addAttendanceAutoTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-	    <property name="jobDetail" ref="addAttendanceAutoDetail" />
+	  <bean id="searchIndexTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	    <property name="jobDetail" ref="searchIndexDetail" />
 	    <property name="cronExpression">
 	      <!-- 每天早上1点执行任务调度 -->
 	      <value>0 0 0/10 * * ?</value>
 	    </property>
 	  </bean>
+	  
+	  <!--配置调度具体执行的方法-->
+	  <bean id="synCartDetail"
+	    class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	    <property name="targetObject" ref="cartAction" />
+	    <property name="targetMethod" value="cartSyn" />
+	    <property name="concurrent" value="false" />
+	  </bean>
+	  <!--配置调度执行的触发的时间-->
+	  <bean id="synCartTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	    <property name="jobDetail" ref="synCartDetail" />
+	    <property name="cronExpression">
+	      <!-- 每天早上1点执行任务调度 -->
+	      <value>0 0/2 * * * ?</value>
+	    </property>
+	  </bean>
+	  
 	  <!-- quartz的调度工厂 调度工厂只能有一个，多个调度任务在list中添加 -->
 	  <bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">
 	    <property name="triggers">
 	      <list>
 	         <!-- 所有的调度列表-->
-	        <ref local="addAttendanceAutoTrigger" />
+	        <ref local="searchIndexTrigger" />
+	        <ref local="synCartTrigger" />
 	      </list>
 	    </property>
 	  </bean>

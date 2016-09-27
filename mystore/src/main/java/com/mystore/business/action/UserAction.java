@@ -1,8 +1,10 @@
 package com.mystore.business.action;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,13 +12,19 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
+import com.mystore.business.common.Constans;
 import com.mystore.business.core.PublicKeyMap;
 import com.mystore.business.core.RSAUtils;
 import com.mystore.business.dto.User;
+import com.mystore.business.dto.UserCart;
 import com.mystore.business.jcaptcha.CaptchaServiceSingleton;
+import com.mystore.business.pojo.CacheCart;
+import com.mystore.business.service.UserCartService;
 import com.mystore.business.service.UserService;
+import com.mystore.business.util.CookieUtil;
 import com.mystore.business.util.MD5;
 
 @Controller("userAction")
@@ -30,6 +38,12 @@ public class UserAction  extends BaseAction{
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserCartService userCartService;
+	
+	@Autowired
+	private RedisTemplate<String, Serializable> redisTemplate;
 	
 	private Map<String, Object> model;
 	
@@ -78,7 +92,7 @@ public class UserAction  extends BaseAction{
 				return;
 			}
 			
-			String sessionId = ServletActionContext.getRequest().getSession(true).getId();
+			String sessionId = ServletActionContext.getRequest().getSession(false).getId();
 			
 			if(!CaptchaServiceSingleton.getInstance().validateResponseForID(sessionId, verifyCode)){
 				code = -3;
@@ -94,7 +108,13 @@ public class UserAction  extends BaseAction{
 			
 			if(userService.addUser(user)==0){
 				code = -1;
+				return;
 			}
+			
+			user  = userService.getUserByAccount(userName);
+			
+			redisTemplate.opsForValue().set(Constans.KEY_SESSION+"_"+sessionId, user);
+			redisTemplate.expire(Constans.KEY_VERIFYCODE+"_"+sessionId, Constans.VALUE_TIME_SESSION, TimeUnit.HOURS);
 			
 		}catch(Exception e){
 			code = -1;
@@ -145,7 +165,7 @@ public class UserAction  extends BaseAction{
 				return;
 			}
 			
-			String sessionId = ServletActionContext.getRequest().getSession(true).getId();
+			String sessionId = ServletActionContext.getRequest().getSession(false).getId();
 			
 			if(!CaptchaServiceSingleton.getInstance().validateResponseForID(sessionId, verifyCode)){
 				code = -3;
@@ -165,7 +185,63 @@ public class UserAction  extends BaseAction{
 			if(!user.getStatus().equals("1")){
 				code = -5;
 			}
-		
+			
+			redisTemplate.opsForValue().set(Constans.KEY_SESSION+"_"+sessionId, user);
+			redisTemplate.expire(Constans.KEY_VERIFYCODE+"_"+sessionId, Constans.VALUE_TIME_SESSION, TimeUnit.HOURS);
+			
+			CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+			
+			cacheCart = (cacheCart == null)?new CacheCart(true):cacheCart;
+			
+			if(cacheCart.isChanged()){
+				UserCart userCart = userCartService.getCartByUserId(user.getId());
+				if(userCart != null && StringUtils.isNotBlank(userCart.getCart())){
+					String[] carts = userCart.getCart().split(";");
+					if(carts != null && carts.length > 0){
+						for(String cartStr:carts){
+							String[] cart = cartStr.split("|");
+							if(cart != null && cart.length == 2){
+								if(cacheCart.getCart().containsKey(Integer.valueOf(cart[0]))){
+									cacheCart.getCart().put(Integer.valueOf(cart[0]), Integer.valueOf(cart[1])+cacheCart.getCart().get(Integer.valueOf(cart[0])));
+								}else{
+									cacheCart.getCart().put(Integer.valueOf(cart[0]), Integer.valueOf(cart[1]));
+								}
+							}
+						}
+					}
+				}
+			}
+			
+			StringBuilder cart = new StringBuilder("");
+			if(cacheCart.isChanged() && !cacheCart.getCart().isEmpty()){
+				for(Integer key:cacheCart.getCart().keySet()){
+					if(!cart.equals("")){
+						cart.append(";");
+					}
+					cart.append(key).append("|").append(cacheCart.getCart().get(key));
+				} 
+				cacheCart.setChanged(false);
+				redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+				redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+			}
+			
+			if(cart.length() > 0){
+				
+				UserCart userCart = userCartService.getCartByUserId(user.getId());
+				if(userCart == null){
+					userCart = new UserCart();
+				}
+				userCart.setCart(cart.toString());
+				userCart.setId_user(user.getId());
+				if(userCart.getId() != null){
+					userCartService.updateCartByUserId(userCart);
+				}else{
+					userCartService.addCart(userCart);
+				}
+				
+				CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constans.KEY_COOKIE_CART,cart.toString(),Constans.VALUE_TIME_COOKIE_CART.intValue()*60*60);
+			}
+			
 		}catch(Exception e){
 			code = -1;
 			e.printStackTrace();
