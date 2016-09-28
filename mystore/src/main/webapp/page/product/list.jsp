@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    </s:if>
 					</s:iterator>
 					<s:iterator value="searchPojo.selectedCateAttrNames" id="attr" status="ind">
-						<a href="javascript:void(0);"><span class="type"><s:property value='#attr.get("name")'/>：<s:property value='#attr.get("value")'/></span><span name="attr_<s:property value='#attr.get("vid")'/>" title="<s:property value='#attr.get("value")'/>" class="remove"></span></a>
+						<a href="javascript:void(0);"><span class="type"><s:property value='#attr.get("name")'/>：<s:property value='#attr.get("value")'/></span><span name="attr_<s:property value='#attr.get("vid")'/>_<s:property value='#attr.get("baid")'/>" title="<s:property value='#attr.get("value")'/>" class="remove"></span></a>
 					</s:iterator>
 				</div>
       		</div>
@@ -198,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<ul class="clearfix">
 										<s:iterator value="searchPojo.selectCateAttrs.get(#baid)" id="attr">
 											<li  class="selectable">
-												<a alt="<s:property value='searchPojo.selectCateAttrNames.get(#baid)'/>_<s:property value='#attr.get("value")'/>" <s:if test='#attr.get("checked")'>class="item_checked"</s:if> name="attr_<s:property value='#attr.get("vid")'/>" href="javascript:void(0);"><s:property value='#attr.get("value")'/></a>
+												<a alt="<s:property value='searchPojo.selectCateAttrNames.get(#baid)'/>_<s:property value='#attr.get("value")'/>" <s:if test='#attr.get("checked")'>class="item_checked"</s:if> name="attr_<s:property value='#attr.get("vid")'/>_<s:property value='#baid'/>" href="javascript:void(0);"><s:property value='#attr.get("value")'/></a>
 											</li>
 										</s:iterator>
 									</ul>

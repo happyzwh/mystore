@@ -34,7 +34,7 @@ public class SearchPojo implements java.io.Serializable{
 	private List<Brand> selectBrands;
 	
 	//已选属性值id
-	private List<Integer> attrValueIds;
+	private List<String> attrValueIds;
 	
 	//当前分类的已选属性名
 	private List<Map<String,String>> selectedCateAttrNames;
@@ -82,11 +82,11 @@ public class SearchPojo implements java.io.Serializable{
 		this.selectBrands = selectBrands;
 	}
 
-	public List<Integer> getAttrValueIds() {
+	public List<String> getAttrValueIds() {
 		return attrValueIds;
 	}
 
-	public void setAttrValueIds(List<Integer> attrValueIds) {
+	public void setAttrValueIds(List<String> attrValueIds) {
 		this.attrValueIds = attrValueIds;
 	}
 

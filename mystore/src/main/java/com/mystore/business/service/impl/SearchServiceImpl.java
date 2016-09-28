@@ -2,6 +2,7 @@ package com.mystore.business.service.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -744,16 +745,33 @@ public class SearchServiceImpl implements SearchService{
 			
 			if(searchPojo.getAttrValueIds() != null && searchPojo.getAttrValueIds().size() > 0){
 				
-				BooleanQuery attrValueBooleanQuery = new BooleanQuery();
+				Map<String,String> map = new HashMap<String,String>();
 				
-				for(Integer attrValueId:searchPojo.getAttrValueIds()){
-					QueryParser attrValueIdQueryParser = new QueryParser(Version.LUCENE_47, "attrValueId", analyzer);
-					Query attrValuequery = attrValueIdQueryParser.parse(String.valueOf(attrValueId));
-					
-					attrValueBooleanQuery.add(attrValuequery, BooleanClause.Occur.SHOULD);
+				for(String s:searchPojo.getAttrValueIds()){
+					if(!map.containsKey(s.split("_")[1])){
+						map.put(s.split("_")[1], s.split("_")[0]);
+					}else{
+						map.put(s.split("_")[1], map.get(s.split("_")[1])+","+s.split("_")[0]);
+					}
 				}
 				
-				booleanQuery.add(attrValueBooleanQuery, BooleanClause.Occur.MUST);
+				if(!map.isEmpty()){
+					for(String key:map.keySet()){
+						String value = map.get(key);
+						String[] values = value.split(",");
+						
+						if(values != null && values.length > 0){
+							BooleanQuery attrValueBooleanQueryShould = new BooleanQuery();
+							for(String s:values){
+								QueryParser attrValueIdQueryParser = new QueryParser(Version.LUCENE_47, "attrValueId", analyzer);
+								Query attrValuequery = attrValueIdQueryParser.parse(s);
+								
+								attrValueBooleanQueryShould.add(attrValuequery, BooleanClause.Occur.SHOULD);
+							}
+							booleanQuery.add(attrValueBooleanQueryShould, BooleanClause.Occur.MUST);
+						}
+					}
+				}
 			}
 			
 			if( (searchPojo.getLowPrice() != null && searchPojo.getLowPrice() > 0) || (searchPojo.getHighPrice() != null && searchPojo.getHighPrice() > 0) ){

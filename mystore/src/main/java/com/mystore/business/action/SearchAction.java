@@ -217,7 +217,7 @@ public class SearchAction extends BaseAction{
 						selectAttrMap.put("vid", vid);
 						selectAttrMap.put("value", value);
 						
-						if(StringUtils.isNotBlank(attrValueIds) && attrValueIds.indexOf(","+vid+",") != -1){
+						if(StringUtils.isNotBlank(attrValueIds) && attrValueIds.indexOf(","+vid+"_") != -1){
 							Map<String,String> seledAttrMap = new HashMap<String,String>();
 							searchPojo.getSelectedCateAttrNames().add(seledAttrMap);
 							seledAttrMap.put("baid", baid);
@@ -262,11 +262,11 @@ public class SearchAction extends BaseAction{
 			}
 			
 			if(StringUtils.isNotBlank(attrValueIds)){
-				List<Integer> attrValues = new ArrayList<Integer>();
+				List<String> attrValues = new ArrayList<String>();
 				String[] ids = attrValueIds.split(",");
 				for(String s:ids){
 					if(StringUtils.isNotBlank(s)){
-						attrValues.add(Integer.valueOf(s));
+						attrValues.add(s);
 					}
 				}
 				searchPojo.setAttrValueIds(attrValues);
@@ -351,7 +351,7 @@ public class SearchAction extends BaseAction{
 						selectAttrMap.put("vid", vid);
 						selectAttrMap.put("value", value);
 						
-						if(StringUtils.isNotBlank(attrValueIds) && attrValueIds.indexOf(","+vid+",") != -1){
+						if(StringUtils.isNotBlank(attrValueIds) && attrValueIds.indexOf(","+vid+"_") != -1){
 							Map<String,String> seledAttrMap = new HashMap<String,String>();
 							searchPojo.getSelectedCateAttrNames().add(seledAttrMap);
 							seledAttrMap.put("baid", baid);

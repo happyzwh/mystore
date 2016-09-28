@@ -80,7 +80,6 @@ $(function(){
 			}
 			$("#brandIds").val($("#brandIds").val()+id+",");
 			
-			
 			var content = '<a href="javascript:void(0);"><span class="type">品牌：'+title+'</span><span name="'+name+'" class="remove"></span></a>';
 			
 			$(".selected .options").prepend(content);
@@ -89,7 +88,7 @@ $(function(){
 			if($("#attrValueIds").val() == ''){
 				$("#attrValueIds").val(",");
 			}
-			$("#attrValueIds").val($("#attrValueIds").val()+id+",");
+			$("#attrValueIds").val($("#attrValueIds").val()+id+'_'+name.split("_")[2]+",");
 			
 			var attrName = title.split("_")[0];
 			var attrValue = title.split("_")[1];
@@ -115,7 +114,7 @@ $(function(){
 		if(type == "brand"){
 			$("#brandIds").val($("#brandIds").val().replace(","+id+",",","));
 		}else if(type == "attr"){
-			$("#attrValueIds").val($("#attrValueIds").val().replace(","+id+",",","));
+			$("#attrValueIds").val($("#attrValueIds").val().replace(","+id+'_'+name.split("_")[2]+",",","));
 		}
 		
 		$(this).parent().remove();
