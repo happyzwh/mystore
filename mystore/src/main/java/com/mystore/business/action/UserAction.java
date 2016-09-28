@@ -92,7 +92,7 @@ public class UserAction  extends BaseAction{
 				return;
 			}
 			
-			String sessionId = ServletActionContext.getRequest().getSession(false).getId();
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
 			
 			if(!CaptchaServiceSingleton.getInstance().validateResponseForID(sessionId, verifyCode)){
 				code = -3;
@@ -165,7 +165,7 @@ public class UserAction  extends BaseAction{
 				return;
 			}
 			
-			String sessionId = ServletActionContext.getRequest().getSession(false).getId();
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
 			
 			if(!CaptchaServiceSingleton.getInstance().validateResponseForID(sessionId, verifyCode)){
 				code = -3;
@@ -187,7 +187,7 @@ public class UserAction  extends BaseAction{
 			}
 			
 			redisTemplate.opsForValue().set(Constans.KEY_SESSION+"_"+sessionId, user);
-			redisTemplate.expire(Constans.KEY_VERIFYCODE+"_"+sessionId, Constans.VALUE_TIME_SESSION, TimeUnit.HOURS);
+			redisTemplate.expire(Constans.KEY_SESSION+"_"+sessionId, Constans.VALUE_TIME_SESSION, TimeUnit.HOURS);
 			
 			CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
 			
@@ -196,10 +196,10 @@ public class UserAction  extends BaseAction{
 			if(cacheCart.isChanged()){
 				UserCart userCart = userCartService.getCartByUserId(user.getId());
 				if(userCart != null && StringUtils.isNotBlank(userCart.getCart())){
-					String[] carts = userCart.getCart().split(";");
+					String[] carts = userCart.getCart().split(Constans.CHAR_SPLIT_CART);
 					if(carts != null && carts.length > 0){
 						for(String cartStr:carts){
-							String[] cart = cartStr.split("|");
+							String[] cart = cartStr.split(Constans.CHAR_SPLIT_CART_GOOD);
 							if(cart != null && cart.length == 2){
 								if(cacheCart.getCart().containsKey(Integer.valueOf(cart[0]))){
 									cacheCart.getCart().put(Integer.valueOf(cart[0]), Integer.valueOf(cart[1])+cacheCart.getCart().get(Integer.valueOf(cart[0])));
@@ -215,10 +215,10 @@ public class UserAction  extends BaseAction{
 			StringBuilder cart = new StringBuilder("");
 			if(cacheCart.isChanged() && !cacheCart.getCart().isEmpty()){
 				for(Integer key:cacheCart.getCart().keySet()){
-					if(!cart.equals("")){
-						cart.append(";");
+					if(cart.length() > 0){
+						cart.append(Constans.CHAR_SPLIT_CART);
 					}
-					cart.append(key).append("|").append(cacheCart.getCart().get(key));
+					cart.append(key).append(Constans.CHAR_SPLIT_CART_GOOD).append(cacheCart.getCart().get(key));
 				} 
 				cacheCart.setChanged(false);
 				redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);

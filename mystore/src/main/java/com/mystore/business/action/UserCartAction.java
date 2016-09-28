@@ -69,9 +69,9 @@ public class UserCartAction extends BaseAction{
 			
 			for(Integer key:cacheCart.getCart().keySet()){
 					if(cart.length() > 0){
-						cart.append(";");
+						cart.append(Constans.CHAR_SPLIT_CART);
 					}
-					cart.append(key).append("|").append(cacheCart.getCart().get(key));
+					cart.append(key).append(Constans.CHAR_SPLIT_CART_GOOD).append(cacheCart.getCart().get(key));
 			} 
 			redisTemplate.delete(Constans.KEY_COOKIE_CART+"_"+sessionId);
 			redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
@@ -79,18 +79,19 @@ public class UserCartAction extends BaseAction{
 			
 			User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
 			if(user != null){
-				SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, user.getId());
+				SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()));
 				if(synCart != null){
 					synCart.setCart(cart.toString());
 					synCart.setCount(synCart.getCount()+1);
 				}else{
 					synCart = new SynCart();
+					synCart.setId_user(user.getId());
 					synCart.setCart(cart.toString());
 					synCart.setCount(1);
 					synCart.setTime(System.currentTimeMillis());
 				}
 				
-				redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, user.getId(),synCart);
+				redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
 				
 			}
 			
@@ -109,6 +110,7 @@ public class UserCartAction extends BaseAction{
 	}
 
 	public void cartSyn(){
+
 		List<Object> list = (List<Object>)redisTemplate.opsForHash().values(Constans.KEY_CART_SYN_USER);
 		if(list != null && list.size() > 0){
 			for(Object o:list){
@@ -129,7 +131,7 @@ public class UserCartAction extends BaseAction{
 						userCartService.addCart(userCart);
 					}
 					
-					redisTemplate.opsForHash().delete(Constans.KEY_CART_SYN_USER, synCart.getId_user());
+					redisTemplate.opsForHash().delete(Constans.KEY_CART_SYN_USER, String.valueOf(synCart.getId_user()));
 				}
 			}
 		}

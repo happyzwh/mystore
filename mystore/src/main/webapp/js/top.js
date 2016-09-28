@@ -78,4 +78,7 @@ $(function(){
     	 $("#key").val($.trim($("#keys").val()));
     	 $("#topSearchForm").submit();
      });
+     
+     var getCookie = getCookie('key_cookie_cart');
+     $(".cart_num").text(data.count);
 });

@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="<%=path%>/css/common.css" type="text/css"/>
 <link rel="stylesheet" href="<%=path%>/css/top.css" type="text/css"/>
 <script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="<%=path%>/js/common.js" type="text/javascript"></script>
 <script src="<%=path%>/js/top.js" type="text/javascript"></script>
 </head>
 <body>

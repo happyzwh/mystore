@@ -30,5 +30,9 @@ public class Constans {
 	public static final Long VALUE_CART_SYN_USER = 2l;
 	//同步购物车到库 次数
 	public static final Long COUNT_CART_SYN_USER = 5l;
+	//
+	public static final String CHAR_SPLIT_CART = "-";
+	//
+	public static final String CHAR_SPLIT_CART_GOOD = ",";
 
 }

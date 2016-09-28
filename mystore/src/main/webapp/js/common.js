@@ -27,8 +27,9 @@ function addCart(proId,count){
 		async: true,
 		dataType: "json",
 		success:function(data){
+			alert(data.code +' '+ data.count);
 			if(data != null && data.code == 1){
-				$(".cart_num").val(data.count);
+				$(".cart_num").text(data.count);
 			}
 		},
 		error:function(){

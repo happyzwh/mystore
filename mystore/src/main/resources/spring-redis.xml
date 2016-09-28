@@ -35,7 +35,7 @@
     		<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"></bean>  
 	  </property>    
 	  <property name="hashValueSerializer">  
-    		<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"></bean>  
+    		<bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"></bean>  
 	  </property> 
    </bean>
    
