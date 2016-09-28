@@ -79,6 +79,16 @@ $(function(){
     	 $("#topSearchForm").submit();
      });
      
-     var getCookie = getCookie('key_cookie_cart');
-     $(".cart_num").text(data.count);
+     var cartCookie = getCookie('key_cookie_cart');
+     if(cartCookie != null && cartCookie != ''){
+    	 var carts = cartCookie.split('-');
+    	 if(carts != null && carts.length > 0){
+    		 var num = 0;
+    		 for(var i = 0;i<carts.length;i++){
+    			 num += parseInt(carts[i].split(',')[1]);
+    		 }
+    	 }
+    	 $(".cart_num").text(num);
+     }
+     
 });
