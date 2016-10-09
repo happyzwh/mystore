@@ -14,6 +14,10 @@ public class ShopCart implements java.io.Serializable{
 	
 	private Double totalAmount;
 	
+	private Integer totalCount;
+	
+	private Double discount;
+	
 	public ShopCart(){
 		goodsList = new ArrayList<Goods>();
 	}
@@ -38,4 +42,29 @@ public class ShopCart implements java.io.Serializable{
 		this.totalAmount = totalAmount;
 	}
 
+	public Integer getTotalCount() {
+		totalCount = 0;
+		for(Goods goods:goodsList){
+			totalCount += goods.getCount();
+		}
+		return totalCount;
+	}
+
+	public void setTotalCount(Integer totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	public Double getDiscount() {
+		discount = 0d;
+		for(Goods goods:goodsList){
+			discount += goods.getMarkPrice() - goods.getPrice();
+		}
+		return discount;
+	}
+
+	public void setDiscount(Double discount) {
+		this.discount = discount;
+	}
+	
+	
 }

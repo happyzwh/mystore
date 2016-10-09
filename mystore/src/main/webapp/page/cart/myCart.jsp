@@ -28,41 +28,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 	 <div class="column op">操作</div>
     	 </div>
     	 <div class="list">
-    	 	 <div class="item">
-    	 	 	<div class="cell p-checkBox"><input type="checkbox"  class="check"/></div>
-    	 	 	<div class="cell p-goods">
-    	 	 		<div class="goods-item">
-    	 	 		   	<div class="p-img">
-    	 	 		   	     <a href="//item.jd.com/10083094124.html" target="_blank"><img alt="朗汇电动自行车成人折叠电动助力车可拆卸锂电池电单车男女同款电动车自行车電動車 蓝-男款助力理论续航约70KM" src="//img10.360buyimg.com/cms/s80x80_jfs/t1876/177/1759077932/165459/8f08279e/56722989Nca8b9095.jpg"></a>
-    	 	 		   	</div> 
-    	 	 		   	<div class="item-msg">
-							<div class="p-name">
-								<a href="//item.jd.com/10083094124.html" target="_blank">朗汇电动自行车成人折叠电动助力车可拆卸锂电池电单车男女同款电动车自行车電動車 蓝-男款助力理论续航约70KM</a>
+    	     <s:iterator value="shopCart.goodsList" status="ind">
+	    	 	 <div class="item">
+	    	 	 	<div class="cell p-checkBox"><input type="checkbox"  class="check"/></div>
+	    	 	 	<div class="cell p-goods">
+	    	 	 		<div class="goods-item">
+	    	 	 		   	<div class="p-img">
+	    	 	 		   	     <a href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' target="_blank"><img alt='<s:property value="name" />' src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img.replace("big","small")'/>" ></a>
+	    	 	 		   	</div> 
+	    	 	 		   	<div class="item-msg">
+								<div class="p-name">
+									<a href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' target="_blank"><s:property value="name" /></a>
+								</div>
 							</div>
+	    	 	 		</div>
+	    	 	 	</div>
+	    	 	 	<div class="cell p-props">
+	    	 	 		<div class="props-txt" title="蓝-男款助力理论续航约70KM">颜色：蓝-男款助力理论续航约70KM</div>
+	    	 	 	</div>
+	    	 	 	<div class="cell p-price">
+	    	 	 		<strong><s:text name="format.number"><s:param value="price"/></s:text></strong>
+	    	 	 	</div>
+	    	 	 	<div class="cell p-count">
+	    	 	 		<div class="count-form">
+							<a href="javascript:void(0);" class="decrement">-</a>
+							<input autocomplete="off" class="itxt" value='<s:property value="count"/>' type="text">
+							<a href="javascript:void(0);" class="increment">+</a>
 						</div>
-    	 	 		</div>
-    	 	 	</div>
-    	 	 	<div class="cell p-props">
-    	 	 		<div class="props-txt" title="蓝-男款助力理论续航约70KM">颜色：蓝-男款助力理论续航约70KM</div>
-    	 	 	</div>
-    	 	 	<div class="cell p-price">
-    	 	 		<strong>1696.00</strong>
-    	 	 	</div>
-    	 	 	<div class="cell p-count">
-    	 	 		<div class="count-form">
-						<a href="javascript:void(0);" class="decrement">-</a>
-						<input autocomplete="off" class="itxt" value="1" type="text">
-						<a href="javascript:void(0);" class="increment">+</a>
-					</div>
-    	 	 	</div>
-    	 	 	<div class="cell p-sum">
-    	 	 		<strong>1696.00</strong>
-    	 	 	</div>
-    	 	 	<div class="cell p-op">
-    	 	 		<a class="cart-remove" href="javascript:void(0);">删除</a>
-    	 	 	</div>
-    	 	 	<div style="clear:both;"></div>
-    	 	 </div>
+	    	 	 	</div>
+	    	 	 	<div class="cell p-sum">
+	    	 	 		<strong><s:text name="format.number"><s:param value="totalPrice"/></s:text></strong>
+	    	 	 	</div>
+	    	 	 	<div class="cell p-op">
+	    	 	 		<a class="cart-remove" href="javascript:void(0);">删除</a>
+	    	 	 	</div>
+	    	 	 	<div style="clear:both;"></div>
+	    	 	 </div>
+    	 	 </s:iterator>
     	 	 <div style="clear:both;"></div>
     	 </div>
     	 <div class="toolbar">
@@ -74,14 +76,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="price-sum">
 								<div>
 									<span class="txt txt-new">总价：</span>
-									<span class="price sumPrice"><em data-bind="0.00">¥0.00</em></span>
+									<span class="price sumPrice"><em>¥<s:text name="format.number"><s:param value="shopCart.totalAmount"/></s:text></em></span>
 									<br>
 									<span class="txt">已节省：</span>
-									<span class="price totalRePrice">- ¥0.00</span>
+									<span class="price totalRePrice">-¥<s:text name="format.number"><s:param value="shopCart.discount"/></s:text></span>
 								</div>
 							</div>
 							<div class="amount-sum">
-								已选择<em>0</em>件商品
+								已选择<em><s:property value="shopCart.totalCount" /></em>件商品
 							</div>
 				</div>
     	 </div>

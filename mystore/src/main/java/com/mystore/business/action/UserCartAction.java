@@ -149,13 +149,13 @@ public class UserCartAction extends BaseAction{
 	
 	public String myCart(){
 		
+		shopCart = new ShopCart();
+		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
 		
 		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
 		
 		if(cacheCart != null && cacheCart.getCart() != null && !cacheCart.getCart().isEmpty()){
-			
-			shopCart = new ShopCart();
 			
 			for(Integer key:cacheCart.getCart().keySet()){
 					
