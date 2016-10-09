@@ -65,6 +65,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 	 </div>
     	 	 <div style="clear:both;"></div>
     	 </div>
+    	 <div class="toolbar">
+    	      <div class="column checkBox"><input type="checkbox"  class="checkAll"/>  全选</div>
+    	      <div class="toolbar-right">
+							<div class="btn-area">
+								<a href="javascript:void(0);" class="submit-btn">去结算<b></b></a>
+							</div>
+							<div class="price-sum">
+								<div>
+									<span class="txt txt-new">总价：</span>
+									<span class="price sumPrice"><em data-bind="0.00">¥0.00</em></span>
+									<br>
+									<span class="txt">已节省：</span>
+									<span class="price totalRePrice">- ¥0.00</span>
+								</div>
+							</div>
+							<div class="amount-sum">
+								已选择<em>0</em>件商品
+							</div>
+				</div>
+    	 </div>
     	 <div style="clear:both;"></div>
     </div>  
  </div>
