@@ -41,7 +41,7 @@
 			    p.rome,
 			    p.jianpin as 'jianPin',
 			    p.keywords as 'keyWords',
-			    p.path_img,
+			    (select i.path_img from productimage i where i.id_pro = p.id order by i.sort asc limit 0,1) as 'path_img',
 			    p.descr,
 			    p.isshow as 'isShow',
 			    p.isonsale as 'isOnSale',

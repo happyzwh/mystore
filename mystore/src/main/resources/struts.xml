@@ -61,6 +61,7 @@
    
    <package name="cart" namespace="/cart" extends="struts-default">   
        <action name="cartAction" class="cartAction">
+           <result name="myCart">/page/cart/myCart.jsp</result>
 	   </action>
    </package>
     

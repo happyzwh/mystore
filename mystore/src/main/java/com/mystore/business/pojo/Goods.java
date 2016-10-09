@@ -15,6 +15,8 @@ public class Goods implements java.io.Serializable{
 	
 	private String path_img;
 	
+	private Double markPrice;
+	
 	private Double price;
 	
 	private Double totalPrice;
@@ -68,4 +70,12 @@ public class Goods implements java.io.Serializable{
 		this.totalPrice = totalPrice;
 	}
 
+	public Double getMarkPrice() {
+		return markPrice;
+	}
+
+	public void setMarkPrice(Double markPrice) {
+		this.markPrice = markPrice;
+	}
+	
 }

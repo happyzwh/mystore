@@ -16,10 +16,15 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.mystore.business.common.Constans;
+import com.mystore.business.dto.ProPrice;
+import com.mystore.business.dto.Product;
 import com.mystore.business.dto.User;
 import com.mystore.business.dto.UserCart;
 import com.mystore.business.pojo.CacheCart;
+import com.mystore.business.pojo.Goods;
+import com.mystore.business.pojo.ShopCart;
 import com.mystore.business.pojo.SynCart;
+import com.mystore.business.service.ProductService;
 import com.mystore.business.service.UserCartService;
 import com.mystore.business.util.CookieUtil;
 
@@ -36,11 +41,16 @@ public class UserCartAction extends BaseAction{
 	private UserCartService userCartService;
 	
 	@Autowired
+	private ProductService productService;
+	
+	@Autowired
 	private RedisTemplate<String, Serializable> redisTemplate;
 	
 	private Integer proId;
 	
 	private Integer count;
+	
+	private ShopCart shopCart;
 	
 	public void addCart() throws IOException, JSONException{
 		int code = 1;
@@ -137,6 +147,40 @@ public class UserCartAction extends BaseAction{
 		}
 	}
 	
+	public String myCart(){
+		
+		String sessionId = ServletActionContext.getRequest().getSession().getId();
+		
+		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		
+		if(cacheCart != null && cacheCart.getCart() != null && !cacheCart.getCart().isEmpty()){
+			
+			shopCart = new ShopCart();
+			
+			for(Integer key:cacheCart.getCart().keySet()){
+					
+				Goods goods = new Goods();
+				
+				Product product = productService.getProById(key);
+				
+				goods.setId(product.getId());
+				goods.setCount(cacheCart.getCart().get(key));
+				goods.setName(product.getName());
+				goods.setPath_img(product.getPath_img());
+				
+				ProPrice price = productService.getProPriceByProId(key);
+				goods.setMarkPrice(price.getMarkPrice());
+				goods.setPrice(price.getShopPrice());
+				
+				shopCart.getGoodsList().add(goods);
+			}
+
+		}
+			
+		return "myCart";
+	}
+	
+	
 	public Integer getProId() {
 		return proId;
 	}
@@ -151,6 +195,18 @@ public class UserCartAction extends BaseAction{
 
 	public void setCount(Integer count) {
 		this.count = count;
+	}
+
+	public ShopCart getShopCart() {
+		return shopCart;
+	}
+
+	public void setShopCart(ShopCart shopCart) {
+		this.shopCart = shopCart;
+	}
+
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
 	}
 	
 }

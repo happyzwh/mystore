@@ -1,5 +1,6 @@
 package com.mystore.business.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopCart implements java.io.Serializable{
@@ -12,6 +13,10 @@ public class ShopCart implements java.io.Serializable{
 	private List<Goods> goodsList;
 	
 	private Double totalAmount;
+	
+	public ShopCart(){
+		goodsList = new ArrayList<Goods>();
+	}
 
 	public List<Goods> getGoodsList() {
 		return goodsList;
