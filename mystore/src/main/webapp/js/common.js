@@ -6,7 +6,7 @@ function setCookie(name,value,expires){
 function getCookie(name){
 	var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
 	if(arr = document.cookie.match(reg)){
-		return unescape(arr[2]);
+		return unescape(arr[2].substring(1,arr[2].length-1));
 	}else{
 		return null;
 	}

@@ -81,14 +81,20 @@ $(function(){
      
      var cartCookie = getCookie('key_cookie_cart');
      if(cartCookie != null && cartCookie != ''){
+    	 var num = 0;
     	 var carts = cartCookie.split('-');
     	 if(carts != null && carts.length > 0){
-    		 var num = 0;
     		 for(var i = 0;i<carts.length;i++){
     			 num += parseInt(carts[i].split(',')[1]);
     		 }
     	 }
     	 $(".cart_num").text(num);
+    	 if(num > 0){
+    		 	$.ajax({
+    		 		url: path+'/cart/cartAction!initCart.dhtml',
+    		 		data: {'cart':cartCookie}
+    			});
+    	 }
      }
      
 });

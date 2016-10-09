@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="<%=path%>/css/common.css" type="text/css"/>
 <link rel="stylesheet" href="<%=path%>/css/cart/cart.css" type="text/css"/>
 <script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="<%=path%>/js/common.js" type="text/javascript"></script>
 <script src="<%=path%>/js/cart/cart.js" type="text/javascript"></script>
 </head>
 <body>
@@ -52,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	 	 	<div class="cell p-count">
 	    	 	 		<div class="count-form">
 							<a href="javascript:void(0);" class="decrement">-</a>
-							<input autocomplete="off" class="itxt" value='<s:property value="count"/>' type="text">
+							<input autocomplete="off" class="itxt goodsNum" value='<s:property value="count"/>' type="text">
 							<a href="javascript:void(0);" class="increment">+</a>
 						</div>
 	    	 	 	</div>
@@ -76,14 +77,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="price-sum">
 								<div>
 									<span class="txt txt-new">总价：</span>
-									<span class="price sumPrice"><em>¥<s:text name="format.number"><s:param value="shopCart.totalAmount"/></s:text></em></span>
+									<span class="price sumPrice"><em>¥0</em></span>
 									<br>
 									<span class="txt">已节省：</span>
-									<span class="price totalRePrice">-¥<s:text name="format.number"><s:param value="shopCart.discount"/></s:text></span>
+									<span class="price totalRePrice">-¥0</span>
 								</div>
 							</div>
 							<div class="amount-sum">
-								已选择<em><s:property value="shopCart.totalCount" /></em>件商品
+								已选择<em>0</em>件商品
 							</div>
 				</div>
     	 </div>

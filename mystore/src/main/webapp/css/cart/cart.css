@@ -98,6 +98,10 @@
     text-align: center;
     width: 80px;
 }
+.p-img img{
+	height:80px;
+	line-height:80px;
+}
 .p-name {
     height: 40px;
     line-height: 20px;

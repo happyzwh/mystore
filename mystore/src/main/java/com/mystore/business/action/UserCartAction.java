@@ -2,11 +2,14 @@ package com.mystore.business.action;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,6 +54,49 @@ public class UserCartAction extends BaseAction{
 	private Integer count;
 	
 	private ShopCart shopCart;
+	
+	private String cart;
+	
+	public void initCart(){
+		
+		if(StringUtils.isBlank(cart))return;
+		
+		String sessionId = ServletActionContext.getRequest().getSession().getId();
+		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		if(cacheCart != null)return;
+		
+		cacheCart = new CacheCart(true);
+		
+		String[] goodsList = cart.split(Constans.CHAR_SPLIT_CART);
+		if(goodsList != null && goodsList.length > 0){
+			Map<Integer,Integer> cart = new HashMap<Integer,Integer>();
+			cacheCart.setCart(cart);
+			for(String goodstr:goodsList){
+				String[] goods = goodstr.split(Constans.CHAR_SPLIT_CART_GOOD);
+				cart.put(Integer.valueOf(goods[0]), Integer.valueOf(goods[1]));
+			}
+		}
+		
+		redisTemplate.delete(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+		redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+		
+		User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+		if(user != null){
+			SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()));
+			if(synCart != null){
+				synCart.setCart(cart.toString());
+				synCart.setCount(synCart.getCount()+1);
+			}else{
+				synCart = new SynCart();
+				synCart.setId_user(user.getId());
+				synCart.setCart(cart.toString());
+				synCart.setCount(1);
+				synCart.setTime(System.currentTimeMillis());
+			}
+			redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
+		}
+	}
 	
 	public void addCart() throws IOException, JSONException{
 		int code = 1;
@@ -207,6 +253,14 @@ public class UserCartAction extends BaseAction{
 
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
+	}
+
+	public String getCart() {
+		return cart;
+	}
+
+	public void setCart(String cart) {
+		this.cart = cart;
 	}
 	
 }
