@@ -17,8 +17,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
  <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
-     
-      
+    <div class="cart">
+    	 <div class="title">
+    	 	 <div class="column checkBox"><input type="checkbox"  class="checkAll"/>  全选</div>
+    	 	 <div class="column goods">商品</div>
+    	 	 <div class="column props"></div>
+    	 	 <div class="column price">单价(元)</div>
+    	 	 <div class="column count">数量</div>
+    	 	 <div class="column sum">小计(元)</div>
+    	 	 <div class="column op">操作</div>
+    	 </div>
+    	 <div class="list">
+    	 	 <div class="item">
+    	 	 	<div class="cell p-checkBox"><input type="checkbox"  class="check"/></div>
+    	 	 	<div class="cell p-goods">
+    	 	 		<div class="goods-item">
+    	 	 		   	<div class="p-img">
+    	 	 		   	     <a href="//item.jd.com/10083094124.html" target="_blank"><img alt="朗汇电动自行车成人折叠电动助力车可拆卸锂电池电单车男女同款电动车自行车電動車 蓝-男款助力理论续航约70KM" src="//img10.360buyimg.com/cms/s80x80_jfs/t1876/177/1759077932/165459/8f08279e/56722989Nca8b9095.jpg"></a>
+    	 	 		   	</div> 
+    	 	 		   	<div class="item-msg">
+							<div class="p-name">
+								<a href="//item.jd.com/10083094124.html" target="_blank">朗汇电动自行车成人折叠电动助力车可拆卸锂电池电单车男女同款电动车自行车電動車 蓝-男款助力理论续航约70KM</a>
+							</div>
+						</div>
+    	 	 		</div>
+    	 	 	</div>
+    	 	 	<div class="cell p-props">
+    	 	 		<div class="props-txt" title="蓝-男款助力理论续航约70KM">颜色：蓝-男款助力理论续航约70KM</div>
+    	 	 	</div>
+    	 	 	<div class="cell p-price">
+    	 	 		<strong>1696.00</strong>
+    	 	 	</div>
+    	 	 	<div class="cell p-count">
+    	 	 		<div class="count-form">
+						<a href="javascript:void(0);" class="decrement">-</a>
+						<input autocomplete="off" class="itxt" value="1" type="text">
+						<a href="javascript:void(0);" class="increment">+</a>
+					</div>
+    	 	 	</div>
+    	 	 	<div class="cell p-sum">
+    	 	 		<strong>1696.00</strong>
+    	 	 	</div>
+    	 	 	<div class="cell p-op">
+    	 	 		<a class="cart-remove" href="javascript:void(0);">删除</a>
+    	 	 	</div>
+    	 	 	<div style="clear:both;"></div>
+    	 	 </div>
+    	 	 <div style="clear:both;"></div>
+    	 </div>
+    	 <div style="clear:both;"></div>
+    </div>  
  </div>
  <jsp:include page="/page/foot.jsp" />
 </body>
