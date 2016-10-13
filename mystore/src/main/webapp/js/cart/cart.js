@@ -44,13 +44,12 @@ $(function(){
 		$(".goodsNum").change();
 		
 		var id = $.trim($(this).parent().attr("alt"));
-		var price = parseFloat($('.price[alt='+id+']').text());
-	    var markPrice = parseFloat($('.markPrice[alt='+id+']').text());
-	    
-	    $('.totalPrice[alt='+id+']').text((num*price).toFixed(2));
-	    $('.totalMarkPrice[alt='+id+']').text((num*markPrice).toFixed(2));
 		
-	    updateSelectedGoods();
+		updatePirce(num,id);
+		
+		if($('.check[alt='+id+']').is(':checked')){
+			updateSelectedGoods();
+		}
 	});
 	$(".decrement").click(function(){
 		var num = $(this).next().val();
@@ -64,13 +63,12 @@ $(function(){
 		$(".goodsNum").change();
 		
 		var id = $.trim($(this).parent().attr("alt"));
-		var price = parseFloat($('.price[alt='+id+']').text());
-	    var markPrice = parseFloat($('.markPrice[alt='+id+']').text());
-	    
-	    $('.totalPrice[alt='+id+']').text(num*price.toFixed(2));
-	    $('.totalMarkPrice[alt='+id+']').text(num*markPrice.toFixed(2));
+
+		updatePirce(num,id);
 		
-	    updateSelectedGoods();
+		if($('.check[alt='+id+']').is(':checked')){
+			updateSelectedGoods();
+		}
 	});
 	$(".goodsNum").keyup(function(){
 		if($.trim($(this).val()) == ''){
@@ -93,6 +91,15 @@ $(function(){
 			num += parseInt($.trim($(this).val()));
 		});
 		$(".cart_num").text(num);
+		
+		var id = $(this).attr("alt");
+		
+		updatePirce($.trim($(this).val()),id);
+		
+		if($('.check[alt='+id+']').is(':checked')){
+			updateSelectedGoods();
+		}
+		
 		$.ajax({
 		 	url: path+'/cart/cartAction!coverCart.dhtml',
 		 	data: {'cart':cart}
@@ -136,11 +143,15 @@ function selectedGoods(){
 	data.totalMarkPrice = totalMarkPrice;
 	return data;
 }
-
 function updateSelectedGoods(){
 	var data = selectedGoods();
 	$('#selectedGoodsNum').text(data.num);
 	$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
 	$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
 }
-
+function updatePirce(num,id){
+	var price = parseFloat($('.price[alt='+id+']').text());
+    var markPrice = parseFloat($('.markPrice[alt='+id+']').text());
+    $('.totalPrice[alt='+id+']').text((num*price).toFixed(2));
+    $('.totalMarkPrice[alt='+id+']').text((num*markPrice).toFixed(2));
+}
