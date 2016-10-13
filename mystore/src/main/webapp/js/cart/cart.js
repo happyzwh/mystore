@@ -18,10 +18,7 @@ $(function(){
 			$(".check").removeAttr("checked");
 		}
 		
-		var data = selectedGoodsNum();
-		$('#selectedGoodsNum').text(data.num);
-		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
-		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
+		updateSelectedGoods();
 	});
 	$(".check").click(function(){
 		if($(this).is(':checked')){
@@ -34,10 +31,7 @@ $(function(){
 			$(".checkAll").removeAttr("checked");
 		}
 		
-		var data = selectedGoodsNum();
-		$('#selectedGoodsNum').text(data.num);
-		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
-		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
+		updateSelectedGoods();
 	});
 	$(".increment").click(function(){
 		var num = $(this).prev().val();
@@ -56,10 +50,7 @@ $(function(){
 	    $('.totalPrice[alt='+id+']').text((num*price).toFixed(2));
 	    $('.totalMarkPrice[alt='+id+']').text((num*markPrice).toFixed(2));
 		
-		var data = selectedGoodsNum();
-		$('#selectedGoodsNum').text(data.num);
-		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
-		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
+	    updateSelectedGoods();
 	});
 	$(".decrement").click(function(){
 		var num = $(this).next().val();
@@ -79,10 +70,7 @@ $(function(){
 	    $('.totalPrice[alt='+id+']').text(num*price.toFixed(2));
 	    $('.totalMarkPrice[alt='+id+']').text(num*markPrice.toFixed(2));
 		
-		var data = selectedGoodsNum();
-		$('#selectedGoodsNum').text(data.num);
-		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
-		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
+	    updateSelectedGoods();
 	});
 	$(".goodsNum").keyup(function(){
 		if($.trim($(this).val()) == ''){
@@ -123,13 +111,16 @@ $(function(){
 			num += parseInt($.trim($(this).val()));
 		});
 		$(".cart_num").text(num);
+		
+		updateSelectedGoods();
+		
 		$.ajax({
 		 	url: path+'/cart/cartAction!coverCart.dhtml',
 		 	data: {'cart':cart}
 		});
 	});
 });
-function selectedGoodsNum(){
+function selectedGoods(){
 	var data = {};
 	var num = 0;
 	var totalPrice = 0;
@@ -146,4 +137,10 @@ function selectedGoodsNum(){
 	return data;
 }
 
+function updateSelectedGoods(){
+	var data = selectedGoods();
+	$('#selectedGoodsNum').text(data.num);
+	$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
+	$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
+}
 
