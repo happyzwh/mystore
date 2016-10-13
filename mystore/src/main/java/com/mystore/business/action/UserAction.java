@@ -193,8 +193,9 @@ public class UserAction  extends BaseAction{
 			
 			cacheCart = (cacheCart == null)?new CacheCart(true):cacheCart;
 			
-			if(cacheCart.isChanged()){
-				UserCart userCart = userCartService.getCartByUserId(user.getId());
+			UserCart userCart = userCartService.getCartByUserId(user.getId());
+			
+			if(cacheCart.isChanged()){	
 				if(userCart != null && StringUtils.isNotBlank(userCart.getCart())){
 					String[] carts = userCart.getCart().split(Constans.CHAR_SPLIT_CART);
 					if(carts != null && carts.length > 0){
@@ -202,7 +203,14 @@ public class UserAction  extends BaseAction{
 							String[] cart = cartStr.split(Constans.CHAR_SPLIT_CART_GOOD);
 							if(cart != null && cart.length == 2){
 								if(cacheCart.getCart().containsKey(Integer.valueOf(cart[0]))){
-									cacheCart.getCart().put(Integer.valueOf(cart[0]), Integer.valueOf(cart[1])+cacheCart.getCart().get(Integer.valueOf(cart[0])));
+									
+									int num = Integer.valueOf(cart[1]);
+									
+									if(num < cacheCart.getCart().get(Integer.valueOf(cart[0]))){
+										num = cacheCart.getCart().get(Integer.valueOf(cart[0]));
+									}
+									
+									cacheCart.getCart().put(Integer.valueOf(cart[0]), num);
 								}else{
 									cacheCart.getCart().put(Integer.valueOf(cart[0]), Integer.valueOf(cart[1]));
 								}
@@ -227,7 +235,6 @@ public class UserAction  extends BaseAction{
 			
 			if(cart.length() > 0){
 				
-				UserCart userCart = userCartService.getCartByUserId(user.getId());
 				if(userCart == null){
 					userCart = new UserCart();
 				}

@@ -94,8 +94,53 @@ public class UserCartAction extends BaseAction{
 				synCart.setCount(1);
 				synCart.setTime(System.currentTimeMillis());
 			}
+			
 			redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
+			
 		}
+	}
+	
+	public void coverCart(){
+		
+		String sessionId = ServletActionContext.getRequest().getSession().getId();
+		
+		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		
+		cacheCart = new CacheCart(true);
+		
+		String[] goodsList = cart.split(Constans.CHAR_SPLIT_CART);
+		if(goodsList != null && goodsList.length > 0){
+			Map<Integer,Integer> cart = new HashMap<Integer,Integer>();
+			cacheCart.setCart(cart);
+			for(String goodstr:goodsList){
+				String[] goods = goodstr.split(Constans.CHAR_SPLIT_CART_GOOD);
+				cart.put(Integer.valueOf(goods[0]), Integer.valueOf(goods[1]));
+			}
+		}
+		
+		redisTemplate.delete(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+		redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+	
+		User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+		if(user != null){
+			SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()));
+			if(synCart != null){
+				synCart.setCart(cart.toString());
+				synCart.setCount(synCart.getCount()+1);
+			}else{
+				synCart = new SynCart();
+				synCart.setId_user(user.getId());
+				synCart.setCart(cart.toString());
+				synCart.setCount(1);
+				synCart.setTime(System.currentTimeMillis());
+			}
+			
+			redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
+			
+		}
+		
+		CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constans.KEY_COOKIE_CART,cart.toString(),Constans.VALUE_TIME_COOKIE_CART.intValue()*60*60);
 	}
 	
 	public void addCart() throws IOException, JSONException{
@@ -115,10 +160,16 @@ public class UserCartAction extends BaseAction{
 			cacheCart = (cacheCart == null)?new CacheCart(true):cacheCart;
 			
 			cacheCart.setChanged(true);
+			
+			int num = 0;
 			if(cacheCart.getCart().containsKey(proId)){
-				cacheCart.getCart().put(proId,cacheCart.getCart().get(proId)+count);
+				num = cacheCart.getCart().get(proId)+count;	
+			}
+			
+			if(num <= 0){
+				cacheCart.getCart().remove(proId);
 			}else{
-				cacheCart.getCart().put(proId,count);
+				cacheCart.getCart().put(proId,num);
 			}
 			
 			StringBuilder cart = new StringBuilder("");
@@ -179,7 +230,7 @@ public class UserCartAction extends BaseAction{
 					}
 					
 					userCart.setCart(synCart.getCart());
-					
+						
 					if(userCart.getId() != null){
 						userCartService.updateCartByUserId(userCart);
 					}else{

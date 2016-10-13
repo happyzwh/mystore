@@ -30,8 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 </div>
     	 <div class="list">
     	     <s:iterator value="shopCart.goodsList" status="ind">
-	    	 	 <div class="item">
-	    	 	 	<div class="cell p-checkBox"><input type="checkbox"  class="check"/></div>
+	    	 	 <div class="item" id='<s:property value="id" />'>
+	    	 	 	<div class="cell p-checkBox"><input type="checkbox"  class="check" alt='<s:property value="id" />'/></div>
 	    	 	 	<div class="cell p-goods">
 	    	 	 		<div class="goods-item">
 	    	 	 		   	<div class="p-img">
@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	 	 	<div class="cell p-count">
 	    	 	 		<div class="count-form">
 							<a href="javascript:void(0);" class="decrement">-</a>
-							<input autocomplete="off" class="itxt goodsNum" value='<s:property value="count"/>' type="text">
+							<input autocomplete="off" class="itxt goodsNum" value='<s:property value="count"/>' type="text" alt='<s:property value="id" />'>
 							<a href="javascript:void(0);" class="increment">+</a>
 						</div>
 	    	 	 	</div>
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	 	 		<strong><s:text name="format.number"><s:param value="totalPrice"/></s:text></strong>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-op">
-	    	 	 		<a class="cart-remove" href="javascript:void(0);">删除</a>
+	    	 	 		<a class="cart-remove" href="javascript:void(0);" alt='<s:property value="id" />'>删除</a>
 	    	 	 	</div>
 	    	 	 	<div style="clear:both;"></div>
 	    	 	 </div>

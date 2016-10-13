@@ -37,6 +37,7 @@ $(function(){
 		}
 		num = parseInt(num)+1;
 		$(this).prev().val(num);
+		$(".goodsNum").change();
 	});
 	$(".decrement").click(function(){
 		var num = $(this).next().val();
@@ -47,6 +48,7 @@ $(function(){
 		num = parseInt(num) - 1;
 		if(num < 1) num = 1;
 		$(this).next().val(num);
+		$(".goodsNum").change();
 	});
 	$(".goodsNum").keyup(function(){
 		if($.trim($(this).val()) == ''){
@@ -60,9 +62,25 @@ $(function(){
 	});
 	$(".goodsNum").change(function(){
 		var num = 0;
+		var cart = "";
 		$(".goodsNum").each(function(){
+			var value= $.trim($(this).val());
+			var id = $.trim($(this).attr("alt"));
+			if(cart != '')cart += '-';
+			cart += id+','+value;
 			num += parseInt($.trim($(this).val()));
 		});
 		$(".cart_num").text(num);
+		if(cart != ''){
+		 	$.ajax({
+		 		url: path+'/cart/cartAction!coverCart.dhtml',
+		 		data: {'cart':cart}
+			});
+		}
+	});
+	$('.cart-remove').click(function(){
+		var id = $.trim($(this).attr("alt"));
+		$(".item[id="+id+"]").remove();
+		$(".goodsNum").change();
 	});
 });
