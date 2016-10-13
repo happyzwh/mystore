@@ -108,13 +108,15 @@ public class UserCartAction extends BaseAction{
 		
 		cacheCart = new CacheCart(true);
 		
-		String[] goodsList = cart.split(Constans.CHAR_SPLIT_CART);
-		if(goodsList != null && goodsList.length > 0){
-			Map<Integer,Integer> cart = new HashMap<Integer,Integer>();
-			cacheCart.setCart(cart);
-			for(String goodstr:goodsList){
-				String[] goods = goodstr.split(Constans.CHAR_SPLIT_CART_GOOD);
-				cart.put(Integer.valueOf(goods[0]), Integer.valueOf(goods[1]));
+		if(StringUtils.isNotBlank(cart)){
+			String[] goodsList = cart.split(Constans.CHAR_SPLIT_CART);
+			if(goodsList != null && goodsList.length > 0){
+				Map<Integer,Integer> cart = new HashMap<Integer,Integer>();
+				cacheCart.setCart(cart);
+				for(String goodstr:goodsList){
+					String[] goods = goodstr.split(Constans.CHAR_SPLIT_CART_GOOD);
+					cart.put(Integer.valueOf(goods[0]), Integer.valueOf(goods[1]));
+				}
 			}
 		}
 		
@@ -161,9 +163,9 @@ public class UserCartAction extends BaseAction{
 			
 			cacheCart.setChanged(true);
 			
-			int num = 0;
+			int num = count;
 			if(cacheCart.getCart().containsKey(proId)){
-				num = cacheCart.getCart().get(proId)+count;	
+				num += cacheCart.getCart().get(proId);	
 			}
 			
 			if(num <= 0){
