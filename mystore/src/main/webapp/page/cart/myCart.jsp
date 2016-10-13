@@ -48,17 +48,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	 	 		<div class="props-txt" title="蓝-男款助力理论续航约70KM">颜色：蓝-男款助力理论续航约70KM</div>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-price">
-	    	 	 		<strong><s:text name="format.number"><s:param value="price"/></s:text></strong>
+	    	 	 		<strong  class="price" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="price"/></s:text></strong>
+						<strong  class="markPrice" style="text-decoration:line-through;" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="markPrice"/></s:text></strong>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-count">
-	    	 	 		<div class="count-form">
+	    	 	 		<div class="count-form" alt='<s:property value="id" />'>
 							<a href="javascript:void(0);" class="decrement">-</a>
 							<input autocomplete="off" class="itxt goodsNum" value='<s:property value="count"/>' type="text" alt='<s:property value="id" />'>
 							<a href="javascript:void(0);" class="increment">+</a>
 						</div>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-sum">
-	    	 	 		<strong><s:text name="format.number"><s:param value="totalPrice"/></s:text></strong>
+	    	 	 		<strong class="totalPrice" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="totalPrice"/></s:text></strong>
+	    	 	 		</br>
+	    	 	 		<strong class="totalMarkPrice" style="text-decoration:line-through;" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="totalMarkPrice"/></s:text></strong>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-op">
 	    	 	 		<a class="cart-remove" href="javascript:void(0);" alt='<s:property value="id" />'>删除</a>
@@ -77,14 +80,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="price-sum">
 								<div>
 									<span class="txt txt-new">总价：</span>
-									<span class="price sumPrice"><em>¥0</em></span>
+									<span class="price sumPrice"><em id="sumPrice">¥0</em></span>
 									<br>
 									<span class="txt">已节省：</span>
-									<span class="price totalRePrice">-¥0</span>
+									<span class="price totalRePrice" id="totalRePrice">-¥0</span>
 								</div>
 							</div>
 							<div class="amount-sum">
-								已选择<em>0</em>件商品
+								已选择<em id="selectedGoodsNum">0</em>件商品
 							</div>
 				</div>
     	 </div>

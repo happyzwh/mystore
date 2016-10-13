@@ -20,6 +20,8 @@ public class Goods implements java.io.Serializable{
 	private Double price;
 	
 	private Double totalPrice;
+	
+	private Double totalMarkPrice;
 
 	public Integer getId() {
 		return id;
@@ -76,6 +78,15 @@ public class Goods implements java.io.Serializable{
 
 	public void setMarkPrice(Double markPrice) {
 		this.markPrice = markPrice;
+	}
+
+	public Double getTotalMarkPrice() {
+		totalMarkPrice = count*markPrice;
+		return totalMarkPrice;
+	}
+
+	public void setTotalMarkPrice(Double totalMarkPrice) {
+		this.totalMarkPrice = totalMarkPrice;
 	}
 	
 }

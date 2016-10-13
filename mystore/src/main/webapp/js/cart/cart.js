@@ -17,6 +17,11 @@ $(function(){
 			$(".checkAll").removeAttr("checked");
 			$(".check").removeAttr("checked");
 		}
+		
+		var data = selectedGoodsNum();
+		$('#selectedGoodsNum').text(data.num);
+		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
+		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
 	});
 	$(".check").click(function(){
 		if($(this).is(':checked')){
@@ -28,6 +33,11 @@ $(function(){
 		}else{
 			$(".checkAll").removeAttr("checked");
 		}
+		
+		var data = selectedGoodsNum();
+		$('#selectedGoodsNum').text(data.num);
+		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
+		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
 	});
 	$(".increment").click(function(){
 		var num = $(this).prev().val();
@@ -38,6 +48,18 @@ $(function(){
 		num = parseInt(num)+1;
 		$(this).prev().val(num);
 		$(".goodsNum").change();
+		
+		var id = $.trim($(this).parent().attr("alt"));
+		var price = parseFloat($('.price[alt='+id+']').text());
+	    var markPrice = parseFloat($('.markPrice[alt='+id+']').text());
+	    
+	    $('.totalPrice[alt='+id+']').text((num*price).toFixed(2));
+	    $('.totalMarkPrice[alt='+id+']').text((num*markPrice).toFixed(2));
+		
+		var data = selectedGoodsNum();
+		$('#selectedGoodsNum').text(data.num);
+		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
+		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
 	});
 	$(".decrement").click(function(){
 		var num = $(this).next().val();
@@ -49,6 +71,18 @@ $(function(){
 		if(num < 1) num = 1;
 		$(this).next().val(num);
 		$(".goodsNum").change();
+		
+		var id = $.trim($(this).parent().attr("alt"));
+		var price = parseFloat($('.price[alt='+id+']').text());
+	    var markPrice = parseFloat($('.markPrice[alt='+id+']').text());
+	    
+	    $('.totalPrice[alt='+id+']').text(num*price.toFixed(2));
+	    $('.totalMarkPrice[alt='+id+']').text(num*markPrice.toFixed(2));
+		
+		var data = selectedGoodsNum();
+		$('#selectedGoodsNum').text(data.num);
+		$('#sumPrice').text('¥'+data.totalPrice.toFixed(2));
+		$('#totalRePrice').text('-¥'+(data.totalMarkPrice - data.totalPrice).toFixed(2));
 	});
 	$(".goodsNum").keyup(function(){
 		if($.trim($(this).val()) == ''){
@@ -95,3 +129,21 @@ $(function(){
 		});
 	});
 });
+function selectedGoodsNum(){
+	var data = {};
+	var num = 0;
+	var totalPrice = 0;
+	var totalMarkPrice = 0;
+	$('.check:checked').each(function(){
+		var id = $.trim($(this).attr('alt'));
+		num += parseInt($(".goodsNum[alt="+id+"]").val());
+		totalPrice += parseFloat($(".totalPrice[alt="+id+"]").text());
+		totalMarkPrice += parseFloat($(".totalMarkPrice[alt="+id+"]").text());
+	});
+	data.num = num;
+	data.totalPrice = totalPrice;
+	data.totalMarkPrice = totalMarkPrice;
+	return data;
+}
+
+

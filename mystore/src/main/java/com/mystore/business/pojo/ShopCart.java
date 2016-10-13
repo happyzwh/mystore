@@ -14,6 +14,8 @@ public class ShopCart implements java.io.Serializable{
 	
 	private Double totalAmount;
 	
+	private Double totalMarkAmount;
+	
 	private Integer totalCount;
 	
 	private Double discount;
@@ -65,6 +67,17 @@ public class ShopCart implements java.io.Serializable{
 	public void setDiscount(Double discount) {
 		this.discount = discount;
 	}
-	
+
+	public Double getTotalMarkAmount() {
+		totalMarkAmount = 0d;
+		for(Goods goods:goodsList){
+			totalMarkAmount += goods.getTotalMarkPrice();
+		}
+		return totalMarkAmount;
+	}
+
+	public void setTotalMarkAmount(Double totalMarkAmount) {
+		this.totalMarkAmount = totalMarkAmount;
+	}
 	
 }
