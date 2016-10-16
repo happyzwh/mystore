@@ -248,7 +248,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
 							<a target="_blank" title='<s:property value="name" />' href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="img clearfix"> 
 							<span style="display:none" class="cxtag tj" id="mark_24268"></span> 
-							<img src='<%=ConfigReader.getPath_pic_service()%>/<s:property value="path_pic" />' proimgid="24268"></a> 
+							<img src='<%=ConfigReader.getPath_pic_service()%>/<s:property value="path_pic.replace('big','mid')" />' proimgid="24268"></a> 
 						</div>
 						<a target="_blank" title='<s:property value="name" />' href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="proName"><s:property value="name" /><span class="slogan" id="promote_24268"><s:property value="name" /></span></a>
 						<div class="priceArea">

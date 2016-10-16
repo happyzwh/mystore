@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.mystore.business.dto.Category;
 import com.mystore.business.dto.ProAttr;
 import com.mystore.business.dto.ProImg;
 import com.mystore.business.dto.ProInfo;
 import com.mystore.business.dto.ProPrice;
 import com.mystore.business.dto.Product;
+import com.mystore.business.service.CategoryService;
 import com.mystore.business.service.ProductService;
 
 @Controller("productAction")
@@ -37,10 +39,15 @@ public class ProductAction  extends BaseAction {
 	
 	private List<Map<String,Object>> proAttrMaps;
 	
+	private List<Category> categorys;
+	
 	@Autowired
 	private ProductService productService;
 	
-	public String detail(){
+	@Autowired
+	private CategoryService categoryService;
+	
+	public String detail() throws Exception{
 		
 		if(id == null){
 			return "detail";
@@ -51,6 +58,8 @@ public class ProductAction  extends BaseAction {
 		if(product == null){
 			return "detail";
 		}
+		
+		categorys = categoryService.getAllParentCategoryById(product.getId_cate());
 		
 		proAttrMaps = productService.getProAttrMapByProId(id);
 		
@@ -117,6 +126,14 @@ public class ProductAction  extends BaseAction {
 
 	public void setProAttrMaps(List<Map<String, Object>> proAttrMaps) {
 		this.proAttrMaps = proAttrMaps;
+	}
+
+	public List<Category> getCategorys() {
+		return categorys;
+	}
+
+	public void setCategorys(List<Category> categorys) {
+		this.categorys = categorys;
 	}
 
 	

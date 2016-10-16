@@ -22,8 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div class="homeBody">
       <div class="nav">
            <a href="">首页</a><i>></i>
-           <a href=""><s:property value='product.cateName'/></a><i>></i>
-           <a href=""><s:property value='product.brandName'/></a><i>></i>
+           <s:iterator value="categorys" status="ind">
+           		<a href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a><i>></i>
+           </s:iterator>
+           <a href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='product.id_cate'/>-<s:property value='product.id_brand'/>-0-0-0-0-0-0"><s:property value='product.brandName'/></a><i>></i>
            <s:property value='product.name'/> 
       </div>
       <div class="dIntro">

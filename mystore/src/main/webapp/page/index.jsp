@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                           <img height="" width="" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img'/>"/>
 		                        </a>
 		                        <font class="price">￥<s:property value='shopPrice'/></font>
-		                        <font class="f3">市场价格：<del>￥<s:property value='markPrice'/></del></font>
+		                        <font class="f3"><del>￥<s:property value='markPrice'/></del></font>
 		                        <p><a target="_blank" href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
 		                  </div>
 		              </li>
@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                           <img height="" width="" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img'/>"/>
 		                        </a>
 		                        <font class="price">￥<s:property value='shopPrice'/></font>
-		                        <font class="f3">市场价格：<del>￥<s:property value='markPrice'/></del></font>
+		                        <font class="f3"><del>￥<s:property value='markPrice'/></del></font>
 		                        <p><a target="_blank" href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
 		                  </div>
 		              </li>

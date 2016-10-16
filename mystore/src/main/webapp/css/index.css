@@ -165,9 +165,9 @@
 	
 }
 .enty img{
-	height: 168px;
-    padding: 5px;
-    width: 168px;
+	height: 190px;
+    padding: 2px;
+    width: 190px;
 }
 .enty .price {
     color: #c71b51;
@@ -331,8 +331,8 @@
 	display:inline;
 }
 .fc_sale_rank ul .item .sr_con .sr_img img {
-    height: 120px;
-    width: 120px;
+    height: 140px;
+    width: 140px;
 }
 .fc_sale_rank ul .item .text {
     color: #ed145b;
