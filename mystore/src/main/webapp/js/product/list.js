@@ -32,8 +32,7 @@ $(function(){
 			$(this).next().hide();
 		}
 	);
-	/**
-	$(".box").hover(
+	$(".moreS .box").hover(
 		function(){
 			$(this).prev().addClass("item_checked");
 			$(this).show();
@@ -43,7 +42,6 @@ $(function(){
 			$(this).hide();
 		}
 	);
-	**/
 	$(".sort").click(function(){
 		
 		$(".order li i").css("background-position","-65px -108px");

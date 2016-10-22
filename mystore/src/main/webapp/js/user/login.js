@@ -58,6 +58,7 @@ $(function(){
 						$("#flushcode").attr("src",$("#flushcode").attr("src").substr(0,$("#flushcode").attr("src").indexOf("?")+1)+new Date().getTime());
 						if(data == 1){
 							$(".sys-error").text("登录成功！").show();
+							document.location.href=$("#basePath").val()+'/user/userAction!index.dhtml';
 						}else if(data == -1){
 							$(".sys-error").text("系统异常请重试！").show();
 						}else if(data == -2){

@@ -48,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	 	 		<div class="props-txt" title="蓝-男款助力理论续航约70KM">颜色：蓝-男款助力理论续航约70KM</div>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-price">
-	    	 	 		<strong  class="price" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="price"/></s:text></strong>
-						<strong  class="markPrice" style="text-decoration:line-through;" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="markPrice"/></s:text></strong>
+	    	 	 		<strong  class="price" alt='<s:property value="id" />'><s:text name="format.numbers"><s:param value="price"/></s:text></strong>
+						<strong  class="markPrice" style="text-decoration:line-through;" alt='<s:property value="id" />'><s:text name="format.numbers"><s:param value="markPrice"/></s:text></strong>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-count">
 	    	 	 		<div class="count-form" alt='<s:property value="id" />'>
@@ -59,9 +59,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-sum">
-	    	 	 		<strong class="totalPrice" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="totalPrice"/></s:text></strong>
+	    	 	 		<strong class="totalPrice" alt='<s:property value="id" />'><s:text name="format.numbers"><s:param value="totalPrice"/></s:text></strong>
 	    	 	 		</br>
-	    	 	 		<strong class="totalMarkPrice" style="text-decoration:line-through;" alt='<s:property value="id" />'><s:text name="format.number"><s:param value="totalMarkPrice"/></s:text></strong>
+	    	 	 		<strong class="totalMarkPrice" style="text-decoration:line-through;" alt='<s:property value="id" />'><s:text name="format.numbers"><s:param value="totalMarkPrice"/></s:text></strong>
 	    	 	 	</div>
 	    	 	 	<div class="cell p-op">
 	    	 	 		<a class="cart-remove" href="javascript:void(0);" alt='<s:property value="id" />'>删除</a>

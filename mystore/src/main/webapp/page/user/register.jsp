@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input type="hidden" id="bathPath" value="<%=path%>" />
 <input type="hidden" id = "exponent" value="${model.exponent}"/>
 <input type="hidden" id="modulus" value="${model.modulus}"/>
-<body style="background: #eaedf1 none repeat scroll 0 0;">
+<body>
  <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
  	  <div class="container-con register-cont">

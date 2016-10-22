@@ -259,6 +259,10 @@ public class UserAction  extends BaseAction{
 		}
 	}
 	
+	public String index(){
+		return "index";
+	}
+	
 	/**
 	 * 验证用户名是否存在
 	 * 

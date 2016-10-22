@@ -1,0 +1,37 @@
+.list_left{
+	float:left;
+	width:200px;
+	height:1000px;
+}
+.list_right{
+	padding:5px;
+	float:left;
+	width:790px;
+	height:auto;
+}
+.list_left h1 {
+    background-color: #c40001;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    height: 51px;
+    width: 100%;
+}
+.list_left h1 i{
+    background: rgba(0, 0, 0, 0) url("../../images/icon_1.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 21px;
+    line-height: 21px;
+    margin-top: 7px;
+    padding-left: 21px;
+    vertical-align: text-bottom;
+    background-position: 2px -21px;
+}
+.list_left h1 a{
+	height: 51px;
+	line-height: 51px;
+}
+.list_left h1 span{
+	margin-left:10px;
+    color:#fff;
+}
