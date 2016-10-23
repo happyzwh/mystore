@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/product/list.js" type="text/javascript"></script>
 </head>
 <body>
- <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
+ <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
       <input type="hidden" id="basePath" value="<%=path%>"/>
       <div class="list_left">
@@ -118,10 +118,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		  <!--  <div class="rela"><em>相关产品</em><span>44</span><em>件</em></div>  -->
       		   <div class="li">
 				   <i class="square"></i>
-				   <a class="level level1" title="全部" href="<%=path%>/search/searchAction!list.dhtml">全部</a>
+				   <a class="level level1" title="全部" href="search_list.dhtml">全部</a>
 				   <s:iterator value="searchPojo.selectedCates" status="ind">
 					   <i class="arrow"></i>
-					   <a class="level level2" title="<s:property value='name'/>" href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a>
+					   <a class="level level2" title="<s:property value='name'/>" href="search_list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a>
 				   </s:iterator>
 			   </div>
       		</div>
@@ -165,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								 <ul class="clearfix">  
 									 <s:iterator value="searchPojo.selectCates" id="cate">
 						     			 <s:if test="#cate.sons == null || #cate.sons.size() == 0"> 
-												<li><a alt="<s:property value='#cate.name'/>"  href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='#cate.id'/>-0-0-0-0-0-0-0"><s:property value='#cate.name'/></a></li>
+												<li><a alt="<s:property value='#cate.name'/>"  href="search_list.dhtml?keys=<s:property value='#cate.id'/>-0-0-0-0-0-0-0"><s:property value='#cate.name'/></a></li>
 										 </s:if>
 						 			 </s:iterator>
 								 </ul>	
@@ -175,11 +175,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 <s:iterator value="searchPojo.selectCates" id="cate">
 					     <s:if test="#cate.sons != null && #cate.sons.size() > 0">
 							  <div style="display:block" class="selectLine2">
-									<div class="proLeft"><a style="color:#cf010e;" href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='#cate.id'/>-0-0-0-0-0-0-0"><s:property value='#cate.name'/></a></div>
+									<div class="proLeft"><a style="color:#cf010e;" href="search_list.dhtml?keys=<s:property value='#cate.id'/>-0-0-0-0-0-0-0"><s:property value='#cate.name'/></a></div>
 									<div class="proRight">
 										<ul class="clearfix">
 										    <s:iterator value="#cate.sons" id="son">
-												<li><a alt="<s:property value='#son.name'/>"  href="<%=path%>/search/searchAction!list.dhtml?keys=<s:property value='#son.id'/>-0-0-0-0-0-0-0"><s:property value='#son.name'/></a></li>
+												<li><a alt="<s:property value='#son.name'/>"  href="search_list.dhtml?keys=<s:property value='#son.id'/>-0-0-0-0-0-0-0"><s:property value='#son.name'/></a></li>
 											</s:iterator>
 										</ul>	
 									</div>
@@ -246,16 +246,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      			<div class="content"> 
 						<div class="collect_box">
 							<span id="cell_24268" class="collect collect2" style="display: none;"><i></i>收藏</span> 
-							<a target="_blank" title='<s:property value="name" />' href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="img clearfix"> 
+							<a target="_blank" title='<s:property value="name" />' href='product_detail.dhtml?id=<s:property value="id" />' class="img clearfix"> 
 							<span style="display:none" class="cxtag tj" id="mark_24268"></span> 
 							<img src='<%=ConfigReader.getPath_pic_service()%>/<s:property value="path_pic.replace('big','mid')" />' proimgid="24268"></a> 
 						</div>
-						<a target="_blank" title='<s:property value="name" />' href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="proName"><s:property value="name" /><span class="slogan" id="promote_24268"><s:property value="name" /></span></a>
+						<a target="_blank" title='<s:property value="name" />' href='product_detail.dhtml?id=<s:property value="id" />' class="proName"><s:property value="name" /><span class="slogan" id="promote_24268"><s:property value="name" /></span></a>
 						<div class="priceArea">
 							<p id="product_24268" class="price">¥<s:text name="format.number"><s:param value="shopPrice"/></s:text></p>
 							<div id="activity_24268" style="display:none;"><span class="yh">返券</span><span class="yh">赠品</span></div>&nbsp;
 						</div>
-						<a target="_blank" title="" href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' class="judge">已有<span>462</span>人评价</a>
+						<a target="_blank" title="" href='product_detail.dhtml?id=<s:property value="id" />' class="judge">已有<span>462</span>人评价</a>
 						<div class="buyArea clearfix">
 							<span>
 								<input type="text" name="" value="1" class="goodsNum" />
@@ -277,7 +277,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
       </div>
  </div>
- <form id="searchForm" action="<%=path%>/search/searchAction!lists.dhtml" method="post" target="_self">
+ <form id="searchForm" action="search_lists.dhtml" method="post" target="_self">
  	<input type="hidden" name="cateId" id="cateId" value="<s:property value='cateId'/>" />
  	<input type="hidden" name="brandIds" id="brandIds" value="<s:property value='brandIds'/>" />
  	<input type="hidden" name="lowPrice" id="lowPrice" value="<s:property value='lowPrice'/>" />

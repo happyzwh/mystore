@@ -10,18 +10,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>用户中心</title>
 <link type="text/css" rel="stylesheet" href="<%=path%>/css/common.css" />
-<link type="text/css" rel="stylesheet" href="<%=path%>/css/user/index.css" />
+<link type="text/css" rel="stylesheet" href="<%=path%>/css/user/center.css" />
 <script type="text/javascript" language="javascript" src="<%=path%>/js/jquery-1.7.2.min.js" ></script>
-<script type="text/javascript" src="<%=path%>/js/user/index.js"></script>
+<script type="text/javascript" src="<%=path%>/js/user/center.js"></script>
 </head>
-<input type="hidden" id="bathPath" value="<%=path%>" />
 <body>
- <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
+ <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
- 	  <input type="hidden" id="basePath" value="<%=path%>"/>
       <div class="list_left">
       		<h1>
-	      		<a href="<%=path%>/user/userAction!index.dhtml">
+	      		<a href="<%=path%>/user_center.dhtml">
 	      			<i></i><span>我的惠美购</span>
 	      		</a>
       		</h1>
@@ -32,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		<div class="navList">
       		   <div class="func func1">
       		       <p class="title"><i></i><span>交易管理</span></p>
-      		       <a class="item on" href="/trademanage/my_order-9.htm" title=""><span>我的订单</span><i></i></a>
+      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>我的订单</span><i></i></a>
       		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>退货记录</span><i></i></a>
       		   </div>
       		   <div class="func func2">
@@ -42,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		   <div class="func func3">
       		       <p class="title"><i></i><span>我的帐户</span></p>
       		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>帐户安全</span><i></i></a>
-      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>基本信息</span><i></i></a>
+      		       <a class="item on" href="/trademanage/my_order-9.htm" title=""><span>基本信息</span><i></i></a>
       		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>收货地址</span><i></i></a>
       		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>快捷支付</span><i></i></a>
       		   </div>

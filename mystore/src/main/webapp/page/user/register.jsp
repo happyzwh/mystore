@@ -12,17 +12,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link type="text/css" rel="stylesheet" href="<%=path%>/css/common.css" />
 <link type="text/css" rel="stylesheet" href="<%=path%>/css/user/register.css" />
 </head>
-<input type="hidden" id="bathPath" value="<%=path%>" />
 <input type="hidden" id = "exponent" value="${model.exponent}"/>
 <input type="hidden" id="modulus" value="${model.modulus}"/>
 <body>
- <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
+ <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
  	  <div class="container-con register-cont">
 	    <h2 class="register-cont-h2">欢迎注册 <span class="sys-error">欢迎注册</span></h2>
 	    <div class="register-cont-box">
 	        <div class="register-cont-left">
-	            <form action="/user/userAction!register.dhtml" method="post" class="registerForm" name="mobileForm" id="regForm">            
+	            <form action="user_register.dhtml" method="post" class="registerForm" name="mobileForm" id="regForm">            
 	            	<ul class="m-form">
 	                    <li>
 	                        <div class="form-label">
@@ -116,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    </li>
 	                    <li class="itemli">
                                 <div class="toReg">
-                                   	 已是会员？<a href="/login.html" style="color: #297bc7;cursor: pointer;text-decoration: none;">立即登录</a>
+                                   	 已是会员？<a href="user_login.dhtml" style="color: #297bc7;cursor: pointer;text-decoration: none;">立即登录</a>
                                 </div>
                             </li>
 	                </ul>

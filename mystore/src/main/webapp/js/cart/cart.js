@@ -101,7 +101,7 @@ $(function(){
 		}
 		
 		$.ajax({
-		 	url: path+'/cart/cartAction!coverCart.dhtml',
+		 	url:'cart_coverCart.dhtml',
 		 	data: {'cart':cart}
 		});
 	});
@@ -122,7 +122,7 @@ $(function(){
 		updateSelectedGoods();
 		
 		$.ajax({
-		 	url: path+'/cart/cartAction!coverCart.dhtml',
+		 	url:'cart_coverCart.dhtml',
 		 	data: {'cart':cart}
 		});
 	});

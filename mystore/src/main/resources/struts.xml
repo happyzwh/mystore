@@ -8,61 +8,38 @@
     <constant name="struts.i18n.encoding" value="UTF-8" />
     <constant name="struts.objectFactory" value="spring" /> 
     <constant name="struts.custom.i18n.resources" value="applicationResource"/> 
-
-   <package name="index" namespace="/index" extends="struts-default">   
-       <action name="indexAction" class="indexAction">
-			<result name="index">/page/index.jsp</result>
-		</action>
-   </package>
    
-   <package name="search" namespace="/search" extends="struts-default">   
-       <action name="searchAction" class="searchAction">
-			<result name="list">/page/product/list.jsp</result>
-		</action>
-   </package>
-   
-   <package name="top" namespace="/top" extends="struts-default">   
-       <action name="topAction" class="topAction">
-			<result name="top">/page/top.jsp</result>
-		</action>
-   </package>
-   
-   <package name="info" namespace="/info" extends="struts-default">   
-       <action name="infoAction" class="infoAction">
-			<result name="detail">/page/notice/detail.jsp</result>
-		</action>
-   </package>
-   
-   <package name="product" namespace="/product" extends="struts-default">   
-       <action name="productAction" class="productAction">
-			<result name="detail">/page/product/detail.jsp</result>
-		</action>
-   </package>
-   
-   <package name="comment" namespace="/comment" extends="struts-default">   
-       <action name="commentAction" class="commentAction">
-			<result name="commentPage">/page/product/proComment.jsp</result>
-		</action>
-   </package>
-   
-   <package name="consult" namespace="/consult" extends="struts-default">   
-       <action name="consultAction" class="consultAction">
-			<result name="consultPage">/page/product/proConsult.jsp</result>
-		</action>
-   </package>
-   
-   <package name="user" namespace="/user" extends="struts-default">   
-       <action name="userAction" class="userAction">
-			<result name="goRegister">/page/user/register.jsp</result>
-			<result name="index">/page/user/index.jsp</result>
-			<result name="goLogin">/page/user/login.jsp</result>
-		</action>
-   </package>
-   
-   <package name="cart" namespace="/cart" extends="struts-default">   
-       <action name="cartAction" class="cartAction">
-           <result name="myCart">/page/cart/myCart.jsp</result>
-	   </action>
-   </package>
+    <package name="default" namespace="/" extends="struts-default">  
+         <action name="index_*" class="indexAction" method="{1}">
+			 <result name="index">/page/index.jsp</result>
+		 </action> 
+		 <action name="search_*" class="searchAction" method="{1}">
+			 <result name="list">/page/product/list.jsp</result>
+		 </action>
+		 <action name="top_*" class="topAction" method="{1}">
+			 <result name="top">/page/top.jsp</result>
+		 </action>
+		 <action name="info_*" class="infoAction" method="{1}">
+			 <result name="detail">/page/notice/detail.jsp</result>
+		 </action>
+		 <action name="product_*" class="productAction" method="{1}">
+			 <result name="detail">/page/product/detail.jsp</result>
+		 </action>
+		 <action name="comment_*" class="commentAction" method="{1}">
+			 <result name="commentPage">/page/product/proComment.jsp</result>
+		 </action>
+		 <action name="consult_*" class="consultAction" method="{1}">
+			 <result name="consultPage">/page/product/proConsult.jsp</result>
+		 </action>
+         <action name="cart_*" class="cartAction" method="{1}">
+             <result name="myCart">/page/cart/myCart.jsp</result>
+	    </action>
+		<action name="user_*" class="userAction" method="{1}">
+		     <result name="goRegister">/page/user/register.jsp</result>
+			 <result name="center">/page/user/center.jsp</result>
+			 <result name="goLogin">/page/user/login.jsp</result>
+             <result name="basic">/page/user/basic.jsp</result>
+        </action>
+    </package>
     
 </struts>

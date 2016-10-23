@@ -26,7 +26,7 @@ $(function(){
      		return false;
      	}
      	$.ajax({
-							url: $("#basePath").val()+'/consult/consultAction!save.dhtml',
+							url:'consult_save.dhtml',
 							type: 'post',
 							data: {'proId':$.trim($("#proId").val()),'type':$("input[name='consult_type']:checked").val(),'content':$.trim($("#consult_content").val())},
 							async: true,

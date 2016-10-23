@@ -92,7 +92,7 @@ $(function(){
 				var publicKey = RSAUtils.getKeyPair(exponent, '',modulus);
 				var password = RSAUtils.encryptedString(publicKey, $.trim($("#password").val()));
 				$.ajax({
-					url: $("#basePath").val()+'/user/userAction!register.dhtml',
+					url: $("#basePath").val()+'/user_register.dhtml',
 					type: 'post',
 					data: {'userName':$.trim($("#userName").val()),'password':password,'verifyCode':$.trim($("#verifyCode").val())},
 					async: true,
@@ -230,7 +230,7 @@ function isAccountExist(value){
     var tf = false;
     jQuery.ajax({
             type:'post',
-            url:$("#bathPath").val()+'/user/userAction!isAccountExist.dhtml',
+            url:$("#bathPath").val()+'/user_isAccountExist.dhtml',
             data:{'userName':jQuery.trim(value)},
             dataType:'text',
             cache:false,

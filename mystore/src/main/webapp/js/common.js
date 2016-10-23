@@ -21,7 +21,7 @@ function delCookie(name){
 }
 function addCart(proId,count){
 	$.ajax({
-		url: $("#basePath").val()+'/cart/cartAction!addCart.dhtml',
+		url:'cart_addCart.dhtml',
 		type: 'post',
 		data: {'proId':proId,'count':count},
 		async: true,

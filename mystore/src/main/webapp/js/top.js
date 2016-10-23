@@ -18,7 +18,7 @@ $(function(){
              $(".list_pro_search ul").empty();
          }else{
             $.ajax({
-					url: path+'/search/searchAction!mhSearch.dhtml',
+					url:'search_mhSearch.dhtml',
 					type: 'post',
 					data: {'keys':$.trim($("#keys").val())},
 					async: true,
@@ -91,7 +91,7 @@ $(function(){
     	 $(".cart_num").text(num);
     	 if(num > 0){
     		 	$.ajax({
-    		 		url: path+'/cart/cartAction!initCart.dhtml',
+    		 		url:'cart_initCart.dhtml',
     		 		data: {'cart':cartCookie}
     			});
     	 }

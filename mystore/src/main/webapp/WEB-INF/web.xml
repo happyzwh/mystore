@@ -25,18 +25,18 @@
 	    <init-param>
 	        <param-name>includeUrl</param-name>
 	        <param-value>
-	            user/userAction
+	            user_
 	        </param-value>
 	    </init-param>
 	    <init-param>
 	        <param-name>excludeUrl</param-name>
 	        <param-value>
-	           	user/userAction!goRegister.dhtml,user/userAction!register.dhtml, user/userAction!goLogin.dhtml,user/userAction!login.dhtml
+	           	user_goRegister.dhtml,user_register.dhtml,user_goLogin.dhtml,user_login.dhtml,user_isAccountExist.dhtml
 	        </param-value>
 	    </init-param>
 	    <init-param>
 	        <param-name>loginUrl</param-name>
-	        <param-value>user/userAction!goLogin.dhtml</param-value>
+	        <param-value>user_goLogin.dhtml</param-value>
 	    </init-param>
 	</filter>
 	<filter>

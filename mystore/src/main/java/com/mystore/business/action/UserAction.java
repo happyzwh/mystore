@@ -259,8 +259,8 @@ public class UserAction  extends BaseAction{
 		}
 	}
 	
-	public String index(){
-		return "index";
+	public String center(){
+		return "center";
 	}
 	
 	/**

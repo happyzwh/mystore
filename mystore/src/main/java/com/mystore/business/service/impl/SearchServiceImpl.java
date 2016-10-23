@@ -612,11 +612,11 @@ public class SearchServiceImpl implements SearchService{
 	        	     list.add(searchProPoJo);
 
 	        	     if(Integer.valueOf(document.get("type")) == 0){
-	        	    	 searchProPoJo.setUrl("/product/productAction!detail.dhtml?id="+document.get("id"));
+	        	    	 searchProPoJo.setUrl("/product_detail.dhtml?id="+document.get("id"));
 	        	     }else if(Integer.valueOf(document.get("type")) == 1){
-	        	    	 searchProPoJo.setUrl("/search/searchAction!list.dhtml?keys="+document.get("id")+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0);
+	        	    	 searchProPoJo.setUrl("/search_list.dhtml?keys="+document.get("id")+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0);
 	        	     }else if(Integer.valueOf(document.get("type")) == 2){
-	        	    	 searchProPoJo.setUrl("/search/searchAction!list.dhtml?keys="+document.get("id_cate")+"-"+document.get("id")+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0);
+	        	    	 searchProPoJo.setUrl("/search_list.dhtml?keys="+document.get("id_cate")+"-"+document.get("id")+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0+"-"+0);
 	        	     }
 	        	     searchProPoJo.setName(document.get("name"));
 	        	}

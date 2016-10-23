@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/cart/cart.js" type="text/javascript"></script>
 </head>
 <body>
- <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
+ <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
     <div class="cart">
     	 <div class="title">
@@ -35,11 +35,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	 	 	<div class="cell p-goods">
 	    	 	 		<div class="goods-item">
 	    	 	 		   	<div class="p-img">
-	    	 	 		   	     <a href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' target="_blank"><img alt='<s:property value="name" />' src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img.replace("big","small")'/>" ></a>
+	    	 	 		   	     <a href='product_detail.dhtml?id=<s:property value="id" />' target="_blank"><img alt='<s:property value="name" />' src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img.replace("big","small")'/>" ></a>
 	    	 	 		   	</div> 
 	    	 	 		   	<div class="item-msg">
 								<div class="p-name">
-									<a href='<%=path%>/product/productAction!detail.dhtml?id=<s:property value="id" />' target="_blank"><s:property value="name" /></a>
+									<a href='product_detail.dhtml?id=<s:property value="id" />' target="_blank"><s:property value="name" /></a>
 								</div>
 							</div>
 	    	 	 		</div>

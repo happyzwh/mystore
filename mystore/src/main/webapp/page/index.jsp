@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/index.js" type="text/javascript"></script>
 </head>
 <body>
- <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
+ <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
       <div class="mainBanner">
 			<div class="bigImg">
@@ -56,12 +56,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		          	 <s:iterator value="hotSaleList" status="ind">
 		               <li>
 		                  <div class="enty">
-		                        <a href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>">
+		                        <a href="product_detail.dhtml?id=<s:property value='id_pro'/>">
 		                           <img height="" width="" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img'/>"/>
 		                        </a>
 		                        <font class="price">￥<s:property value='shopPrice'/></font>
 		                        <font class="f3"><del>￥<s:property value='markPrice'/></del></font>
-		                        <p><a target="_blank" href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
+		                        <p><a target="_blank" href="product_detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
 		                  </div>
 		              </li>
 		             </s:iterator>
@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       				  <ul> 
 	       				      <s:iterator value="noticeList" status="ind">
 	       				            <li>
-	       				              <a rel="nofollow" target="_blank" href="<%=path%>/info/infoAction!detail.dhtml?id=<s:property value='id'/>">
+	       				              <a rel="nofollow" target="_blank" href="info_detail.dhtml?id=<s:property value='id'/>">
 		       				              <b class="dot">·</b>
 		       				              <s:if test="#ind.first">
 			       				              <font class="f1">
@@ -114,12 +114,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              <s:iterator value="newUpList" status="ind">
 		               <li>
 		                  <div class="enty">
-		                        <a href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>">
+		                        <a href="product_detail.dhtml?id=<s:property value='id_pro'/>">
 		                           <img height="" width="" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img'/>"/>
 		                        </a>
 		                        <font class="price">￥<s:property value='shopPrice'/></font>
 		                        <font class="f3"><del>￥<s:property value='markPrice'/></del></font>
-		                        <p><a target="_blank" href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
+		                        <p><a target="_blank" href="product_detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
 		                  </div>
 		              </li>
 		             </s:iterator>
@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				               <li <s:if test="#ind.first"> class="item hover" </s:if><s:else>class="item"</s:else>>
 					                <p class="cl tit"><em><s:property value='#ind.index+1'/></em><a href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
 					                <div class="sr_con">
-					                	 <a target="_blank" class="sr_img" href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>"><img alt="<s:property value='name'/>" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img'/>"/></a><p class="text"><s:property value='shopPrice'/><span>最近298人购买</span></p>
+					                	 <a target="_blank" class="sr_img" href="product_detail.dhtml?id=<s:property value='id_pro'/>"><img alt="<s:property value='name'/>" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img'/>"/></a><p class="text"><s:property value='shopPrice'/><span>最近298人购买</span></p>
 					                </div>
 				               </li>
 			              </s:iterator>                                                                                                                                           

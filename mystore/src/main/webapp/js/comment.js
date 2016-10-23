@@ -26,7 +26,7 @@ $(function(){
      		return false;
      	}
      	$.ajax({
-							url: $("#basePath").val()+'/comment/commentAction!save.dhtml',
+							url:'comment_save.dhtml',
 							type: 'post',
 							data: {'proId':$.trim($("#proId").val()),'score':$("input[name='comment_rank']:checked").val(),'content':$.trim($("#comment_content").val())},
 							async: true,

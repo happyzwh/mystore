@@ -8,20 +8,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>商城公告</title>
-<link rel="stylesheet" href="<%=path%>/css/common.css" type="text/css"/>
-<link rel="stylesheet" href="<%=path%>/css/notice.css" type="text/css"/>
-<script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
-<script src="<%=path%>/js/notice.js" type="text/javascript"></script>
+<title>用户中心</title>
+<link type="text/css" rel="stylesheet" href="<%=path%>/css/common.css" />
+<link type="text/css" rel="stylesheet" href="<%=path%>/css/user/center.css" />
+<script type="text/javascript" language="javascript" src="<%=path%>/js/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="<%=path%>/js/user/center.js"></script>
 </head>
 <body>
  <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
- 	  <div class="notice">
-	      <div class="title"><s:property value='#request.info.title'/></div>
-	      <div class="time"><s:date name='#request.info.lastDate' format="yyyy-MM-dd HH:mm:ss" /></div>
-	      <div class="detail">${info.content}</div>
+      <jsp:include page="/page/user/menu.jsp" />
+      <div class="list_right">
       </div>
+      <div style="clear:both;"></div>
  </div>
  <jsp:include page="/page/foot.jsp" />
 </body>

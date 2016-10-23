@@ -12,17 +12,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link type="text/css" rel="stylesheet" href="<%=path%>/css/common.css" />
 <link type="text/css" rel="stylesheet" href="<%=path%>/css/user/register.css" />
 </head>
-<input type="hidden" id="bathPath" value="<%=path%>" />
 <input type="hidden" id = "exponent" value="${model.exponent}"/>
 <input type="hidden" id="modulus" value="${model.modulus}"/>
 <body>
- <s:action name="topAction!top" namespace="/top" executeResult="true" ignoreContextParams="true"/>
+ <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
  	  <div class="container-con register-cont">
 	    <h2 class="register-cont-h2">用户登录 <span class="sys-error">用户登录</span></h2>
 	    <div class="register-cont-box">
 	        <div class="register-cont-left">
-	            <form action="/user/userAction!login.dhtml" method="post" class="registerForm" name="mobileForm" id="regForm">            
+	            <form action="user_login.dhtml" method="post" class="registerForm" name="mobileForm" id="regForm">            
 	            	<ul class="m-form">
 	                    <li>
 	                        <div class="form-label">

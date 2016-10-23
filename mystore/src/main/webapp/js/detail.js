@@ -188,16 +188,16 @@ var type=0;
 var subtype=0;
 var pageSize = 10;
 function getCommentContent(type,pageNo,pageSize){
-	$(".goodscomment").load($("#basePath").val()+"/comment/commentAction!getCommentPage.dhtml", {'proId':$("#proId").val(),'type':type,'pageNo':pageNo,'pageSize':pageSize}, function(){});
+	$(".goodscomment").load("comment_getCommentPage.dhtml", {'proId':$("#proId").val(),'type':type,'pageNo':pageNo,'pageSize':pageSize}, function(){});
 }
 function getConsultContent(type,pageNo,pageSize){
-	$(".goodsconsult").load($("#basePath").val()+"/consult/consultAction!getConsultPage.dhtml", {'proId':$("#proId").val(),'type':type,'pageNo':pageNo,'pageSize':pageSize}, function(){});
+	$(".goodsconsult").load("consult_getConsultPage.dhtml", {'proId':$("#proId").val(),'type':type,'pageNo':pageNo,'pageSize':pageSize}, function(){});
 }
 function jumppage(pageNo){
 	if(type == 0){
-		$(".goodscomment").load($("#basePath").val()+"/comment/commentAction!getCommentPage.dhtml", {'proId':$("#proId").val(),'type':subtype,'pageNo':pageNo,'pageSize':pageSize}, function(){});
+		$(".goodscomment").load("comment_getCommentPage.dhtml", {'proId':$("#proId").val(),'type':subtype,'pageNo':pageNo,'pageSize':pageSize}, function(){});
 	}else if(type == 1){
-		$(".goodsconsult").load($("#basePath").val()+"/consult/consultAction!getConsultPage.dhtml", {'proId':$("#proId").val(),'type':subtype,'pageNo':pageNo,'pageSize':pageSize}, function(){});
+		$(".goodsconsult").load("consult_getConsultPage.dhtml", {'proId':$("#proId").val(),'type':subtype,'pageNo':pageNo,'pageSize':pageSize}, function(){});
 	}
 }
 	

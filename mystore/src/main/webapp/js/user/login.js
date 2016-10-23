@@ -49,7 +49,7 @@ $(function(){
 				var publicKey = RSAUtils.getKeyPair(exponent, '',modulus);
 				var password = RSAUtils.encryptedString(publicKey, $.trim($("#password").val()));
 				$.ajax({
-					url: $("#basePath").val()+'/user/userAction!login.dhtml',
+					url: 'user_login.dhtml',
 					type: 'post',
 					data: {'userName':$.trim($("#userName").val()),'password':password,'verifyCode':$.trim($("#verifyCode").val())},
 					async: true,
@@ -58,7 +58,7 @@ $(function(){
 						$("#flushcode").attr("src",$("#flushcode").attr("src").substr(0,$("#flushcode").attr("src").indexOf("?")+1)+new Date().getTime());
 						if(data == 1){
 							$(".sys-error").text("登录成功！").show();
-							document.location.href=$("#basePath").val()+'/user/userAction!index.dhtml';
+							document.location.href='user_center.dhtml';
 						}else if(data == -1){
 							$(".sys-error").text("系统异常请重试！").show();
 						}else if(data == -2){
