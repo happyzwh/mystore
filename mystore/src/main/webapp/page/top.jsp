@@ -300,7 +300,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </ul>
          </div>
          <div class="navi_right">
-           <a href="#"><em class="icon_t2" style="width:120px;">我的惠美购</em><em class="ar2"></em></a>
+           <a href="<%=path%>/user/userAction!index.dhtml"><em class="icon_t2" style="width:120px;">我的惠美购</em><em class="ar2"></em></a>
            <a href="<%=path%>/cart/cartAction!myCart.dhtml"><em class="icon_t3" style="width:90px;">购物车</em><b id="ECS_CARTINFO" class="cart_num" style="color:#ffffff;">0</b><em class="ar2" style="right:-23px;"></em></a>
            <a href="#"><em style="width:90px;">去结算</em><em class="ar2"></em></a>
          </div>

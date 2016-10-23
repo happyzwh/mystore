@@ -22,7 +22,8 @@ public class LoginFilter implements Filter{
     private static String loginUrl;
     private final static String FILTER_ISFILETER = "isFilter";
     private static boolean isFilter = false;
-    
+    private final static String FILTER_URL_INCLUDE="includeUrl";
+    private static String[] includeURLs;
 
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -43,7 +44,25 @@ public class LoginFilter implements Filter{
 	   	 }
 		
 		 String url = req.getRequestURI();
-	     boolean flag = false;
+	    
+		 boolean flag = false;
+	     
+	     if (includeURLs != null && includeURLs.length > 0) {
+	            for(String includeURL : includeURLs) {
+	                if (url.contains(includeURL.trim())) {
+	                    flag = true;
+	                    break;
+	                }
+	            }
+	     }
+	     
+	     if(!flag){
+	        	chain.doFilter(req,res); 
+	        	return;
+	     }
+	     
+	     flag = false;
+	     
 	     if (excludeURLs != null && excludeURLs.length > 0) {
 	            for(String excludeURL : excludeURLs) {
 	                if (url.contains(excludeURL.trim())) {
@@ -51,7 +70,7 @@ public class LoginFilter implements Filter{
 	                    break;
 	                }
 	            }
-	     }
+	    }
 		
         if(flag){
         	chain.doFilter(req,res); 
@@ -71,8 +90,10 @@ public class LoginFilter implements Filter{
 
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		 String urlStr = filterConfig.getInitParameter(FILTER_URL_EXCLUDE);
-		 excludeURLs = StringUtils.split(urlStr, ",");
+		 String inUrlStr = filterConfig.getInitParameter(FILTER_URL_INCLUDE);
+		 includeURLs = StringUtils.split(inUrlStr, ",");
+		 String exUrlStr = filterConfig.getInitParameter(FILTER_URL_EXCLUDE);
+		 excludeURLs = StringUtils.split(exUrlStr, ",");
 		 loginUrl = filterConfig.getInitParameter(FILTER_URL_LOGIN);
 		 isFilter = Boolean.valueOf(filterConfig.getInitParameter(FILTER_ISFILETER));
 	}
