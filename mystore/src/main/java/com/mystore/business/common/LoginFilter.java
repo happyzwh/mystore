@@ -1,6 +1,7 @@
 package com.mystore.business.common;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.context.ContextLoader;
 
 public class LoginFilter implements Filter{
 	
@@ -77,10 +82,12 @@ public class LoginFilter implements Filter{
         	return;
         }
         
-	    HttpSession session = req.getSession(true); 
+        String sessionId = req.getSession().getId();
+        
+        RedisTemplate<String, Serializable> redisTemplate = (RedisTemplate<String, Serializable>)ContextLoader.getCurrentWebApplicationContext().getBean("redisTemplate");
+        
+        Object o = redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
 
-	    Object o =  session.getAttribute(Constans.KEY_SESSION); 
-	    
 	    if (o == null){ 
 	    	res.sendRedirect(req.getContextPath() +"/"+loginUrl); 
 	    }else{ 
