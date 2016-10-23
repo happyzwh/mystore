@@ -1,13 +1,13 @@
 .list_left{
 	float:left;
 	width:200px;
-	height:1000px;
+	height:auto;
 }
 .list_right{
-	padding:5px;
-	float:left;
+	float:right;
 	width:790px;
-	height:auto;
+	height:300px;
+	border:1px solid #e4e4e4;
 }
 .list_left h1 {
     background-color: #c40001;
@@ -53,10 +53,74 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.userInfo .navList {
+.navList {
     background-color: #fbfbfb;
-    border-bottom: 1px solid #e4e4e4;
+    border: 1px solid #e4e4e4;
+    border-top:0px;
     height: auto;
     overflow: hidden;
     width: 198px;
+}
+.navList .func{
+	 margin-left: 0px;
+}
+.func .title {
+    height: 22px;
+    margin: 10px 0;
+    text-align:left;
+    margin-left:20px;
+}
+.func .title i {
+    background: rgba(0, 0, 0, 0) url("../../images/user.png") no-repeat scroll 0 0;
+    display: inline-block;
+    margin-right: 11px;
+    margin-top: 2px;
+}
+.func.func1 .title i {
+    background-position: -61px 0;
+    height: 17px;
+    width: 19px;
+}
+.func .title span {
+    color: #333;
+    display: inline-block;
+    font-family: "微软雅黑";
+    font-size: 15px;
+}
+.func .item.on {
+    color: #cc0000;
+}
+.func .item {
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 28px 0 53px;
+}
+.func .item span {
+    display: inline-block;
+    float: left;
+}
+.func .item i {
+    background: rgba(0, 0, 0, 0) url("../../images/user.png") no-repeat scroll -200px 0;
+    display: inline-block;
+    float: right;
+    height: 9px;
+    margin-top: 10px;
+    width: 5px;
+}
+.func .item.on i {
+    background: rgba(0, 0, 0, 0) url("../../images/user.png") no-repeat scroll -484px -73px;
+}
+
+.func.func2 .title i {
+    background-position: -96px 0;
+    height: 18px;
+    margin-right: 12px;
+    width: 18px;
+}
+.func.func3 .title i {
+    background-position: -163px 0;
+    height: 19px;
+    width: 19px;
 }

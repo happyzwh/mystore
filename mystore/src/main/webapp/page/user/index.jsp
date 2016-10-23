@@ -30,13 +30,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		    <div class="userName">zwhzwh</div>
       		</div>
       		<div class="navList">
-      		   <div>
-      		      
+      		   <div class="func func1">
+      		       <p class="title"><i></i><span>交易管理</span></p>
+      		       <a class="item on" href="/trademanage/my_order-9.htm" title=""><span>我的订单</span><i></i></a>
+      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>退货记录</span><i></i></a>
+      		   </div>
+      		   <div class="func func2">
+      		       <p class="title"><i></i><span>我的钱包</span></p>
+      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>我的余额</span><i></i></a>
+      		   </div>
+      		   <div class="func func3">
+      		       <p class="title"><i></i><span>我的帐户</span></p>
+      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>帐户安全</span><i></i></a>
+      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>基本信息</span><i></i></a>
+      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>收货地址</span><i></i></a>
+      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>快捷支付</span><i></i></a>
       		   </div>
       		</div>
       </div>
       <div class="list_right">
       </div>
+      <div style="clear:both;"></div>
  </div>
  <jsp:include page="/page/foot.jsp" />
 </body>

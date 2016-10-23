@@ -220,17 +220,17 @@
 .list_pro_search{
 	 display:none;
      position:absolute;
-     border:1px solid #003365;
-     background-color:#c0d2e0;
+     border:1px solid #ddd;
      top:35px;
      left:0px;
      width:390px;
      height:auto;
      z-index: 999;
+     background: #fff none repeat scroll 0 0;
 }
 .list_pro_search li{
    padding-left:10px;
-   border-bottom:1px solid #003365;
+   border-bottom:1px dashed #ddd;
    cursor:pointer;
    height:30px;
    line-height:30px;
