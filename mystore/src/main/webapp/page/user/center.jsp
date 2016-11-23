@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
  <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
  <div class="homeBody">
-      <jsp:include page="/page/user/menu.jsp" />
+      <s:action name="user_menu" namespace="/" executeResult="true" ignoreContextParams="true"/>
       <div class="list_right">
       </div>
       <div style="clear:both;"></div>

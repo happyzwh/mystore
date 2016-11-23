@@ -1,4 +1,4 @@
-<%@ page language="java"  contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%> 
 <%
 String path = request.getContextPath();
@@ -19,12 +19,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		</h1>
       		<div class="userInfo">
       		    <div class="headImg"><a href="javascrpt:void(0);"><img src="http://localhost:8080/picService/upload/pro/img/8/20161022114304_small.jpg"/></a></div>
-      		    <div class="userName">zwhzwh</div>
+      		    <div class="userName"><s:property value='user.userName'/></div>
       		</div>
       		<div class="navList">
       		   <div class="func func1">
       		       <p class="title"><i></i><span>交易管理</span></p>
-      		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>我的订单</span><i></i></a>
+      		       <a class="item on" href="/trademanage/my_order-9.htm" title=""><span>我的订单</span><i></i></a>
       		       <a class="item" href="/trademanage/my_order-9.htm" title=""><span>退货记录</span><i></i></a>
       		   </div>
       		   <div class="func func2">

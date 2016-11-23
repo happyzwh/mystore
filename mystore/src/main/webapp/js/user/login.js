@@ -157,7 +157,7 @@ $(function(){
 	});
 });
 function tochangimg(){
-    $("#changepwd").attr("src",$("#bathPath").val()+"/images/pwdicon2.png");
+    $("#changepwd").attr("src",$("#path").val()+"/images/pwdicon2.png");
     $("#password").hide();
     $("#password1").show();
     var pwd=$("#password").val();
@@ -165,7 +165,7 @@ function tochangimg(){
     window.setTimeout("rechangtopwd()",2000);
 }
 function rechangtopwd(){
-	$("#changepwd").attr("src",$("#bathPath").val()+"/images/pwdicon.png");
+	$("#changepwd").attr("src",$("#path").val()+"/images/pwdicon.png");
 	$("#password1").hide();
 	$("#password").show();
 }

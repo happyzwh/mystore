@@ -92,7 +92,7 @@ $(function(){
 				var publicKey = RSAUtils.getKeyPair(exponent, '',modulus);
 				var password = RSAUtils.encryptedString(publicKey, $.trim($("#password").val()));
 				$.ajax({
-					url: $("#basePath").val()+'/user_register.dhtml',
+					url: $("#path").val()+'/user_register.dhtml',
 					type: 'post',
 					data: {'userName':$.trim($("#userName").val()),'password':password,'verifyCode':$.trim($("#verifyCode").val())},
 					async: true,
@@ -196,7 +196,7 @@ $(function(){
 	});
 });
 function tochangimg(){
-    $("#changepwd").attr("src",$("#bathPath").val()+"/images/pwdicon2.png");
+    $("#changepwd").attr("src",$("#path").val()+"/images/pwdicon2.png");
     $("#password").hide();
     $("#password1").show();
     var pwd=$("#password").val();
@@ -204,7 +204,7 @@ function tochangimg(){
     window.setTimeout("rechangtopwd()",2000);
 }
 function rechangtopwd(){
-	$("#changepwd").attr("src",$("#bathPath").val()+"/images/pwdicon.png");
+	$("#changepwd").attr("src",$("#path").val()+"/images/pwdicon.png");
 	$("#password1").hide();
 	$("#password").show();
 }
@@ -230,7 +230,7 @@ function isAccountExist(value){
     var tf = false;
     jQuery.ajax({
             type:'post',
-            url:$("#bathPath").val()+'/user_isAccountExist.dhtml',
+            url:$("#path").val()+'/user_isAccountExist.dhtml',
             data:{'userName':jQuery.trim(value)},
             dataType:'text',
             cache:false,

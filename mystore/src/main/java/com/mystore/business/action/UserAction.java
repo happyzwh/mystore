@@ -55,6 +55,8 @@ public class UserAction  extends BaseAction{
 	
 	private String verifyCode;
 	
+	private User user;
+	
 	public String goRegister(){
 		
 		model = new HashMap<String, Object>();
@@ -308,6 +310,23 @@ public class UserAction  extends BaseAction{
 		}
 	}
 	
+	public String menu(){
+		
+		String sessionId = ServletActionContext.getRequest().getSession().getId();
+		user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+		
+		return "menu";
+	} 
+
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Map<String, Object> getModel() {
 		return model;
 	}
