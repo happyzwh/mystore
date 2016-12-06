@@ -3,6 +3,34 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mystore.business.dao.InfoMapper">
+	<resultMap type="infoCate" id="infoCateMap">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<collection property="infos" select="getInfoByPid" column="id"/>
+	</resultMap>
+	<select id="getInfoCateByPid" parameterType="int" resultMap="infoCateMap">
+		select
+		    id,
+		    name
+		from info_cate 
+		where pid = #{value}
+		order by sort asc
+	</select>
+	<select id="getInfoByPid" parameterType="int" resultType="info">
+		select
+		    i.id,
+		    i.title
+		from info i
+		where i.id_cate = #{value}
+		order by i.sort asc
+	</select>
+	<select id="getInfoCateByBh" parameterType="string" resultType="infoCate">
+		select
+		    id,
+		    name
+		from info_cate 
+		where bh = #{value}
+	</select>
 	<select id="getInfoList" parameterType="string" resultType="info">
 		select
 		    i.id,

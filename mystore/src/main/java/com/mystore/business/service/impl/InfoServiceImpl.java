@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.mystore.business.common.Pager;
 import com.mystore.business.dao.InfoMapper;
 import com.mystore.business.dto.Info;
+import com.mystore.business.dto.InfoCate;
 import com.mystore.business.service.InfoService;
 
 @Service("infoService")
@@ -49,6 +50,24 @@ public class InfoServiceImpl implements InfoService{
 			return infoMapper.getInfoById(id);
 		}
 		return null;
+	}
+
+	@Override
+	public InfoCate getInfoCateByBh(String bh) {
+		// TODO Auto-generated method stub
+		return infoMapper.getInfoCateByBh(bh);
+	}
+
+	@Override
+	public List<InfoCate> getInfoCateByPid(Integer pid) {
+		// TODO Auto-generated method stub
+		return infoMapper.getInfoCateByPid(pid);
+	}
+
+	@Override
+	public List<Info> getInfoByPid(Integer pid) {
+		// TODO Auto-generated method stub
+		return infoMapper.getInfoByPid(pid);
 	}
 
 

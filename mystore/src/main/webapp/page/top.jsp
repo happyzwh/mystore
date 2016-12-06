@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      </div>
 	      <div class="topnavigate_right">
 	         <ul>
-	            <li><a href="<%=path%>/page/toindex.jsp">手机版 </a></li>
+	            <li><a href="<%=path%>/help_center.dhtml">帮助中心 </a></li>
 	            <li><a href="<%=path%>/user_goLogin.dhtml">登录</a><i class="cccc"> | </i><a href="<%=path%>/user_goRegister.dhtml">注册</a></li>
 	            <li><a href="<%=path%>/page/toindex.jsp">欢迎光临惠美购商城!</a></li>
 	         </ul>

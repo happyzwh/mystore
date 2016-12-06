@@ -41,6 +41,10 @@
              <result name="basic">/page/user/basic.jsp</result>
              <result name="menu">/page/user/menu.jsp</result>
         </action>
+        <action name="help_*" class="helpAction" method="{1}">
+			 <result name="center">/page/help/center.jsp</result>
+             <result name="menu">/page/help/menu.jsp</result>
+        </action>
     </package>
     
 </struts>
