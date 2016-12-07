@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>用户中心</title>
+<title>帮助中心</title>
 <link type="text/css" rel="stylesheet" href="<%=path%>/css/common.css" />
 <link type="text/css" rel="stylesheet" href="<%=path%>/css/help/center.css" />
 <script type="text/javascript" language="javascript" src="<%=path%>/js/jquery-1.7.2.min.js" ></script>
