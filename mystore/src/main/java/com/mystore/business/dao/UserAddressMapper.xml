@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.UserAddressMapper">
+    <select id="getByUserId" parameterType="int" resultType="userAddress">
+		select
+		    t.id,
+		    t.id_user,
+		    t.address,
+		    t.receiver,
+		    t.mobile,
+		    t.isdefault as 'isDefault',
+		    t.status,
+		    t.createdate as 'createDate',
+		    t.lastdate as 'lastDate'
+		from user_address t
+		where t.id_user = #{value} and t.status = '1'
+	</select>
+	<select id="getById" parameterType="java.util.map" resultType="userAddress">
+		select
+		    t.id,
+		    t.id_user,
+		    t.address,
+		    t.receiver,
+		    t.mobile,
+		    t.isdefault as 'isDefault',
+		    t.status,
+		    t.createdate as 'createDate',
+		    t.lastdate as 'lastDate'
+		from user_address t
+		where t.id_user = #{id_user} and t.id = #{id} and t.status = '1'
+	</select>
+	<insert id="saveAddress" parameterType="userAddress" useGeneratedKeys="true" keyProperty="id">
+		insert into user_address(
+		    id_user,
+		    address,
+		    receiver,
+		    mobile,
+		    isdefault,
+		    status,
+			createdate,
+			lastdate
+		 )values(
+		    #{id_user},
+		    #{address},
+		    #{receiver},
+		    #{mobile},
+		    #{isDefault},
+		    #{status},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<update id="updateAddress" parameterType="userAddress">
+		 update user_address set receiver = #{receiver},mobile = #{mobile},isdefault = #{isDefault},status = #{status},lastdate = now()
+		 where id_user = #{id_user} and id = #{id}
+	</update>
+	<delete id="deleteAddress" parameterType="java.util.map">
+		 delete user_address 
+		 where id_user = #{id_user} and id = #{id}
+	</delete>
+</mapper>

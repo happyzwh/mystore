@@ -36,6 +36,7 @@
       <typeAlias alias="user" type="com.mystore.business.dto.User"/>
       
       <typeAlias alias="userCart" type="com.mystore.business.dto.UserCart"/>
+      <typeAlias alias="userAddress" type="com.mystore.business.dto.UserAddress"/>
    </typeAliases>  
    <mappers>  
       <mapper resource="com/mystore/business/dao/SearchMapper.xml" />   
@@ -52,5 +53,6 @@
       <mapper resource="com/mystore/business/dao/ConsultMapper.xml" />
       
       <mapper resource="com/mystore/business/dao/UserMapper.xml" />
+      <mapper resource="com/mystore/business/dao/UserAddressMapper.xml" />
    </mappers>  
 </configuration>  
