@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div class="homeBody">
       <s:action name="user_menu" namespace="/" executeResult="true" ignoreContextParams="true"/>
       <div class="list_right">
+     	  
       </div>
       <div style="clear:both;"></div>
  </div>

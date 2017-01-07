@@ -45,6 +45,9 @@
 			 <result name="center">/page/help/center.jsp</result>
              <result name="menu">/page/help/menu.jsp</result>
         </action>
+        <action name="address_*" class="userAddressAction" method="{1}">
+		     <result name="index">/page/user/address.jsp</result>
+        </action>
     </package>
     
 </struts>

@@ -15,7 +15,7 @@ public class UserAddress extends BasicDto{
 	
 	private String address;
 	
-	private String reveicer;
+	private String receiver;
 	
 	private String mobile;
 	
@@ -51,12 +51,12 @@ public class UserAddress extends BasicDto{
 		this.address = address;
 	}
 
-	public String getReveicer() {
-		return reveicer;
+	public String getReceiver() {
+		return receiver;
 	}
 
-	public void setReveicer(String reveicer) {
-		this.reveicer = reveicer;
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
 	}
 
 	public String getMobile() {

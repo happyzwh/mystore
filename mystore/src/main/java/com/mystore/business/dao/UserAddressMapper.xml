@@ -17,7 +17,7 @@
 		from user_address t
 		where t.id_user = #{value} and t.status = '1'
 	</select>
-	<select id="getById" parameterType="java.util.map" resultType="userAddress">
+	<select id="getById" parameterType="java.util.Map" resultType="userAddress">
 		select
 		    t.id,
 		    t.id_user,
@@ -46,8 +46,8 @@
 		    #{address},
 		    #{receiver},
 		    #{mobile},
-		    #{isDefault},
-		    #{status},
+		    '0',
+		    '1',
 		    now(),
 		    now()
 		 )
@@ -56,8 +56,8 @@
 		 update user_address set receiver = #{receiver},mobile = #{mobile},isdefault = #{isDefault},status = #{status},lastdate = now()
 		 where id_user = #{id_user} and id = #{id}
 	</update>
-	<delete id="deleteAddress" parameterType="java.util.map">
-		 delete user_address 
+	<delete id="delAddress" parameterType="java.util.Map">
+		 delete from user_address 
 		 where id_user = #{id_user} and id = #{id}
 	</delete>
 </mapper>

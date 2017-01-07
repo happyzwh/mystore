@@ -1,0 +1,182 @@
+.rightTit {
+    border-bottom: 2px solid #d0010e;
+    height: 49px;
+}
+.rightTit h2 {
+    color: #333;
+    float: left;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    font-weight: normal;
+    height: 48px;
+    line-height: 48px;
+    padding-top: 1px;
+}
+.rightTit h2 i {
+    background: #d0010e none repeat scroll 0 0;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    margin: 15px 10px 0 0;
+    width: 4px;
+}
+.addressTrue {
+    color: #c40001;
+    float: right;
+    margin-top: 27px;
+    text-decoration: none;
+}
+.rightCon {
+    font-family: "宋体";
+    height: auto;
+}
+
+.ln_addressBox1 th.men, .ln_addressBox1 th.adr, .ln_addressBox1 th.pho, .ln_addressBox1 th.control {
+    padding: 0 2%;
+}
+.ln_addressBox1 .ln_addressBoxTit th {
+    background: #f5f5f5 none repeat scroll 0 0;
+    color: #888;
+    font-weight: bold;
+    height: 37px;
+    line-height: 37px;
+}
+
+.ln_addressBox .ln_addressBoxTit {
+    background: #f5f5f5 none repeat scroll 0 0;
+    color: #888;
+    height: 37px;
+    line-height: 37px;
+}
+
+.ln_addressBox1 td.men, .ln_addressBox1 td.adr, .ln_addressBox1 td.pho, .ln_addressBox1 td.control {
+    padding: 5px 2%;
+}
+.ln_addressBox1 .ln_addressBoxTit td {
+    border-top: 1px dotted #e4e4e4;
+}
+.ln_addressBox1 .men {
+    width: 10%;
+}
+.ln_addressBox1 .men {
+    width: 10%;
+}
+.ln_addressBox1 {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.ln_addressBox1 {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #e4e4e4 #e4e4e4;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+}.ln_addressBox1 .ln_addressBoxTit {
+    margin-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+.ln_addressBox {
+    border: 1px solid #e4e4e4;
+}
+.ln_addressBox .ln_addressBoxTitL {
+    color: #888;
+    float: left;
+    font-weight: bold;
+    padding-left: 14px;
+}
+.ln_addressBox .ln_addressBoxTitR {
+    color: #888;
+    float: right;
+    padding-right: 14px;
+}
+.ln_addressBox .ln_addressBoxTitR span {
+    color: #cc0033;
+}
+.ln_addressBox .ln_addressCon {
+    font-size: 14px;
+    padding: 31px 0 16px 31px;
+}
+.ln_addressBox .ln_addressTr {
+    height: 37px;
+    padding-bottom: 15px;
+}
+.ln_addressBox .ln_addressTr .ln_addressTrTit {
+    display: inline-block;
+    height: 37px;
+    line-height: 37px;
+    text-align: right;
+    width: 84px;
+}
+.ln_addressBox .ln_addressTr .ln_addressTrTit i {
+    color: #cc0000;
+    padding-right: 5px;
+}
+#allInput .borderRed {
+    border: 1px solid #cc0000;
+}
+.qjwSubmit4 {
+    border: 1px solid #e4e4e4;
+    color: #666666;
+    float: left;
+    font-size: 16px;
+    font-weight: 700;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 10px;
+    width: 337px;
+}
+.ln_addressCon .acc {
+    float: left;
+    height: 37px;
+}
+.ln_addressCon .accNotic {
+    color: #cc0000;
+    height: 37px;
+}
+
+.ln_addressCon .accNotic span {
+    color: #cc0000;
+    display: inline-block;
+    float: left;
+    font-family: "宋体";
+    font-size: 12px;
+    line-height: 37px;
+    padding-left: 5px;
+}
+.ln_addressCon .accNotic i {
+    background-position: -129px -133px;
+    display: inline-block;
+    float: left;
+    height: 15px;
+    margin-top: 11px;
+    width: 14px;
+}
+.ln_addressBox .pt10 {
+    height: 28px;
+    padding-top: 10px;
+}
+.ln_addressCon .qjwSubmit2 {
+    background: #c40001 none repeat scroll 0 0;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 84px;
+    padding: 6px 12px;
+}
+.ln_addressBox .pt10 {
+    height: 28px;
+    padding-top: 10px;
+}
+.borderRed {
+    border: 1px solid #cc0000;
+}
+input, select {
+    outline: medium none;
+    vertical-align: middle;
+}

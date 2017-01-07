@@ -22,6 +22,7 @@ import com.mystore.business.dto.User;
 import com.mystore.business.dto.UserCart;
 import com.mystore.business.jcaptcha.CaptchaServiceSingleton;
 import com.mystore.business.pojo.CacheCart;
+import com.mystore.business.pojo.MenuMap;
 import com.mystore.business.service.UserCartService;
 import com.mystore.business.service.UserService;
 import com.mystore.business.util.CookieUtil;
@@ -56,6 +57,8 @@ public class UserAction  extends BaseAction{
 	private String verifyCode;
 	
 	private User user;
+	
+	private String bh;
 	
 	public String goRegister(){
 		
@@ -365,6 +368,14 @@ public class UserAction  extends BaseAction{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getBh() {
+		return bh;
+	}
+
+	public void setBh(String bh) {
+		this.bh = bh;
 	}
 
 }

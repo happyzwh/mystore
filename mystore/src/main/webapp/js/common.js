@@ -35,3 +35,7 @@ function addCart(proId,count){
 		}
 	});
 }
+var mobileReg = /^((13[0-9])|(147)|(15[^4,\D])|(17[013678])|(18[0-9]))\d{8}$/;
+function mobileValide(mobile){
+	return mobileReg.test(mobile);
+}

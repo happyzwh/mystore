@@ -6,7 +6,7 @@
 .list_right{
 	float:right;
 	width:780px;
-	height:300px;
+	height:auto;
 	border:1px solid #e4e4e4;
 	margin-bottom: 10px;
     padding: 10px;
@@ -125,4 +125,24 @@
     background-position: -163px 0;
     height: 19px;
     width: 19px;
+}
+
+.ln_addressBox .ln_addressTr .ln_addressTrTit {
+    display: inline-block;
+    height: 37px;
+    line-height: 37px;
+    text-align: right;
+    width: 84px;
+}
+.ln_addressBox .ln_addressTr span {
+    color: #666;
+    display: inline-block;
+    float: left;
+}
+.user img, .user span, .user i {
+    vertical-align: top;
+}
+
+.os-time span, .os-search i, .myordTop i, .moh-status span, .ord-detail .moh1 span, .tdmoh4 .opeTracking .TraBtn i, .cart_city em, .mycol-bay i, .mycol-bay2 i, .titles .niubi-useint i, .golden-content #divs i, .ubHisPage a, .ubRem-Prev, .ubRem-Next, .qjwStepIconBox i, .qjwVerifyAks h3 i, .qjwRelative .strength i, .qjwRelative .qjwPrompt i, .qjwSucIcon, .zpSecurityTip .zpName i, .xssubspCon h3 i, .xsgiftCard span i, .upPhLeft-cho a i, .msgList h3, .msgContent i, .msgBox .msgprev, .msgBox .msgnext, .msgContent span.readed-icon, .msgContent span.read-icon, .question i, .answer i, .commentConTit_icon, .accNotic i, .myRedTit .Instruction i, .moConBoxEmpty i, .mycolEmpty i, .commentWEmpty i, .zpItem li i, .zpItem li.no i, .zpItem li.paymentPwd span, .refund-title i, .rec {
+    background: rgba(0, 0, 0, 0) url("../../images/userIcon-8.png") no-repeat scroll 0 0;
 }
