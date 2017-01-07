@@ -25,7 +25,7 @@
 	    <init-param>
 	        <param-name>includeUrl</param-name>
 	        <param-value>
-	            user_
+	            user_,address_,security_
 	        </param-value>
 	    </init-param>
 	    <init-param>

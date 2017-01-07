@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    </li>
 	                    <li class="itemli">
                                 <div class="toReg">
-                                   	 已是会员？<a href="user_login.dhtml" style="color: #297bc7;cursor: pointer;text-decoration: none;">立即登录</a>
+                                   	 已是会员？<a href="user_goLogin.dhtml" style="color: #297bc7;cursor: pointer;text-decoration: none;">立即登录</a>
                                 </div>
                             </li>
 	                </ul>

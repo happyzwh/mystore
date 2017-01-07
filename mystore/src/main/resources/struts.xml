@@ -48,6 +48,9 @@
         <action name="address_*" class="userAddressAction" method="{1}">
 		     <result name="index">/page/user/address.jsp</result>
         </action>
+        <action name="security_*" class="securityAction" method="{1}">
+		     <result name="index">/page/user/security.jsp</result>
+        </action>
     </package>
     
 </struts>

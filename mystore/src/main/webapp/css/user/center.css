@@ -142,7 +142,38 @@
 .user img, .user span, .user i {
     vertical-align: top;
 }
-
 .os-time span, .os-search i, .myordTop i, .moh-status span, .ord-detail .moh1 span, .tdmoh4 .opeTracking .TraBtn i, .cart_city em, .mycol-bay i, .mycol-bay2 i, .titles .niubi-useint i, .golden-content #divs i, .ubHisPage a, .ubRem-Prev, .ubRem-Next, .qjwStepIconBox i, .qjwVerifyAks h3 i, .qjwRelative .strength i, .qjwRelative .qjwPrompt i, .qjwSucIcon, .zpSecurityTip .zpName i, .xssubspCon h3 i, .xsgiftCard span i, .upPhLeft-cho a i, .msgList h3, .msgContent i, .msgBox .msgprev, .msgBox .msgnext, .msgContent span.readed-icon, .msgContent span.read-icon, .question i, .answer i, .commentConTit_icon, .accNotic i, .myRedTit .Instruction i, .moConBoxEmpty i, .mycolEmpty i, .commentWEmpty i, .zpItem li i, .zpItem li.no i, .zpItem li.paymentPwd span, .refund-title i, .rec {
     background: rgba(0, 0, 0, 0) url("../../images/userIcon-8.png") no-repeat scroll 0 0;
+}
+.rightTit {
+    border-bottom: 2px solid #d0010e;
+    height: 49px;
+}
+.rightTit h2 {
+    color: #333;
+    float: left;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    font-weight: normal;
+    height: 48px;
+    line-height: 48px;
+    padding-top: 1px;
+}
+.rightTit h2 i {
+    background: #d0010e none repeat scroll 0 0;
+    display: inline-block;
+    float: left;
+    height: 20px;
+    margin: 15px 10px 0 0;
+    width: 4px;
+}
+.addressTrue {
+    color: #c40001;
+    float: right;
+    margin-top: 27px;
+    text-decoration: none;
+}
+.rightCon {
+    font-family: "宋体";
+    height: auto;
 }

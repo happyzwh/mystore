@@ -1,36 +1,3 @@
-.rightTit {
-    border-bottom: 2px solid #d0010e;
-    height: 49px;
-}
-.rightTit h2 {
-    color: #333;
-    float: left;
-    font-family: "微软雅黑";
-    font-size: 18px;
-    font-weight: normal;
-    height: 48px;
-    line-height: 48px;
-    padding-top: 1px;
-}
-.rightTit h2 i {
-    background: #d0010e none repeat scroll 0 0;
-    display: inline-block;
-    float: left;
-    height: 20px;
-    margin: 15px 10px 0 0;
-    width: 4px;
-}
-.addressTrue {
-    color: #c40001;
-    float: right;
-    margin-top: 27px;
-    text-decoration: none;
-}
-.rightCon {
-    font-family: "宋体";
-    height: auto;
-}
-
 .ln_addressBox1 th.men, .ln_addressBox1 th.adr, .ln_addressBox1 th.pho, .ln_addressBox1 th.control {
     padding: 0 2%;
 }
@@ -58,9 +25,6 @@
 .ln_addressBox1 .men {
     width: 10%;
 }
-.ln_addressBox1 .men {
-    width: 10%;
-}
 .ln_addressBox1 {
     margin-bottom: 20px;
     overflow: hidden;
@@ -74,7 +38,8 @@
     border-image: none;
     border-style: none solid solid;
     border-width: medium 1px 1px;
-}.ln_addressBox1 .ln_addressBoxTit {
+}
+.ln_addressBox1 .ln_addressBoxTit {
     margin-bottom: 10px;
     text-align: center;
     vertical-align: middle;

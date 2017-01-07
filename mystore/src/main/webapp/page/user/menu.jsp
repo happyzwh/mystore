@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		   </div>
       		   <div class="func func3">
       		       <p class="title"><i></i><span>我的帐户</span></p>
-      		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@SECURITY.bh'>on</s:if>" href="/trademanage/my_order-9.htm" title=""><span>帐户安全</span><i></i></a>
+      		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@SECURITY.bh'>on</s:if>" href="<%=path%>/security_index.dhtml" title=""><span>帐户安全</span><i></i></a>
       		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@BASICINFO.bh'>on</s:if>" href="/trademanage/my_order-9.htm" title=""><span>基本信息</span><i></i></a>
       		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@ADDRESS.bh'>on</s:if>" href="<%=path%>/address_index.dhtml" title=""><span>收货地址</span><i></i></a>
       		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@QUCKPAY.bh'>on</s:if>" href="/trademanage/my_order-9.htm" title=""><span>快捷支付</span><i></i></a>
