@@ -16,6 +16,12 @@
 .zpBold strong.zphigh {
     color: #89ad00;
 }
+.zpBold strong.zpmiddle {
+    color: #ff8100;
+}
+.zpBold strong.zplow {
+    color: #f42f2f;
+}
 .qjwLevel .zpBold, .zpLevel .zpLine, .zpLevel p {
     display: inline-block;
     float: left;
@@ -38,6 +44,12 @@
 }
 .zpLine .zpUp.zphigh {
     width: 129px;
+}
+.zpLine .zpUp.zpmiddle {
+    width: 84px;
+}
+.zpLine .zpUp.zplow {
+    width: 47px;
 }
 .zpLine .zpUp {
     background-position: -19px -21px;
@@ -62,6 +74,9 @@
     height: 24px;
     margin: 26px 30px auto 39px;
     width: 31px;
+}
+.zpItem li i.unvalid {
+    background-position: -118px -126px;
 }
 .zpItem .zpName {
     color: #333;

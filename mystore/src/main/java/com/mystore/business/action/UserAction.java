@@ -22,7 +22,6 @@ import com.mystore.business.dto.User;
 import com.mystore.business.dto.UserCart;
 import com.mystore.business.jcaptcha.CaptchaServiceSingleton;
 import com.mystore.business.pojo.CacheCart;
-import com.mystore.business.pojo.MenuMap;
 import com.mystore.business.service.UserCartService;
 import com.mystore.business.service.UserService;
 import com.mystore.business.util.CookieUtil;

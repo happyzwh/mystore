@@ -1,5 +1,7 @@
 package com.mystore.business.dto;
 
+import java.util.Date;
+
 public class User extends BasicDto{
 	
 	/**
@@ -31,7 +33,15 @@ public class User extends BasicDto{
 	
 	private String isEmailValid;
 	
+	private Date birthday;
+	
+	private Date lastLoginTime;
+	
 	private String ipLastLogin;
+	
+	private String referer;
+	
+	private String mark;
 	
 	private String pwdPay;
 	
@@ -175,6 +185,38 @@ public class User extends BasicDto{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public Date getLastLoginTime() {
+		return lastLoginTime;
+	}
+
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	public String getReferer() {
+		return referer;
+	}
+
+	public void setReferer(String referer) {
+		this.referer = referer;
+	}
+
+	public String getMark() {
+		return mark;
+	}
+
+	public void setMark(String mark) {
+		this.mark = mark;
 	}
 
 }

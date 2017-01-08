@@ -26,9 +26,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    <div class="rightTit"><h2><i></i>帐户安全</h2></div>
 			    <div class="rightCon">
 			        <div class="zpLevel clearfix">
-					  	  <span class="zpBold">账户安全等级：<strong class="zphigh">高</strong></span>
+					  	  <span class="zpBold">
+					  	  	     账户安全等级：
+					  	  	  <s:if test="level == @com.mystore.business.pojo.SecurityLevelMap@HIGH.bh"> 
+					  	  	  	  <strong class="zphigh">高</strong>
+					  	  	  </s:if>
+					  	  	  <s:elseif test="level == @com.mystore.business.pojo.SecurityLevelMap@MIDDLE.bh"> 
+					  	  	  	  <strong class="zpmiddle">中</strong>
+					  	  	  </s:elseif>
+					  	  	  <s:else> 
+					  	  	  	  <strong class="zplow">低</strong>
+					  	  	  </s:else>
+					  	   </span>
 			              <div class="zpLine">
-			                	<div class="zpUp zphigh"></div>
+			                  <s:if test="level == @com.mystore.business.pojo.SecurityLevelMap@HIGH.bh"> 
+					  	  	  	  <div class="zpUp zphigh"></div>
+					  	  	  </s:if>
+					  	  	  <s:elseif test="level == @com.mystore.business.pojo.SecurityLevelMap@MIDDLE.bh"> 
+					  	  	  	  <div class="zpUp zpmiddle"></div>
+					  	  	  </s:elseif>
+					  	  	  <s:else> 
+					  	  	  	  <div class="zpUp zplow"></div>
+					  	  	  </s:else>
 			              </div>
 					</div>
 			        <div class="zpItem">
@@ -36,26 +55,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 <li class="first clearfix">               
 						  	<i></i>
 			              	<p class="zpName">登录密码</p>
-			              	<p class="zpDetial">建议定期更换密码，且数字、字母、符号至少包含两种的，长度为8-20个字符的密码。</p>
-			             	<a href="/myaccount/change_password.htm">修改</a>
+			              	<p class="zpDetial">密码为数字,字母,特殊字符任意组合的6-16位字符。</p>
+			             	<a href="<%=path%>/security_toUpdPwd.dhtml">修改</a>
 			             </li>
 						 <li class="clearfix">              
-						    <i></i>
+						    <i <s:if test="user.isEmailValid = '0' ">class="unvalid"</s:if>></i>
 			                <p class="zpName">邮箱验证</p>
-						  	<p class="zpDetial">已验证邮箱：459***147@qq.com</p>
-							<a href="/myaccount/change_email.htm">修改</a>
+						  	<p class="zpDetial">
+						  	    <s:if test="user.isEmailValid = '0'">邮箱尚未验证,请先验证邮箱,增强帐户安全</s:if>
+						  		<s:else>已验证邮箱：459***147@qq.com</s:else>
+						  	</p>
+							<a href="/myaccount/change_email.htm">
+							    <s:if test="user.isMobileValid = '0'">设置</s:if>
+						  		<s:else>修改</s:else>
+							</a>
 						 </li>
 			             <li class="clearfix">               
-			             	<i></i>
+			             	<i <s:if test="user.isMobileValid = '0' ">class="unvalid"</s:if>></i>
 			                <p class="zpName">手机验证</p>
-						  	<p class="zpDetial">已验证手机： 150****7739 若已丢失或停用，请立即更换，避免账户被盗。</p>
-							<a href="/myaccount/change_phone.htm">修改</a>
+						  	<p class="zpDetial">
+						  	    <s:if test="user.isMobileValid = '0'">手机尚未验证,请先验证手机,增强帐户安全</s:if>
+						  		<s:else>已验证手机： 150****7739 若已丢失或停用，请立即更换，避免账户被盗。</s:else>
+						  	</p>
+							<a href="/myaccount/change_phone.htm">
+							    <s:if test="user.isMobileValid = '0'">设置</s:if>
+						  		<s:else>修改</s:else>
+							</a>
 						 </li>
 						 <li class="paymentPwd clearfix">              
-						    <i></i>
+						    <i <s:if test="user.pwdPay == null || user.pwdPay == '' ">class="unvalid"</s:if>></i>
 			                <p class="zpName">支付密码</p>
-			                <p class="zpDetial">用于虚拟账户支付和提现，且设置密码一个包含字母加数字或符号，长度为8-20个字符的密码。</p>
-						  	<a href="/myaccount/change_paypassword.htm">修改</a>
+			                <p class="zpDetial">用于支付和提现，密码为数字,字母,特殊字符任意组合的6-16位字符。</p>
+						  	<a href="/myaccount/change_paypassword.htm">
+						  		<s:if test="user.pwdPay == null || user.pwdPay == '' ">设置</s:if>
+						  		<s:else>修改</s:else>
+						  	</a>
 						 </li>
 			           </ul>
 			        </div>

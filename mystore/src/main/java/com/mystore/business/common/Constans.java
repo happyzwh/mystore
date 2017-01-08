@@ -30,9 +30,13 @@ public class Constans {
 	public static final Long VALUE_CART_SYN_USER = 2l;
 	//同步购物车到库 次数
 	public static final Long COUNT_CART_SYN_USER = 5l;
-	//
+	//购物车分割符
 	public static final String CHAR_SPLIT_CART = "-";
-	//
+	//购物车商品分割符
 	public static final String CHAR_SPLIT_CART_GOOD = ",";
+	//用户安全级别缓存键
+	public static final String KEY_LEVEL_SECURITY = "key_level_security"; 
+	//用户安全级别缓存时长 单位(时)
+	public static final Long VALUE_TIME_LEVEL_SECURITY = 3l;
 
 }

@@ -88,11 +88,12 @@
     border: 1px solid #e4e4e4;
     color: #666666;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     height: 35px;
     line-height: 35px;
     margin-right: 10px;
+    padding-left: 10px;
     width: 337px;
 }
 .ln_addressCon .acc {

@@ -7,5 +7,7 @@ public interface UserService {
 	public int addUser(User user) throws Exception;
 	//用户登录
 	public User getUserByAccount(String account);
+	//更新用户
+	public int updateUser(User user);
 	
 }

@@ -25,4 +25,10 @@ public class UserServiceImpl implements UserService{
 		return UserMapper.getUserByAccount(account);
 	}
 
+	@Override
+	public int updateUser(User user) {
+		// TODO Auto-generated method stub
+		return UserMapper.updateUser(user);
+	}
+
 }

@@ -50,6 +50,7 @@
         </action>
         <action name="security_*" class="securityAction" method="{1}">
 		     <result name="index">/page/user/security.jsp</result>
+		     <result name="toUpdPwd">/page/user/updpwd.jsp</result>
         </action>
     </package>
     

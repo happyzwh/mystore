@@ -20,8 +20,75 @@
 		 select id,
 		        username as 'userName',
 			    password as 'password',
-			    status
+			    status,
+			    mobile,
+			    is_mobile_valid,
+			    email,
+			    is_email_valid,
+			    pwd_pay
 		from user_user
 		where username = #{value}
 	</select>
+	<update id="updateUser" parameterType="user">
+		update user_user
+		<trim prefix="set" prefixOverrides=",">
+	       <if test="userName != null">
+	        	username = #{userName},
+	       </if>
+	       <if test="password != null">
+				password = #{password},
+		   </if>
+	       <if test="rankId != null">
+				id_rank = #{rankId},
+		   </if>
+		   <if test="nickName != null">
+				nickname = #{nickName},
+		   </if>
+		   <if test="realName != null">
+				realname = #{realName},
+		   </if>
+		   <if test="sex != null">
+				sex = #{sex},
+		   </if>
+		   <if test="mobile != null">
+				mobile = #{mobile},
+		   </if>
+		   <if test="phone != null">
+				phone = #{phone},
+		   </if>
+		   <if test="isMobileValid != null">
+				is_mobile_valid = #{isMobileValid},
+		   </if>
+		   
+		   <if test="email != null">
+				email = #{email},
+		   </if>
+		   <if test="isEmailValid != null">
+				is_email_valid = #{isEmailValid},
+		   </if>
+		   <if test="birthday != null">
+				birthday = #{birthday},
+		   </if>
+		   <if test="lastLoginTime != null">
+				time_last_login = #{lastLoginTime},
+		   </if>
+		   <if test="ipLastLogin != null">
+				ip_last_login = #{ipLastLogin},
+		   </if>
+		   <if test="referer != null">
+				referer = #{referer},
+		   </if>
+		   <if test="mark != null">
+				mark = #{mark},
+		   </if>
+		   <if test="pwdPay != null">
+				pwd_pay = #{pwdPay},
+		   </if>
+		   <if test="status != null">
+				status = #{status},
+		   </if>
+		   lastdate = now()
+		</trim>	
+		where id = #{id}
+	</update>
 </mapper>
