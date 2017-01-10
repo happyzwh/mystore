@@ -59,26 +59,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			             	<a href="<%=path%>/security_toUpdPwd.dhtml">修改</a>
 			             </li>
 						 <li class="clearfix">              
-						    <i <s:if test="user.isEmailValid = '0' ">class="unvalid"</s:if>></i>
+						    <i <s:if test='user.isEmailValid == "0" '>class="unvalid"</s:if>></i>
 			                <p class="zpName">邮箱验证</p>
 						  	<p class="zpDetial">
-						  	    <s:if test="user.isEmailValid = '0'">邮箱尚未验证,请先验证邮箱,增强帐户安全</s:if>
-						  		<s:else>已验证邮箱：459***147@qq.com</s:else>
+						  	    <s:if test='user.isEmailValid == "0"'>邮箱尚未验证,请先验证邮箱,增强帐户安全</s:if>
+						  		<s:else>已验证邮箱：<s:property value='user.email'/></s:else>
 						  	</p>
-							<a href="/myaccount/change_email.htm">
-							    <s:if test="user.isMobileValid = '0'">设置</s:if>
+							<a href="<%=path%>/page/user/mailedit.jsp">
+							    <s:if test='user.isEmailValid == "0"'>设置</s:if>
 						  		<s:else>修改</s:else>
 							</a>
 						 </li>
 			             <li class="clearfix">               
-			             	<i <s:if test="user.isMobileValid = '0' ">class="unvalid"</s:if>></i>
+			             	<i <s:if test='user.isMobileValid == "0" '>class="unvalid"</s:if>></i>
 			                <p class="zpName">手机验证</p>
 						  	<p class="zpDetial">
-						  	    <s:if test="user.isMobileValid = '0'">手机尚未验证,请先验证手机,增强帐户安全</s:if>
+						  	    <s:if test='user.isMobileValid == "0"'>手机尚未验证,请先验证手机,增强帐户安全</s:if>
 						  		<s:else>已验证手机： 150****7739 若已丢失或停用，请立即更换，避免账户被盗。</s:else>
 						  	</p>
 							<a href="/myaccount/change_phone.htm">
-							    <s:if test="user.isMobileValid = '0'">设置</s:if>
+							    <s:if test='user.isMobileValid == "0"'>设置</s:if>
 						  		<s:else>修改</s:else>
 							</a>
 						 </li>

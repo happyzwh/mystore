@@ -9,5 +9,7 @@ public interface UserService {
 	public User getUserByAccount(String account);
 	//更新用户
 	public int updateUser(User user);
+	//根据主键
+    public User getUserById(Integer id);
 	
 }

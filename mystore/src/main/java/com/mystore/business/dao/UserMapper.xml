@@ -22,9 +22,9 @@
 			    password as 'password',
 			    status,
 			    mobile,
-			    is_mobile_valid,
+			    is_mobile_valid as 'isMobileValid',
 			    email,
-			    is_email_valid,
+			    is_email_valid as 'isEmailValid',
 			    pwd_pay
 		from user_user
 		where username = #{value}
@@ -91,4 +91,17 @@
 		</trim>	
 		where id = #{id}
 	</update>
+	<select id="getUserById" parameterType="int" resultType="user">
+		 select id,
+		        username as 'userName',
+			    password as 'password',
+			    status,
+			    mobile,
+			    is_mobile_valid as 'isMobileValid',
+			    email,
+			    is_email_valid as 'isEmailValid',
+			    pwd_pay
+		from user_user
+		where id = #{value}
+	</select>
 </mapper>

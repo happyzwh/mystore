@@ -26,13 +26,13 @@
 	    <init-param>
 	        <param-name>includeUrl</param-name>
 	        <param-value>
-	            user_,address_,security_
+	            user_,address_,security_,mailedit.jsp
 	        </param-value>
 	    </init-param>
 	    <init-param>
 	        <param-name>excludeUrl</param-name>
 	        <param-value>
-	           	user_goRegister.dhtml,user_register.dhtml,user_goLogin.dhtml,user_login.dhtml,user_isAccountExist.dhtml
+	           	user_goRegister.dhtml,user_register.dhtml,user_goLogin.dhtml,user_login.dhtml,user_isAccountExist.dhtml,security_checkEmail.dhtml
 	        </param-value>
 	    </init-param>
 	    <init-param>

@@ -38,5 +38,9 @@ public class Constans {
 	public static final String KEY_LEVEL_SECURITY = "key_level_security"; 
 	//用户安全级别缓存时长 单位(时)
 	public static final Long VALUE_TIME_LEVEL_SECURITY = 3l;
+	//用户设置邮箱缓存键
+	public static final String KEY_MAIL_SET = "key_MAIL_SET"; 
+	//用户设置邮箱缓存时长
+	public static final  Long VALUE_TIME_MAIL_SET = 2l; 
 
 }

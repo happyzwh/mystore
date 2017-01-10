@@ -38,7 +38,7 @@ $(function(){
 			$(this).next().find(".accNotic").show();
 		}else{
 			if(!mobileValide($.trim($(this).val()))){
-				$(this).next().find(".accNotic span").text("手机号格式错误码");
+				$(this).next().find(".accNotic span").text("手机号格式错误");
 				$(this).next().find(".accNotic").show();
 				return false
 			}
@@ -59,7 +59,7 @@ $(function(){
 			$(this).next().find(".accNotic").show();
 			return false;
 		}else if(!mobileValide($.trim($("#mobile").val()))){
-			$(this).next().find(".accNotic span").text("手机号格式错误码");
+			$(this).next().find(".accNotic span").text("手机号格式错误");
 			$(this).next().find(".accNotic").show();
 			return false
 		}

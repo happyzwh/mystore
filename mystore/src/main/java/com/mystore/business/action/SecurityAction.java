@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import com.mystore.business.core.RSAUtils;
 import com.mystore.business.dto.User;
 import com.mystore.business.jcaptcha.CaptchaServiceSingleton;
 import com.mystore.business.pojo.SecurityLevelMap;
+import com.mystore.business.service.MailSenderService;
 import com.mystore.business.service.UserService;
 import com.mystore.business.util.MD5;
 
@@ -39,6 +41,9 @@ public class SecurityAction  extends BaseAction{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private MailSenderService mailSenderService;
+	
 	private Map<String, Object> model;
 	
 	private String level;
@@ -50,6 +55,14 @@ public class SecurityAction  extends BaseAction{
 	private String pwd;
 	
 	private String pwdCheck;
+	
+	private String checkCode;
+	
+	private String mail;
+	
+	private String key;
+	
+	private String msg;
 	
 	public String index(){
 		
@@ -149,6 +162,88 @@ public class SecurityAction  extends BaseAction{
 		}
 	}
 	
+	public void mailEdit() throws IOException{
+		
+		int code = 1;
+		
+		try{
+			
+			if(StringUtils.isBlank(mail) || StringUtils.isBlank(checkCode)){
+				code = -2;
+				return;
+			}
+			
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
+			
+			if(!CaptchaServiceSingleton.getInstance().validateResponseForID(sessionId, checkCode)){
+				code = -3;
+				return;
+			}
+			
+			user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			String uuid = UUID.randomUUID()+"_"+user.getId();
+			String key = new MD5().GetMD5Code(uuid);
+			String basePath = ServletActionContext.getRequest().getScheme()+"://"+ServletActionContext.getRequest().getServerName()+":"+ServletActionContext.getRequest().getServerPort()+ServletActionContext.getRequest().getContextPath();
+			String url = basePath+"/security_checkEmail.dhtml?key="+key;
+			String subject = "编辑邮箱验证邮件通知";
+			String content = "<html><body><a href='"+url+"'>点击连接，进行邮箱验证，2小时内有效</a></body></html>";
+			
+			mailSenderService.send(mail, subject, content);
+			
+			redisTemplate.opsForHash().put(Constans.KEY_MAIL_SET, key,user.getId()+"_"+mail);
+			redisTemplate.expire(Constans.KEY_MAIL_SET, Constans.VALUE_TIME_MAIL_SET, TimeUnit.HOURS);
+			
+		}catch(Exception e){
+			code = -1;
+			e.printStackTrace();
+		}finally{
+			HttpServletResponse response=ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().print(code);
+		}
+	}
+	
+	public String checkEmail(){
+		
+		if(StringUtils.isBlank(key)){
+			msg = "连接错误,请重新发送邮箱验证连接";
+			return "checkEmail";
+		}
+		
+		Object o = redisTemplate.opsForHash().get(Constans.KEY_MAIL_SET, key);
+		
+		if(o == null){
+			msg = "连接已过期,请重新发送邮箱验证连接";
+			return "checkEmail";
+		}
+		
+		redisTemplate.opsForHash().delete(Constans.KEY_MAIL_SET, key);
+		
+		String value = (String)o;
+		String[] values = value.split("_");
+		if(values.length != 2){
+			msg = "连接错误,请重新发送邮箱验证连接";
+			return "checkEmail";
+		}
+		
+		user = userService.getUserById(Integer.valueOf(values[0]));
+		user.setEmail(values[1]);
+		user.setIsEmailValid("1");
+		userService.updateUser(user);
+		
+		String sessionId = ServletActionContext.getRequest().getSession().getId();
+	    user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+	    if(user != null){
+	    	user.setIsEmailValid("1");
+	    	user.setEmail(values[1]);
+	    }
+		
+		msg = "邮箱验证成功";
+		
+		return "checkEmail";
+		
+	}
+	
 	public static void main(String[] args){
 		int low = 1;
 		int mid = 2;
@@ -204,6 +299,38 @@ public class SecurityAction  extends BaseAction{
 
 	public void setPwdCheck(String pwdCheck) {
 		this.pwdCheck = pwdCheck;
+	}
+
+	public String getCheckCode() {
+		return checkCode;
+	}
+
+	public void setCheckCode(String checkCode) {
+		this.checkCode = checkCode;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 	
 }

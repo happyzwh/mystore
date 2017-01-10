@@ -51,6 +51,7 @@
         <action name="security_*" class="securityAction" method="{1}">
 		     <result name="index">/page/user/security.jsp</result>
 		     <result name="toUpdPwd">/page/user/updpwd.jsp</result>
+		     <result name="checkEmail">/page/user/checkEmail.jsp</result>
         </action>
     </package>
     

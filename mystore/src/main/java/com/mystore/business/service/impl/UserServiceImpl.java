@@ -31,4 +31,10 @@ public class UserServiceImpl implements UserService{
 		return UserMapper.updateUser(user);
 	}
 
+	@Override
+	public User getUserById(Integer id) {
+		// TODO Auto-generated method stub
+		return UserMapper.getUserById(id);
+	}
+
 }

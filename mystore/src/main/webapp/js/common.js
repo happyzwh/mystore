@@ -39,3 +39,7 @@ var mobileReg = /^((13[0-9])|(147)|(15[^4,\D])|(17[013678])|(18[0-9]))\d{8}$/;
 function mobileValide(mobile){
 	return mobileReg.test(mobile);
 }
+var mailReg = /^([a-z0-9][a-z0-9_\-\.]*)@([a-z0-9][a-z0-9\.\-]{0,20})\.([a-z]{2,4})$/;
+function mailValide(mobile){
+	return mailReg.test(mobile);
+}
