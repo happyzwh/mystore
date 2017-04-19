@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    <i <s:if test="user.pwdPay == null || user.pwdPay == '' ">class="unvalid"</s:if>></i>
 			                <p class="zpName">支付密码</p>
 			                <p class="zpDetial">用于支付和提现，密码为数字,字母,特殊字符任意组合的6-16位字符。</p>
-						  	<a href="/myaccount/change_paypassword.htm">
+						  	<a href="<%=path%>/security_toUpdPayPwd.dhtml">
 						  		<s:if test="user.pwdPay == null || user.pwdPay == '' ">设置</s:if>
 						  		<s:else>修改</s:else>
 						  	</a>

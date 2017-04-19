@@ -52,6 +52,7 @@
 		     <result name="index">/page/user/security.jsp</result>
 		     <result name="toUpdPwd">/page/user/updpwd.jsp</result>
 		     <result name="checkEmail">/page/user/checkEmail.jsp</result>
+		     <result name="toUpdPayPwd">/page/user/updpaypwd.jsp</result>
         </action>
     </package>
     

@@ -64,6 +64,8 @@ public class SecurityAction  extends BaseAction{
 	
 	private String msg;
 	
+	private String paypwd;
+	
 	public String index(){
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
@@ -244,6 +246,57 @@ public class SecurityAction  extends BaseAction{
 		
 	}
 	
+	public String toUpdPayPwd(){
+		
+		model = new HashMap<String, Object>();
+		
+		PublicKeyMap publicKeyMap = RSAUtils.getPublicKeyMap();
+		
+		model.put("exponent", publicKeyMap.getExponent());
+		model.put("modulus", publicKeyMap.getModulus());
+		
+		return "toUpdPayPwd";
+	}
+	
+    public void updPayPwd() throws IOException{
+		
+		int code = 1;
+		
+		try{
+			
+			if(StringUtils.isBlank(paypwd) || StringUtils.isBlank(checkCode)){
+				code = -2;
+				return;
+			}
+			
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
+			
+			if(!CaptchaServiceSingleton.getInstance().validateResponseForID(sessionId, checkCode)){
+				code = -3;
+				return;
+			}
+			
+			user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			
+			paypwd = RSAUtils.decryptStringByJs(paypwd);
+			paypwd = new MD5().GetMD5Code(paypwd);
+			
+			user = userService.getUserByAccount(user.getUserName());
+			user.setPwdPay(paypwd);
+			userService.updateUser(user);
+			
+			redisTemplate.opsForValue().set(Constans.KEY_SESSION+"_"+sessionId,user);
+			
+		}catch(Exception e){
+			code = -1;
+			e.printStackTrace();
+		}finally{
+			HttpServletResponse response=ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().print(code);
+		}
+	}
+	
 	public static void main(String[] args){
 		int low = 1;
 		int mid = 2;
@@ -331,6 +384,14 @@ public class SecurityAction  extends BaseAction{
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getPaypwd() {
+		return paypwd;
+	}
+
+	public void setPaypwd(String paypwd) {
+		this.paypwd = paypwd;
 	}
 	
 }
