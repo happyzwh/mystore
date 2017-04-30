@@ -192,8 +192,8 @@
     background-color: #fff;
     border-color: #e5e5e5 -moz-use-text-color #e5e5e5 #e5e5e5;
     border-image: none;
-    border-style: solid none solid solid;
-    border-width: 1px medium 1px 1px;
+    #border-style: solid none solid solid;
+    #border-width: 1px medium 1px 1px;
     display: inline-block;
     float: left;
     height: 27px;
