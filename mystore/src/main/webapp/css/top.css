@@ -369,7 +369,7 @@
     left: 190px;
     position: absolute;
     top: 0px;
-    width: auto;
+    width: 400px;
     z-index: 301;
 }
 .menuBox .menuCon {
@@ -388,6 +388,7 @@
     padding: 10px 10px 10px 20px;
     text-align: right;
     width: 60px;
+    clear:both;
 }
 .menuItem.first .menuItemTitle {
     border-top: 0 none;
@@ -409,7 +410,7 @@
     margin: 0 15px;
     overflow: hidden;
     padding: 10px 0;
-    width: 280px;
+    width: 480px;
 }
 .menuItem.first .menuItemCon .menuCon-list {
     border-top: 0 none;

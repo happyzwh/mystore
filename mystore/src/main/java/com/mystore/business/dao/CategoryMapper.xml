@@ -37,6 +37,6 @@
 		    createdate as 'createDate',
 		    lastdate as 'lastDate'
 		from category 
-		where pid = #{value}
+		where pid = #{value} and status = '1'
 	</select>
 </mapper>

@@ -31,6 +31,8 @@
  		    pt.count_sale*pt.count_comment_good/pt.count_comment as 'credit'
  		FROM product p
  		JOIN productprice pp  ON pp.id_pro = p.id
+ 		JOIN category cate  ON cate.id = p.id_cate and cate.status = '1'
+ 		JOIN brand bra  ON bra.id= p.id_brand and bra.status = '1'
  		left join productstock ps on ps.id_pro = p.id
  		left join productstatis pt on pt.id_pro = p.id
  		WHERE p.status = '1' AND p.isshow = '1' AND p.isonsale = '1' 

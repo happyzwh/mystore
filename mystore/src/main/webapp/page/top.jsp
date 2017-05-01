@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											        </s:if>
 											        <s:set name="index" value="#index+1"/>
 												    <a target="_blank" href="<%=path%>/search_list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a>
-												    <s:if test="#index == 4">
+												    <s:if test="#index == 7">
 										        	  </p>
 										        	  <s:set name="index" value="0"/>
 										        </s:if>
@@ -134,16 +134,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            	 </s:iterator>
             </div>
          </div>
-         <div class="navi_middle">
+         <!-- div class="navi_middle">
             <ul>
-               <li><a href="<%=path%>"><em class="icon_t1" style="font-style: normal;">首页</em></a></li>
+               <li><a href=""><em class="icon_t1" style="font-style: normal;">首页</em></a></li>
                <li><a href="#">2222</a></li>
                <li><a href="#">3333</a></li>
                <li><a href="#">4444</a></li>
                <li><a href="#">5555</a></li>
                <li><a href="#">6666</a></li>
             </ul>
-         </div>
+         </div -->
          <div class="navi_right">
            <a href="<%=path%>/user_center.dhtml"><em class="icon_t2" style="width:120px;">我的惠美购</em><em class="ar2"></em></a>
            <a href="<%=path%>/cart_myCart.dhtml"><em class="icon_t3" style="width:90px;">购物车</em><b id="ECS_CARTINFO" class="cart_num" style="color:#ffffff;">0</b><em class="ar2" style="right:-23px;"></em></a>
