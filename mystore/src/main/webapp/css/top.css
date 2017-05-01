@@ -131,7 +131,7 @@
    	padding:20px 0;
 }
 .searchrightadv a{
-    background: url("http://www.huimeigou.com/themes/default/images/top_tc.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../images/zheng.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     display: block;
     height: 60px;
     float:right;
@@ -301,7 +301,7 @@
 }
 .categoryBox {
     border: medium none;
-    height: 470px;
+    height: auto;
     width: 190px;
     clear:both;
 }
@@ -314,12 +314,12 @@
     border-left: 1px solid #fff;
     float: left;
     height: 81px;
-    width: 186px;
+    width: 189px;
 }
 .categoryBox li .catItemCon {
     height: 81px;
     padding: 0px;
-    width: 186px;
+    width: 189px;
 }
 .categoryBox li h3 {
     color: #333;
@@ -359,20 +359,21 @@
 }
 .menuBox {
     box-shadow: 0 0 4px 0 #ccc;
-    height: 470px;
-    left: 180px;
+    height: auto;
+    left: 190px;
     position: absolute;
     top: 0px;
-    width: 615px;
+    width: auto;
     z-index: 301;
 }
 .menuBox .menuCon {
     background: #f1f1f1 none repeat scroll 0 0;
     display: inline-block;
     float: left;
-    height: 470px;
+    height: auto;
     overflow: hidden;
-    width: 400px;
+    width: auto;
+    margin:0px;
 }
 .menuItem .menuItemTitle {
     border-top: 1px solid #f1f1f1;

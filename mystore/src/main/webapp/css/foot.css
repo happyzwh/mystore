@@ -11,14 +11,13 @@
     background: #fbfbfb url("../images/foot_bg.jpg") repeat-x scroll center top;
     display: block;
     font-family: "Microsoft YaHei",Tahoma,Arial,sans-serif;
-    height: 230px;
-    padding-top: 32px;
+    height: 180px;
+    padding: 20px;
 }
 
 .footer .row01 {
     height: 140px;
     margin: 0 auto;
-    padding: 0;
     width: 1000px;
 }
 
@@ -63,12 +62,12 @@
     width: 1000px;
 }
 .footer .row02 .row02bg {
-    background-image: url("../images/footbg2.png");
-    background-position: 0 -55px;
+    background-image: url("../images/footzheng.png");
+    background-position: 0px;
     display: block;
-    height: 40px;
+    height: 89px;
     margin: 0 auto;
-    width: 733px;
+    width: 600px;
 }
 .tel {
     border-left: 1px solid #dedede;

@@ -54,7 +54,7 @@ $(function(){
     		 function(){
 		    	 $(this).addClass("on");
 		    	 $(this).parent().parent().find(".menuBox").eq($(this).index()).show();
-		    	 $(this).css({"border-left":"1px solid #ce171f"});
+//		    	 $(this).css({"border-left":"1px solid #ce171f"});
 		     },
 		     function(){
 		    	 $(this).removeClass("on");
@@ -66,7 +66,7 @@ $(function(){
     		 function(){
 		    	 $(this).show();
 		    	 $(this).parent().parent().find(".catItem").eq($(this).index()-1).addClass("on");
-		       	 $(this).parent().parent().find(".catItem").eq($(this).index()-1).css({"border-left":"1px solid #ce171f"});
+//		       	 $(this).parent().parent().find(".catItem").eq($(this).index()-1).css({"border-left":"1px solid #ce171f"});
 		     },
 		     function(){
 		    	 $(this).hide();

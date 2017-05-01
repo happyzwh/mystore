@@ -291,6 +291,7 @@ ul.list li span {
     float: left;
     width: 230px;
     margin:10px;
+    text-align:left;
 }
 .goods_property i {
     color: #777777;

@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            <ul>
 			             <s:iterator value="allLikeList" status="ind">
 				               <li <s:if test="#ind.first"> class="item hover" </s:if><s:else>class="item"</s:else>>
-					                <p class="cl tit"><em><s:property value='#ind.index+1'/></em><a href="<%=path%>/product/productAction!detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
+					                <p class="cl tit"><em><s:property value='#ind.index+1'/></em><a href="<%=path%>/product_detail.dhtml?id=<s:property value='id_pro'/>"><s:property value='name'/></a></p>
 					                <div class="sr_con">
 					                	 <a target="_blank" class="sr_img" href="product_detail.dhtml?id=<s:property value='id_pro'/>"><img alt="<s:property value='name'/>" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img'/>"/></a><p class="text"><s:property value='shopPrice'/><span>最近298人购买</span></p>
 					                </div>

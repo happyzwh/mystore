@@ -170,7 +170,7 @@
     width: 190px;
 }
 .enty .price {
-    color: #c71b51;
+    color: #ce171f;
     font-size: 16px;
     font-weight: bold;
 }
@@ -183,7 +183,7 @@
     text-align: center;
 }
 .f91 {
-    color: #c71b51;
+    color: #ce171f;
     font-size: 22px;
     font-weight: bold;
     line-height: 50px;
@@ -208,11 +208,11 @@
     height: 33px;
 }
 .txtTit .f93 {
-    border-bottom: 2px solid #f39;
+    border-bottom: 2px solid #ce171f;
     margin-bottom: -2px;
 }
 .f93 {
-    color: #c71b51;
+    color: #ce171f;
     font-size: 14px;
     line-height: 33px;
 }
@@ -260,7 +260,7 @@
     font-weight: normal;
 }
 .f1 {
-    color: #c71b51;
+    color: #ce171f;
 }
 .cl::after {
     clear: both;
@@ -335,7 +335,7 @@
     width: 140px;
 }
 .fc_sale_rank ul .item .text {
-    color: #ed145b;
+    color: #ce171f;
     height: 14px;
     overflow: hidden;
     padding: 6px 0;

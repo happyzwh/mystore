@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>
          <div class="searchrightadv_out">
              <div class="searchrightadv">
-             	<a href="http://special.jiuxian.com/topic/zhuanti/2015/05/Oktoberfest/index.html"></a>
+             	<a href="<%=path%>/help_center.dhtml?id=32"></a>
              </div>
              <div style="clear:both;"></div>
          </div>
@@ -97,201 +97,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 	                  </li> 
-	                  <li class="catItem">
-	                    <div class="catItemCon">
-							<h3 iszlm="1" ishot="true" url="http://www.jiuxian.com/" pathname="一键选酒" name="tagH"><i class="publicIcon seleWine"></i><a href="http://www.jiuxian.com" target="_blank"></a>一键选酒</h3>
-							<div class="categoryCon">
-							<p>
-								<a class="on" rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-395.htm?area=2">实惠套装</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-709.htm?area=2">送礼专区</a>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-624.htm?area=2">宴请酒</a>												
-							</p>
-							<p>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-701.htm?area=2">名酒直降</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-440.htm?area=2">大坛酒</a>
-								<a class="on" rel="nofollow" target="_blank" href="http://sale.jiuxian.com/two/index-4843.htm?area=2">婚宴喜酒</a>
-							</p>
-							</div>
-						</div>
-	                  </li> 
-	                  <li class="catItem">
-	                    <div class="catItemCon">
-							<h3 iszlm="1" ishot="true" url="http://www.jiuxian.com/" pathname="一键选酒" name="tagH"><i class="publicIcon seleWine"></i><a href="http://www.jiuxian.com" target="_blank"></a>一键选酒</h3>
-							<div class="categoryCon">
-							<p>
-								<a class="on" rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-395.htm?area=2">实惠套装</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-709.htm?area=2">送礼专区</a>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-624.htm?area=2">宴请酒</a>												
-							</p>
-							<p>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-701.htm?area=2">名酒直降</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-440.htm?area=2">大坛酒</a>
-								<a class="on" rel="nofollow" target="_blank" href="http://sale.jiuxian.com/two/index-4843.htm?area=2">婚宴喜酒</a>
-							</p>
-							</div>
-						</div>
-	                  </li> 
-	                  <li class="catItem">
-	                    <div class="catItemCon">
-							<h3 iszlm="1" ishot="true" url="http://www.jiuxian.com/" pathname="一键选酒" name="tagH"><i class="publicIcon seleWine"></i><a href="http://www.jiuxian.com" target="_blank"></a>一键选酒</h3>
-							<div class="categoryCon">
-							<p>
-								<a class="on" rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-395.htm?area=2">实惠套装</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-709.htm?area=2">送礼专区</a>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-624.htm?area=2">宴请酒</a>												
-							</p>
-							<p>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-701.htm?area=2">名酒直降</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-440.htm?area=2">大坛酒</a>
-								<a class="on" rel="nofollow" target="_blank" href="http://sale.jiuxian.com/two/index-4843.htm?area=2">婚宴喜酒</a>
-							</p>
-							</div>
-						</div>
-	                  </li>
-	                  <li class="catItem">
-	                    <div class="catItemCon">
-							<h3 iszlm="1" ishot="true" url="http://www.jiuxian.com/" pathname="一键选酒" name="tagH"><i class="publicIcon seleWine"></i><a href="http://www.jiuxian.com" target="_blank"></a>一键选酒</h3>
-							<div class="categoryCon">
-							<p>
-								<a class="on" rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-395.htm?area=2">实惠套装</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-709.htm?area=2">送礼专区</a>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-624.htm?area=2">宴请酒</a>												
-							</p>
-							<p>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-701.htm?area=2">名酒直降</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-440.htm?area=2">大坛酒</a>
-								<a class="on" rel="nofollow" target="_blank" href="http://sale.jiuxian.com/two/index-4843.htm?area=2">婚宴喜酒</a>
-							</p>
-							</div>
-						</div>
-	                  </li> 
 	            </ul>
 	            <div style="display: none;" class="menuBox ">
-				<!-- 右侧文字 start -->
-				<div class="menuCon">	
-					<div class="menuItem first clearfix">
-						<div class="menuItemTitle"><h4>企业用酒</h4></div>      
-						<div class="menuItemCon">
-							<div class="menuCon-list">
-								<p class="clearfix">
-									<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-807.htm?area=2">商务用酒</a>
-									<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-813.htm?area=2">员工福利</a>
-									<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-825.htm?area=2">高端酒</a>
-									<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-823.htm?area=2">聚餐用酒</a>
-								</p>
+					<!-- 右侧文字 start -->
+					<div class="menuCon">	
+						<div class="menuItem">    
+							<div class="menuItemCon">
+								<div class="menuCon-list">
+									<p class="clearfix">
+										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-807.htm?area=2">商务用酒</a>
+										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-813.htm?area=2">员工福利</a>
+										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-825.htm?area=2">高端酒</a>
+										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-823.htm?area=2">聚餐用酒</a>
+									</p>
+								</div>
 							</div>
-						</div>
-					</div>                    
-					<div class="menuItem  clearfix">
-						<div class="menuItemTitle"><h4>精选会场</h4></div>      
-						<div class="menuItemCon">
-							<div class="menuCon-list">
-								<p class="clearfix">
-									<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-679.htm?area=2">家乡美酒</a>
-									<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-711.htm?area=2">香型美酒</a>
-									<a target="_blank" href="http://special.jiuxian.com/topic/zhuanti/17mingjiu/index.html?area=2">17大名酒</a>
-									<a target="_blank" href="http://special.jiuxian.com/topic/zhuanti/wine/index.html?area=2">香型大pk</a>
-								</p>
-							</div>
-						</div>
-					</div>                    
-					<div class="menuItem  clearfix">
-						<div class="menuItemTitle"><h4>结婚热季</h4></div>      
-						<div class="menuItemCon">
-							<div class="menuCon-list">
-								<p class="clearfix">
-									<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-658.htm?area=2">结婚酒</a>
-									<a target="_blank" href="http://sale.jiuxian.com/two/index-4843.htm?area=2">品牌结婚酒</a>
-								</p>
-							</div>
-						</div>
-					</div>                    
-				<div class="menuItem  clearfix">
-					<div class="menuItemTitle"><h4>小编推荐</h4></div>      
-					<div class="menuItemCon">
-						<div class="menuCon-list">
-							<p class="clearfix">
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-894.htm?area=2">1元秒大牌</a>
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-716.htm?area=2" class="hot">酒仙精英榜</a>
-							</p>
-						</div>
+						</div>  
 					</div>
-				</div>                    
-				<div class="menuItem  clearfix">
-					<div class="menuItemTitle"><h4>特色会场</h4></div>      
-					<div class="menuItemCon">
-						<div class="menuCon-list">
-							<p class="clearfix">
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-699.htm?area=2">猎奇专场</a>
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-859.htm?area=2" class="hot">小酒版</a>
-							</p>
-						</div>
-					</div>
-				</div>                    
-				<div class="menuItem  clearfix">
-					<div class="menuItemTitle"><h4>清仓特卖</h4></div>      
-					<div class="menuItemCon">
-						<div class="menuCon-list">
-							<p class="clearfix">
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-839.htm?area=2">天津仓特卖</a>
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-903.htm?area=2">武汉仓特卖</a>
-								<a target="_blank" href="http://sale.jiuxian.com/two/index-5246.htm?area=2">广州仓特卖</a>
-								<a target="_blank" href="http://shop.jiuxian.com/brand-387/activity-935.htm?area=2">成都仓特卖</a>
-								<a target="_blank" href="http://sale.jiuxian.com/two/index-5244.htm?area=2">上海仓特卖</a>
-							</p>
-						</div>
-					</div>
-				</div>                    
-				<div class="menuItem  clearfix">
-					<div class="menuItemTitle"><h4>名酒专区</h4></div>      
-					<div class="menuItemCon">
-						<div class="menuCon-list">
-							<p class="clearfix">
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-701.htm?area=2">名酒直降</a>
-								<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-825.htm?area=2" class="hot">高端酒</a>
-							</p>
-						</div>
-					</div>
-				</div>                    
-				<div class="menuItem  clearfix">
-					<div class="menuItemTitle"><h4>红洋酒专区</h4></div>      
-					<div class="menuItemCon">
-						<div class="menuCon-list">
-							<p class="clearfix">
-								<a target="_blank" href="http://sale.jiuxian.com/two/index-4045.htm?area=2" class="hot">洋酒风尚会</a>
-								<a target="_blank" href="http://sale.jiuxian.com/two/index-3985.htm?area=2">红酒套装</a>
-								<a target="_blank" href="http://sale.jiuxian.com/two/index-4234.htm?area=2" class="hot">送礼佳品</a>
-								<a target="_blank" href="http://wine.jiuxian.com/wine/hjgf.htm?area=2" class="hot">高分推荐</a>
-							</p>
-						</div>
-					</div>
-				</div>                    
-				<div class="menuItem  clearfix">
-					<div class="menuItemTitle"><h4>名庄推荐</h4></div>      
-					<div class="menuItemCon">
-						<div class="menuCon-list">
-							<p class="clearfix">
-								<a target="_blank" href="http://sale.jiuxian.com/two/index-4044.htm?area=2">名庄推荐</a>
-							</p>
-						</div>
-					</div>
-				</div>                    
-				<div class="menuHeight clearfix"><div class="menuItemTitle"></div><div class="menuItemCon"><div class="menuCon-list" style="height: 57px;"></div></div></div>
-				</div>
-				 <!-- 右侧文字 end -->
-				 <!-- 右侧广告位 start -->
-				   <div class="menuFoc">
-				<a target="_blank" href="http://www.jiuxian.com/goods-2101.html?area=2"><img width="220" height="470" src="http://img10.jiuxian.com/brandlogo/2016/0421/f9ae56c6e6e14af18dafd115060c2f6b.jpg" alt="" title="">
-				</a>
-				</div>
-				   <!-- 右侧广告位 end -->      
+				 <!-- 右侧文字 end -->   
 				</div>
             
             </div>
          </div>
          <div class="navi_middle">
             <ul>
-               <li><a href="#"><em class="icon_t1" style="font-style: normal;">首页</em></a></li>
+               <li><a href="<%=path%>"><em class="icon_t1" style="font-style: normal;">首页</em></a></li>
                <li><a href="#">2222</a></li>
                <li><a href="#">3333</a></li>
                <li><a href="#">4444</a></li>

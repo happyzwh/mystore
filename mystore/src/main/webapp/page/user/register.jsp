@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            <div class="checkbox_div" stype="margin-left:50px;">
 	                               <input type="checkbox" data-label="我已阅读并同意" class="checkbox required" id="agreeProtocol"  name="agreeProtocol" checked="checked">
 	                               <span class="checklabel checked">&nbsp;&nbsp;我已阅读并同意</span>
-	                               <a style="color: #297bc7;cursor: pointer;text-decoration: none;" href="javascript:;">《用户协议》</a>
+	                               <a style="color: #297bc7;cursor: pointer;text-decoration: none;" target="_blank"  href="<%=path%>/help_center.dhtml?id=31">《用户协议》</a>
 	                             </div> 
 	                        </div>
 	                        <div class="errorTip hidden">
