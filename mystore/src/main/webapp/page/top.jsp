@@ -81,42 +81,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="navi_left"><a href="javascript:void(0);" style="color:#ffffff; font-weight: bold;">全部商品分类</a></div>
             <div class="categoryBox_out">
 	            <ul class="categoryBox" >
-	                  <li class="catItem">
-	                    <div class="catItemCon">
-							<h3 iszlm="1" ishot="true" url="http://www.jiuxian.com/" pathname="一键选酒" name="tagH"><i class="publicIcon seleWine"></i><a href="http://www.jiuxian.com" target="_blank"></a>一键选酒</h3>
-							<div class="categoryCon">
-							<p>
-								<a class="on" rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-395.htm?area=2">实惠套装</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-709.htm?area=2">送礼专区</a>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-624.htm?area=2">宴请酒</a>												
-							<p>
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-701.htm?area=2">名酒直降</a>					
-								<a rel="nofollow" target="_blank" href="http://shop.jiuxian.com/brand-371/activity-440.htm?area=2">大坛酒</a>
-								<a class="on" rel="nofollow" target="_blank" href="http://sale.jiuxian.com/two/index-4843.htm?area=2">婚宴喜酒</a>
-							</p>
-							</div>
-						</div>
-	                  </li> 
-	            </ul>
-	            <div style="display: none;" class="menuBox ">
-					<!-- 右侧文字 start -->
-					<div class="menuCon">	
-						<div class="menuItem">    
-							<div class="menuItemCon">
-								<div class="menuCon-list">
-									<p class="clearfix">
-										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-807.htm?area=2">商务用酒</a>
-										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-813.htm?area=2">员工福利</a>
-										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-825.htm?area=2">高端酒</a>
-										<a target="_blank" href="http://shop.jiuxian.com/brand-371/activity-823.htm?area=2">聚餐用酒</a>
-									</p>
+	            	<s:iterator value="firstCateList" status="inx">
+		                  <li class="catItem">
+		                    <div class="catItemCon">
+								<h3><a href="<%=path%>/search_list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0" target="_blank"><s:property value='name'/></a></h3>
+								<div class="categoryCon">
+								   <s:set name="index" value="0"/>
+								    <s:iterator value="sons" status="ind">
+								        <s:if test="#index==0">
+								       		 <p>
+								        </s:if>
+								        <s:set name="index" value="#index+1"/>
+								    	<a rel="nofollow" target="_blank" href="<%=path%>/search_list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a>					
+								        <s:if test="#index == 3">
+								        	  </p>
+								        	  <s:set name="index" value="0"/>
+								        </s:if>
+								    </s:iterator>
 								</div>
 							</div>
-						</div>  
+		                  </li> 
+	                 </s:iterator> 
+	            </ul>
+	            <s:iterator value="secondCateList" status="inx">
+		            <div style="display:none;" class="menuBox ">
+						<!-- 右侧文字 start -->
+							<div class="menuCon">	
+							   <s:iterator value="top" status="inxs">
+									<div class="menuItem">    
+										<div class="menuItemTitle"><h4><s:property value='name'/></h4></div>
+										<div class="menuItemCon">
+											<div class="menuCon-list">
+											    <s:set name="index" value="0"/>
+												<s:iterator value="sons" status="ind">
+												    <s:if test="#index==0">
+											       		<p class="clearfix">
+											        </s:if>
+											        <s:set name="index" value="#index+1"/>
+												    <a target="_blank" href="<%=path%>/search_list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a>
+												    <s:if test="#index == 4">
+										        	  </p>
+										        	  <s:set name="index" value="0"/>
+										        </s:if>
+												</s:iterator>
+											</div>
+										</div>
+									</div> 
+							   </s:iterator> 
+							</div>
+					 <!-- 右侧文字 end -->   
 					</div>
-				 <!-- 右侧文字 end -->   
-				</div>
-            
+           	 </s:iterator>
             </div>
          </div>
          <div class="navi_middle">
@@ -137,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
   </div>
 </div>
-<form id="topSearchForm" action="<%=path%>/search/searchAction!lists.dhtml" method="post" target="_self">
+<form id="topSearchForm" action="<%=path%>/search_lists.dhtml" method="post" target="_self">
 	<input type="hidden" name="key" id="key" value="" />
  	<input type="hidden" name="pageNo" id="pageNo" value="1" />
  </form>

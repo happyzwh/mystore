@@ -42,5 +42,11 @@ public class Constans {
 	public static final String KEY_MAIL_SET = "key_MAIL_SET"; 
 	//用户设置邮箱缓存时长
 	public static final  Long VALUE_TIME_MAIL_SET = 2l; 
+	//全部商品分类  一级分类缓存key
+	public static final String KEY_CACHE_CATE_FIRST = "key_cache_cate_first";
+	//全部商品分类  二级分类缓存key
+	public static final String KEY_CACHE_CATE_SECOND = "key_cache_cate_second";
+	//全部商品分类缓存时长
+	public static final  Long VALUE_TIME_CATE_ALL = 1l; 
 
 }
