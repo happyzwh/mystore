@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.mystore.business.common.Constans;
+import com.mystore.business.common.Constants;
 import com.mystore.business.dto.User;
 import com.mystore.business.dto.UserAddress;
 import com.mystore.business.service.UserAddressService;
@@ -48,7 +48,7 @@ public class UserAddressAction  extends BaseAction{
 	public String index(){
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
-		User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+		User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 		
 		addList = userAddressService.getByUserId(user.getId());
 		
@@ -71,7 +71,7 @@ public class UserAddressAction  extends BaseAction{
 			}
 			
 			String sessionId = ServletActionContext.getRequest().getSession().getId();
-			User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 			
 			UserAddress address = new UserAddress();
 			if(id != null){
@@ -110,7 +110,7 @@ public class UserAddressAction  extends BaseAction{
 			}
 			
 			String sessionId = ServletActionContext.getRequest().getSession().getId();
-			User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 			
 		
 		   userAddressService.delAddress(user.getId(), id);

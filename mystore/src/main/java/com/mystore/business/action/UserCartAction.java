@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.mystore.business.common.Constans;
+import com.mystore.business.common.Constants;
 import com.mystore.business.dto.ProPrice;
 import com.mystore.business.dto.Product;
 import com.mystore.business.dto.User;
@@ -62,28 +62,28 @@ public class UserCartAction extends BaseAction{
 		if(StringUtils.isBlank(cart))return;
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
-		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constants.KEY_COOKIE_CART+"_"+sessionId);
 		if(cacheCart != null)return;
 		
 		cacheCart = new CacheCart(true);
 		
-		String[] goodsList = cart.split(Constans.CHAR_SPLIT_CART);
+		String[] goodsList = cart.split(Constants.CHAR_SPLIT_CART);
 		if(goodsList != null && goodsList.length > 0){
 			Map<Integer,Integer> cart = new HashMap<Integer,Integer>();
 			cacheCart.setCart(cart);
 			for(String goodstr:goodsList){
-				String[] goods = goodstr.split(Constans.CHAR_SPLIT_CART_GOOD);
+				String[] goods = goodstr.split(Constants.CHAR_SPLIT_CART_GOOD);
 				cart.put(Integer.valueOf(goods[0]), Integer.valueOf(goods[1]));
 			}
 		}
 		
-		redisTemplate.delete(Constans.KEY_COOKIE_CART+"_"+sessionId);
-		redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
-		redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+		redisTemplate.delete(Constants.KEY_COOKIE_CART+"_"+sessionId);
+		redisTemplate.opsForValue().set(Constants.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+		redisTemplate.expire(Constants.KEY_COOKIE_CART+"_"+sessionId, Constants.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
 		
-		User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+		User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 		if(user != null){
-			SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()));
+			SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constants.KEY_CART_SYN_USER, String.valueOf(user.getId()));
 			if(synCart != null){
 				synCart.setCart(cart.toString());
 				synCart.setCount(synCart.getCount()+1);
@@ -95,7 +95,7 @@ public class UserCartAction extends BaseAction{
 				synCart.setTime(System.currentTimeMillis());
 			}
 			
-			redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
+			redisTemplate.opsForHash().put(Constants.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
 			
 		}
 	}
@@ -104,29 +104,29 @@ public class UserCartAction extends BaseAction{
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
 		
-		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constants.KEY_COOKIE_CART+"_"+sessionId);
 		
 		cacheCart = new CacheCart(true);
 		
 		if(StringUtils.isNotBlank(cart)){
-			String[] goodsList = cart.split(Constans.CHAR_SPLIT_CART);
+			String[] goodsList = cart.split(Constants.CHAR_SPLIT_CART);
 			if(goodsList != null && goodsList.length > 0){
 				Map<Integer,Integer> cart = new HashMap<Integer,Integer>();
 				cacheCart.setCart(cart);
 				for(String goodstr:goodsList){
-					String[] goods = goodstr.split(Constans.CHAR_SPLIT_CART_GOOD);
+					String[] goods = goodstr.split(Constants.CHAR_SPLIT_CART_GOOD);
 					cart.put(Integer.valueOf(goods[0]), Integer.valueOf(goods[1]));
 				}
 			}
 		}
 		
-		redisTemplate.delete(Constans.KEY_COOKIE_CART+"_"+sessionId);
-		redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
-		redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+		redisTemplate.delete(Constants.KEY_COOKIE_CART+"_"+sessionId);
+		redisTemplate.opsForValue().set(Constants.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+		redisTemplate.expire(Constants.KEY_COOKIE_CART+"_"+sessionId, Constants.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
 	
-		User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+		User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 		if(user != null){
-			SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()));
+			SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constants.KEY_CART_SYN_USER, String.valueOf(user.getId()));
 			if(synCart != null){
 				synCart.setCart(cart.toString());
 				synCart.setCount(synCart.getCount()+1);
@@ -138,11 +138,11 @@ public class UserCartAction extends BaseAction{
 				synCart.setTime(System.currentTimeMillis());
 			}
 			
-			redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
+			redisTemplate.opsForHash().put(Constants.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
 			
 		}
 		
-		CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constans.KEY_COOKIE_CART,cart.toString(),Constans.VALUE_TIME_COOKIE_CART.intValue()*60*60);
+		CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constants.KEY_COOKIE_CART,cart.toString(),Constants.VALUE_TIME_COOKIE_CART.intValue()*60*60);
 	}
 	
 	public void addCart() throws IOException, JSONException{
@@ -157,7 +157,7 @@ public class UserCartAction extends BaseAction{
 			
 			String sessionId = ServletActionContext.getRequest().getSession().getId();
 			
-			CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+			CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constants.KEY_COOKIE_CART+"_"+sessionId);
 			
 			cacheCart = (cacheCart == null)?new CacheCart(true):cacheCart;
 			
@@ -178,17 +178,17 @@ public class UserCartAction extends BaseAction{
 			
 			for(Integer key:cacheCart.getCart().keySet()){
 					if(cart.length() > 0){
-						cart.append(Constans.CHAR_SPLIT_CART);
+						cart.append(Constants.CHAR_SPLIT_CART);
 					}
-					cart.append(key).append(Constans.CHAR_SPLIT_CART_GOOD).append(cacheCart.getCart().get(key));
+					cart.append(key).append(Constants.CHAR_SPLIT_CART_GOOD).append(cacheCart.getCart().get(key));
 			} 
-			redisTemplate.delete(Constans.KEY_COOKIE_CART+"_"+sessionId);
-			redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
-			redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+			redisTemplate.delete(Constants.KEY_COOKIE_CART+"_"+sessionId);
+			redisTemplate.opsForValue().set(Constants.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+			redisTemplate.expire(Constants.KEY_COOKIE_CART+"_"+sessionId, Constants.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
 			
-			User user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 			if(user != null){
-				SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()));
+				SynCart synCart = (SynCart)redisTemplate.opsForHash().get(Constants.KEY_CART_SYN_USER, String.valueOf(user.getId()));
 				if(synCart != null){
 					synCart.setCart(cart.toString());
 					synCart.setCount(synCart.getCount()+1);
@@ -200,11 +200,11 @@ public class UserCartAction extends BaseAction{
 					synCart.setTime(System.currentTimeMillis());
 				}
 				
-				redisTemplate.opsForHash().put(Constans.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
+				redisTemplate.opsForHash().put(Constants.KEY_CART_SYN_USER, String.valueOf(user.getId()),synCart);
 				
 			}
 			
-			CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constans.KEY_COOKIE_CART,cart.toString(),Constans.VALUE_TIME_COOKIE_CART.intValue()*60*60);
+			CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constants.KEY_COOKIE_CART,cart.toString(),Constants.VALUE_TIME_COOKIE_CART.intValue()*60*60);
 		
 			data.put("count",cacheCart.getTotalCount());
 			
@@ -220,11 +220,11 @@ public class UserCartAction extends BaseAction{
 
 	public void cartSyn(){
 
-		List<Object> list = (List<Object>)redisTemplate.opsForHash().values(Constans.KEY_CART_SYN_USER);
+		List<Object> list = (List<Object>)redisTemplate.opsForHash().values(Constants.KEY_CART_SYN_USER);
 		if(list != null && list.size() > 0){
 			for(Object o:list){
 				SynCart synCart = (SynCart)o;
-				if(synCart.getCount() >= Constans.COUNT_CART_SYN_USER || System.currentTimeMillis() <= synCart.getTime()+Constans.VALUE_CART_SYN_USER*60*1000){
+				if(synCart.getCount() >= Constants.COUNT_CART_SYN_USER || System.currentTimeMillis() <= synCart.getTime()+Constants.VALUE_CART_SYN_USER*60*1000){
 					
 					UserCart userCart = userCartService.getCartByUserId(synCart.getId_user());
 					if(userCart == null){
@@ -240,7 +240,7 @@ public class UserCartAction extends BaseAction{
 						userCartService.addCart(userCart);
 					}
 					
-					redisTemplate.opsForHash().delete(Constans.KEY_CART_SYN_USER, String.valueOf(synCart.getId_user()));
+					redisTemplate.opsForHash().delete(Constants.KEY_CART_SYN_USER, String.valueOf(synCart.getId_user()));
 				}
 			}
 		}
@@ -252,7 +252,7 @@ public class UserCartAction extends BaseAction{
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
 		
-		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+		CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constants.KEY_COOKIE_CART+"_"+sessionId);
 		
 		if(cacheCart != null && cacheCart.getCart() != null && !cacheCart.getCart().isEmpty()){
 			

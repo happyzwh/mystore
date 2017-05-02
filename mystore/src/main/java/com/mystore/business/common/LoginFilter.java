@@ -86,7 +86,7 @@ public class LoginFilter implements Filter{
         
         RedisTemplate<String, Serializable> redisTemplate = (RedisTemplate<String, Serializable>)ContextLoader.getCurrentWebApplicationContext().getBean("redisTemplate");
         
-        Object o = redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+        Object o = redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 
 	    if (o == null){ 
 	    	res.sendRedirect(req.getContextPath() +"/"+loginUrl); 

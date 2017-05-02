@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.mystore.business.common.Constans;
+import com.mystore.business.common.Constants;
 import com.mystore.business.core.PublicKeyMap;
 import com.mystore.business.core.RSAUtils;
 import com.mystore.business.dto.User;
@@ -117,8 +117,8 @@ public class UserAction  extends BaseAction{
 			
 			user  = userService.getUserByAccount(userName);
 			
-			redisTemplate.opsForValue().set(Constans.KEY_SESSION+"_"+sessionId, user);
-			redisTemplate.expire(Constans.KEY_VERIFYCODE+"_"+sessionId, Constans.VALUE_TIME_SESSION, TimeUnit.HOURS);
+			redisTemplate.opsForValue().set(Constants.KEY_SESSION+"_"+sessionId, user);
+			redisTemplate.expire(Constants.KEY_VERIFYCODE+"_"+sessionId, Constants.VALUE_TIME_SESSION, TimeUnit.HOURS);
 			
 		}catch(Exception e){
 			code = -1;
@@ -190,10 +190,10 @@ public class UserAction  extends BaseAction{
 				code = -5;
 			}
 			
-			redisTemplate.opsForValue().set(Constans.KEY_SESSION+"_"+sessionId, user);
-			redisTemplate.expire(Constans.KEY_SESSION+"_"+sessionId, Constans.VALUE_TIME_SESSION, TimeUnit.HOURS);
+			redisTemplate.opsForValue().set(Constants.KEY_SESSION+"_"+sessionId, user);
+			redisTemplate.expire(Constants.KEY_SESSION+"_"+sessionId, Constants.VALUE_TIME_SESSION, TimeUnit.HOURS);
 			
-			CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constans.KEY_COOKIE_CART+"_"+sessionId);
+			CacheCart cacheCart = (CacheCart)redisTemplate.opsForValue().get(Constants.KEY_COOKIE_CART+"_"+sessionId);
 			
 			cacheCart = (cacheCart == null)?new CacheCart(true):cacheCart;
 			
@@ -201,10 +201,10 @@ public class UserAction  extends BaseAction{
 			
 			if(cacheCart.isChanged()){	
 				if(userCart != null && StringUtils.isNotBlank(userCart.getCart())){
-					String[] carts = userCart.getCart().split(Constans.CHAR_SPLIT_CART);
+					String[] carts = userCart.getCart().split(Constants.CHAR_SPLIT_CART);
 					if(carts != null && carts.length > 0){
 						for(String cartStr:carts){
-							String[] cart = cartStr.split(Constans.CHAR_SPLIT_CART_GOOD);
+							String[] cart = cartStr.split(Constants.CHAR_SPLIT_CART_GOOD);
 							if(cart != null && cart.length == 2){
 								if(cacheCart.getCart().containsKey(Integer.valueOf(cart[0]))){
 									
@@ -228,13 +228,13 @@ public class UserAction  extends BaseAction{
 			if(cacheCart.isChanged() && !cacheCart.getCart().isEmpty()){
 				for(Integer key:cacheCart.getCart().keySet()){
 					if(cart.length() > 0){
-						cart.append(Constans.CHAR_SPLIT_CART);
+						cart.append(Constants.CHAR_SPLIT_CART);
 					}
-					cart.append(key).append(Constans.CHAR_SPLIT_CART_GOOD).append(cacheCart.getCart().get(key));
+					cart.append(key).append(Constants.CHAR_SPLIT_CART_GOOD).append(cacheCart.getCart().get(key));
 				} 
 				cacheCart.setChanged(false);
-				redisTemplate.opsForValue().set(Constans.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
-				redisTemplate.expire(Constans.KEY_COOKIE_CART+"_"+sessionId, Constans.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
+				redisTemplate.opsForValue().set(Constants.KEY_COOKIE_CART+"_"+sessionId,cacheCart);
+				redisTemplate.expire(Constants.KEY_COOKIE_CART+"_"+sessionId, Constants.VALUE_TIME_COOKIE_CART, TimeUnit.HOURS);
 			}
 			
 			if(cart.length() > 0){
@@ -250,7 +250,7 @@ public class UserAction  extends BaseAction{
 					userCartService.addCart(userCart);
 				}
 				
-				CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constans.KEY_COOKIE_CART,cart.toString(),Constans.VALUE_TIME_COOKIE_CART.intValue()*60*60);
+				CookieUtil.editCookie(ServletActionContext.getRequest(),ServletActionContext.getResponse(),Constants.KEY_COOKIE_CART,cart.toString(),Constants.VALUE_TIME_COOKIE_CART.intValue()*60*60);
 			}
 			
 		}catch(Exception e){
@@ -315,7 +315,7 @@ public class UserAction  extends BaseAction{
 	public String menu(){
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
-		user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+		user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 		
 		return "menu";
 	} 

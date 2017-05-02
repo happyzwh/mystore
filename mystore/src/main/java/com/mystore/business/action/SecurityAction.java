@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.mystore.business.common.Constans;
+import com.mystore.business.common.Constants;
 import com.mystore.business.core.PublicKeyMap;
 import com.mystore.business.core.RSAUtils;
 import com.mystore.business.dto.User;
@@ -69,8 +69,8 @@ public class SecurityAction  extends BaseAction{
 	public String index(){
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
-	    user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
-		Object o = redisTemplate.opsForHash().get(Constans.KEY_LEVEL_SECURITY, user.getId().toString());
+	    user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
+		Object o = redisTemplate.opsForHash().get(Constants.KEY_LEVEL_SECURITY, user.getId().toString());
 		
 		if(o == null){
 			
@@ -99,8 +99,8 @@ public class SecurityAction  extends BaseAction{
 				level = SecurityLevelMap.LOW.getBh();
 			}
 			
-			redisTemplate.opsForHash().put(Constans.KEY_LEVEL_SECURITY, user.getId().toString(),level);
-			redisTemplate.expire(Constans.KEY_LEVEL_SECURITY, Constans.VALUE_TIME_LEVEL_SECURITY, TimeUnit.HOURS);
+			redisTemplate.opsForHash().put(Constants.KEY_LEVEL_SECURITY, user.getId().toString(),level);
+			redisTemplate.expire(Constants.KEY_LEVEL_SECURITY, Constants.VALUE_TIME_LEVEL_SECURITY, TimeUnit.HOURS);
 		}else{
 			level = (String)o;
 		}
@@ -137,7 +137,7 @@ public class SecurityAction  extends BaseAction{
 			}
 			
 			String sessionId = ServletActionContext.getRequest().getSession().getId();
-			user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 			
 			oldPwd = RSAUtils.decryptStringByJs(oldPwd);
 			oldPwd = new MD5().GetMD5Code(oldPwd);
@@ -182,7 +182,7 @@ public class SecurityAction  extends BaseAction{
 				return;
 			}
 			
-			user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 			String uuid = UUID.randomUUID()+"_"+user.getId();
 			String key = new MD5().GetMD5Code(uuid);
 			String basePath = ServletActionContext.getRequest().getScheme()+"://"+ServletActionContext.getRequest().getServerName()+":"+ServletActionContext.getRequest().getServerPort()+ServletActionContext.getRequest().getContextPath();
@@ -192,8 +192,8 @@ public class SecurityAction  extends BaseAction{
 			
 			mailSenderService.send(mail, subject, content);
 			
-			redisTemplate.opsForHash().put(Constans.KEY_MAIL_SET, key,user.getId()+"_"+mail);
-			redisTemplate.expire(Constans.KEY_MAIL_SET, Constans.VALUE_TIME_MAIL_SET, TimeUnit.HOURS);
+			redisTemplate.opsForHash().put(Constants.KEY_MAIL_SET, key,user.getId()+"_"+mail);
+			redisTemplate.expire(Constants.KEY_MAIL_SET, Constants.VALUE_TIME_MAIL_SET, TimeUnit.HOURS);
 			
 		}catch(Exception e){
 			code = -1;
@@ -212,14 +212,14 @@ public class SecurityAction  extends BaseAction{
 			return "checkEmail";
 		}
 		
-		Object o = redisTemplate.opsForHash().get(Constans.KEY_MAIL_SET, key);
+		Object o = redisTemplate.opsForHash().get(Constants.KEY_MAIL_SET, key);
 		
 		if(o == null){
 			msg = "连接已过期,请重新发送邮箱验证连接";
 			return "checkEmail";
 		}
 		
-		redisTemplate.opsForHash().delete(Constans.KEY_MAIL_SET, key);
+		redisTemplate.opsForHash().delete(Constants.KEY_MAIL_SET, key);
 		
 		String value = (String)o;
 		String[] values = value.split("_");
@@ -234,7 +234,7 @@ public class SecurityAction  extends BaseAction{
 		userService.updateUser(user);
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
-	    user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+	    user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 	    if(user != null){
 	    	user.setIsEmailValid("1");
 	    	user.setEmail(values[1]);
@@ -276,7 +276,7 @@ public class SecurityAction  extends BaseAction{
 				return;
 			}
 			
-			user = (User)redisTemplate.opsForValue().get(Constans.KEY_SESSION+"_"+sessionId);
+			user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 			
 			paypwd = RSAUtils.decryptStringByJs(paypwd);
 			paypwd = new MD5().GetMD5Code(paypwd);
@@ -285,7 +285,7 @@ public class SecurityAction  extends BaseAction{
 			user.setPwdPay(paypwd);
 			userService.updateUser(user);
 			
-			redisTemplate.opsForValue().set(Constans.KEY_SESSION+"_"+sessionId,user);
+			redisTemplate.opsForValue().set(Constants.KEY_SESSION+"_"+sessionId,user);
 			
 		}catch(Exception e){
 			code = -1;

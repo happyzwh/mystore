@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.mystore.business.common.Constans;
+import com.mystore.business.common.Constants;
 import com.octo.captcha.engine.CaptchaEngine;
 import com.octo.captcha.image.gimpy.Gimpy;
 import com.octo.captcha.service.captchastore.CaptchaStore;
@@ -44,11 +44,11 @@ public class CaptchaService extends DefaultManageableImageCaptchaService {
 		Boolean isHuman = false;
 
 		try {
-			String code = (String)redisTemplate.opsForHash().get(Constans.KEY_VERIFYCODE, ID);
+			String code = (String)redisTemplate.opsForHash().get(Constants.KEY_VERIFYCODE, ID);
 			if(response != null && StringUtils.isNotBlank(code) && ((String)response).equals(code)){
 				isHuman = true;
 			}
-			redisTemplate.opsForHash().delete(Constans.KEY_VERIFYCODE, ID);
+			redisTemplate.opsForHash().delete(Constants.KEY_VERIFYCODE, ID);
 		} catch (Exception e) {
 			isHuman = false;
 		}

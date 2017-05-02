@@ -1,6 +1,8 @@
 package com.mystore.business.common;
 
-public class Constans {
+import com.mystore.business.util.PropertiesUtil;
+
+public class Constants {
 	
 	//登录session前缀
 	public static final String KEY_SESSION="key_session";
@@ -48,5 +50,7 @@ public class Constans {
 	public static final String KEY_CACHE_CATE_SECOND = "key_cache_cate_second";
 	//全部商品分类缓存时长
 	public static final  Long VALUE_TIME_CATE_ALL = 1l; 
+	
+    public static final String LOCALHOST = new PropertiesUtil("config.properties").readProperty("localhost");
 
 }

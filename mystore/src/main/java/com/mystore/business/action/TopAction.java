@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.mystore.business.common.Constans;
+import com.mystore.business.common.Constants;
 import com.mystore.business.dto.AdvImg;
 import com.mystore.business.dto.Category;
 import com.mystore.business.pojo.AdvMap;
@@ -50,9 +50,9 @@ public class TopAction extends BaseAction{
 			advImg = list.get(0);
 		}
 		
-		if(redisTemplate.hasKey(Constans.KEY_CACHE_CATE_FIRST) && redisTemplate.hasKey(Constans.KEY_CACHE_CATE_SECOND)){
-			firstCateList = (List<CatePojo>)redisTemplate.opsForValue().get(Constans.KEY_CACHE_CATE_FIRST);
-			secondCateList = (List<List<CatePojo>>)redisTemplate.opsForValue().get(Constans.KEY_CACHE_CATE_SECOND);
+		if(redisTemplate.hasKey(Constants.KEY_CACHE_CATE_FIRST) && redisTemplate.hasKey(Constants.KEY_CACHE_CATE_SECOND)){
+			firstCateList = (List<CatePojo>)redisTemplate.opsForValue().get(Constants.KEY_CACHE_CATE_FIRST);
+			secondCateList = (List<List<CatePojo>>)redisTemplate.opsForValue().get(Constants.KEY_CACHE_CATE_SECOND);
 		}else{
 			List<Category> cateList = categoryService.getAllSonCategoryById(-1);
 			if(cateList != null){
@@ -96,12 +96,12 @@ public class TopAction extends BaseAction{
 				}
 			}
 			if(firstCateList.size() > 0){
-				redisTemplate.opsForValue().set(Constans.KEY_CACHE_CATE_FIRST, (Serializable)firstCateList);
-				redisTemplate.expire(Constans.KEY_CACHE_CATE_FIRST, Constans.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
+				redisTemplate.opsForValue().set(Constants.KEY_CACHE_CATE_FIRST, (Serializable)firstCateList);
+				redisTemplate.expire(Constants.KEY_CACHE_CATE_FIRST, Constants.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
 			}
 			if(secondCateList.size() > 0){
-				redisTemplate.opsForValue().set(Constans.KEY_CACHE_CATE_SECOND, (Serializable)secondCateList);
-				redisTemplate.expire(Constans.KEY_CACHE_CATE_SECOND, Constans.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
+				redisTemplate.opsForValue().set(Constants.KEY_CACHE_CATE_SECOND, (Serializable)secondCateList);
+				redisTemplate.expire(Constants.KEY_CACHE_CATE_SECOND, Constants.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
 			}
 		}
 		return "top";

@@ -44,7 +44,21 @@
 	      <value>0 0/2 * * * ?</value>
 	    </property>
 	  </bean>
-	  
+	  <bean name="staticIndex" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		 <property name="targetObject" ref="staticIndexTaskJob" />
+	     <property name="targetMethod" value="executeInternal" />
+	     <property name="concurrent" value="false" />
+	  </bean>
+	  <bean id="staticIndexTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="staticIndex" />
+		<property name="cronExpression">
+			<value>${job.staticIndexTrigger.cronExpression}</value>
+			<!-- <value>0 0/30 * ? * MON-FRI</value> 周一到周五，每隔30分钟执行一次 -->
+			<!--<value>0 10 12 * * ?</value> -->
+		</property>
+		<!-- <property name="jobDetail" ref="staticIndex" /> <property name="startDelay" 
+			value="0" /> <property name="repeatInterval" value="300000" /> -->
+	  </bean>
 	  <!-- quartz的调度工厂 调度工厂只能有一个，多个调度任务在list中添加 -->
 	  <bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">
 	    <property name="triggers">
@@ -52,6 +66,7 @@
 	         <!-- 所有的调度列表-->
 	        <ref local="searchIndexTrigger" />
 	        <ref local="synCartTrigger" />
+	        <ref local="staticIndexTrigger" />
 	      </list>
 	    </property>
 	  </bean>
