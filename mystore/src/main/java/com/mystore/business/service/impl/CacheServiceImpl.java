@@ -30,7 +30,8 @@ public class CacheServiceImpl implements CacheService{
 	@Override
 	public void setWithExpire(String key, Serializable value, long expire) {
 		// TODO Auto-generated method stub
-		redisTemplate.opsForValue().set(key, value,expire);
+		redisTemplate.opsForValue().set(key, value);
+		redisTemplate.expire(key, expire, TimeUnit.MILLISECONDS);
 	}
 
 	@Override

@@ -50,10 +50,10 @@ public class TopAction extends BaseAction{
 			advImg = list.get(0);
 		}
 		
-		if(redisTemplate.hasKey(Constants.KEY_CACHE_CATE_FIRST) && redisTemplate.hasKey(Constants.KEY_CACHE_CATE_SECOND)){
-			firstCateList = (List<CatePojo>)redisTemplate.opsForValue().get(Constants.KEY_CACHE_CATE_FIRST);
-			secondCateList = (List<List<CatePojo>>)redisTemplate.opsForValue().get(Constants.KEY_CACHE_CATE_SECOND);
-		}else{
+//		if(redisTemplate.hasKey(Constants.KEY_CACHE_CATE_FIRST) && redisTemplate.hasKey(Constants.KEY_CACHE_CATE_SECOND)){
+//			firstCateList = (List<CatePojo>)redisTemplate.opsForValue().get(Constants.KEY_CACHE_CATE_FIRST);
+//			secondCateList = (List<List<CatePojo>>)redisTemplate.opsForValue().get(Constants.KEY_CACHE_CATE_SECOND);
+//		}else{
 			List<Category> cateList = categoryService.getAllSonCategoryById(-1);
 			if(cateList != null){
 				firstCateList = new ArrayList<CatePojo>();
@@ -94,15 +94,15 @@ public class TopAction extends BaseAction{
 						}
 					}
 				}
-			}
-			if(firstCateList.size() > 0){
-				redisTemplate.opsForValue().set(Constants.KEY_CACHE_CATE_FIRST, (Serializable)firstCateList);
-				redisTemplate.expire(Constants.KEY_CACHE_CATE_FIRST, Constants.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
-			}
-			if(secondCateList.size() > 0){
-				redisTemplate.opsForValue().set(Constants.KEY_CACHE_CATE_SECOND, (Serializable)secondCateList);
-				redisTemplate.expire(Constants.KEY_CACHE_CATE_SECOND, Constants.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
-			}
+//			}
+//			if(firstCateList.size() > 0){
+//				redisTemplate.opsForValue().set(Constants.KEY_CACHE_CATE_FIRST, (Serializable)firstCateList);
+//				redisTemplate.expire(Constants.KEY_CACHE_CATE_FIRST, Constants.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
+//			}
+//			if(secondCateList.size() > 0){
+//				redisTemplate.opsForValue().set(Constants.KEY_CACHE_CATE_SECOND, (Serializable)secondCateList);
+//				redisTemplate.expire(Constants.KEY_CACHE_CATE_SECOND, Constants.VALUE_TIME_CATE_ALL, TimeUnit.HOURS);	
+//			}
 		}
 		return "top";
 	}

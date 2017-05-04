@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mystore.business.cache.Cache;
 import com.mystore.business.dao.CategoryMapper;
 import com.mystore.business.dto.Category;
 import com.mystore.business.service.CategoryService;
@@ -36,6 +37,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 	
 	@Override
+	@Cache(expire=120000)
 	public List<Category> getAllSonCategoryById(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		List<Category> list = new ArrayList<Category>();
