@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/notice.js" type="text/javascript"></script>
 </head>
 <body>
- <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
+ <%@ include file="/page/static/top_top.html" %>
  <div class="homeBody">
  	  <div class="notice">
 	      <div class="title"><s:property value='#request.info.title'/></div>

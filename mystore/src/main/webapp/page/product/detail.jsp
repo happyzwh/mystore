@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/detail.js" type="text/javascript"></script>
 </head>
 <body>
- <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
+  <%@ include file="/page/static/top_top.html" %>
  <input type="hidden" id="proId" value="<s:property value='product.id'/>"/>
  <input type="hidden" id="basePath" value="<%=path%>"/>
  <div class="homeBody">

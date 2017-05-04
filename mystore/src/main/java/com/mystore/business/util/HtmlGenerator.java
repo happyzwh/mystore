@@ -100,21 +100,7 @@ public class HtmlGenerator {
 	//将页面中的相对路径替换成绝对路径，以确保页面资源正常访问
 	private String formatPage(String page){	
 		
-		// 关于我们 去静态化
-		page = page.replaceAll("about_platform\\.shtml", "about_platform.html");
-		page = page.replaceAll("about_management\\.shtml", "about_management.html");
-		page = page.replaceAll("about_news\\.shtml", "about_news.html");
-		page = page.replaceAll("event_list\\.shtml", "event_list.html");
-		page = page.replaceAll("about_jobs\\.shtml", "about_jobs.html");
-		page = page.replaceAll("about_more\\.shtml", "about_more.html");
-		// 安全保证
-		page = page.replaceAll("about_safetyBZ\\.shtml", "about_safetyBZ.html");
-		page = page.replaceAll("about_buss_laws\\.shtml", "about_buss_laws.html");
-
-		// 友情链接 金银岛财经去静态化
-		page = page.replaceAll("/dazong/index\\.shtml", "/dazong/index.html");
-		// Banner跳转公司动态 去静态化
-		page = page.replaceAll("event_info\\.shtml\\?id\\=", "event_info\\.html\\?id\\=");
+//		page = page.replaceAll("event_info\\.shtml\\?id\\=", "event_info\\.html\\?id\\=");
 		return page;
 	}
 	

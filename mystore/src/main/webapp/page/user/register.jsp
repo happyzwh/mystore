@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input type="hidden" id = "exponent" value="${model.exponent}"/>
 <input type="hidden" id="modulus" value="${model.modulus}"/>
 <body>
- <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
+ <%@ include file="/page/static/top_top.html" %>
  <div class="homeBody">
  	  <div class="container-con register-cont">
 	    <h2 class="register-cont-h2">欢迎注册 <span class="sys-error">欢迎注册</span></h2>

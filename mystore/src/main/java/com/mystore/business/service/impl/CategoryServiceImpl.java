@@ -37,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 	
 	@Override
-	@Cache(expire=120000)
+	@Cache(expire=30*60000)
 	public List<Category> getAllSonCategoryById(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		List<Category> list = new ArrayList<Category>();

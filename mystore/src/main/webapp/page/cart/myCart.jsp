@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/cart/cart.js" type="text/javascript"></script>
 </head>
 <body>
- <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
+ <%@ include file="/page/static/top_top.html" %>
  <div class="homeBody">
     <div class="cart">
     	 <div class="title">

@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/help/center.js"></script>
 </head>
 <body>
- <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
+ <%@ include file="/page/static/top_top.html" %>
  <div class="homeBody">
       <s:action name="help_menu" namespace="/" executeResult="true" ignoreContextParams="true">
       		<s:param name="id"><s:property value='id'/></s:param>

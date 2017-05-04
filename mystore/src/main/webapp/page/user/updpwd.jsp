@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <input type="hidden" id = "exponent" value="${model.exponent}"/>
 <input type="hidden" id="modulus" value="${model.modulus}"/>
- <s:action name="top_top" namespace="/" executeResult="true" ignoreContextParams="true"/>
+ <%@ include file="/page/static/top_top.html" %>
  <div class="homeBody">
       <s:action name="user_menu" namespace="/" executeResult="true" ignoreContextParams="true">
       		<s:param name="bh"><%=MenuMap.SECURITY.getBh()%></s:param>

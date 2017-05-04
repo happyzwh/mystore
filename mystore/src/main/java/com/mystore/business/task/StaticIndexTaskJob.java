@@ -24,10 +24,8 @@ public class StaticIndexTaskJob {
     	
 		//正式环境请到constants中修改 静态文件生成路径undeal
 		List<String> urlList=new ArrayList<String>();
-		//urlList.add(Constants.HOST+"/index.html");//主页
 		urlList.add(Constants.LOCALHOST+"/top_top.dhtml");//top
 		urlList.add(Constants.LOCALHOST+"/index_index.dhtml");//index
-		//urlList.add(Constants.HOST+"/invest_index.html");//我要投资
 		
 		HtmlGenerator h = new HtmlGenerator();
 		

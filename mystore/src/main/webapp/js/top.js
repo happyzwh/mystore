@@ -59,7 +59,7 @@ $(function(){
 		     function(){
 		    	 $(this).removeClass("on");
 		    	 $(this).parent().parent().find(".menuBox").eq($(this).index()).hide();
-		    	 $(this).css({"border-left":"1px solid #ffffff"});
+//		    	 $(this).css({"border-left":"1px solid #ffffff"});
 		     }
      );
      $(".menuBox").hover(
@@ -71,7 +71,7 @@ $(function(){
 		     function(){
 		    	 $(this).hide();
 		    	 $(this).parent().parent().find(".catItem").eq($(this).index()-1).removeClass("on");
-		    	 $(this).parent().parent().find(".catItem").eq($(this).index()-1).css({"border-left":"1px solid #ffffff"});
+//		    	 $(this).parent().parent().find(".catItem").eq($(this).index()-1).css({"border-left":"1px solid #ffffff"});
 		     }
      );
      $("#topSearch").click(function(){
