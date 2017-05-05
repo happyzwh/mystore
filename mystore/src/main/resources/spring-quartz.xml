@@ -55,6 +55,28 @@
 			<value>${job.staticIndexTrigger.cronExpression}</value>
 		</property>
 	  </bean>
+	  <bean name="staticOther" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		 <property name="targetObject" ref="staticOtherTaskJob" />
+	     <property name="targetMethod" value="executeInternal" />
+	     <property name="concurrent" value="false" />
+	  </bean>
+	  <bean id="staticOtherTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="staticOther" />
+		<property name="cronExpression">
+			<value>${job.staticOtherTrigger.cronExpression}</value>
+		</property>
+	  </bean>
+	    <bean name="staticProDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		 <property name="targetObject" ref="staticProDetailTaskJob" />
+	     <property name="targetMethod" value="executeInternal" />
+	     <property name="concurrent" value="false" />
+	  </bean>
+	  <bean id="staticProDetailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="staticProDetail" />
+		<property name="cronExpression">
+			<value>${job.staticProDetailTrigger.cronExpression}</value>
+		</property>
+	  </bean>
 	  <!-- quartz的调度工厂 调度工厂只能有一个，多个调度任务在list中添加 -->
 	  <bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">
 	    <property name="triggers">
@@ -63,6 +85,8 @@
 	        <ref local="searchIndexTrigger" />
 	        <ref local="synCartTrigger" />
 	        <ref local="staticIndexTrigger" />
+	        <ref local="staticOtherTrigger" />
+	        <ref local="staticProDetailTrigger" />
 	      </list>
 	    </property>
 	  </bean>

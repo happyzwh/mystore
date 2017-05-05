@@ -66,6 +66,10 @@
 		from info
 		where id = #{value}
 	</select>
+	<select id="getAllInfoId" resultType="int">
+		select id
+		from info
+	</select>
 	<sql id="queryInfoCondition">
 	    <trim prefix="WHERE" prefixOverrides="AND">
 	          c.id = i.id_cate

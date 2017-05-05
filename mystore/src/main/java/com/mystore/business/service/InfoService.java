@@ -18,4 +18,6 @@ public interface InfoService {
 	
 	public List<Info> getInfoByPid(Integer pid);
 	
+	public List<Integer> getAllInfoId();
+	
 }

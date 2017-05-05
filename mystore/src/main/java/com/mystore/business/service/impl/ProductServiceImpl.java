@@ -62,4 +62,10 @@ public class ProductServiceImpl implements ProductService{
 		return productMapper.getProAttrMapBycateId(cateId);
 	}
 
+	@Override
+	public List<Integer> getAllProId() {
+		// TODO Auto-generated method stub
+		return productMapper.getAllProId();
+	}
+
 }

@@ -188,4 +188,10 @@
 		GROUP BY b.id
 		ORDER BY c.sort
 	</select>
+	<select id="getAllProId" resultType="int">
+	    select p.id 
+	    from product p,category c,brand b
+	    where p.id_cate = c.id and p.id_brand = b.id 
+	    <!--  and p.status = '1' and c.status = '1' and b.status = '1' -->
+	</select>
 </mapper>

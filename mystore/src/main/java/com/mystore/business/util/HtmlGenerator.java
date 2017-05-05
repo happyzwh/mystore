@@ -75,7 +75,7 @@ public class HtmlGenerator {
 				}
 				
 				//将页面中的相对路径替换成绝对路径，以确保页面资源正常访问
-//				page = formatPage(page);
+				page = formatPage(page);
 				//将解析结果写入指定的静态HTML文件中，实现静态HTML生成
 				writeHtml(htmlFileName,page);
 				status = true;
@@ -99,8 +99,8 @@ public class HtmlGenerator {
 	
 	//将页面中的相对路径替换成绝对路径，以确保页面资源正常访问
 	private String formatPage(String page){	
-		
-//		page = page.replaceAll("event_info\\.shtml\\?id\\=", "event_info\\.html\\?id\\=");
+		page = page.replaceAll("help_center\\.dhtml\\?id=(\\d+)", "page/static/help_center_$1\\.html");
+		page = page.replaceAll("product_detail\\.dhtml\\?id=(\\d+)", "page/static/product_detail_$1\\.html");
 		return page;
 	}
 	
@@ -121,7 +121,10 @@ public class HtmlGenerator {
 	
 	//测试方法
 	public static void main(String[] args){		
+		String str = "help_center.dhtml?id=9";
+		System.out.println(str.replaceAll("help_center\\.dhtml\\?id=(\\d+)", "help_center_$1\\.html"));
 		
+//		System.out.println("abac".replaceAll("a(\\w)", "$1$1"));
 	}
 
 }

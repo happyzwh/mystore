@@ -70,5 +70,11 @@ public class InfoServiceImpl implements InfoService{
 		return infoMapper.getInfoByPid(pid);
 	}
 
+	@Override
+	public List<Integer> getAllInfoId() {
+		// TODO Auto-generated method stub
+		return infoMapper.getAllInfoId();
+	}
+
 
 }

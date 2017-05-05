@@ -18,4 +18,6 @@ public interface InfoMapper {
 	public List<InfoCate> getInfoCateByPid(Integer pid);
 	
 	public List<Info> getInfoByPid(Integer pid);
+	
+	public List<Integer> getAllInfoId();
 }

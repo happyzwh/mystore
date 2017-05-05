@@ -97,7 +97,7 @@
 	</session-config>
 	
 	<welcome-file-list>
-	     <welcome-file>/page/toindex.jsp</welcome-file>
+	     <welcome-file>/page/static/index_index.html</welcome-file>
 	</welcome-file-list>
 	
 	 <jsp-config>  

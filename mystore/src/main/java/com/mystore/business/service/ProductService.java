@@ -51,4 +51,10 @@ public interface ProductService {
 	 * 
 	 * */
 	public List<Map<String,Object>> getProAttrMapByCateId(Integer cateId);
+	
+	/**
+	 * 查询所有商品id
+	 * 
+	 * */
+	public List<Integer> getAllProId();
 }
