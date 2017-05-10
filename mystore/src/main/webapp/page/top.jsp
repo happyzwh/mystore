@@ -19,8 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input id="path" type="hidden" value="<%=path%>"/>
 <div class="topout">
   <s:if test="advImg != null">
-  		<div class="topadv" style='background-image: url("<%=ConfigReader.getPath_pic_service()%>/<s:property value='advImg.path_pic'/>");'>
-  			<a href='<s:property value="advImg.url"/>' target="_blank"></a>
+  		<div class="topadv">
+  			<a href='<s:property value="advImg.url"/>' target="_blank">
+				<img width="100%" height="100%" src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='advImg.path_pic'/>"/>
+			</a>
   		</div>
   </s:if>
   <div class="topnavigate_out">
@@ -34,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <ul>
 	            <li><a href="<%=path%>/help_center.dhtml">帮助中心 </a></li>
 	            <li><a href="<%=path%>/user_goLogin.dhtml">登录</a><i class="cccc"> | </i><a href="<%=path%>/user_goRegister.dhtml">注册</a></li>
-	            <li><a href="<%=path%>/page/toindex.jsp">欢迎光临惠美购商城!</a></li>
+	            <li><a href="<%=path%>/">欢迎光临惠美购商城!</a></li>
 	         </ul>
 	      </div>
 	      <div style="clear:both;"></div>

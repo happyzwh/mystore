@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <input type="hidden" id="basePath" value="<%=path%>"/>
  <div class="homeBody">
       <div class="nav">
-           <a href="">首页</a><i>></i>
+           <a href="/">首页</a><i>></i>
            <s:iterator value="categorys" status="ind">
            		<a href="search_list.dhtml?keys=<s:property value='id'/>-0-0-0-0-0-0-0"><s:property value='name'/></a><i>></i>
            </s:iterator>
@@ -111,12 +111,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    <div class="cl">
 			       <div class="blank5"></div>
 			       <div class="hot_sale"> 
-			             <div class="txtTit"><font class="f93 fl pl15">镜美如畅销排行</font><font class="f94 fl">&nbsp;HOT SALES</font></div>
+			             <div class="txtTit"><font class="f93 fl pl15">畅销排行</font><font class="f94 fl">&nbsp;HOT SALES</font></div>
 						 <a href="http://www.huimeigou.com/jzt-g9549.html"><img class="addd" src="http://www.huimeigou.com/images/201507/goods_img/9549_P_1437958266904.jpg"/></a>
 			             <ul class="hs_goodslist">
 				             <li class="hs_goods">
-					              <span class="img"><img border="0" class="lazyload" alt="镜美如原生态磁能修护霜55g" src="http://huimeigou.gotoip3.com/images/201501/thumb_img/963_thumb_G_1422467817402.jpg"/></span>            
-							      <a class="name" href="/jingmeiru-g963.html">镜美如原生态磁能修护霜55g</a>
+					              <span class="img"><img border="0" class="lazyload" alt="原生态磁能修护霜55g" src="http://huimeigou.gotoip3.com/images/201501/thumb_img/963_thumb_G_1422467817402.jpg"/></span>            
+							      <a class="name" href="/jingmeiru-g963.html">原生态磁能修护霜55g</a>
 					              <font class="price fl">￥150</font><br/><font class="f3 fl">专柜价:<del>￥216</del></font>
 				             </li>                                                                                          
 			            </ul>
