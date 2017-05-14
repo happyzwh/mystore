@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		       </div>
 		 </div>
 		 <div class="notice">
-		             <div class="txtTit"><font class="f93 fl pl15">惠美购公告</font><font class="f94 fl">&nbsp;NOTICE</font></div>
+		             <div class="txtTit"><font class="f93 fl pl15">哼哈乐公告</font><font class="f94 fl">&nbsp;NOTICE</font></div>
 		             <div class="txtList tc">         
 	       				  <ul> 
 	       				      <s:iterator value="noticeList" status="ind">
