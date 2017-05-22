@@ -121,10 +121,10 @@ public class HtmlGenerator {
 	
 	//测试方法
 	public static void main(String[] args){		
-		String str = "help_center.dhtml?id=9";
-		System.out.println(str.replaceAll("help_center\\.dhtml\\?id=(\\d+)", "help_center_$1\\.html"));
+		String str = "/mystore/index_index.dhtml";
+//		System.out.println(str.replaceAll("(.*)\\.dhtml\\?id=(\\d+)", "$1_$2.dhtml").replaceAll("dhtml", "html"));
 		
-//		System.out.println("abac".replaceAll("a(\\w)", "$1$1"));
+		System.out.println(str.replaceAll("^(/mystore)(.*)", "$2"));
 	}
 
 }

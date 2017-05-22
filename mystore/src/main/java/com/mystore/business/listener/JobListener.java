@@ -1,4 +1,4 @@
-package com.mystore.business.common;
+package com.mystore.business.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

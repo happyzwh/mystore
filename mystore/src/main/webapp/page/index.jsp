@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/index.js" type="text/javascript"></script>
 </head>
 <body>
- <%@ include file="/page/static/top_top.html" %> 
+  <!--#include file="<%=path%>/page/static/top_top.html" -->
  <div class="homeBody">
       <div class="mainBanner">
 			<div class="bigImg">
@@ -149,6 +149,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</s:iterator>
 	</s:if>
  </div>
- <jsp:include page="/page/foot.jsp" />
+   <!--#include file="<%=path%>/page/foot.html" --> 
 </body>
 </html>

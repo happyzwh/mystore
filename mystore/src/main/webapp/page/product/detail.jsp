@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/detail.js" type="text/javascript"></script>
 </head>
 <body>
-  <%@ include file="/page/static/top_top.html" %>
+ <!--#include file="<%=path%>/page/static/top_top.html" -->
  <input type="hidden" id="proId" value="<s:property value='product.id'/>"/>
  <input type="hidden" id="basePath" value="<%=path%>"/>
  <div class="homeBody">
@@ -112,11 +112,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			       <div class="blank5"></div>
 			       <div class="hot_sale"> 
 			             <div class="txtTit"><font class="f93 fl pl15">畅销排行</font><font class="f94 fl">&nbsp;HOT SALES</font></div>
-						 <a href="http://www.huimeigou.com/jzt-g9549.html"><img class="addd" src="http://www.huimeigou.com/images/201507/goods_img/9549_P_1437958266904.jpg"/></a>
+						 <a href="<%=path%>/page/static/product_detail_8.html"><img class="addd" src="/picService/upload/pro/img/8/20170509231720_small.jpg"/></a>
 			             <ul class="hs_goodslist">
 				             <li class="hs_goods">
-					              <span class="img"><img border="0" class="lazyload" alt="原生态磁能修护霜55g" src="http://huimeigou.gotoip3.com/images/201501/thumb_img/963_thumb_G_1422467817402.jpg"/></span>            
-							      <a class="name" href="/jingmeiru-g963.html">原生态磁能修护霜55g</a>
+					              <span class="img"><img border="0" class="lazyload" alt="原生态磁能修护霜55g" src="/picService/upload/pro/img/8/20170509231720_small.jpg"/></span>            
+							      <a class="name" href="<%=path%>/page/static/product_detail_8.html">修护霜55g</a>
 					              <font class="price fl">￥150</font><br/><font class="f3 fl">专柜价:<del>￥216</del></font>
 				             </li>                                                                                          
 			            </ul>
@@ -242,6 +242,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <div style="clear:both;"></div>
 	  </div>
  </div>
- <jsp:include page="/page/foot.jsp" />
+ <!--#include file="<%=path%>/page/foot.html" --> 
 </body>
 </html>

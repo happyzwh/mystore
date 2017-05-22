@@ -1,4 +1,4 @@
-package com.mystore.business.common;
+package com.mystore.business.filter;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -18,6 +18,8 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.context.ContextLoader;
+
+import com.mystore.business.common.Constants;
 
 public class LoginFilter implements Filter{
 	

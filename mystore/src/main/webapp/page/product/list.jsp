@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/product/list.js" type="text/javascript"></script>
 </head>
 <body>
- <%@ include file="/page/static/top_top.html" %>
+ <%@ include file="/page/static/top_top.html" %> 
  <div class="homeBody">
       <input type="hidden" id="basePath" value="<%=path%>"/>
       <div class="list_left">
@@ -27,13 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <div class="content">
              	<div class="li">
              	    <div class="p-img">
-             	         <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com" target="_blank">
-             	              <img src="http://localhost:8080/picService/upload/pro/img/1/20160505220700.jpg" />
+             	         <a title="美白露40ml" href="/page/static/product_detail_8.html" target="_blank">
+             	              <img src="/picService/upload/pro/img/8/20170509231710_mid.jpg" />
              	         </a>
              	    </div>
              		<div class="p-name">
-             			 <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com"  target="_blank">
-             	             <em>酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显</em>
+             			 <a title="美白露40ml" href="/page/static/product_detail_8.html"  target="_blank">
+             	             <em>美白露40ml</em>
              	         </a>
              		</div>
              		<div class="p-price">                          
@@ -42,18 +42,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              			</strong>                                              
              		</div>
              		<div class="p-review">                          
-             			已有<a class="number" target="_blank" href="//item.jd.com/10511150218.html#comment">67</a>人评价                      
+             			已有<a class="number" target="_blank" href="/page/static/product_detail_8.html">67</a>人评价                      
              		</div>
              	</div>
              	<div class="li">
              	    <div class="p-img">
-             	         <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com" target="_blank">
-             	              <img src="http://localhost:8080/picService/upload/pro/img/1/20160505220700.jpg" />
+             	         <a title="美白露40ml" href="/page/static/product_detail_8.html" target="_blank">
+             	              <img src="/picService/upload/pro/img/8/20170509231710_mid.jpg" />
              	         </a>
              	    </div>
              		<div class="p-name">
-             			 <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com"  target="_blank">
-             	             <em>酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显</em>
+             			 <a title="美白露40ml" href="/page/static/product_detail_8.html"  target="_blank">
+             	             <em>美白露40ml</em>
              	         </a>
              		</div>
              		<div class="p-price">                          
@@ -72,13 +72,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <div class="content">
              	<div class="li">
              	    <div class="p-img">
-             	         <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com" target="_blank">
-             	              <img src="http://localhost:8080/picService/upload/pro/img/1/20160505220700.jpg" />
+             	         <a title="美白露40ml" href="/page/static/product_detail_8.html" target="_blank">
+             	              <img src="/picService/upload/pro/img/8/20170509231710_mid.jpg" />
              	         </a>
              	    </div>
              		<div class="p-name">
-             			 <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com"  target="_blank">
-             	             <em>酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显</em>
+             			 <a title="美白露40ml" href="/page/static/product_detail_8.html"  target="_blank">
+             	             <em>美白露40ml</em>
              	         </a>
              		</div>
              		<div class="p-price">                          
@@ -87,18 +87,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              			</strong>                                              
              		</div>
              		<div class="p-review">                          
-             			已有<a class="number" target="_blank" href="//item.jd.com/10511150218.html#comment">67</a>人评价                      
+             			已有<a class="number" target="_blank" href="/page/static/product_detail_8.html">67</a>人评价                      
              		</div>
              	</div>
              	<div class="li">
              	    <div class="p-img">
-             	         <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com" target="_blank">
-             	              <img src="http://localhost:8080/picService/upload/pro/img/1/20160505220700.jpg" />
+             	         <a title="美白露40ml" href="/page/static/product_detail_8.html" target="_blank">
+             	              <img src="/picService/upload/pro/img/8/20170509231710_mid.jpg" />
              	         </a>
              	    </div>
              		<div class="p-name">
-             			 <a title="酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显" href="http://www.baidu.com"  target="_blank">
-             	             <em>酷睿i5-6500/8G/120G/GTX950独显/技嘉主板/游戏四核台式机电脑主机整机 电脑主机(无显示器) 酷睿i5-6500四核+核显</em>
+             			 <a title="美白露40ml" href="/page/static/product_detail_8.html"  target="_blank">
+             	             <em>美白露40ml</em>
              	         </a>
              		</div>
              		<div class="p-price">                          
@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              			</strong>                                              
              		</div>
              		<div class="p-review">                          
-             			已有<a class="number" target="_blank" href="//item.jd.com/10511150218.html#comment">67</a>人评价                      
+             			已有<a class="number" target="_blank" href="/page/static/product_detail_8.html">67</a>人评价                      
              		</div>
              	</div>
              </div>
@@ -288,6 +288,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<input type="hidden" name="pageNo" id="pageNo" value="<s:property value='pageNo'/>" />
  	<input type="hidden" name="key" id="keyword" value="<s:property value='searchPojo.keys'/>" />
  </form>
- <jsp:include page="/page/foot.jsp" />
+<jsp:include page="/page/foot.jsp" />
 </body>
 </html>

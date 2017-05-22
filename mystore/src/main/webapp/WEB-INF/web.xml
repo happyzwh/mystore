@@ -18,7 +18,7 @@
 	</context-param> 
 	<filter>
 	    <filter-name>loginFilter</filter-name>
-	    <filter-class>com.mystore.business.common.LoginFilter</filter-class>
+	    <filter-class>com.mystore.business.filter.LoginFilter</filter-class>
 	    <init-param>
 	        <param-name>isFilter</param-name>
 	        <param-value>true</param-value>
@@ -40,6 +40,20 @@
 	        <param-value>user_goLogin.dhtml</param-value>
 	    </init-param>
 	</filter>
+	<!-- filter>
+	    <filter-name>staticPageFilter</filter-name>
+	    <filter-class>com.mystore.business.filter.StaticPageFilter</filter-class>
+	    <init-param>
+	        <param-name>isFilter</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+	    <init-param>
+	        <param-name>includeUrl</param-name>
+	        <param-value>
+	            top_top.dhtml,index_index.dhtml,help_center.dhtm,product_detail.dhtml
+	        </param-value>
+	    </init-param>
+	</filter-->
 	<filter>
 		 <filter-name>CharacterEncodingFilter</filter-name>
 		 <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -62,6 +76,11 @@
 	    <filter-name>loginFilter</filter-name>
 	    <url-pattern>*.dhtml</url-pattern>
 	</filter-mapping>
+	
+	<!-- filter-mapping>
+	    <filter-name>staticPageFilter</filter-name>
+	    <url-pattern>*.dhtml</url-pattern>
+	</filter-mapping-->
 	
     <filter-mapping>
 		 <filter-name>CharacterEncodingFilter</filter-name>
@@ -89,7 +108,7 @@
 	</listener> 
 	
 	<listener>
-	   <listener-class>com.mystore.business.common.JobListener</listener-class>
+	   <listener-class>com.mystore.business.listener.JobListener</listener-class>
 	</listener>
 
 	<session-config>
@@ -97,7 +116,7 @@
 	</session-config>
 	
 	<welcome-file-list>
-	     <welcome-file>/page/static/index_index.html</welcome-file>
+	     <welcome-file>/page/toindex.jsp</welcome-file>
 	</welcome-file-list>
 	
 	 <jsp-config>  
