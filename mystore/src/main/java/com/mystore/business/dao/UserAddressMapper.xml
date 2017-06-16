@@ -64,7 +64,7 @@
 		    now(),
 		    #{provinceId},
 		    #{cityId},
-		    #{countyId},
+		    #{countyId}
 		 )
 	</insert>
 	<update id="updateAddress" parameterType="userAddress">
