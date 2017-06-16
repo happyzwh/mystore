@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/cart/cart.js" type="text/javascript"></script>
 </head>
 <body>
- <%@ include file="/page/static/top_top.html" %>
+  <!--#include file="<%=path%>/page/static/top_top.html" -->
  <div class="homeBody">
     <div class="cart">
     	 <div class="title">
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	      <div class="column checkBox"><input type="checkbox"  class="checkAll"/>  全选</div>
     	      <div class="toolbar-right">
 							<div class="btn-area">
-								<a href="javascript:void(0);" class="submit-btn">去结算<b></b></a>
+								<a href="order_order.dhtml" class="submit-btn">去结算<b></b></a>
 							</div>
 							<div class="price-sum">
 								<div>
@@ -94,6 +94,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 <div style="clear:both;"></div>
     </div>  
  </div>
- <jsp:include page="/page/foot.jsp" />
+    <!--#include file="<%=path%>/page/foot.html" --> 
 </body>
 </html>

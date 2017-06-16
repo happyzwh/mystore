@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" language="javascript" src="<%=path%>/js/jquery-1.7.2.min.js" ></script>
 <script type="text/javascript" src="<%=path%>/js/common.js"></script>
 <script type="text/javascript" src="<%=path%>/js/user/address.js"></script>
+<script type="text/javascript" src="<%=path%>/js/region.js"></script>
 </head>
 <body>
   <%@ include file="/page/static/top_top.html" %>
@@ -29,15 +30,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        	<table class="ln_addressBoxTit" cellspacing="0" cellpadding="0" border="0">
 							<tbody>
 								<tr>
-						            <th class="men"><p>收货人</p></th>
-						            <th class="adr">地址</th>
+						            <th class="men first"><p>收货人</p></th>
+						            <th class="men">省</th>
+						            <th class="men">市</th>
+						            <th class="men">区县</th>
+						            <th class="men">地址</th>
 						            <th class="pho">电话/手机</th>
-						            <th class="control">操作</th>
+						            <th class="control last">操作</th>
 				                </tr>
 				                <s:iterator value="addList" status="ind">
 				                	<tr>
 										<td class="men">
 											<p><s:property value='receiver'/></p>
+										</td>	
+										<td class="men">
+											<p><s:property value='provinceName'/></p>
+										</td>	
+										<td class="men">
+											<p><s:property value='cityName'/></p>
+										</td>	
+										<td class="men">
+											<p><s:property value='countyName'/></p>
 										</td>	
 										<td class="adr">
 											<p class="adr-td">
@@ -70,6 +83,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                		<div class="accNotic" id="receiverTS" style="display:none">
 					                		<i></i>
 					                		<span>请输入收货人姓名</span>
+				                		</div>
+				                	</div>
+				                </div>
+				                <div class="ln_addressTr">
+				                	<span class="ln_addressTrTit">
+				                		<i>*</i>地区：
+				                	</span>
+				                	<select id="provinceId" name="address.provinceId" alt="<s:property value='address.provinceId'/>">
+				                		<option value=''>请选择</option>
+				                	</select>
+				                	<select id="cityId" name="address.cityId" alt="<s:property value='address.cityId'/>">
+				                		<option value=''>请选择</option>
+				                	</select>
+				                	<select id="countyId" name="address.countyId" alt="<s:property value='address.countyId'/>">
+				                		<option value=''>请选择</option>
+				                	</select>
+				                	<div class="acc area">
+				                		<div class="accNotic" id="receiverTS" style="display:none">
+					                		<i></i>
+					                		<span>请填写完整的地区信息</span>
 				                		</div>
 				                	</div>
 				                </div>

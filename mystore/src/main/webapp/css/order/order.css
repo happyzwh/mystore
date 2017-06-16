@@ -1,0 +1,680 @@
+.order{
+	width:100%;
+	height:auto;
+	text-align:center;
+	margin:0 auto;
+}
+.header{
+	widht:100%;
+	height:auto;
+}
+#logo{
+    float: left;
+    width: 269px;
+    margin: 20px 0 0;
+}
+#logo .title {
+    display: block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    top: 8px;
+    right: 0;
+    background: #fff;
+}
+#logo .title b {
+    display: block;
+    margin-left:50px;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    background: url(../../images/purchase-icon.png) #fff no-repeat;
+}
+.schedule{
+	display: block;
+    border-top: 5px solid #ccc;
+    text-align: center;
+    margin: 30px 0 0;
+    float: right;
+}
+.schedule dl.done {
+    border-top-color: #caecb6;
+}
+.schedule dl {
+    float: left;
+    position: relative;
+    width: 160px;
+    top: -5px;
+    border-top: 5px solid #ccc;
+}
+.schedule dl.done .s-num {
+    background-position: -46px 0;
+}
+.schedule .s-num {
+    position: relative;
+    margin: -15px auto 0;
+    color: #fff;
+    font-weight: 700;
+    width: 23px;
+    height: 23px;
+    background-image: url(../../images/step2013.png);
+    line-height: 23px;
+}
+.schedule dl.done .s-text {
+    color: #caecb6;
+}
+.schedule .done s {
+    background-position: -46px -24px;
+}
+.schedule .done b {
+    background-position: -51px -24px;
+}
+.schedule dl.doing {
+    border-top-color: #7abd54;
+}
+.note{
+	height:30px;
+	line-height:30px;
+	margin-left:20px;
+	text-align:left;
+	height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+}
+.orderInfo {
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    text-align:left;
+}
+.orderAddress {
+    margin-top: 10px;
+}
+.orderItemsBox {
+    margin-top: 18px;
+}
+.itemsTitle {
+    font-size: 16px;
+    color: #333;
+    font-family: 'Microsoft YaHei';
+    margin-right: 15px;
+    text-align:left;
+}
+.orderItemsBox .itemsTitle {
+    height: 38px;
+    line-height: 38px;
+    padding-left: 1px;
+}
+.itemsTitle b {
+    font-size: 16px;
+    color: #333;
+    font-family: 'Microsoft YaHei';
+    margin-right: 15px;
+}
+.itemsTitle a, .itemsTitle a:hover {
+    color: #0066cc;
+    text-decoration: none;
+}
+.itemsTitle a {
+    position: relative;
+    top: -1px;
+}
+.orderItemsBox .itemsWrap {
+    border: 1px solid #e4e4e4;
+}
+.orderAddress .addressList {
+    height: 139px;
+    overflow: hidden;
+    padding: 30px 0 0 21px;
+    position: relative;
+}
+.addressList li.on {
+    border: 2px solid #b2d1ff;
+}
+.addressList li {
+    float: left;
+    width: 196px;
+    height: 120px;
+    border: 2px solid #f6f6f6;
+    padding: 5px 12px 0;
+    position: relative;
+    margin: 0px 20px 10px 0;
+    cursor: pointer;
+}
+.addressList li .address-con {
+    height: 44px;
+    line-height: 22px;
+    padding-top: 5px;
+    overflow: hidden;
+}
+.addressList li .address-ope {
+    line-height: 18px;
+    padding-top: 10px;
+}
+.address-ope a {
+    margin-right: 12px;
+}
+.address-ope .addAlter, .address-ope .addAlter:hover {
+    color: #ff9933;
+    text-decoration: none;
+}
+.address-ope .addDelete, .address-ope .addDelete:hover {
+    color: #aaa;
+    text-decoration: none;
+}
+.addressList li.on .defaultBtn {
+    display: block;
+}
+.addressList li .defaultBtn {
+    display: none;
+    width: 80px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    background: #b2d1ff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.addressList li .addDefault {
+    display: none;
+    width: 22px;
+    height: 22px;
+    background-position: -41px -12px;
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+}
+.addressList li .address-add {
+    height: 30px;
+    padding: 38px 0 0 40px;
+}
+.addressList li .address-add i {
+    float: left;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin-left: 4px;
+}
+.oIcon {
+    background: url(../../images/cartIcon-gw-24.png) no-repeat;
+}
+.addressList li .address-tit {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px dotted #ccc;
+    text-align:left;
+}
+.addressList li .address-tit b {
+    padding-right: 3px;
+}
+.addressList li .address-add span {
+    float: left;
+    display: inline-block;
+    width: 75px;
+    font-size: 14px;
+    color: #bbb;
+    padding: 8px 0 0 12px;
+}
+.orderAddress .addOpenBox {
+    height: 23px;
+    text-align: center;
+    margin-top: 20px;
+}
+.addOpenBox .addressOpen {
+    display: inline-block;
+    color: #bbb;
+    width: 56px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #e4e4e4;
+    border-bottom: none;
+    border-radius: 1px 1px 0 0;
+    cursor: pointer;
+}
+.addressOpen b {
+    float: left;
+    font-weight: normal;
+    margin-left: 9px;
+}
+.addressOpen i {
+    float: left;
+    display: inline-block;
+    width: 10px;
+    height: 8px;
+    background-position: -42px 0;
+    margin: 7px 0 0 4px;
+    overflow: hidden;
+}
+.orderPayment .paymentList {
+    padding: 20px 0 0 21px;
+}
+.orderPayment .paymentList {
+    padding: 20px 0 0 21px;
+}
+.paymentList li {
+    height: 20px;
+    line-height: 20px;
+    padding-bottom: 20px;
+    vertical-align: top;
+}
+.itemsWrap .contentTitle {
+    height: 20px;
+    line-height: 20px;
+    padding: 20px 0 15px 21px;
+}
+.itemsWrap .contentTitle *, .paymentList li * {
+    display: inline-block;
+    float: left;
+}
+.contentTitle input, .paymentList li input {
+    height: 12px;
+    width: 12px;
+    margin: 3px 8px 0 0;
+}
+.itemsWrap .listTitle {
+    font-weight: bold;
+}
+.itemsWrap .listPro {
+    padding-left: 35px;
+    margin-right: 15px;
+}
+.orderPayment .paymentList .conPro03 {
+    display: none;
+}
+.itemsWrap .conPro03 {
+    float: left;
+    display: inline-block;
+    line-height: 20px;
+    color: #cc0000;
+    font-style: normal;
+}
+.itemsWrap .listPro2 {
+    color: #ff9933;
+    padding-left: 35px;
+}
+.contentTitle .listLink {
+    color: #0066cc;
+    padding-left: 10px;
+}
+.itemsWrap .contentBox {
+    background: #fbfcff;
+    padding: 10px 0 20px 21px;
+    display: none;
+}
+.contentBox li {
+    margin-top: 8px;
+}
+.contentBox li span {
+    display: inline-block;
+    width: 134px;
+    line-height: 28px;
+    text-align: right;
+    padding-right: 8px;
+}
+.contentBox li * {
+    vertical-align: top;
+}
+.contentBox li label {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 15px;
+}
+.contentBox li label input {
+    width: 12px;
+    height: 12px;
+    margin: 7px 5px 0 0;
+    float: left;
+}
+.itemsWrap .contentInfo {
+    line-height: 16px;
+    margin: 0 0 20px 41px;
+    color: #999;
+    display: none;
+}
+.itemsWrap .contentInfo span {
+    display: inline-block;
+    margin-right: 20px;
+    color: #666;
+}
+.shopWrap {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.pubTitle {
+    height: 26px;
+    padding-top: 10px;
+}
+.pubTitle span {
+    font-weight: bolder;
+    color: #666666;
+    margin-left: 6px;
+    _display: inline;
+}
+.pubTitle a, .pubTitle i, .pubTitle span {
+    float: left;
+    display: inline-block;
+}
+.orderCommodity .itemsWrap {
+    border-right: none;
+}
+.orderItemsBox .itemsWrap {
+    border: 1px solid #e4e4e4;
+}
+.itemsWrap .comTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+.comTable th {
+    line-height: 32px;
+    font-weight: normal;
+    text-align: center;
+    background: #fafafa;
+    border-right: 1px solid #e4e4e4;
+}
+.comTable td {
+    height: 70px;
+    border-top: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+}
+.comTable td .productImg {
+    display: inline;
+    float: left;
+    width: 52px;
+    height: 52px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 17px 0 33px;
+    vertical-align: top;
+}
+.comTable td .productName {
+    display: inline;
+    float: left;
+    width: 295px;
+    height: 54px;
+    vertical-align: top;
+}
+.comTable td .productName .twoName {
+    width: 295px;
+    height: 27px;
+    line-height: 27px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.comTable td .productPriM {
+    width: 164px;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+}
+.comTable td .productNum {
+    width: 130px;
+    text-align: center;
+}
+.comTable td .productNum span {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+}
+.comTable td .productStock {
+    width: 120px;
+    text-align: center;
+}
+.comTable td .productPri {
+    width: 149px;
+    color: #cc0000;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    text-align: center;
+}
+.comTotalBox {
+    float: right;
+    text-align: right;
+    padding-top: 10px;
+}
+.comTotalBox p {
+    height: 26px;
+    line-height: 26px;
+    margin-right: 35px;
+}
+.comTotalBox p span b, #yf_div span b {
+    color: #cc0000;
+    padding-right: 3px;
+}
+.comTotalBox p .comTotalSum, #yf_div .comTotalSum {
+    width: 100px;
+    font-family: "微软雅黑";
+}
+#yf_div {
+    height: 26px;
+    line-height: 26px;
+    margin-right: 35px;
+    position: relative;
+}
+.comTotalBox p span, #yf_div span {
+    display: inline-block;
+    padding-left: 15px;
+}
+.comTotalBox p .comTotalSum, #yf_div .comTotalSum {
+    width: 100px;
+    font-family: "微软雅黑";
+}
+#shopPop {
+    background-position: -53px 0;
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    position: absolute;
+    right: 55px;
+    top: 4px;
+    z-index: 1;
+    cursor: pointer;
+}
+.orderTotal {
+    height: 62px;
+    background: #fafafa;
+    width: 998px;
+    border-top: 1px solid #fff;
+}
+.orderTotalCon {
+    width: 948px;
+    height: 62px;
+    line-height: 62px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+.subBtnBox {
+    width: 105px;
+    height: 40px;
+    float: right;
+    margin: 10px 8px 0 0;
+    display: inline;
+    z-index: 100;
+    position: relative;
+}
+.subBtnBox .subBtn {
+    background: #cf000d;
+    border-radius: 3px;
+    width: 105px;
+    height: 40px;
+    font-family: "微软雅黑";
+    display: inline-block;
+}
+.subBtnBox .subBtn i {
+    background-position: 2px -240px;
+    display: inline-block;
+    width: 86px;
+    height: 24px;
+    margin: 9px 0 0 9px;
+    cursor: pointer;
+}
+.oIcon {
+    background: url(../..//images/cartIcon-gw-24.png) no-repeat;
+}
+.subBtnBox .submit-pro {
+    width: 800px;
+    height: 30px;
+    position: absolute;
+    top: -37px;
+    right: 0;
+    z-index: 111;
+    text-align: right;
+    zoom: 1;
+    display: none;
+}
+.toPay {
+    float: right;
+    padding-right: 25px;
+}
+.toPay strong {
+    font-size: 12px;
+    color: #333;
+    position: relative;
+    top: -3px;
+}
+.toPay b {
+    color: #cf010e;
+    font-family: "Microsoft YaHei";
+    font-size: 18px;
+}
+.addresPopBox {
+    display: none;
+    width: 700px;
+    height: 320px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px 1px #828282;
+    margin: -165px 0 0 -355px;
+    padding: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10001;
+    _position: absolute;
+    background: url("../../images/popBg.png") repeat scroll 0 0;
+}
+.addresPop {
+    width: 700px;
+    height: 320px;
+    background: #fff;
+    border-radius: 3px;
+}
+.addresPop .addPopTit {
+    height: 30px;
+    line-height: 30px;
+    padding-top: 10px;
+    position: relative;
+}
+.addresPop .addPopTit b {
+    float: left;
+    display: inline-block;
+    width: 4px;
+    height: 13px;
+    background: #cc0000;
+    margin: 9px 6px 0 20px;
+}
+.addresPop .addPopTit {
+    height: 30px;
+    line-height: 30px;
+    padding-top: 10px;
+    position: relative;
+}
+.addresPop .popClose {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-position: -181px -70px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+}
+.addresPop .addPopCon {
+    padding-top: 25px;
+}
+.addPopCon li {
+    height: 28px;
+    margin-top: 10px;
+}
+.addPopCon li .addTit {
+    display: inline-block;
+    width: 128px;
+    text-align: right;
+}
+.addPopCon li .addTit .xing {
+    display: inline-block;
+    line-height: 20px;
+    line-height: 20px;
+    font-style: normal;
+    color: #cc0000;
+    font-size: 16px;
+    padding-right: 5px;
+    position: relative;
+    top: 5px;
+}
+.addPopCon li .addFrom.f1 {
+    width: 105px;
+}
+.addPopCon li .addFrom {
+    height: 26px;
+    line-height: 26px;
+    color: #333;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    border: 1px solid #ccc;
+    padding: 0 5px;
+    margin-right: 10px;
+}
+.addPopCon li .addPro {
+    font-style: normal;
+    color: #cc0000;
+    display: none;
+}
+.addPopCon li .addTit {
+    display: inline-block;
+    width: 128px;
+    text-align: right;
+}
+.addPopCon li .addTit .xing {
+    display: inline-block;
+    line-height: 20px;
+    line-height: 20px;
+    font-style: normal;
+    color: #cc0000;
+    font-size: 16px;
+    padding-right: 5px;
+    position: relative;
+    top: 5px;
+}
+.addPopCon li .addFrom.f2 {
+    width: 300px;
+}
+.popMask {
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: #333;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    _width: 0;
+    _height: 0;
+}
+.addPopCon li.btnBox {
+    margin-top: 20px;
+}
+.addPopCon li .addSubmit {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 0 10px;
+    margin-left: 128px;
+}

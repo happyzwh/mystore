@@ -22,9 +22,6 @@
 .ln_addressBox1 .ln_addressBoxTit td {
     border-top: 1px dotted #e4e4e4;
 }
-.ln_addressBox1 .men {
-    width: 10%;
-}
 .ln_addressBox1 {
     margin-bottom: 20px;
     overflow: hidden;
@@ -69,6 +66,14 @@
 .ln_addressBox .ln_addressTr {
     height: 37px;
     padding-bottom: 15px;
+}
+.ln_addressBox .ln_addressTr select {
+	float:left;
+    height: 28px;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 0px 2px;
+    margin-right: 8px;
 }
 .ln_addressBox .ln_addressTr .ln_addressTrTit {
     display: inline-block;

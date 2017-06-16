@@ -54,6 +54,10 @@
 		     <result name="checkEmail">/page/user/checkEmail.jsp</result>
 		     <result name="toUpdPayPwd">/page/user/updpaypwd.jsp</result>
         </action>
+        
+        <action name="order_*" class="orderAction" method="{1}">
+		     <result name="order">/page/order/order.jsp</result>
+        </action>
     </package>
     
 </struts>

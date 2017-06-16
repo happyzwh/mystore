@@ -86,4 +86,8 @@ public class StaticPageFilter implements Filter{
 		
 	}
 
+	public static void main(String[] args){
+		String mobile = "15011297739";
+		System.out.println(mobile.replaceAll("^(\\d{3})(\\d{4})(\\d{4})$","$1****$3"));
+	}
 }

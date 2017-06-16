@@ -45,6 +45,12 @@ public class UserAddressAction  extends BaseAction{
 	
 	private String receiver;
 	
+	private Integer provinceId;
+	
+	private Integer cityId;
+	
+	private Integer countyId;
+	
 	public String index(){
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
@@ -65,7 +71,8 @@ public class UserAddressAction  extends BaseAction{
 		
 		try{
 			
-			if(StringUtils.isBlank(addre) || StringUtils.isBlank(mobile) || StringUtils.isBlank(receiver)) {
+			if(StringUtils.isBlank(addre) || StringUtils.isBlank(mobile) || StringUtils.isBlank(receiver) ||
+					provinceId == null || cityId == null || countyId == null) {
 				code = -2;
 				return;
 			}
@@ -81,6 +88,9 @@ public class UserAddressAction  extends BaseAction{
 			address.setId_user(user.getId());
 			address.setMobile(mobile);
 			address.setReceiver(receiver);
+			address.setProvinceId(provinceId);
+			address.setCityId(cityId);
+			address.setCountyId(countyId);
 			if(id != null){
 				userAddressService.updateAddress(address);
 			}else{
@@ -172,6 +182,30 @@ public class UserAddressAction  extends BaseAction{
 
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
+	}
+
+	public Integer getProvinceId() {
+		return provinceId;
+	}
+
+	public void setProvinceId(Integer provinceId) {
+		this.provinceId = provinceId;
+	}
+
+	public Integer getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(Integer cityId) {
+		this.cityId = cityId;
+	}
+
+	public Integer getCountyId() {
+		return countyId;
+	}
+
+	public void setCountyId(Integer countyId) {
+		this.countyId = countyId;
 	}
 	
 }

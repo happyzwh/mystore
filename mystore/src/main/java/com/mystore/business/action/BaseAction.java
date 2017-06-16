@@ -1,10 +1,5 @@
 package com.mystore.business.action;
 
-import java.io.Serializable;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport{

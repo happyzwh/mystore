@@ -13,9 +13,15 @@
 		    t.isdefault as 'isDefault',
 		    t.status,
 		    t.createdate as 'createDate',
-		    t.lastdate as 'lastDate'
+		    t.lastdate as 'lastDate',
+		    t.provinceid as 'provinceId',
+		    (select r.name from region r where r.id = t.provinceid) as 'provinceName',
+		    t.cityid as 'cityId',
+		    (select r.name from region r where r.id = t.cityid) as 'cityName',
+		    t.countyid as 'countyId',
+		    (select r.name from region r where r.id = t.countyid) as 'countyName'
 		from user_address t
-		where t.id_user = #{value} and t.status = '1'
+		where t.id_user = #{value} and t.status = '1' order by t.isdefault desc
 	</select>
 	<select id="getById" parameterType="java.util.Map" resultType="userAddress">
 		select
@@ -27,7 +33,10 @@
 		    t.isdefault as 'isDefault',
 		    t.status,
 		    t.createdate as 'createDate',
-		    t.lastdate as 'lastDate'
+		    t.lastdate as 'lastDate',
+		    t.provinceid as 'provinceId',
+		    t.cityid as 'cityId',
+		    t.countyid as 'countyId'
 		from user_address t
 		where t.id_user = #{id_user} and t.id = #{id} and t.status = '1'
 	</select>
@@ -40,7 +49,10 @@
 		    isdefault,
 		    status,
 			createdate,
-			lastdate
+			lastdate,
+			provinceid,
+		    cityid,
+		    countyid
 		 )values(
 		    #{id_user},
 		    #{address},
@@ -49,11 +61,15 @@
 		    '0',
 		    '1',
 		    now(),
-		    now()
+		    now(),
+		    #{provinceId},
+		    #{cityId},
+		    #{countyId},
 		 )
 	</insert>
 	<update id="updateAddress" parameterType="userAddress">
-		 update user_address set receiver = #{receiver},mobile = #{mobile},isdefault = #{isDefault},status = #{status},lastdate = now()
+		 update user_address set receiver = #{receiver},mobile = #{mobile},isdefault = #{isDefault},status = #{status},lastdate = now(),
+		 provinceid = #{provinceId},cityid = #{cityId},countyid = #{countyId}
 		 where id_user = #{id_user} and id = #{id}
 	</update>
 	<delete id="delAddress" parameterType="java.util.Map">
