@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="<%=path%>/js/common.js" type="text/javascript"></script>
 <script src="<%=path%>/js/hidemenu.js" type="text/javascript"></script>
+<script src="<%=path%>/js/region.js" type="text/javascript"></script>
 <script src="<%=path%>/js/order/order.js" type="text/javascript"></script>
 </head>
 <body>
@@ -52,16 +53,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul class="addressList clearfix">
 					 	<s:iterator value="address" status="ind">
 							<li name="<s:property value='id'/>" class="item <s:if test="#ind.first">on</s:if>" einv="false">
+							    <input type="hidden" id="<s:property value='id'/>_receiver" value="<s:property value='receiver'/>"/>
+							    <input type="hidden" id="<s:property value='id'/>_provinceId" value="<s:property value='provinceId'/>"/>
+							    <input type="hidden" id="<s:property value='id'/>_cityId" value="<s:property value='cityId'/>"/>
+							    <input type="hidden" id="<s:property value='id'/>_countyId" value="<s:property value='countyId'/>"/>
+							    <input type="hidden" id="<s:property value='id'/>_address" value="<s:property value='address'/>"/>
+							    <input type="hidden" id="<s:property value='id'/>_mobile" value="<s:property value='mobile'/>"/>
 								<div class="address-tit">
-									<b><s:property value='receiver'/></b>
-									<span><s:property value='mobile.replaceAll("^(\\\\d{3})(\\\\d{4})(\\\\d{4})$","$1****$3")'/></span>
+									<b id="<s:property value='id'/>_receiver_text"><s:property value='receiver'/></b>
+									<span id="<s:property value='id'/>_mobile_text"><s:property value='mobile.replaceAll("^(\\\\d{3})(\\\\d{4})(\\\\d{4})$","$1****$3")'/></span>
 								</div>
-								<div class="address-con"><s:property value='address'/></div>
+								<div class="address-con" id="<s:property value='id'/>_area_text"><s:property value='provinceName'/><s:property value='cityName'/><s:property value='countyName'/><s:property value='address'/></div>
 								<div class="address-ope">
-									<a class="addAlter" href="javascript:;" _di="104815103">修改</a>
-									<a class="addDelete" href="javascript:;" _di="104815103">删除</a>
+									<a class="addAlter" href="javascript:;" id="<s:property value='id'/>">修改</a>
+									<a class="addDelete" href="javascript:;" id="<s:property value='id'/>">删除</a>
 								</div>
-								<div class="defaultBtn" _di="104815103">设为默认地址</div>
+								<div class="defaultBtn" id="<s:property value='id'/>">设为默认地址</div>
 								<div class="addDefault oIcon"></div>
 							</li>
 						</s:iterator>	
@@ -245,12 +252,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<b></b><strong>新增地址</strong><i class="popClose oIcon"></i>
 		</div>
 		<div class="addPopCon">
+		    <input type="hidden" id="addressId" value=""/>
 			<ul>
 				<li>
 					<span class="addTit">
 						<i class="xing">*</i>收货人：
 					</span>
-					<input name="" type="text" class="addFrom f1 receName" value="" id="new_username" a="0" maxlength="10"/>
+					<input name="" type="text" class="addFrom f1 receName" value="" id="receiver" a="0" maxlength="10"/>
 					<input name="" type="hidden" id="ID" value=""/>
 					<em class="addPro" id="alertstyle1">请填写收货人姓名</em>
 				</li>
@@ -258,19 +266,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span class="addTit">
 						<i class="xing">*</i>选择地区：
 					</span>
-					<select name="new_province" id="new_province">
+					<select name="new_province" id="provinceId">
 						<option value="">请选择</option>
 					</select> 
-					<select name="new_city" id="new_city" class="city">
+					<select name="new_city" id="cityId" class="city">
 						<option value="">请选择</option>
 					</select>
-					<select name="new_county" id="new_county" class="country">
+					<select name="new_county" id="countyId" class="country">
 						<option value="">请选择</option>
 					</select>
-					<em class="addPro" id="alertstyle2">请输选择地区</em>
+					<em class="addPro" id="alertstyle2">请选择地区</em>
 				</li>
-				<li><span class="addTit"><i class="xing">*</i>详细地址：</span><input class="addFrom f2 detailAdd" type="text" maxlength="50" id="new_detail"><em class="addPro" id="alertstyle3">请填写收货人详细地址</em></li>
-				<li><span class="addTit"><i class="xing">*</i>手机：</span><input class="addFrom f1 recePhone" type="text" id="new_phone" maxlength="11"><span class="addTit2">或固定电话：</span><input class="addFrom f1 receTle" type="text" id="new_tele"><span class="addTit3">格式：区号-电话</span><em class="addPro" id="alertstyle5">请填写手机号码</em></li>
+				<li>
+					<span class="addTit"><i class="xing">*</i>详细地址：</span>
+					<input class="addFrom f2 detailAdd" type="text" maxlength="50" id="address">
+					<em class="addPro" id="alertstyle3">请填写收货人详细地址</em>
+				</li>
+				<li>
+					<span class="addTit"><i class="xing">*</i>手机：</span>
+					<input class="addFrom f1 recePhone" type="text" id="mobile" maxlength="11">
+					<em class="addPro" id="alertstyle5">请填写手机号码</em>
+				</li>
 				<li class="btnBox"><a href="javascript:;" class="addSubmit">确定</a></li>
 			</ul>
 		</div>

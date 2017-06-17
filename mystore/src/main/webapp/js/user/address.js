@@ -1,7 +1,4 @@
 $(function(){
-	initPrivince();
-	initCity();
-	initCounty();
 	$(".categoryBox_out").hide();
 	$(".navi_left_out").hover(
    		 function(){
@@ -11,6 +8,10 @@ $(function(){
 	    	 $(".categoryBox_out").hide();
 	     }
 	);
+	
+	initPrivince();
+	initCity();
+	initCounty();
 	
 	$("#receiver").focus(function(){
 		$(this).next().find(".accNotic").hide();
@@ -64,22 +65,24 @@ $(function(){
 	
 	$("#save").click(function(){
 		if($.trim($("#receiver").val())==''){
-			$(this).next().find(".accNotic").show();
+			$("#receiver").next().find(".accNotic").show();
+			return false;
+		}
+		if(!checkArea()){
 			return false;
 		}
 		if($.trim($("#address").val())==''){
-			$(this).next().find(".accNotic").show();
+			$("#address").next().find(".accNotic").show();
 			return false;
 		}
 		if($.trim($("#mobile").val())==''){
-			$(this).next().find(".accNotic").show();
+			$("#mobile").next().find(".accNotic").show();
 			return false;
 		}else if(!mobileValide($.trim($("#mobile").val()))){
-			$(this).next().find(".accNotic span").text("手机号格式错误");
-			$(this).next().find(".accNotic").show();
+			$("#mobile").next().find(".accNotic span").text("手机号格式错误");
+			$("#mobile").next().find(".accNotic").show();
 			return false
 		}
-		checkArea();
 		jQuery.ajax({
             type:'post',
             url:$("#path").val()+'/address_edit.dhtml',
@@ -89,7 +92,7 @@ $(function(){
             cache:false,
             async:false,
             success:function(data){
-                if(data == 1){
+                if(data > 0){
 					alert("保存成功");
 					window.location.href = $("#path").val()+'/address_index.dhtml';
 				}else if(data == -1){
@@ -136,6 +139,7 @@ function checkArea(){
 	}else{
 		$(".area #receiverTS").hide();
 	}
+	return true;
 }
 function setPrivince(){
 	$("#provinceId").empty();

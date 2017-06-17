@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                	<span class="ln_addressTrTit">
 				                		<i>*</i>收货人：
 				                	</span>
-				                	<input id="receiver" name="address.receiver" value="<s:property value='address.receiver'/>" class="qjwSubmit4" type="text">
+				                	<input id="receiver" name="address.receiver" value="<s:property value='address.receiver'/>" class="qjwSubmit4" type="text"/>
 				                	<div class="acc">
 				                		<div class="accNotic" id="receiverTS" style="display:none">
 					                		<i></i>

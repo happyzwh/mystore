@@ -69,7 +69,7 @@
 	</insert>
 	<update id="updateAddress" parameterType="userAddress">
 		 update user_address set receiver = #{receiver},mobile = #{mobile},isdefault = #{isDefault},status = #{status},lastdate = now(),
-		 provinceid = #{provinceId},cityid = #{cityId},countyid = #{countyId}
+		 address = #{address},provinceid = #{provinceId},cityid = #{cityId},countyid = #{countyId}
 		 where id_user = #{id_user} and id = #{id}
 	</update>
 	<delete id="delAddress" parameterType="java.util.Map">

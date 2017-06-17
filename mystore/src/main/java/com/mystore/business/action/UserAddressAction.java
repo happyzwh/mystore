@@ -96,7 +96,7 @@ public class UserAddressAction  extends BaseAction{
 			}else{
 				userAddressService.saveAddress(address);
 			}
-		
+		    code = address.getId();
 		}catch(Exception e){
 			code = -1;
 			e.printStackTrace();
