@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<span>发票抬头：</span>
 							<label><input type="radio" name="invtop_type" class="inv_type1" id="invtop_type_personal" value="1" title="个人"  checked="checked">个人</label>
 							<label><input type="radio" name="invtop_type" title="公司" id="invtop_type_company" value="2" class="inv_type2">公司</label>
-							<label><input class="inv_top" type="text" maxlength="50" id="invtop_content"></label>
+							<label><input class="inv_top" type="text" maxlength="50" id="inv_top"></label>
 						</li>
 						<li>
 							<span>发票内容：</span>
@@ -218,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="orderTotal" id="orderTotal"  style="clear:both;">
 							<div class="orderTotalCon">
 								<div class="subBtnBox">
-									<span class="subBtn"><i class="oIcon"></i></span>
+									<span class="subBtn"><i class="oIcon" id="orderSave"></i></span>
 									<div class="submit-pro"></div>
 								</div>
 								<div class="toPay">
@@ -279,9 +279,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <div class="popMask" style="height: 643px;"></div>
-<form action ="order_submit" id="myform" method="post" target="_self">
-	<input type="hidden" name="orderGoods" value='<s:property value="shopOrder.totalCount"/>'/>
-	<input type="hidden" name="addressId" id="addressId" value=''/>
+<form action ="order_save.dhtml" id="myform" method="post" target="_self">
+	<input type="hidden" name="orderGoods" value='<s:property value="orderGoods"/>'/>
+	<input type="hidden" name="addreId" id="addreId" value=''/>
 	<input type="hidden" name="payWay" id="payWay" value=''/>
 	<input type="hidden" name="isInv" id="isInv" value=''/>
 	<input type="hidden" name="invType" id="invType" value=''/>

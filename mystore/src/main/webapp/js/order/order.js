@@ -193,23 +193,26 @@ $(function(){
 	$("#invtop_type_company").click(function(){
 		$(".inv_top").show();
 	});
-	$(".subBtn").click(function(){
+	$("#orderSave").click(function(){
 		var addressId = $(".addressList li.on").attr("name");
 		if(addressId == ''){
 			alert("请设置收货地址");
+			return false;
 		}
-		var payWay = $("input[name='sel_pay']").val();
+		var payWay = $("input[name='sel_pay']:checked").val();
 		if(payWay == ''){
 			alert("请选择支付方式");
+			return false;
 		}
-		if($("#is_inv:checked")){
+		if($("#is_inv").is(":checked")){
 			$("#isInv").val(1);
-			$("#invType").val($("#inv_type:checked").val());
-			$("#invToptype").val($("#invtop_type:checked").val());
+			$("#invType").val($("input[name='inv_type']:checked").val());
+			$("#invToptype").val($("input[name='invtop_type']:checked").val());
 			$("#invTop").val($("#inv_top").val());
-			$("#invCon").val($("#inv_con:checked").val());
+			$("#invCon").val($("input[name='inv_con']:checked").val());
 		}
-		$("#addressId").val(addressId);
+		
+		$("#addreId").val(addressId);
 		$("#payWay").val(payWay);
 		$("#myform").submit();
 	});

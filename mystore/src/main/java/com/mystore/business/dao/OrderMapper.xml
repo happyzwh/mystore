@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.OrderMapper">
+	<resultMap type="order" id="orderMap">
+		<result property="id" column="id" />
+		<result property="sn" column="sn" />
+		<result property="id_user" column="id_user" />
+		<result property="source" column="source" />
+		<result property="amount" column="amount" />
+		<result property="amount_paid" column="amount_paid" />
+		<result property="amount_payable" column="amount_payable" />
+		<result property="amount_return" column="amount_return" />
+		<result property="amount_disc" column="amount_disc" />
+		<result property="fare" column="fare" />
+		<result property="ispaid" column="ispaid" />
+		<result property="time_pay" column="time_pay" />
+		<result property="isdelivery" column="isdelivery" />
+		<result property="status" column="status" />
+		<result property="createtype" column="createtype" />	
+		<result property="repstatus" column="repstatus" />
+		<result property="payWay" column="payway" />
+		<result property="createDate" column="createdate" />	
+		<result property="lastDate" column="lastdate" />	
+	</resultMap>
+	<insert id="addOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
+		insert into ord_order(
+		    sn,
+		    id_user,
+		    source,
+		    amount,
+		    amount_paid,
+		    amount_payable,
+		    amount_return,
+		    amount_disc,
+		    fare,
+		    ispaid,
+		    time_pay,
+		    isdelivery,
+		    status,
+		    createtype,
+		    repstatus,
+		    payway,
+		    createdate,
+		    lastdate
+		 )values(
+		    #{sn},
+		    #{id_user},
+		    #{source},
+		    #{amount},
+		    #{amount_paid},
+		    #{amount_payable},
+		    #{amount_return},
+		    #{amount_disc},
+		    #{fare},
+		    #{ispaid},
+		    #{time_pay},
+		    #{isdelivery},
+		    #{status},
+		    #{createtype},
+		    #{repstatus},
+		    #{payWay},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<update id="updateOrderBySn" parameterType="order">
+		update ord_order
+		<trim prefix="set" prefixOverrides=",">
+		  <if test="amount_return != null">
+	        	amount_return = #{amount_return},
+	       </if>
+	       <if test="ispaid != null">
+	        	ispaid = #{ispaid},
+	       </if>
+	       <if test="time_pay != null">
+				time_pay = #{time_pay},
+		   </if>
+	       <if test="isdelivery != null">
+				isdelivery = #{isdelivery},
+		   </if>
+		   <if test="status != null">
+				status = #{status},
+		   </if>
+	       <if test="repstatus != null">
+	        	repstatus = #{repstatus},
+	       </if>
+	       <if test="payway != null">
+	        	payway = #{payway},
+	       </if>
+		   lastdate = now()
+		</trim>	
+		where sn = #{sn}
+	</update>
+	<select id="getOrderBySn" parameterType="string" resultType="order">
+		select
+		    id,
+		    sn,
+		    id_user,
+		    source,
+		    amount,
+		    amount_paid,
+		    amount_payable,
+		    amount_return,
+		    amount_disc,
+		    fare,
+		    ispaid,
+		    time_pay,
+		    isdelivery,
+		    status,
+		    createtype,
+		    repstatus,
+		    payway,
+		    createdate,
+		    lastdate
+		from ord_order 
+		where sn = #{sn}
+	</select>
+	<select id="getOrderByUserId" parameterType="order" resultType="order">
+		select
+		    id,
+		    sn,
+		    id_user,
+		    source,
+		    amount,
+		    amount_paid,
+		    amount_payable,
+		    amount_return,
+		    amount_disc,
+		    fare,
+		    ispaid,
+		    time_pay,
+		    isdelivery,
+		    status,
+		    createtype,
+		    repstatus,
+		    payway,
+		    createdate,
+		    lastdate
+		from ord_order 
+		where id_user = #{id_user}
+	</select>
+	<select id="getOrderCountByUserId" parameterType="order" resultType="int">
+		select count(*)
+		from ord_order 
+		where id_user = #{id_user}
+	</select>
+</mapper>

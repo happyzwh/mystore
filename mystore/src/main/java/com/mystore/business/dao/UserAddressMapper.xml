@@ -35,8 +35,11 @@
 		    t.createdate as 'createDate',
 		    t.lastdate as 'lastDate',
 		    t.provinceid as 'provinceId',
+		     (select r.name from region r where r.id = t.provinceid) as 'provinceName',
 		    t.cityid as 'cityId',
-		    t.countyid as 'countyId'
+		    (select r.name from region r where r.id = t.cityid) as 'cityName',
+		    t.countyid as 'countyId',
+		    (select r.name from region r where r.id = t.countyid) as 'countyName'
 		from user_address t
 		where t.id_user = #{id_user} and t.id = #{id} and t.status = '1'
 	</select>

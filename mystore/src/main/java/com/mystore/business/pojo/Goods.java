@@ -13,6 +13,8 @@ public class Goods implements java.io.Serializable{
 	
 	private String name;
 	
+	private String sn;
+	
 	private String path_img;
 	
 	private Double markPrice;
@@ -87,6 +89,14 @@ public class Goods implements java.io.Serializable{
 
 	public void setTotalMarkPrice(Double totalMarkPrice) {
 		this.totalMarkPrice = totalMarkPrice;
+	}
+
+	public String getSn() {
+		return sn;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
 	}
 	
 }

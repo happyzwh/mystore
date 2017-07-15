@@ -37,6 +37,11 @@
       
       <typeAlias alias="userCart" type="com.mystore.business.dto.UserCart"/>
       <typeAlias alias="userAddress" type="com.mystore.business.dto.UserAddress"/>
+      
+      <typeAlias alias="order" type="com.mystore.business.dto.Order"/>
+      <typeAlias alias="orderProduct" type="com.mystore.business.dto.OrderProduct"/>
+      <typeAlias alias="orderInvoice" type="com.mystore.business.dto.OrderInvoice"/>
+      <typeAlias alias="orderShipAddress" type="com.mystore.business.dto.OrderShipAddress"/>
    </typeAliases>  
    <mappers>  
       <mapper resource="com/mystore/business/dao/SearchMapper.xml" />   
@@ -54,5 +59,10 @@
       
       <mapper resource="com/mystore/business/dao/UserMapper.xml" />
       <mapper resource="com/mystore/business/dao/UserAddressMapper.xml" />
+      
+      <mapper resource="com/mystore/business/dao/OrderMapper.xml" />
+      <mapper resource="com/mystore/business/dao/OrderProductMapper.xml" />
+      <mapper resource="com/mystore/business/dao/OrderInvoiceMapper.xml" />
+      <mapper resource="com/mystore/business/dao/OrderShipAddressMapper.xml" />
    </mappers>  
 </configuration>  
