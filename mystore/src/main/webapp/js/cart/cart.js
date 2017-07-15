@@ -126,6 +126,21 @@ $(function(){
 		 	data: {'cart':cart}
 		});
 	});
+	$("#toOrder").click(function(){
+		if($(".check:checked").length==0){
+			alert("请选择商品");
+			return false;
+		}
+		var orderGoods = [];
+		$.each($(".check:checked"),function(m,v) {
+			if(orderGoods.toString().length != 0){
+				orderGoods.push("_");
+			}
+			orderGoods.push($.trim($(this).attr('alt'))+","+$(".goodsNum[alt="+$(this).attr('alt')+"]").val());
+		});
+		$("#orderGoods").val(orderGoods.join(''));
+		$("#myform").submit();
+	});
 });
 function selectedGoods(){
 	var data = {};

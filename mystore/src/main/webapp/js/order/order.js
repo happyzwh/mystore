@@ -17,7 +17,7 @@ $(function(){
 		$('.popMask').hide();
 		$('.addresPopBox').hide();
 	});
-	$('.addressList .item').click(function(){
+	$('.addressList .item').live('click',function(){
 		$('.addressList .item').removeClass('on');
 		$(this).addClass('on');
 	});
@@ -187,7 +187,12 @@ $(function(){
        });
 		
 	});
-	
+	$("#invtop_type_personal").click(function(){
+		$(".inv_top").hide();
+	});
+	$("#invtop_type_company").click(function(){
+		$(".inv_top").show();
+	});
 });
 function checkArea(){
 	if($("#provinceId").val() =='' || $("#cityId").val() =='' || $("#countyId").val() ==''){

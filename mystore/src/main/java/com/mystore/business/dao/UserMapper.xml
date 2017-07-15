@@ -25,7 +25,7 @@
 			    is_mobile_valid as 'isMobileValid',
 			    email,
 			    is_email_valid as 'isEmailValid',
-			    pwd_pay
+			    pwd_pay as 'pwdPay'
 		from user_user
 		where username = #{value}
 	</select>

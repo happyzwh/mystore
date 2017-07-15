@@ -264,7 +264,7 @@
 .itemsWrap .contentTitle {
     height: 20px;
     line-height: 20px;
-    padding: 20px 0 15px 21px;
+    padding: 20px 0 5px 21px;
 }
 .itemsWrap .contentTitle *, .paymentList li * {
     display: inline-block;
@@ -302,8 +302,7 @@
 }
 .itemsWrap .contentBox {
     background: #fbfcff;
-    padding: 10px 0 20px 21px;
-    display: none;
+    padding: 0px 0 20px 21px;
 }
 .contentBox li {
     margin-top: 8px;
@@ -677,4 +676,16 @@
     background: #fff;
     padding: 0 10px;
     margin-left: 128px;
+}
+.contentBox li label input.inv_top{
+    height: 28px;
+    line-height: 28px;
+    margin-top:0px;
+    color: #333;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    width:300px;
+    display:none;
 }

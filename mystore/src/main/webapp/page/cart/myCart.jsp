@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	 	 	<div class="cell p-count">
 	    	 	 		<div class="count-form" alt='<s:property value="id" />'>
 							<a href="javascript:void(0);" class="decrement">-</a>
-							<input autocomplete="off" class="itxt goodsNum" value='<s:property value="count"/>' type="text" alt='<s:property value="id" />'>
+							<input autocomplete="off" class="itxt goodsNum" value='<s:property value="count"/>'  type="text" alt='<s:property value="id" />'>
 							<a href="javascript:void(0);" class="increment">+</a>
 						</div>
 	    	 	 	</div>
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	      <div class="column checkBox"><input type="checkbox"  class="checkAll"/>  全选</div>
     	      <div class="toolbar-right">
 							<div class="btn-area">
-								<a href="order_order.dhtml" class="submit-btn">去结算<b></b></a>
+								<a id="toOrder" href="javascript:void(0);" class="submit-btn">去结算<b></b></a>
 							</div>
 							<div class="price-sum">
 								<div>
@@ -95,5 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>  
  </div>
     <!--#include file="<%=path%>/page/foot.html" --> 
+ <form id="myform" action="order_order.dhtml" methoe="post" target="_self">
+ 	<input type="hidden" name="orderGoods" id="orderGoods" value=""/>
+ </form>
 </body>
 </html>

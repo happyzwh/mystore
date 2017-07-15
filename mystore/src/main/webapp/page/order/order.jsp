@@ -41,13 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
     		<div class="clearBoth"></div>
     	</div>
-        <div class="note">
+        <!-- div class="note">
         	<span class="tit-txt">填写并核对订单信息</span>
-        </div>
+        </div-->
         <div class="orderInfo">
 			   <div class="orderItemsBox orderAddress">
 				<div class="itemsTitle">
-					<b>收货地址</b><a href="javascript:;" class="addNewAdd" style="">使用新地址</a>
+					<b>收货地址</b><!-- a href="javascript:;" class="addNewAdd" style="">使用新地址</a -->
 				</div>
 				<div class="itemsWrap">
 					<ul class="addressList clearfix">
@@ -90,108 +90,96 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="itemsWrap">
 					<ul class="paymentList">
-						<li><label><input name="sel_pay" type="radio" value="1" _ind="0" id="huodaofukuan"><span class="listTitle">货到付款</span></label><span class="listPro">送货上门后再付款，使用现金或刷银行卡，免手续费。</span><em class="conPro03" style="display: none;">所选商品不支持货到付款！</em></li>
-						<li><label><input name="sel_pay" type="radio" value="2" _ind="1" checked="checked" class="zhifu" id="zhifu"><span class="listTitle">在线支付</span></label><span class="listPro">支持多家银行借记卡、信用卡支付；支持支付宝、微信等多种支付平台。</span></li>
+						<li><label><input name="sel_pay" type="radio" value="1" _ind="0" id="huodaofukuan"><span class="listTitle">货到付款</span></label><span class="listPro">送货上门使用现金或刷银行卡付款，无手续费。</span><em class="conPro03" style="display: none;">所选商品不支持货到付款！</em></li>
+						<li><label><input name="sel_pay" type="radio" value="2" _ind="1" checked="checked" class="zhifu" id="zhifu"><span class="listTitle">在线支付</span></label><span class="listPro">支持多家银行借记卡;支持支付宝、微信等多种支付平台。</span></li>
 					</ul>
 					 <input id="payid" type="hidden" value="102">
 				</div>
 			</div>
 			<div class="orderItemsBox orderInvoice" id="inv_href">
 				<div class="itemsTitle">
-					<b>发票信息</b><a href="javascript:;" class="modifyPayment">修改</a>
+					<b>发票信息</b><!-- a href="javascript:;" class="modifyPayment">修改</a-->
 				</div>
 				<div class="itemsWrap">
 					<div class="contentTitle">
-						<input type="checkbox" id="fapiaoxinxi" class="fapiaoxinxi" value="" name=""><label for="fapiaoxinxi"><span class="listTitle2">发票</span></label><span class="listPro2">温馨提示：使用优惠券、礼品卡、返现、兑换码支付的金额不开具发票。</span><a class="listLink" href="http://help.jiuxian.com/view-1-113.htm" target="_blank">发票说明</a>
+						<input type="checkbox" id="fapiaoxinxi" class="fapiaoxinxi" value="" name="">
+						<label for="fapiaoxinxi">
+							<span class="listTitle2">发票</span>
+						</label>
+						<span class="listPro2">说明：是否开具发票</span>
+						<!-- a class="listLink" href="" target="_blank">发票说明</a-->
 					</div>
 					<ul class="contentBox">
-											<li><span>发票类型：</span><label><input type="radio" name="inv_type" class="inv_type1" value="1" title="电子发票" disabled="disabled">电子发票</label><label><input type="radio" name="inv_type" title="纸质发票" value="2" class="inv_type2">纸质发票</label></li>
-						<li><span>发票内容：</span><label><input type="radio" name="inv_con" title="酒水">酒水</label><label><input type="radio" name="inv_con" checked="checked" title="明细">明细</label></li> 					<li class="invTitLi"><span>发票抬头：</span>
-							<div class="invoiceTitWrap" enabled="true">
-								<input class="conFrom01" id="invoiceTitCon" type="text"><b class="tholder">个人</b><i class="oIcon titOpen"></i><em class="conPro01">请填写手机号码</em>
-								<div class="invTitleBox" style="height: 80px;">
-									<ul style="height: auto;">
-										 									<li>个人</li> 									<li style="border-bottom-style: none;">发票抬头</li>  								</ul>
-								</div>
-							</div></li>
-						<li class="invPhoneNum" style="display: none;"><span><i class="xing">*</i>收票人手机：</span><input class="conFrom01 invPhone" id="inv_mobile" type="text" maxlength="11"><em class="conPro01">请填写手机号码</em></li>
-						<li class="invPro" style="display: none;"><span>&nbsp;</span><em class="conPro01" style="display: inline-block;">注：电子发票的订单在签收后在【我的订单】下载。</em></li>
-						<li><a class="conSubmit" id="conSubmit" href="javascript:;">确定</a></li>
+						<li>
+							<span>发票类型：</span>
+							<label><input type="radio" name="inv_type" title="纸质发票" value="1" class="inv_type2" checked="checked">纸质发票</label>
+							<label><input type="radio" name="inv_type" class="inv_type1" value="2" title="电子发票" disabled="disabled">电子发票</label>
+						</li>				
+						<li class="invTitLi">
+							<span>发票抬头：</span>
+							<label><input type="radio" name="invtop_type" class="inv_type1" id="invtop_type_personal" value="1" title="个人"  checked="checked">个人</label>
+							<label><input type="radio" name="invtop_type" title="公司" id="invtop_type_company" value="2" class="inv_type2">公司</label>
+							<label><input class="inv_top" type="text" maxlength="50" id="inv_top"></label>
+						</li>
+						<li>
+							<span>发票内容：</span>
+								<label><input type="radio" name="inv_con" checked="checked"  title="明细" value="1">明细</label>
+								<label><input type="radio" name="inv_con" title="办公用品"  value="2">办公用品</label>
+								<label><input type="radio" name="inv_con" title="电脑配件"  value="3">电脑配件</label>
+								<label><input type="radio" name="inv_con" title="耗材"  value="4">耗材</label>
+						</li> 	
 					</ul>
-					<div class="contentInfo">
-						发票类型：<span class="invoiceKinds"></span>发票内容：<span class="invoiceDetail"></span>发票抬头：<span class="invoiceTitle"></span>
-					</div>
 				</div>
 			</div>
-	
-			<input type="hidden" id="real-mobile" value="">
-
 			<div id="goods_list_container">		
 				<div class="orderItemsBox orderCommodity">
 				    <div class="itemsTitle"><b>商品信息</b><a href="cart_myCart.dhtml">返回购物车</a></div>
 					<div></div>
 					<div class="shopWrap">
-					<div class="pubTitle">
+					<!-- div class="pubTitle">
 							<span>自营</span>
-					</div>
+					</div-->
 				    <div class="itemsWrap">
 				    	<table class="comTable">
-				        <thead><tr><th width="460">商品名称</th><th width="140">酒仙价</th><th width="140">购买数量</th><th width="140">库存</th><th width="138">小计</th></tr></thead>
-					      <tbody>
-											
-				    				        	        						
-				        			<tr>
-				        	        <td width="542">
-				        		        <div class="productImg">
-				        		        	<a href="http://www.jiuxian.com/goods-32678.html" target="_blank">
-				        		        		<img src="http://img09.jiuxian.com/2016/1213/637da3a9ebcc4c7d84ff20f6590ab36f2.jpg" alt="48°西凤情酒460ml（2010年）" width="52" height="52">
-				        		        	</a>
-				        		        </div>
-				        		        <div class="productName">
-				        				        					<p class="twoName">
-				        						<a title="48°西凤情酒460ml（2010年）" target="_blank" href="http://www.jiuxian.com/goods-32678.html">48°西凤情酒460ml（2010年）
-												</a>
-													
-													        					</p>
-				        		            <p class="twoName">
-				        		            	<span title="48°西凤情酒460ml（2010年）">【禁用优惠劵】</span>
-				        		            </p>
-				        				        				</div>
-				        	        </td>
-									
-				        			
-									
-														
-									
-														
-										<td width="165">
-				        		        	<div class="productPriM">￥29.00</div>
-				        		        </td>
-				        		        <td width="130">
-				        		        	<div class="productNum"><span>1</span></div>
-				        		        </td>
-									
-														
-				        		        <td width="140">
-				        		        	 <div class="com productStock">有货</div>         		        </td>
-										
-				        									
-										 						 
-							
-										 
-										
-				        		        <td width="150" rowspan="1" class="bb">
-				        		        	<div class="productPri">￥29</div>
-				        		        </td>
-				        			        	      </tr>
-				    				    	      				    </tbody>
+				        <thead><tr><th width="460">商品名称</th><th width="140">商城价</th><th width="140">购买数量</th><th width="140">库存</th><th width="138">小计</th></tr></thead>
+					      <tbody> 
+					      		<s:iterator value="shopOrder.goodsList" status="ind">       	        						
+					        		<tr>
+					        	        <td width="542">
+					        		        <div class="productImg">
+					        		        	<a href="product_detail.dhtml?id=<s:property value="id" />'" target="_blank">
+					        		        		<img src="<%=ConfigReader.getPath_pic_service()%>/<s:property value='path_img.replace("big","small")'/>" alt="<s:property value="name" />" width="52" height="52">
+					        		        	</a>
+					        		        </div>
+					        		        <div class="productName">
+					        				    <p class="twoName">
+					        						<a title="<s:property value="name" />" target="_blank" href="product_detail.dhtml?id=<s:property value="id" />'"><s:property value="name" /></a>
+												</p>
+					        		            <p class="twoName">
+					        		            	<span title="<s:property value="name" />"></span>
+					        		            </p>
+					        				</div>
+					        	        </td>			
+									    <td width="165">
+					        		        <div class="productPriM">￥<s:text name="format.numbers"><s:param value="price"/></s:text></div>
+					        		    </td>
+					        		    <td width="130">
+					        		        	<div class="productNum"><span><s:property value="count"/></span></div>
+					        		    </td>
+										<td width="140">
+					        		        <div class="com productStock">有货</div>         		        
+					        		    </td>
+										<td width="150" rowspan="1" class="bb">
+					        		        <div class="productPri">￥<s:text name="format.numbers"><s:param value="totalPrice"/></s:text></div>
+					        		    </td>
+					        		</tr>
+				        		</s:iterator>
+				    		</tbody>
 						</table>
 				    </div>
-				    </div>
-				            	</div>
-
-		    </div>
-	
+				  </div>
+				</div>
+		 	</div
 			<div class="orderItemsBox orderAccount">
 				<div class="itemsTitle">
 					<b>结算信息</b>
@@ -207,14 +195,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="settlementCon" id="cxyhdetail"></div>
 							</li>
-	
 							<li class="bb">
 								<div class="comTotalBox">
 									<p>
-										<span><b id="productcount">1</b>件商品，商品金额：</span><span class="comTotalSum" id="zje_i">￥29.00</span>
+										<span><b id="productcount"><s:property value="shopOrder.totalCount"/></b>件商品，商品金额：</span><span class="comTotalSum" id="zje_i">￥<s:text name="format.numbers"><s:param value="shopOrder.totalAmount"/></s:text></span>
 									</p>
 									<div id="yf_div" style="">
-										<span>运费：</span> <span class="comTotalSum red" id="yf_i">￥10.00</span>
+										<span>运费：</span> <span class="comTotalSum red" id="yf_i">￥<s:text name="format.numbers"><s:param value="shopOrder.fare"/></s:text></span>
 										<div class="shopIcon" id="shopPop">
 									<p id="ye_div" style="display: none">
 										<span>余额：</span><span class="comTotalSum" id="ye_i"></span>
@@ -236,7 +223,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="submit-pro"></div>
 								</div>
 								<div class="toPay">
-									<strong>应付总金额：</strong><b id="payPrice">￥39.00</b>
+									<strong>应付总金额：</strong><b id="payPrice">￥<s:text name="format.numbers"><s:param value="shopOrder.payAmount"/></s:text></b>
 								</div>
 							</div>
 						</div>
