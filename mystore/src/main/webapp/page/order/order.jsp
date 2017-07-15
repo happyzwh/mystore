@@ -93,7 +93,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li><label><input name="sel_pay" type="radio" value="1" _ind="0" id="huodaofukuan"><span class="listTitle">货到付款</span></label><span class="listPro">送货上门使用现金或刷银行卡付款，无手续费。</span><em class="conPro03" style="display: none;">所选商品不支持货到付款！</em></li>
 						<li><label><input name="sel_pay" type="radio" value="2" _ind="1" checked="checked" class="zhifu" id="zhifu"><span class="listTitle">在线支付</span></label><span class="listPro">支持多家银行借记卡;支持支付宝、微信等多种支付平台。</span></li>
 					</ul>
-					 <input id="payid" type="hidden" value="102">
 				</div>
 			</div>
 			<div class="orderItemsBox orderInvoice" id="inv_href">
@@ -102,8 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="itemsWrap">
 					<div class="contentTitle">
-						<input type="checkbox" id="fapiaoxinxi" class="fapiaoxinxi" value="" name="">
-						<label for="fapiaoxinxi">
+						<input type="checkbox" id="is_inv" class="isinv" value="" />
+						<label for="invoice">
 							<span class="listTitle2">发票</span>
 						</label>
 						<span class="listPro2">说明：是否开具发票</span>
@@ -119,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<span>发票抬头：</span>
 							<label><input type="radio" name="invtop_type" class="inv_type1" id="invtop_type_personal" value="1" title="个人"  checked="checked">个人</label>
 							<label><input type="radio" name="invtop_type" title="公司" id="invtop_type_company" value="2" class="inv_type2">公司</label>
-							<label><input class="inv_top" type="text" maxlength="50" id="inv_top"></label>
+							<label><input class="inv_top" type="text" maxlength="50" id="invtop_content"></label>
 						</li>
 						<li>
 							<span>发票内容：</span>
@@ -280,6 +279,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <div class="popMask" style="height: 643px;"></div>
+<form action ="order_submit" id="myform" method="post" target="_self">
+	<input type="hidden" name="orderGoods" value='<s:property value="shopOrder.totalCount"/>'/>
+	<input type="hidden" name="addressId" id="addressId" value=''/>
+	<input type="hidden" name="payWay" id="payWay" value=''/>
+	<input type="hidden" name="isInv" id="isInv" value=''/>
+	<input type="hidden" name="invType" id="invType" value=''/>
+	<input type="hidden" name="invToptype" id="invToptype" value=''/>
+	<input type="hidden" name="invTop" id="invTop" value=''/>
+	<input type="hidden" name="invCon" id="invCon" value=''/>
+</form>
   <!--#include file="<%=path%>/page/foot.html" --> 
 </body>
 </html>

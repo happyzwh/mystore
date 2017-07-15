@@ -43,6 +43,20 @@ public class OrderAction extends BaseAction {
 	
 	private ShopOrder shopOrder;
 	
+	private Integer addressId;
+	
+	private Integer payWay;
+	
+	private boolean isInv;
+	
+	private Integer invType;
+	
+	private Integer invToptype;
+	
+	private String invTop;
+	
+	private String invCon;
+	
 	public String order(){
 		
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
@@ -78,6 +92,16 @@ public class OrderAction extends BaseAction {
 		return "order";
 	}
 
+	public String submit(){
+		
+		
+		
+		
+		
+		
+		return "";
+	}
+	
 	public List<UserAddress> getAddress() {
 		return address;
 	}
@@ -100,6 +124,62 @@ public class OrderAction extends BaseAction {
 
 	public void setShopOrder(ShopOrder shopOrder) {
 		this.shopOrder = shopOrder;
+	}
+
+	public Integer getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
+	}
+
+	public Integer getPayWay() {
+		return payWay;
+	}
+
+	public void setPayWay(Integer payWay) {
+		this.payWay = payWay;
+	}
+
+	public boolean isInv() {
+		return isInv;
+	}
+
+	public void setInv(boolean isInv) {
+		this.isInv = isInv;
+	}
+
+	public Integer getInvType() {
+		return invType;
+	}
+
+	public void setInvType(Integer invType) {
+		this.invType = invType;
+	}
+
+	public Integer getInvToptype() {
+		return invToptype;
+	}
+
+	public void setInvToptype(Integer invToptype) {
+		this.invToptype = invToptype;
+	}
+
+	public String getInvTop() {
+		return invTop;
+	}
+
+	public void setInvTop(String invTop) {
+		this.invTop = invTop;
+	}
+
+	public String getInvCon() {
+		return invCon;
+	}
+
+	public void setInvCon(String invCon) {
+		this.invCon = invCon;
 	}
 	
 }

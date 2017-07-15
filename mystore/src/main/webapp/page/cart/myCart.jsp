@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>  
  </div>
     <!--#include file="<%=path%>/page/foot.html" --> 
- <form id="myform" action="order_order.dhtml" methoe="post" target="_self">
+ <form id="myform" action="order_order.dhtml" method="post" target="_self">
  	<input type="hidden" name="orderGoods" id="orderGoods" value=""/>
  </form>
 </body>

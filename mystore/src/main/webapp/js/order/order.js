@@ -193,6 +193,26 @@ $(function(){
 	$("#invtop_type_company").click(function(){
 		$(".inv_top").show();
 	});
+	$(".subBtn").click(function(){
+		var addressId = $(".addressList li.on").attr("name");
+		if(addressId == ''){
+			alert("请设置收货地址");
+		}
+		var payWay = $("input[name='sel_pay']").val();
+		if(payWay == ''){
+			alert("请选择支付方式");
+		}
+		if($("#is_inv:checked")){
+			$("#isInv").val(1);
+			$("#invType").val($("#inv_type:checked").val());
+			$("#invToptype").val($("#invtop_type:checked").val());
+			$("#invTop").val($("#inv_top").val());
+			$("#invCon").val($("#inv_con:checked").val());
+		}
+		$("#addressId").val(addressId);
+		$("#payWay").val(payWay);
+		$("#myform").submit();
+	});
 });
 function checkArea(){
 	if($("#provinceId").val() =='' || $("#cityId").val() =='' || $("#countyId").val() ==''){
