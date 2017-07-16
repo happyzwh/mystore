@@ -24,6 +24,20 @@ public class ShopOrder implements java.io.Serializable{
 	
 	private Double payAmount = 0d;
 	
+	private Integer addreId;
+	
+	private String payWay;
+	
+	private String isInv;
+	
+	private String invType;
+	
+	private String invToptype;
+	
+	private String invTop;
+	
+	private String invCon;
+	
 	public ShopOrder(){
 		goodsList = new ArrayList<Goods>();
 	}
@@ -95,6 +109,62 @@ public class ShopOrder implements java.io.Serializable{
 	public Double getPayAmount() {
 		payAmount = this.getTotalAmount() + this.getFare();
 		return payAmount;
+	}
+
+	public Integer getAddreId() {
+		return addreId;
+	}
+
+	public void setAddreId(Integer addreId) {
+		this.addreId = addreId;
+	}
+
+	public String getPayWay() {
+		return payWay;
+	}
+
+	public void setPayWay(String payWay) {
+		this.payWay = payWay;
+	}
+
+	public String getIsInv() {
+		return isInv;
+	}
+
+	public void setIsInv(String isInv) {
+		this.isInv = isInv;
+	}
+
+	public String getInvType() {
+		return invType;
+	}
+
+	public void setInvType(String invType) {
+		this.invType = invType;
+	}
+
+	public String getInvToptype() {
+		return invToptype;
+	}
+
+	public void setInvToptype(String invToptype) {
+		this.invToptype = invToptype;
+	}
+
+	public String getInvTop() {
+		return invTop;
+	}
+
+	public void setInvTop(String invTop) {
+		this.invTop = invTop;
+	}
+
+	public String getInvCon() {
+		return invCon;
+	}
+
+	public void setInvCon(String invCon) {
+		this.invCon = invCon;
 	}
 	
 	

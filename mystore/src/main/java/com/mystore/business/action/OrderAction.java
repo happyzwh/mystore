@@ -1,11 +1,8 @@
 package com.mystore.business.action;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -13,22 +10,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.mystore.business.common.Constants;
-import com.mystore.business.dto.Order;
-import com.mystore.business.dto.OrderInvoice;
-import com.mystore.business.dto.OrderProduct;
-import com.mystore.business.dto.OrderShipAddress;
 import com.mystore.business.dto.ProPrice;
 import com.mystore.business.dto.Product;
 import com.mystore.business.dto.User;
 import com.mystore.business.dto.UserAddress;
 import com.mystore.business.pojo.Goods;
-import com.mystore.business.pojo.OrderCreateType;
-import com.mystore.business.pojo.OrderStatus;
 import com.mystore.business.pojo.ShopOrder;
-import com.mystore.business.service.OrderInvoiceService;
-import com.mystore.business.service.OrderProductService;
 import com.mystore.business.service.OrderService;
-import com.mystore.business.service.OrderShipAddressService;
 import com.mystore.business.service.ProductService;
 import com.mystore.business.service.UserAddressService;
 
@@ -52,15 +40,6 @@ public class OrderAction extends BaseAction {
 	
 	@Autowired
 	private OrderService orderService;
-	
-	@Autowired
-	private OrderProductService orderProductService;
-	
-	@Autowired
-	private OrderInvoiceService orderInvoiceService;
-	
-	@Autowired
-	private OrderShipAddressService orderShipAddressService;
 	
 	private List<UserAddress> address;
 	
@@ -148,63 +127,15 @@ public class OrderAction extends BaseAction {
 			
 		}
 		
+		shopOrder.setAddreId(addreId);
+		shopOrder.setIsInv(isInv);
+		shopOrder.setPayWay(payWay);
+		shopOrder.setInvType(invType);
+		shopOrder.setInvToptype(invToptype);
+		shopOrder.setInvTop(invTop);
+		shopOrder.setInvCon(invCon);
 		
-		Order order = new Order();
-		order.setAmount(new BigDecimal(shopOrder.getTotalAmount()));
-		order.setAmount_disc(new BigDecimal(0));
-		order.setAmount_paid(new BigDecimal(0));
-		order.setAmount_payable(new BigDecimal(shopOrder.getTotalAmount()).subtract(new BigDecimal(shopOrder.getFare())));
-		order.setAmount_return(new BigDecimal(0));
-		order.setCreatetype(OrderCreateType.USERPCORDER.getValue());
-		order.setFare(new BigDecimal(shopOrder.getFare()));
-		order.setId_user(user.getId());
-		order.setSn(UUID.randomUUID().toString());
-		order.setIsdelivery("0");
-		order.setIspaid("0");
-		order.setPayWay(payWay);
-		order.setRepstatus("1");
-		order.setSource("0");
-		order.setStatus(OrderStatus.UNCONFIRM.getValue());
-		
-		orderService.addOrder(order);
-		
-		UserAddress userAddress = userAddressService.getById(user.getId(), addreId);
-		OrderShipAddress orderShipAddress = new OrderShipAddress();
-		orderShipAddress.setAddress(userAddress.getProvinceName()+userAddress.getCityName()+userAddress.getCityName()+userAddress.getAddress());
-		orderShipAddress.setConsignee(userAddress.getReceiver());
-		orderShipAddress.setId_order(order.getId());
-		orderShipAddress.setMobile(userAddress.getMobile());
-		orderShipAddress.setStatus("1");
-		
-		orderShipAddressService.addOrderShipAddress(orderShipAddress);
-		
-		for(Goods product:shopOrder.getGoodsList()){
-			OrderProduct orderProduct = new OrderProduct();
-			orderProduct.setAmount(product.getTotalPrice());
-			orderProduct.setBuyprice(product.getPrice());
-			orderProduct.setId_order(order.getId());
-			orderProduct.setId_pro(product.getId());
-			orderProduct.setIsgived("0");
-			orderProduct.setMarkprice(product.getMarkPrice());
-			orderProduct.setName(product.getName());
-			orderProduct.setNumber(product.getCount());
-			orderProduct.setSn(product.getSn());
-			orderProduct.setStatus("1");
-			
-			orderProductService.addOrderProduct(orderProduct);
-		}
-		
-		if(StringUtils.isNotBlank(isInv) && isInv.equals("1")){
-			OrderInvoice  orderInvoice = new OrderInvoice();
-			orderInvoice.setId_order(order.getId());
-			orderInvoice.setInvoicecontext(invCon);
-			orderInvoice.setInvoicetop(invTop);
-			orderInvoice.setInvoicetype(invType);
-			orderInvoice.setInvocetoptype(invToptype);
-			orderInvoice.setStatus("1");
-			
-			orderInvoiceService.addOrderInvoice(orderInvoice);
-		}
+		orderService.saveOrder(user.getId(), shopOrder);
 		
 		return order();
 	}
