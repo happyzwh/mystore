@@ -1,0 +1,161 @@
+.payBox {
+    width: 100%;
+    margin-top: 18px;
+    text-align:left;
+}
+.payMain {
+    width: 1000px;
+    margin: 0 auto;
+}
+.successWrap {
+    border: 1px solid #e4e4e4;
+    background: #fbfcff;
+}
+.successWrap .successCon {
+    padding: 0 70px 8px 70px;
+}
+.successCon .sucTit {
+    color: #339933;
+    font-size: 20px;
+    position: relative;
+    font-family: 'Microsoft YaHei';
+    padding-top: 22px;
+}
+.successCon .sucTit i {
+    display: inline-block;
+    position: absolute;
+    left: -46px;
+    top: 21px;
+    width: 32px;
+    height: 32px;
+    background-position: 0 0;
+}
+.successCon .sucPro span {
+    color: #cc0000;
+    font-weight: bold;
+    padding: 0 2px;
+}
+.payIcon {
+    background: url("../../images/payIcon.png") no-repeat;
+}
+user agent stylesheeti, cite, em, var, address, dfn {
+    font-style: italic;
+}
+Inherited from li.sucTit
+.successCon .sucTit {
+    color: #339933;
+    font-size: 20px;
+    position: relative;
+    font-family: 'Microsoft YaHei';
+    padding-top: 22px;
+}
+.successCon li {
+    height: 30px;
+    line-height: 30px;
+}
+.successCon .sucCon {
+    color: #999;
+    border-top: 1px dotted #ccc;
+    padding: 8px 0 5px;
+}
+.successCon .sucCon em {
+    padding-right: 25px;
+    font-style: normal;
+}
+.successCon .sucCon b {
+    height: 30px;
+    line-height: 30px;
+    color: #cc0000;
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+}
+user agent stylesheetstrong, b {
+    font-weight: bold;
+}
+.sucCon .sucCon-pro {
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    background: #fffbe8;
+    border: 1px solid #ffe9c7;
+    color: #ff9933;
+    padding: 0 15px 0 10px;
+    margin-left: 18px;
+    position: relative;
+    top: -2px;
+}
+.payProWrap {
+    margin: 18px 0 50px;
+    line-height: 24px;
+}
+.payProWrap h3 {
+    font-weight: normal;
+    color: #cc0000;
+    font-size: 12px;
+}
+.payWrap {
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    margin-top: 10px;
+    padding: 5px;
+}
+.paymentCon .paymentList {
+    border: 2px solid #b2d1ff;
+    border-radius: 2px;
+}
+.paymentList .paymenWrap {
+    display: none;
+    padding: 40px 0 15px 30px;
+}
+.paymenWrap ul {
+    margin: 25px 0 15px;
+}
+.Payment.payment_1 {
+    background-position: 0 0;
+}
+.paymenWrap ul li {
+    border: 1px solid #ccc;
+    margin: 0 29px 15px 0;
+    cursor: pointer;
+}
+.Payment {
+    float: left;
+    width: 175px;
+    height: 40px;
+    position: relative;
+    background: url(../../images/bank.png) no-repeat;
+}
+
+.Payment.payment_2 {
+    background-position: 0 -132px;
+}
+.Payment.payment_4 {
+    background-position: 0 -88px;
+}
+.paymentUsed span b, .paymenWrap ul li b, .payRecommend span b {
+    display: inline-block;
+    width: 70px;
+    height: 18px;
+    position: absolute;
+    left: 110px;
+    top: 2px;
+}
+.payBtnBox {
+	margin-top:10px;
+    height: 40px;
+}
+.payBtnBox a {
+    display: inline-block;
+    width: 105px;
+    height: 40px;
+    border-radius: 3px;
+    background: #cf010e;
+}
+.payBtnBox a i {
+    display: inline-block;
+    width: 80px;
+    height: 20px;
+    background-position: 0 -37px;
+    cursor: pointer;
+    margin: 10px 0 0 13px;
+}
