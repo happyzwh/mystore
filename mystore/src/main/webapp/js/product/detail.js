@@ -182,7 +182,12 @@ $(function(){
 	    		subtype=0;
 	    		getConsultContent(0,1,pageSize);
 	    	}
-	    });    
+	    });  
+		$(".cart").click(function(){
+			var proId = $.trim($(this).attr("name"));
+			var count = $("#number").val();
+			addCart(proId,count);
+		});
 });
 var type=0;
 var subtype=0;

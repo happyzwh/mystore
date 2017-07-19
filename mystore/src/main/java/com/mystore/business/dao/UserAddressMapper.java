@@ -16,5 +16,7 @@ public interface UserAddressMapper {
 	public void delAddress(Map<String,Object> map);
 	
 	public void updateAddress(UserAddress userAddress);
+	
+	public int updateDefaultAsNot(Integer userId);
 
 }

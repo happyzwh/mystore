@@ -127,7 +127,7 @@ public class UserAddressAction  extends BaseAction{
 		
 		}catch(Exception e){
 			code = -1;
-			e.printStackTrace();
+//			e.printStackTrace();
 		}finally{
 			HttpServletResponse response=ServletActionContext.getResponse();
 			response.setContentType("text/html;charset=UTF-8");
@@ -136,6 +136,30 @@ public class UserAddressAction  extends BaseAction{
 		
 	}
 
+	public void setDefault() throws IOException{
+		
+		int code = 1;
+		
+		try{
+			if(id == null) {
+				code = -2;
+				return;
+			}
+			
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
+			User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
+			
+			userAddressService.updateDefaultAsNot(user.getId(), id);
+			
+		}catch(Exception e){
+			code = -1;
+		}finally{
+			HttpServletResponse response=ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().print(code);
+		}
+	}
+	
 	public List<UserAddress> getAddList() {
 		return addList;
 	}

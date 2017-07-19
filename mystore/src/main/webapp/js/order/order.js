@@ -216,6 +216,33 @@ $(function(){
 		$("#payWay").val(payWay);
 		$("#myform").submit();
 	});
+	$(".defaultBtn").click(function(){
+		var id = $.trim($(this).attr("id"));
+		if(id == ""){
+			alert("请选择商品");
+			return false;
+		}
+		jQuery.ajax({
+            type:'post',
+            url:$("#path").val()+'/address_setDefault.dhtml',
+            data:{'id':id},
+            dataType:'text',
+            cache:false,
+            async:false,
+            success:function(data){
+            	if(data > 0){
+            		alert("设置成功");
+            	}else if(data == -1){
+					alert("系统异常");
+				}else if(data == -2){
+					alert("参数错误");
+				}
+            },
+            error:function(data){
+            	alert("系统异常");
+            }
+		}); 
+	});
 });
 function checkArea(){
 	if($("#provinceId").val() =='' || $("#cityId").val() =='' || $("#countyId").val() ==''){

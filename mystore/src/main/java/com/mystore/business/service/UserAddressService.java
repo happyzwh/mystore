@@ -16,4 +16,6 @@ public interface UserAddressService {
 	
 	public void updateAddress(UserAddress userAddress);
 	
+	public void updateDefaultAsNot(Integer userId,Integer id);
+	
 }

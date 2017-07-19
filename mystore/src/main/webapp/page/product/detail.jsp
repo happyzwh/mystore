@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="<%=path%>/css/index.css" type="text/css"/>
 <link rel="stylesheet" href="<%=path%>/css/detail.css" type="text/css"/>
 <script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
-<script src="<%=path%>/js/detail.js" type="text/javascript"></script>
+<script src="<%=path%>/js/product/detail.js" type="text/javascript"></script>
 </head>
 <body>
  <!--#include file="<%=path%>/page/static/top_top.html" -->
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    	<div class="cl"></div>  
 				   		<div class="btnBar">   
 						      <div class="btnsBox">  
-						      	 <a href="javascript:addToCart2(843)" onclick="getmousepos(event)" value="加入购物车" class="actbtn btn-buy"></a>
+						      	 <a href="javascript:void(0);" name='<s:property value="product.id" />' value="加入购物车" class="cart actbtn btn-buy"></a>
 						      </div> 
 						      <div class="fav_goods"><a class="btn-fav" href="javascript:collect(843)">&nbsp;&nbsp;收藏此商品</a></div>
 				    	</div>      

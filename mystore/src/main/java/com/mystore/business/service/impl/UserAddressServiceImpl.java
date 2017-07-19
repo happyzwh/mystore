@@ -53,4 +53,17 @@ public class UserAddressServiceImpl implements UserAddressService{
 		userAddressMapper.updateAddress(userAddress);
 	}
 
+	@Override
+	public void updateDefaultAsNot(Integer userId, Integer id) {
+		// TODO Auto-generated method stub
+		UserAddress userAddress = this.getById(userId, id);
+		if(userAddress != null){
+			userAddressMapper.updateDefaultAsNot(userId);
+			userAddress.setIsDefault("1");
+			userAddressMapper.updateAddress(userAddress);
+			
+		}
+		
+	}
+
 }

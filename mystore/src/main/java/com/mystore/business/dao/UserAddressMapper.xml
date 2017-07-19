@@ -75,6 +75,10 @@
 		 address = #{address},provinceid = #{provinceId},cityid = #{cityId},countyid = #{countyId}
 		 where id_user = #{id_user} and id = #{id}
 	</update>
+    <update id="updateDefaultAsNot" parameterType="int">
+		 update user_address set isdefault = '0' , lastdate = now()
+		 where id_user = #{value} and isdefault = '1'
+	</update>
 	<delete id="delAddress" parameterType="java.util.Map">
 		 delete from user_address 
 		 where id_user = #{id_user} and id = #{id}
