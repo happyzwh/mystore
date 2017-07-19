@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="order">
     	<div class="header">
     		<div id="logo">
-    			<a href="#none" class="title"><b></b></a>
+    			<a href="#none" class="title"><b>结算页</b></a>
     		</div>
     		<div class="schedule">
 			        <dl class="first done">
@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div-->
 				    <div class="itemsWrap">
 				    	<table class="comTable">
-				        <thead><tr><th width="460">商品名称</th><th width="140">商城价</th><th width="140">购买数量</th><th width="140">库存</th><th width="138">小计</th></tr></thead>
+				        <thead><tr><th width="460">商品名称</th><th width="140">商城价</th><th width="140">购买数量</th><th width="140">库存</th><th width="138" class="last">小计</th></tr></thead>
 					      <tbody> 
 					      		<s:iterator value="shopOrder.goodsList" status="ind">       	        						
 					        		<tr>
@@ -168,7 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<td width="140">
 					        		        <div class="com productStock">有货</div>         		        
 					        		    </td>
-										<td width="150" rowspan="1" class="bb">
+										<td width="150" rowspan="1" class="bb last">
 					        		        <div class="productPri">￥<s:text name="format.numbers"><s:param value="totalPrice"/></s:text></div>
 					        		    </td>
 					        		</tr>

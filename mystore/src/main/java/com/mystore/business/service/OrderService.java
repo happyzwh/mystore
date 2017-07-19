@@ -14,6 +14,6 @@ public interface OrderService {
 	
 	public Pager<Order> getOrderByUserId(Order order,Integer pageNum,Integer pageSize);
 	
-	public void saveOrder(Integer userId,ShopOrder shopOrder);
+	public Order saveOrder(Integer userId,ShopOrder shopOrder);
 
 }

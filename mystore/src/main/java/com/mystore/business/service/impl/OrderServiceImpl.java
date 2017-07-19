@@ -91,7 +91,7 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void saveOrder(Integer userId,ShopOrder shopOrder){
+	public Order saveOrder(Integer userId,ShopOrder shopOrder){
 		
 		Order order = new Order();
 		order.setAmount(new BigDecimal(shopOrder.getTotalAmount()));
@@ -102,7 +102,7 @@ public class OrderServiceImpl implements OrderService{
 		order.setCreatetype(OrderCreateType.USERPCORDER.getValue());
 		order.setFare(new BigDecimal(shopOrder.getFare()));
 		order.setId_user(userId);
-		order.setSn(UUID.randomUUID().toString());
+		order.setSn(UUID.randomUUID().toString().replace("-", ""));
 		order.setIsdelivery("0");
 		order.setIspaid("0");
 		order.setPayWay(shopOrder.getPayWay());
@@ -152,6 +152,7 @@ public class OrderServiceImpl implements OrderService{
 			
 			orderInvoiceMapper.addOrderInvoice(orderInvoice);
 		}
+		return order;
 		
 	}
 }

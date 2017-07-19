@@ -3,6 +3,8 @@ package com.mystore.business.action;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -10,6 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.mystore.business.common.Constants;
+import com.mystore.business.dto.Order;
 import com.mystore.business.dto.ProPrice;
 import com.mystore.business.dto.Product;
 import com.mystore.business.dto.User;
@@ -60,6 +63,8 @@ public class OrderAction extends BaseAction {
 	private String invTop;
 	
 	private String invCon;
+	
+	private String sn;
 	
 	public String order(){
 		
@@ -135,9 +140,11 @@ public class OrderAction extends BaseAction {
 		shopOrder.setInvTop(invTop);
 		shopOrder.setInvCon(invCon);
 		
-		orderService.saveOrder(user.getId(), shopOrder);
+		Order order = orderService.saveOrder(user.getId(), shopOrder);
 		
-		return order();
+		sn = order.getSn();
+		
+		return "toPay";
 	}
 	
 	public List<UserAddress> getAddress() {
@@ -218,6 +225,14 @@ public class OrderAction extends BaseAction {
 
 	public void setInvCon(String invCon) {
 		this.invCon = invCon;
+	}
+
+	public String getSn() {
+		return sn;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
 	}
 	
 }

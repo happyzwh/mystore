@@ -28,7 +28,7 @@
     width: 100px;
     height: 40px;
     line-height: 40px;
-    background: url(../../images/purchase-icon.png) #fff no-repeat;
+    font-size:20px;
 }
 .schedule{
 	display: block;
@@ -375,10 +375,23 @@
     background: #fafafa;
     border-right: 1px solid #e4e4e4;
 }
+.comTable th.last {
+    line-height: 32px;
+    font-weight: normal;
+    text-align: center;
+    background: #fafafa;
+    border-right: 0px solid #e4e4e4;
+}
 .comTable td {
     height: 70px;
     border-top: 1px solid #e4e4e4;
     border-right: 1px solid #e4e4e4;
+}
+
+.comTable td.last {
+    height: 70px;
+    border-top: 1px solid #e4e4e4;
+    border-right: 0px solid #e4e4e4;
 }
 .comTable td .productImg {
     display: inline;
