@@ -8,6 +8,7 @@
    margin-bottom:0px;
 }
 .footer {
+	background: #fbfbfb url("../images/foot_bg.jpg") repeat-x scroll center top;
     display: block;
     font-family: "Microsoft YaHei",Tahoma,Arial,sans-serif;
     height: 180px;
