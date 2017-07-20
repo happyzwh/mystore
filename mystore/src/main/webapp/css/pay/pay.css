@@ -105,18 +105,22 @@ user agent stylesheetstrong, b {
 }
 .paymentList .paymenWrap {
     display: none;
-    padding: 40px 0 15px 30px;
+    padding: 15px 0 15px 30px;
 }
 .paymenWrap ul {
-    margin: 25px 0 15px;
+    margin: 15px 0 15px;
 }
 .Payment.payment_1 {
     background-position: 0 0;
 }
 .paymenWrap ul li {
     border: 1px solid #ccc;
-    margin: 0 29px 15px 0;
+    margin: 0 29px 0px 0;
     cursor: pointer;
+}
+.paymenWrap ul li.on,.paymenWrap ul li.focus{ 
+	border:1px solid #ff9933; 
+	box-shadow:0 0 4px 1px #ffffdc;
 }
 .Payment {
     float: left;
@@ -133,12 +137,12 @@ user agent stylesheetstrong, b {
     background-position: 0 -88px;
 }
 .paymentUsed span b, .paymenWrap ul li b, .payRecommend span b {
-    display: inline-block;
-    width: 70px;
-    height: 18px;
+    display: none;
+    width: 36px;
+    height: 34px;
     position: absolute;
-    left: 110px;
-    top: 2px;
+    left: 140px;
+    top: 4px;
 }
 .payBtnBox {
 	margin-top:10px;

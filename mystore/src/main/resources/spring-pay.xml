@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	    default-autowire="byName">
+	
+	<bean id="alipayConfig" class="com.mystore.business.pay.AlipayConfig">
+		<!-- 应用ID -->
+		<property name="appId" value="2016080600180958" />
+		<!-- 商户私钥 -->
+		<property name="merchantPrivateKey" value="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQChdGq7ouh4tr94c8OVy66wsJWvtqyEvYFB5uFPbEChOnbv8L73rKilqY3QSyfvFD1Ib6ekv0kY/sQ7hH6gF+doQri9QgEetGm2jN4GaRnC0lNIi/1cFEyjNLaQhKKQ+mRd4PPrTC6u+92vng1tttpVHJU33wYif2bjRKdROMOlgYXMnFVmPf1bMu+k9ZxpQohQxxr0MJeuT2YOWvONx2T9QbqlPUlXqDAOTmokxIda19cwapZrvj6Zuh9X/Hdwib/9t16BcSmmlaQsOhfd6Xnf9z8E+FvAGpA3m2DwqLYfVJnXKUAxG+z+eOC+A3WQXgxvlkSAWbA0RMJ2Ud434dtJAgMBAAECggEAHbLDW0ZpCqNa7vYkWO6BcKDat9qbO0N8fjnQ4gIglUeizxnylq5cyzQ4EMNyUgjgCO344VYKRR2/zM7fV+VtvIDhaHa2rAY1l82rnXRBt9NmXGbbsM9PFYpBtq2fFZnpUldpprN5ttg/e+lPwQmseZFrZT6R61CSBWYAfPE7E7tHo2bKTXnPMkPkN031MGrjpp8uEX86I6qjc4bUZcKrb08JL1ke0SY4grT6BsmuOgr60DO/rVQZ5h9rbXaEx0C3co+L5eFP8KgyVB9StKBMo6LUnroLVAI9pqa6v8LxECyVgyKKK6zHEPz/2Zvn+ymg4nJTAy/wGeVmm6/TSQfmcQKBgQDR653XZ4TheerWXeTSq6F/intyJ06M0J5z9VkZa6msxwSRHRc1Jpz9AK1AodeySuv90uuxwNTHfcIXY2p1rGQf5FbHJoKy8Szq2yRYVCcPDkM8P10gHPGRIkfZjJ7GBsHfvg/c1BPA1iv2oCqwwbZNpsXcztB/G86MTYh03UwP3QKBgQDE5UvBSUfCEkVvG/7KaY3V4d0MMRFy7LWzNuFc1A0Wb7xrSqSOlxT5p2Oaygz7t7PaUSVHpaEA0emD5CKDRKgggeE6rBdN6jhZPQDKuwbgYg43RtWm66XUMFoEwfjjm1SpKF3jlPKJ2wrfvZFhzbU6pwXuZ2F+3YVtVB7H5kr4XQKBgDfJv2wEperqZL/NukdGt6fWnNIMojKIKuQ0WxaHZ1N0nMEYExfcCDKw4Fph6JoIkUkmqd7WmXXe9RsUH7HgO8fB/lH06R03PTG5RaJ30t2Mc8/qIwyqxIRGsQOe/H8yQon8z+hnMEy6XnqvvEi3YoSmgsUY7Y4qTK062b39Jf69AoGBAKmAiEXecyMUnae4XxEb65m8NpK/TzkzpHyi+0Hx3054ZKms+ZszX0BJJQtlc+XjULbacpCKet981l3PsRJ2sZJCnYXoDqvpvha82Iiul43lfD2EAnwPk5PnCCfeYQh4eVqiwKkiWeXppyPUS2r6L1FN5mJFp34S8EGdUF5g2BuVAoGALcngzq6DdGi/ZjoYG8drWY3TwvxKw5tU9j9Ihw1GfiJ/o7OdcBe74KIzSTHcQeSof8RvavsBw3yWmqesG9h/KzgnqI2Ka0Kavc/tZiFUkxV1RcuRb02JN2/5WKtECf7ee9PgW2EYpLfiQYhbEziCF9ChanFPeEQRoMOBuUKmH7E=" />
+		<!-- 商户私钥 -->
+		<property name="alipayPublicKey" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvuFLLdlCQlVj138OXxpuCDzuoUoxDDOKxjfeX1vG1DrFMimUCVhq5HXsJ4LCK1g4xJs0pBx0FcUYhlnyKstRBindsqRX3bJFhdC0R9reTlLgKLDqAHOniZ53oEjimFJOJNSR3ZKhKPpQ1W6HAj9mx+2dDIpSqD/kso1Z48GzjS/4IRr4Ibvol0HbZGPSJo+pykv3MH/0KxwjyLr9rQBERggInNusv32FxG1fd2IldNCXD70FBKdqXuWwEeUqeB5zRV8gtx7Ab5/mg/WX0yXqG3vmRe9zyVeWyMiyEXQgHS0IHkgT2lyNmhedQoJSPSZXc/gp06awIYC97rPs6qHhxQIDAQAB" />
+		<!-- 服务器异步通知页面路径  -->
+		<property name="notifyUrl" value="http://47.93.38.231/notify_pay_zfb.dhtml" />
+		<!-- 页面跳转同步通知页面路径 -->
+		<property name="returnUrl" value="http://47.93.38.231/return_pay_zfb.dhtml" />
+		<!-- 签名方式 -->
+		<property name="signType" value="RSA2" />
+		<!-- 签名方式 -->
+		<property name="charset" value="utf-8" />
+		<!-- 签名方式 -->
+		<property name="gatewayUrl" value="https://openapi.alipaydev.com/gateway.do" />
+	</bean> 
+  
+</beans>
+

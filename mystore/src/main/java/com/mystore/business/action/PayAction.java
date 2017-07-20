@@ -29,9 +29,6 @@ public class PayAction  extends BaseAction{
 		
 		order = orderService.getOrderBySn(sn);
 		
-		
-		
-		
 		return "pay";
 		
 	}
