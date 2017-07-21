@@ -13,6 +13,7 @@
 		        classpath:spring-redis.xml,
 		        classpath:spring-biz.xml,
 		        classpath:spring-mail.xml,
+		        classpath:spring-pay.xml,
 		        classpath:dubbo-client.xml
 	    </param-value>
 	</context-param> 
@@ -131,4 +132,19 @@
             <include-coda></include-coda>  
         </jsp-property-group>  
     </jsp-config>  
+    
+    <error-page>  
+        <error-code>404</error-code>  
+        <location>/404.html</location>  
+    </error-page>  
+  
+    <error-page>  
+        <error-code>500</error-code>  
+        <location>/500.htm</location>  
+    </error-page>  
+
+    <error-page> 
+        <exception-type>java.lang.Exception</exception-type> 
+        <location>/404.html</location> 
+    </error-page> 
 </web-app>

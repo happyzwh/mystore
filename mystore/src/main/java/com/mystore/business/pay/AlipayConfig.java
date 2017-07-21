@@ -1,5 +1,8 @@
 package com.mystore.business.pay;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AlipayConfig {
 	
 	    // 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号

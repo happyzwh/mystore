@@ -21,9 +21,9 @@
 		<!-- 商户私钥 -->
 		<property name="alipayPublicKey" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvuFLLdlCQlVj138OXxpuCDzuoUoxDDOKxjfeX1vG1DrFMimUCVhq5HXsJ4LCK1g4xJs0pBx0FcUYhlnyKstRBindsqRX3bJFhdC0R9reTlLgKLDqAHOniZ53oEjimFJOJNSR3ZKhKPpQ1W6HAj9mx+2dDIpSqD/kso1Z48GzjS/4IRr4Ibvol0HbZGPSJo+pykv3MH/0KxwjyLr9rQBERggInNusv32FxG1fd2IldNCXD70FBKdqXuWwEeUqeB5zRV8gtx7Ab5/mg/WX0yXqG3vmRe9zyVeWyMiyEXQgHS0IHkgT2lyNmhedQoJSPSZXc/gp06awIYC97rPs6qHhxQIDAQAB" />
 		<!-- 服务器异步通知页面路径  -->
-		<property name="notifyUrl" value="http://47.93.38.231/notify_pay_zfb.dhtml" />
+		<property name="notifyUrl" value="http://47.93.38.231/pay_notify_zfb.dhtml" />
 		<!-- 页面跳转同步通知页面路径 -->
-		<property name="returnUrl" value="http://47.93.38.231/return_pay_zfb.dhtml" />
+		<property name="returnUrl" value="http://47.93.38.231/pay_return_zfb.dhtml" />
 		<!-- 签名方式 -->
 		<property name="signType" value="RSA2" />
 		<!-- 签名方式 -->

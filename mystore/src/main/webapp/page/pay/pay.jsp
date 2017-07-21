@@ -55,19 +55,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="paymentList">
 						<div class="paymenWrap" style="display: block;">
 							<ul class="clearfix">
-								<li class="Payment payment_1" title="支付宝" value="101"><b class="payIcon p_1"></b></li>
-								<li class="Payment payment_2" title="微信支付" value="143"><b class="payIcon p_1"></b></li>
-								<li class="Payment payment_4" title="在线支付" value="104"><b class="payIcon p_1"></b></li>
+								<li class="Payment payment_1" title="支付宝" value="1"><b class="payIcon p_1"></b></li>
+								<li class="Payment payment_2" title="微信支付" value="2"><b class="payIcon p_1"></b></li>
+								<li class="Payment payment_4" title="在线支付" value="3"><b class="payIcon p_1"></b></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="payBtnBox">
-					<a class="payBtn" href="javascript:takeInventory();"><i class="payIcon"></i></a>
+					<a class="payBtn" href="javascript:void(0);"><i class="payIcon"></i></a>
 				</div>
 				<div class="payProWrap">
 					<h3>注意事项：</h3>
-					<p>"订单提交成功"仅表平台收到您的订单，只有您的订单通过审核后，才代表订单正式生效；</p>
+					<p>"订单提交成功"仅表示平台收到您的订单，只有您的订单通过审核后，才代表订单正式生效；</p>
 					<p>选择货到付款的客户，请您务必认真检查所有货物，如有不符，您可以拒收；</p>
 					<p>选择其他方式的客户，请您认真检查外包装。如有明显损坏迹象，您可以拒收该货品，并及时通知我们。</p>
 				</div>
@@ -75,6 +75,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
     </div>	
  </div>
+ <form action ="pay_submit.dhtml" id="myform" method="post" target="_self">
+	<input type="hidden" name="sn" value='<s:property value="order.sn"/>'/>
+	<input type="hidden" name="payChannel" id="payChannel" value=''/>
+</form>
   <!--#include file="<%=path%>/page/foot.html" --> 
 </body>
 </html>

@@ -3,8 +3,6 @@ package com.mystore.business.action;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
