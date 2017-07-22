@@ -25,10 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="payMain">
 				<div class="successWrap">
 					<ul class="successCon">
-						<li class="sucTit"><i class="payIcon"></i><s:if test="payStatus == '1'"></>支付成功</s:if><s:else>支付失败</s:else></li>
-						<li class="sucPro">订单<span>24小时</span>内有效，逾期将被取消！
-						</li>
-						<li class="sucCon">订单编号：<em>  <a href="order_detail.htm"><s:property value='sn'/></a></em>订单金额：<b>￥<s:property value='amountTrade'/></b><span class="sucCon-pro"><i class="payIcon"></i></span></li>
+						<li class="sucTit"><i class="payIcon"></i><s:if test="payStatus == 1"></>支付成功</s:if><s:else>支付失败</s:else></li>
+						<li class="sucCon">订单编号：<em>  <a href="order_detail.htm"><s:property value='sn'/></a></em>订单金额：<b>￥<s:property value='amountTrade'/></b></li>
 					</ul>
 				</div>
 			</div>

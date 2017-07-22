@@ -98,7 +98,7 @@ public class PayAction  extends BaseAction{
     	alipayRequest.setBizContent("{\"out_trade_no\":\""+ order.getSn() +"\"," 
     			+ "\"total_amount\":\""+ order.getAmount_payable() +"\"," 
     			+ "\"subject\":\""+ order.getSn() +"\"," 
-    			+ "\"timestamp\":\""+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") +"\"," 
+//    			+ "\"timeout_express\":\"120m\"," 
     			+ "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
     	
     	String form="";
@@ -231,7 +231,7 @@ public class PayAction  extends BaseAction{
     	
 
     	
-    	log.info("----------------------支付宝支付异步响应开始-----------------------");
+    	log.info("----------------------支付宝支付异步响应结束-----------------------");
     	
     	
     }

@@ -19,7 +19,7 @@ $(function(){
 	
 	$(".form-element input").focus(function(){
 		$(this).parent().next().removeClass("hidden");
-		$(this).css({"outline":"none"});
+		$(this).css({"outline":"none","background-color":"#fff"});
 		if($.trim($(this).val()) == ''){
 			$(this).css("color","#C4C4C4");
 		}else{

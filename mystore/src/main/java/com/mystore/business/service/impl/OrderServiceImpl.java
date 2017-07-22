@@ -1,6 +1,8 @@
 package com.mystore.business.service.impl;
 
 import java.math.BigDecimal;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,12 +99,14 @@ public class OrderServiceImpl implements OrderService{
 		order.setAmount(new BigDecimal(shopOrder.getTotalAmount()));
 		order.setAmount_disc(new BigDecimal(0));
 		order.setAmount_paid(new BigDecimal(0));
-		order.setAmount_payable(new BigDecimal(shopOrder.getTotalAmount()).subtract(new BigDecimal(shopOrder.getFare())));
+		order.setAmount_payable(new BigDecimal(shopOrder.getPayAmount()));
 		order.setAmount_return(new BigDecimal(0));
 		order.setCreatetype(OrderCreateType.USERPCORDER.getValue());
 		order.setFare(new BigDecimal(shopOrder.getFare()));
 		order.setId_user(userId);
-		order.setSn(UUID.randomUUID().toString().replace("-", ""));
+		String uuid = UUID.randomUUID().toString().replace("-", "");
+		uuid = uuid.substring(0,5);
+		order.setSn(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())+uuid);
 		order.setIsdelivery("0");
 		order.setIspaid("0");
 		order.setPayWay(shopOrder.getPayWay());

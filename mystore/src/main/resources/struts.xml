@@ -62,6 +62,7 @@
         
         <action name="pay_*" class="payAction" method="{1}">
 		     <result name="pay">/page/pay/pay.jsp</result>
+		     <result name="return_zfb">/page/pay/return_zfb.jsp</result>
         </action>
     </package>
     
