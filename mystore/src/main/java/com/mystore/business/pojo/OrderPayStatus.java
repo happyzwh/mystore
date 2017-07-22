@@ -1,15 +1,15 @@
 package com.mystore.business.pojo;
 
-public enum RetStatusPay {
-	SUCCESS("成功","1"),
-	FAIL("失败","0"),
-	SIGNERROR("验签失败","-1"),
-	REPEATED("重复","-2");
+public enum OrderPayStatus {
+	
+	UNPAY("未付款","0"),  //付0元
+	PAYING("付款中","1"),  //部分付款
+	PAYED("已付款","2");   //付全款
 	
 	private String name;
 	private String value;
 	
-	private RetStatusPay(String name,String value){
+	private OrderPayStatus(String name,String value){
 		this.name = name;
 		this.value = value;
 	}
@@ -32,7 +32,7 @@ public enum RetStatusPay {
 
 	public static void main(String[] args){
 		
-		System.out.println(RetStatusPay.SUCCESS.getValue());
+		System.out.println(OrderPayStatus.UNPAY.getValue());
 		
 	}
 
