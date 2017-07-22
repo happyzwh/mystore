@@ -24,6 +24,8 @@ public class ShopOrder implements java.io.Serializable{
 	
 	private Double payAmount = 0d;
 	
+	private Double amountBalancePay = 0d;
+	
 	private Integer addreId;
 	
 	private String payWay;
@@ -165,6 +167,14 @@ public class ShopOrder implements java.io.Serializable{
 
 	public void setInvCon(String invCon) {
 		this.invCon = invCon;
+	}
+
+	public Double getAmountBalancePay() {
+		return amountBalancePay;
+	}
+
+	public void setAmountBalancePay(Double amountBalancePay) {
+		this.amountBalancePay = amountBalancePay;
 	}
 	
 	

@@ -52,6 +52,8 @@ public class OrderAction extends BaseAction {
 	
 	private String payWay;
 	
+	private Double amountBalancePay;
+	
 	private String isInv;
 	
 	private String invType;
@@ -137,6 +139,7 @@ public class OrderAction extends BaseAction {
 		shopOrder.setInvToptype(invToptype);
 		shopOrder.setInvTop(invTop);
 		shopOrder.setInvCon(invCon);
+		shopOrder.setAmountBalancePay(amountBalancePay);
 		
 		Order order = orderService.saveOrder(user.getId(), shopOrder);
 		
@@ -231,6 +234,14 @@ public class OrderAction extends BaseAction {
 
 	public void setSn(String sn) {
 		this.sn = sn;
+	}
+
+	public Double getAmountBalancePay() {
+		return amountBalancePay;
+	}
+
+	public void setAmountBalancePay(Double amountBalancePay) {
+		this.amountBalancePay = amountBalancePay;
 	}
 	
 }

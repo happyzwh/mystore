@@ -28,6 +28,8 @@ public class Order extends BasicDto{
 
 	private BigDecimal amount_disc;
 	
+	private BigDecimal amount_balance_pay;
+	
 	private BigDecimal  fare;
 	
 	private String ispaid;
@@ -198,6 +200,14 @@ public class Order extends BasicDto{
 
 	public void setLastDate(Date lastDate) {
 		this.lastDate = lastDate;
+	}
+
+	public BigDecimal getAmount_balance_pay() {
+		return amount_balance_pay;
+	}
+
+	public void setAmount_balance_pay(BigDecimal amount_balance_pay) {
+		this.amount_balance_pay = amount_balance_pay;
 	}
 	
 

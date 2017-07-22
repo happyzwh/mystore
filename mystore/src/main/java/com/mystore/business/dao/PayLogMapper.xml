@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.PayLogMapper">
+	<resultMap type="payLog" id="payLogMap">
+		<result property="id" column="id" />
+		<result property="idOrder" column="id_order" />
+		<result property="snOrder" column="sn_order" />
+		<result property="payPlat" column="payplat" />
+		<result property="payChannel" column="paychannel" />
+		<result property="snPayPlat" column="sn_payplat" />
+		<result property="bankCode" column="bankcode" />
+		<result property="amount" column="amount" />
+		<result property="status" column="status" />
+		<result property="createDate" column="createdate" />	
+		<result property="lastDate" column="lastdate" />	
+	</resultMap>
+	<insert id="addPayLog" parameterType="payLog" useGeneratedKeys="true" keyProperty="id">
+		insert into log_pay(
+		    id_order,
+		    sn_order,
+		    payplat,
+		    paychannel,
+		    sn_payplat,
+		    bankcode,
+		    amount,
+		    status,
+		    createdate,
+		    lastdate
+		 )values(
+		    #{idOrder},
+		    #{snOrder},
+		    #{payPlat},
+		    #{payChannel},
+		    #{snPayPlat},
+		    #{bankCode},
+		    #{amount},
+		    0,
+		    now(),
+		    now()
+		 )
+	</insert>
+	<update id="updatePayLogByOrderSn" parameterType="payLog">
+		update log_pay
+		<trim prefix="set" prefixOverrides=",">
+		  <if test="payChannel != null">
+	        	paychannel = #{payChannel},
+	       </if>
+	       <if test="snPayPlat != null">
+	        	sn_payplat = #{snPayPlat},
+	       </if>
+	       <if test="bankCode != null">
+				bankcode = #{bankCode},
+		   </if>
+		   <if test="status != null">
+				status = #{status},
+		   </if>
+		   lastdate = now()
+		</trim>	
+		where sn_order = #{snOrder}
+	</update>
+	<select id="getPayLogByOrderSn" parameterType="string" resultMap="payLogMap">
+		select
+		   id_order,
+		    sn_order,
+		    payplat,
+		    paychannel,
+		    sn_payplat,
+		    bankcode,
+		    amount,
+		    status,
+		    createdate,
+		    lastdate
+		from log_pay 
+		where sn_order = #{snOrder}
+	</select>
+</mapper>

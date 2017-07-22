@@ -13,6 +13,7 @@
 		<result property="amount_payable" column="amount_payable" />
 		<result property="amount_return" column="amount_return" />
 		<result property="amount_disc" column="amount_disc" />
+		<result property="amount_balance_pay" column="amount_balance_pay" />
 		<result property="fare" column="fare" />
 		<result property="ispaid" column="ispaid" />
 		<result property="time_pay" column="time_pay" />
@@ -34,6 +35,7 @@
 		    amount_payable,
 		    amount_return,
 		    amount_disc,
+		    amount_balance_pay,
 		    fare,
 		    ispaid,
 		    time_pay,
@@ -53,6 +55,7 @@
 		    #{amount_payable},
 		    #{amount_return},
 		    #{amount_disc},
+		    #{amount_balance_pay},
 		    #{fare},
 		    #{ispaid},
 		    #{time_pay},
@@ -104,6 +107,7 @@
 		    amount_payable,
 		    amount_return,
 		    amount_disc,
+		    amount_balance_pay,
 		    fare,
 		    ispaid,
 		    time_pay,
@@ -128,6 +132,7 @@
 		    amount_payable,
 		    amount_return,
 		    amount_disc,
+		    amount_balance_pay,
 		    fare,
 		    ispaid,
 		    time_pay,

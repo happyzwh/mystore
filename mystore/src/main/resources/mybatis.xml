@@ -42,6 +42,8 @@
       <typeAlias alias="orderProduct" type="com.mystore.business.dto.OrderProduct"/>
       <typeAlias alias="orderInvoice" type="com.mystore.business.dto.OrderInvoice"/>
       <typeAlias alias="orderShipAddress" type="com.mystore.business.dto.OrderShipAddress"/>
+      
+      <typeAlias alias="payLog" type="com.mystore.business.dto.PayLog"/>
    </typeAliases>  
    <mappers>  
       <mapper resource="com/mystore/business/dao/SearchMapper.xml" />   
@@ -64,5 +66,7 @@
       <mapper resource="com/mystore/business/dao/OrderProductMapper.xml" />
       <mapper resource="com/mystore/business/dao/OrderInvoiceMapper.xml" />
       <mapper resource="com/mystore/business/dao/OrderShipAddressMapper.xml" />
+      
+      <mapper resource="com/mystore/business/dao/PayLogMapper.xml" />
    </mappers>  
 </configuration>  

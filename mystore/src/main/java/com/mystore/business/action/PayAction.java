@@ -2,7 +2,6 @@ package com.mystore.business.action;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,15 +15,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.mystore.business.dto.Order;
+import com.mystore.business.dto.PayLog;
 import com.mystore.business.pay.AlipayConfig;
+import com.mystore.business.pojo.PayPlat;
+import com.mystore.business.pojo.PayStatus;
 import com.mystore.business.pojo.RetStatusPay;
 import com.mystore.business.service.OrderService;
+import com.mystore.business.service.PayLogService;
 
 @Controller("payAction")
 @Scope("prototype")
@@ -43,6 +47,9 @@ public class PayAction  extends BaseAction{
 	@Autowired
 	private AlipayConfig alipayConfig;
 	
+	@Autowired
+	private PayLogService payLogService;
+	
 	private Integer id;
 	
 	private String sn;
@@ -53,7 +60,7 @@ public class PayAction  extends BaseAction{
 	
 	private Order order;
 	
-	private Integer payChannel;
+	private String payChannel;
 	
 	private String payStatus;
 
@@ -69,7 +76,7 @@ public class PayAction  extends BaseAction{
 		
 		order = orderService.getOrderBySn(sn);
 		
-		if(payChannel == 1){
+		if(payChannel.equals(PayPlat.ZFB.getValue())){
 			alipaySubmit();
 		}
 		
@@ -79,50 +86,65 @@ public class PayAction  extends BaseAction{
 	
     private void alipaySubmit() throws IOException{
     	
-    	 log.info("----------------------支付宝支付请求提交开始-----------------------");
+    	log.info("订单号:"+sn+",支付宝支付请求提交开始");
     	
+    	PayLog payLog = new PayLog();
     	
-    	AlipayClient alipayClient = new DefaultAlipayClient(alipayConfig.getGatewayUrl(), alipayConfig.getAppId(), alipayConfig.getMerchantPrivateKey(), "json", alipayConfig.getCharset(), alipayConfig.getAlipayPublicKey(), alipayConfig.getSignType());
-    	//设置请求参数
-    	AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-    	alipayRequest.setReturnUrl(alipayConfig.getReturnUrl());
-    	alipayRequest.setNotifyUrl(alipayConfig.getNotifyUrl());
-    	
-//    	//商户订单号，商户网站订单系统中唯一订单号，必填
-//    	String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
-//    	//付款金额，必填
-//    	String total_amount = new String(request.getParameter("WIDtotal_amount").getBytes("ISO-8859-1"),"UTF-8");
-//    	//订单名称，必填
-//    	String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"),"UTF-8");
-    	
-    	alipayRequest.setBizContent("{\"out_trade_no\":\""+ order.getSn() +"\"," 
-    			+ "\"total_amount\":\""+ order.getAmount_payable() +"\"," 
-    			+ "\"subject\":\""+ order.getSn() +"\"," 
-//    			+ "\"timeout_express\":\"120m\"," 
-    			+ "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
-    	
-    	String form="";
-        try {
-            form = alipayClient.pageExecute(alipayRequest).getBody(); //调用SDK生成表单
-            log.info("----------------------支付宝支付已提交-----------------------");
-        } catch (AlipayApiException e) {
-            e.printStackTrace();
-        }
-        HttpServletResponse response = ServletActionContext.getResponse();
-        response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().write(form);//直接将完整的表单html输出到页面
-        response.getWriter().flush();
-        response.getWriter().close();
+    	try{
+    		
+	    	payLog.setAmount(order.getAmount_payable());
+	    	payLog.setIdOrder(order.getId());
+	    	payLog.setPayPlat(PayPlat.ZFB.getValue());
+	    	payLog.setSnOrder(order.getSn());
+	    	
+	    	payLogService.addPayLog(payLog);
+	    	
+	    	AlipayClient alipayClient = new DefaultAlipayClient(alipayConfig.getGatewayUrl(), alipayConfig.getAppId(), alipayConfig.getMerchantPrivateKey(), "json", alipayConfig.getCharset(), alipayConfig.getAlipayPublicKey(), alipayConfig.getSignType());
+	    	//设置请求参数
+	    	AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
+	    	alipayRequest.setReturnUrl(alipayConfig.getReturnUrl());
+	    	alipayRequest.setNotifyUrl(alipayConfig.getNotifyUrl());
+	    	
+	    	JSONObject bizContent = new JSONObject();
+	    	bizContent.put("out_trade_no", order.getSn());
+	    	bizContent.put("total_amount", order.getAmount_payable());
+	    	bizContent.put("subject", order.getSn());
+//	    	bizContent.put("timeout_express", "10m");
+	    	bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
+	    	
+	    	alipayRequest.setBizContent(bizContent.toJSONString());
+	    	
+	    	String form = alipayClient.pageExecute(alipayRequest).getBody(); //调用SDK生成表单
+	    	log.info("订单号:"+sn+",支付宝支付请求提交成功");
+	      
+	        payLog.setStatus(PayStatus.SUBMITSUCCESS.getValue());
+    		payLogService.updatePayLogByOrderSn(payLog);
+	        
+	        HttpServletResponse response = ServletActionContext.getResponse();
+	        response.setContentType("text/html;charset=UTF-8");
+	        response.getWriter().write(form);//直接将完整的表单html输出到页面
+	        response.getWriter().flush();
+	        response.getWriter().close();
+	        
+    	}catch(Exception e){
+    		log.info("订单号:"+sn+",支付宝支付请求提交失败");
+    		log.error(e.getMessage());
+    		payLog.setStatus(PayStatus.SUBMITFAIL.getValue());
+    		payLogService.updatePayLogByOrderSn(payLog);
+    	}
         
-        log.info("----------------------支付宝支付请求提交结束-----------------------");
+    	log.info("订单号:"+sn+",支付宝支付请求提交结束");
     	
     }
     
     public String return_zfb() throws UnsupportedEncodingException, AlipayApiException{
     	
-    	log.info("----------------------支付宝支付同步响应开始-----------------------");
-    	
     	HttpServletRequest request = ServletActionContext.getRequest();
+    	
+    	//商户订单号
+    	sn = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+    
+    	log.info("订单号:"+sn+",支付宝支付同步响应开始");
     	
     	//获取支付宝GET过来反馈信息
     	Map<String,String> params = new HashMap<String,String>();
@@ -142,14 +164,12 @@ public class PayAction  extends BaseAction{
     	
     	boolean signVerified = AlipaySignature.rsaCheckV1(params, alipayConfig.getAlipayPublicKey(), alipayConfig.getCharset(), alipayConfig.getSignType()); //调用SDK验证签名
 
-    	//商户订单号
-		sn = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
 		//支付宝交易号
 		tradeNo = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
 		//付款金额
 		amountTrade = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
     	
-		log.info("----------------------支付宝支付同步响应验签结果:"+signVerified+"-----------------------");
+		log.info("订单号:"+sn+",支付宝支付同步响应验签结果:"+signVerified);
 		
     	if(!signVerified) {
     		payStatus = RetStatusPay.SIGNERROR.getValue();
@@ -157,7 +177,7 @@ public class PayAction  extends BaseAction{
     		payStatus = RetStatusPay.SUCCESS.getValue();
     	}
 
-    	log.info("----------------------支付宝支付同步响应结束-----------------------");
+    	log.info("订单号:"+sn+",支付宝支付同步响应结束");
     	
     	return "return_zfb";
     }
@@ -265,11 +285,11 @@ public class PayAction  extends BaseAction{
 		this.orderService = orderService;
 	}
 
-	public Integer getPayChannel() {
+	public String getPayChannel() {
 		return payChannel;
 	}
 
-	public void setPayChannel(Integer payChannel) {
+	public void setPayChannel(String payChannel) {
 		this.payChannel = payChannel;
 	}
 
@@ -286,7 +306,7 @@ public class PayAction  extends BaseAction{
 	}
 
 	public void setAmountTrade(String amountTrade) {
-		amountTrade = amountTrade;
+		this.amountTrade = amountTrade;
 	}
 
 	public String getPayStatus() {

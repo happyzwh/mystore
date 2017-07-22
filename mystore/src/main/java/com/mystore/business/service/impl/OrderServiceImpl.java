@@ -98,9 +98,10 @@ public class OrderServiceImpl implements OrderService{
 		Order order = new Order();
 		order.setAmount(new BigDecimal(shopOrder.getTotalAmount()));
 		order.setAmount_disc(new BigDecimal(0));
-		order.setAmount_paid(new BigDecimal(0));
-		order.setAmount_payable(new BigDecimal(shopOrder.getPayAmount()));
+		order.setAmount_paid(new BigDecimal(shopOrder.getAmountBalancePay()));
+		order.setAmount_payable(new BigDecimal(shopOrder.getPayAmount()).subtract(order.getAmount_paid()));
 		order.setAmount_return(new BigDecimal(0));
+		order.setAmount_balance_pay(new BigDecimal(shopOrder.getAmountBalancePay()));
 		order.setCreatetype(OrderCreateType.USERPCORDER.getValue());
 		order.setFare(new BigDecimal(shopOrder.getFare()));
 		order.setId_user(userId);
