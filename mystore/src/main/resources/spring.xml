@@ -61,6 +61,7 @@
 			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception,RuntimeException" />
 		    <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception,RuntimeException" />
 		    <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception,RuntimeException" />
+		    <tx:method name="do*" propagation="REQUIRED" rollback-for="Exception,RuntimeException" />
 		    <tx:method name="*" propagation="SUPPORTS" read-only="true" /> 
 		</tx:attributes>  
 	</tx:advice>  

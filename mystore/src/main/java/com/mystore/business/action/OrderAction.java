@@ -139,7 +139,7 @@ public class OrderAction extends BaseAction {
 		shopOrder.setInvToptype(invToptype);
 		shopOrder.setInvTop(invTop);
 		shopOrder.setInvCon(invCon);
-		shopOrder.setAmountBalancePay(amountBalancePay);
+		shopOrder.setAmountBalancePay(amountBalancePay != null?amountBalancePay:0d);
 		
 		Order order = orderService.saveOrder(user.getId(), shopOrder);
 		

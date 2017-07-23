@@ -170,7 +170,7 @@ public class PayAction  extends BaseAction{
 //		//支付宝交易号
 //		tradeNo = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
 //		//付款金额
-//		amountTrade = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
+		amountTrade = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
     	
 		log.info("订单号:"+sn+",支付宝支付同步响应验签结果:"+signVerified);
 		
@@ -252,9 +252,10 @@ public class PayAction  extends BaseAction{
 	    	3、校验通知中的seller_id（或者seller_email) 是否为out_trade_no这笔单据的对应的操作方（有的时候，一个商户可能有多个seller_id/seller_email）
 	    	4、验证app_id是否为该商户本身。
 	    	*/
+	    	
+	    	log.info("订单号:"+sn+",支付宝支付异步响应验签结果:"+signVerified);
+	    	
 	    	if(signVerified) {//验证成功
-	    		
-	    		log.info("订单号:"+sn+",支付宝支付异步响应验签结果:"+signVerified);
 	    		
 	    		if(trade_status.equals("TRADE_FINISHED")){
 	    			//判断该笔订单是否在商户网站中已经做过处理
@@ -284,6 +285,7 @@ public class PayAction  extends BaseAction{
 	    	}
 	    	
     	}catch(Exception e){
+    		e.printStackTrace();
     		retCode = "failure";
     		log.info("订单号:"+sn+",支付宝支付异步响应失败");
     	}finally{

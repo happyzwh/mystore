@@ -376,6 +376,22 @@
 			</dependency>
   </dependencies>
   <build>
-    <finalName>mystore</finalName>
-  </build>
+        <finalName>mystore</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+</build>
 </project>

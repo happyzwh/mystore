@@ -89,14 +89,14 @@
 	       <if test="repstatus != null">
 	        	repstatus = #{repstatus},
 	       </if>
-	       <if test="payway != null">
-	        	payway = #{payway},
+	       <if test="payWay != null">
+	        	payway = #{payWay},
 	       </if>
 		   lastdate = now()
 		</trim>	
 		where sn = #{sn}
 	</update>
-	<select id="getOrderBySn" parameterType="string" resultType="order">
+	<select id="getOrderBySn" parameterType="string" resultMap="orderMap">
 		select
 		    id,
 		    sn,
@@ -121,7 +121,7 @@
 		from ord_order 
 		where sn = #{sn}
 	</select>
-	<select id="getOrderByUserId" parameterType="order" resultType="order">
+	<select id="getOrderByUserId" parameterType="order" resultMap="orderMap">
 		select
 		    id,
 		    sn,
