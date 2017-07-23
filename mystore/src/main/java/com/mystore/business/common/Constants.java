@@ -52,5 +52,9 @@ public class Constants {
 	public static final  Long VALUE_TIME_CATE_ALL = 1l; 
 	
     public static final String LOCALHOST = new PropertiesUtil("config.properties").readProperty("localhost");
-
+    
+    //token 防止重复得交
+    public static final String KEY_TOKEN_SESSION= "key_token_session";
+    //token 缓存时长和
+    public static final Long VALUE_TIME_TOKEN_SESSION = 1l; 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" import="com.mystore.business.common.ConfigReader" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%> 
+<%@ taglib uri="/token-tags" prefix="token" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -288,6 +289,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<input type="hidden" name="invToptype" id="invToptype" value=''/>
 	<input type="hidden" name="invTop" id="invTop" value=''/>
 	<input type="hidden" name="invCon" id="invCon" value=''/>
+	<token:token/>
 </form>
   <!--#include file="<%=path%>/page/foot.html" --> 
 </body>

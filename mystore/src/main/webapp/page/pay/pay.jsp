@@ -1,5 +1,6 @@
 <%@ page language="java" import="com.mystore.business.common.ConfigReader" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%> 
+<%@ taglib uri="/token-tags" prefix="token" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -78,6 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <form action ="pay_submit.dhtml" id="myform" method="post" target="_self">
 	<input type="hidden" name="sn" value='<s:property value="order.sn"/>'/>
 	<input type="hidden" name="payChannel" id="payChannel" value=''/>
+	<token:token/>
 </form>
   <!--#include file="<%=path%>/page/foot.html" --> 
 </body>

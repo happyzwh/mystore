@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" 
+        version="2.0"> 
+    <description>token taglib</description><!-- 描述 --> 
+    <display-name>token taglib</display-name> 
+    <tlib-version>1.0</tlib-version><!-- 版号 --> 
+    <short-name>token</short-name> <!-- 简单名称 --> 
+    <uri>/token-tags</uri> <!-- 引用路径 -->
+
+    <tag> 
+       <description></description> 
+       <name>token</name> <!-- 标签名 --> 
+       <tag-class>com.mystore.business.common.TokenTag</tag-class> <!-- 标签类 --> 
+       <body-content>empty</body-content> 
+     </tag> 
+</taglib>
