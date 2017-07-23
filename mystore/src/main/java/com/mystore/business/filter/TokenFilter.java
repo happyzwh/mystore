@@ -31,7 +31,7 @@ public class TokenFilter implements Filter{
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
+		 // TODO Auto-generated method stub
 		
 		 HttpServletRequest req = (HttpServletRequest)request;
 		 HttpServletResponse res = (HttpServletResponse)response;
@@ -42,8 +42,10 @@ public class TokenFilter implements Filter{
 			 String sessionId = req.getSession().getId();
 			 RedisTemplate<String, Serializable> redisTemplate = (RedisTemplate<String, Serializable>)ContextLoader.getCurrentWebApplicationContext().getBean("redisTemplate");
 			 
-			 if(redisTemplate.opsForHash().hasKey(Constants.KEY_TOKEN_SESSION, sessionId)){
-				 redisTemplate.opsForHash().delete(Constants.KEY_TOKEN_SESSION, sessionId);
+			 Object o = redisTemplate.opsForHash().get(Constants.KEY_TOKEN_SESSION, sessionId);
+			 redisTemplate.opsForHash().delete(Constants.KEY_TOKEN_SESSION, sessionId);
+			 
+			 if(o != null && token.equals((String)o)){
 				 chain.doFilter(req,res); 
 			 }else{
 				 res.sendRedirect(req.getContextPath()+errorUrl); 
@@ -51,7 +53,7 @@ public class TokenFilter implements Filter{
 			 return;
 		 }
 		 
-		chain.doFilter(req,res); 
+		 chain.doFilter(req,res); 
 		 
 	}
 
