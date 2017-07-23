@@ -23,9 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     position: absolute;
     left: -46px;
     top: 17px;
-    width: 36px;
+    width: 42px;
     height: 42px;
-    background-position: -84px -288px;
+    background-position: -82px -288px;
 }
 .successWrap .successCon {
     padding: 0 70px 22px 70px;
