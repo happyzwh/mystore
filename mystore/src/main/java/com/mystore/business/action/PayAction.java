@@ -163,6 +163,8 @@ public class PayAction  extends BaseAction{
     		params.put(name, valueStr);
     	}
     	
+    	log.info("订单号:"+sn+",支付宝支付同步响应数据："+params.toString());
+    	
     	boolean signVerified = AlipaySignature.rsaCheckV1(params, alipayConfig.getAlipayPublicKey(), alipayConfig.getCharset(), alipayConfig.getSignType()); //调用SDK验证签名
 
 //		//支付宝交易号
@@ -212,6 +214,8 @@ public class PayAction  extends BaseAction{
 	    		params.put(name, valueStr);
 	    	}
 	    	
+	    	log.info("订单号:"+sn+",支付宝支付异步响应数据："+params.toString());
+	    	
 	    	//支付宝交易号
     		String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
     	
@@ -250,6 +254,8 @@ public class PayAction  extends BaseAction{
 	    	*/
 	    	if(signVerified) {//验证成功
 	    		
+	    		log.info("订单号:"+sn+",支付宝支付异步响应验签结果:"+signVerified);
+	    		
 	    		if(trade_status.equals("TRADE_FINISHED")){
 	    			//判断该笔订单是否在商户网站中已经做过处理
 	    			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
@@ -266,18 +272,16 @@ public class PayAction  extends BaseAction{
 	    			//付款完成后，支付宝系统发送该交易状态通知
 	    		}
 	    		
+	        	payService.doPay(sn, trade_no, payStatus);
+	    		
 	    		retCode = "success";
 	    	}else {//验证失败
 	    		retCode = "failure";
 	    		payStatus = PayStatus.PAYFAIL.getValue();
-	    		//调试用，写文本函数记录程序运行情况是否正常
-	    		//String sWord = AlipaySignature.getSignCheckContentV1(params);
-	    		//AlipayConfig.logResult(sWord);
+//	    		调试用，写文本函数记录程序运行情况是否正常
+//	    		String sWord = AlipaySignature.getSignCheckContentV1(params);
+//	    		AlipayConfig.logResult(sWord);
 	    	}
-	    	
-	    	
-	    	payService.doPay(sn, trade_no, payStatus);
-	    	
 	    	
     	}catch(Exception e){
     		retCode = "failure";
