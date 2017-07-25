@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="list_left">
       		<h1>
 	      		<a href="<%=path%>/user_center.dhtml">
-	      			<i></i><span>我的惠美购</span>
+	      			<i></i><span>我</span>
 	      		</a>
       		</h1>
       		<div class="userInfo">

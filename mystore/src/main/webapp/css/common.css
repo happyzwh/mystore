@@ -43,11 +43,25 @@ i, em {
     border: 1px solid #cccccc;
     color: #666666;
     text-decoration: none;
+    padding: 5px 10px;
 }
 .Pagination a {
     display: inline-block;
     margin-left: 2px;
     padding: 3px 7px 0;
+}
+.pager a {
+    display: inline-block;
+    margin-left: 2px;
+    padding: 3px 7px 0;
+}
+.pager b{
+	border: 1px solid #cccccc;
+    color: red;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 2px;
+    padding: 5px 10px;
 }
 .clearBoth{
 	clear:both;

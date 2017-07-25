@@ -19,6 +19,8 @@ public class OrderProduct  extends BasicDto{
 	
 	private String name;
 	
+	private String imgUrl;
+	
 	private Double markprice;
 	
 	private Double buyprice;
@@ -137,6 +139,14 @@ public class OrderProduct  extends BasicDto{
 
 	public void setLastDate(Date lastDate) {
 		this.lastDate = lastDate;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}	
 
 }

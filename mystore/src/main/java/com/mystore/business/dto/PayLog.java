@@ -18,6 +18,8 @@ public class PayLog  extends BasicDto{
 	
 	private String payPlat;
 	
+	private String payPlatName;
+	
 	private String payChannel;
 	
 	private String snPayPlat;
@@ -118,6 +120,20 @@ public class PayLog  extends BasicDto{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getPayPlatName() {
+		payPlatName = "支付宝";
+		if(payPlat.equals("2")){
+			payPlatName = "微信";
+		}else if(payPlat.equals("3")){
+			payPlatName = "银联";
+		} 
+		return payPlatName;
+	}
+
+	public void setPayPlatName(String payPlatName) {
+		this.payPlatName = payPlatName;
 	}
 	
 }

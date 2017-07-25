@@ -142,6 +142,7 @@ public class OrderServiceImpl implements OrderService{
 			orderProduct.setNumber(product.getCount());
 			orderProduct.setSn(product.getSn());
 			orderProduct.setStatus("1");
+			orderProduct.setImgUrl(product.getPath_img());
 			
 			orderProductMapper.addOrderProduct(orderProduct);
 		}

@@ -10,6 +10,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.mystore.business.common.Constants;
+import com.mystore.business.common.PageInfo;
+import com.mystore.business.common.Pager;
 import com.mystore.business.dto.Order;
 import com.mystore.business.dto.ProPrice;
 import com.mystore.business.dto.Product;
@@ -65,6 +67,8 @@ public class OrderAction extends BaseAction {
 	private String invCon;
 	
 	private String sn;
+	
+	private List<Order> list;
 	
 	public String order(){
 		
@@ -146,6 +150,23 @@ public class OrderAction extends BaseAction {
 		sn = order.getSn();
 		
 		return "toPay";
+	}
+	
+	public String list(){
+		
+		String sessionId = ServletActionContext.getRequest().getSession().getId();
+		User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
+		
+		Order order = new Order();
+		order.setId_user(user.getId());
+		
+		Pager<Order> pager = orderService.getOrderByUserId(order, pageNo, pageSize);
+		if(pager != null && pager.getResultList() != null && pager.getResultList().size() > 0){
+			  list = pager.getResultList();
+			  pageInfo = PageInfo.setPage(pager.getPageNo(), pager.getPageSize(), pager.getPageCount(), pager.getRowCount());
+		}
+		
+		return "list";
 	}
 	
 	public List<UserAddress> getAddress() {
@@ -242,6 +263,14 @@ public class OrderAction extends BaseAction {
 
 	public void setAmountBalancePay(Double amountBalancePay) {
 		this.amountBalancePay = amountBalancePay;
+	}
+
+	public List<Order> getList() {
+		return list;
+	}
+
+	public void setList(List<Order> list) {
+		this.list = list;
 	}
 	
 }

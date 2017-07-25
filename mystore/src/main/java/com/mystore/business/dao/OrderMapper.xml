@@ -24,6 +24,9 @@
 		<result property="payWay" column="payway" />
 		<result property="createDate" column="createdate" />	
 		<result property="lastDate" column="lastdate" />	
+		<association property="payLog" column="sn" select="com.mystore.business.dao.PayLogMapper.getPayLogByOrderSn"/> 
+		<association property="shipAddress" column="id" select="com.mystore.business.dao.OrderShipAddressMapper.getShipAddressByOrderId"/> 
+		<collection property="orderProudcts" select="com.mystore.business.dao.OrderProductMapper.getOrderProductByOrderId" column="id"/>
 	</resultMap>
 	<insert id="addOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
 		insert into ord_order(
@@ -145,6 +148,7 @@
 		    lastdate
 		from ord_order 
 		where id_user = #{id_user}
+		order by ispaid asc,createdate desc,status asc
 	</select>
 	<select id="getOrderCountByUserId" parameterType="order" resultType="int">
 		select count(*)

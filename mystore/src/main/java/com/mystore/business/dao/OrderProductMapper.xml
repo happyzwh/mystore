@@ -13,6 +13,7 @@
 		<result property="buyprice" column="buyprice" />
 		<result property="number" column="number" />
 		<result property="amount" column="amount" />
+	    <result property="imgUrl" column="imgurl" />
 		<result property="isgived" column="isgived" />
 		<result property="status" column="status" />
 		<result property="createDate" column="createdate" />	
@@ -28,6 +29,7 @@
 		    buyprice,
 		    number,
 		    amount,
+		    imgurl,
 		    isgived,
 		    status,
 		    createdate,
@@ -41,6 +43,7 @@
 		    #{buyprice},
 		    #{number},
 		    #{amount},
+		    #{imgUrl},
 		    #{isgived},
 		    #{status},
 		    now(),
@@ -58,6 +61,7 @@
 		    buyprice,
 		    number,
 		    amount,
+		    imgurl as 'imgUrl',
 		    isgived,
 		    status,
 		    createdate,

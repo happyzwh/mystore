@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		<div class="navList">
       		   <div class="func func1">
       		       <p class="title"><i></i><span>交易管理</span></p>
-      		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@MYORDER.bh'>on</s:if>" href="/trademanage/my_order-9.htm" title=""><span>我的订单</span><i></i></a>
+      		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@MYORDER.bh'>on</s:if>" href="<%=path%>/order_list.dhtml" title=""><span>我的订单</span><i></i></a>
       		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@BACKLOG.bh'>on</s:if>" href="/trademanage/my_order-9.htm" title=""><span>退货记录</span><i></i></a>
       		   </div>
       		   <div class="func func2">

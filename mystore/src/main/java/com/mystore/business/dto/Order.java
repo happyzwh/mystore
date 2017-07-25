@@ -2,6 +2,7 @@ package com.mystore.business.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class Order extends BasicDto{
 
@@ -40,6 +41,8 @@ public class Order extends BasicDto{
 	
 	private String status;
 	
+	private String statusName;
+	
 	private String createtype;
 	
 	private String repstatus;
@@ -49,6 +52,12 @@ public class Order extends BasicDto{
 	private Date createDate;
 	
 	private Date lastDate;
+
+	private List<OrderProduct> orderProudcts;
+	
+	private PayLog payLog;
+	
+	private OrderShipAddress shipAddress;
 
 	public Integer getId() {
 		return id;
@@ -209,6 +218,43 @@ public class Order extends BasicDto{
 	public void setAmount_balance_pay(BigDecimal amount_balance_pay) {
 		this.amount_balance_pay = amount_balance_pay;
 	}
-	
 
+	public List<OrderProduct> getOrderProudcts() {
+		return orderProudcts;
+	}
+
+	public void setOrderProudcts(List<OrderProduct> orderProudcts) {
+		this.orderProudcts = orderProudcts;
+	}
+
+	public PayLog getPayLog() {
+		return payLog;
+	}
+
+	public void setPayLog(PayLog payLog) {
+		this.payLog = payLog;
+	}
+
+	public OrderShipAddress getShipAddress() {
+		return shipAddress;
+	}
+
+	public void setShipAddress(OrderShipAddress shipAddress) {
+		this.shipAddress = shipAddress;
+	}
+
+	public String getStatusName() {
+		statusName = "未确认";
+		if(status.equals("1")){
+			statusName = "已确认";
+		}else if(status.equals("2")){
+			statusName = "已取消";
+		}
+		return statusName;
+	}
+
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+	
 }

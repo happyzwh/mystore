@@ -58,6 +58,7 @@
         <action name="order_*" class="orderAction" method="{1}">
 		     <result name="order">/page/order/order.jsp</result>
 		     <result name="toPay">pay_pay.dhtml?sn=${sn}</result> 
+		     <result name="list">/page/order/list.jsp</result>
         </action>
         
         <action name="pay_*" class="payAction" method="{1}">

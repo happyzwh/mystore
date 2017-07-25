@@ -28,4 +28,20 @@
 		    now()
 		 )
 	</insert>
+	<select id="getShipAddressByOrderId" parameterType="string" resultType="orderShipAddress">
+		select
+		    id,
+		    id_order,
+		    consignee,
+		    email,
+		    mobile,
+		    phone,
+		    zipcode,
+		    address,
+		    status,
+		    createdate,
+		    lastdate
+		from ord_shipping_address 
+		where id_order = #{value}
+	</select>
 </mapper>
