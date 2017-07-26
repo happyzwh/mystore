@@ -6,4 +6,6 @@ public interface OrderShipAddressMapper {
 	
 	public int addOrderShipAddress(OrderShipAddress orderShipAddress);
 	
+	public OrderShipAddress getShipAddressByOrderId(Integer orderId);
+	
 }

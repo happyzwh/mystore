@@ -19,4 +19,10 @@ public class OrderShipAddressServiceImpl implements OrderShipAddressService{
 		return orderShipAddressMapper.addOrderShipAddress(orderShipAddress);
 	}
 
+	@Override
+	public OrderShipAddress getShipAddressByOrderId(Integer orderId) {
+		// TODO Auto-generated method stub
+		return orderShipAddressMapper.getShipAddressByOrderId(orderId);
+	}
+
 }

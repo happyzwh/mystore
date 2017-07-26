@@ -16,7 +16,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=path%>/js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="<%=path%>/js/common.js" type="text/javascript"></script>
 <script src="<%=path%>/js/hidemenu.js" type="text/javascript"></script>
-<script src="<%=path%>/js/region.js" type="text/javascript"></script>
 <script src="<%=path%>/js/order/list.js" type="text/javascript"></script>
 </head>
 <body>
@@ -44,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   	      <div class="moCon-ord">
 			        		 <div class="ord-num">
 			        		  	<div class="ord-num-box">
-			        		  		<span>订单编号：<a href="/order_detail.dhtm?sn=<s:property value="#order.sn"/>" target="_blank"><s:property value="#order.sn"/></a></span><i>|</i><span class="ord-tim">下单时间：<em><s:date name='createDate' format="yyyy-MM-dd HH:mm:ss" /></em></span>
+			        		  		<span>订单编号：<a href="<%=path%>/order_detail.dhtml?sn=<s:property value="#order.sn"/>" target="_blank"><s:property value="#order.sn"/></a></span><i>|</i><span class="ord-tim">下单时间：<em><s:date name='createDate' format="yyyy-MM-dd HH:mm:ss" /></em></span>
 			        		  	</div>
 			        		  	<div class="ord-num-box" style="margin-left:10px;font-size:16px;">
 			        		  		¥<s:text name="format.numbers"><s:param value="#order.amount"/></s:text>
@@ -63,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        				<tr class= '<s:if test="#inx.last">last</s:if>'>
 									        <td class="tdmoh1">
 									          <div class="ordPicBox clearfix">
-											  	   <a class="proId" value="37836" href='product_detail.dhtml?id=<s:property value="#product.id_pro" />' target="_blank" title='<s:property value="#product.name" />'>
+											  	   <a class="proId" value="37836" href='<%=path%>/product_detail.dhtml?id=<s:property value="#product.id_pro" />' target="_blank" title='<s:property value="#product.name" />'>
 												 	  <img src='<%=ConfigReader.getPath_pic_service()%>/<s:property value="#product.imgUrl.replace('big','mid')" />' width="50" height="50" alt=""  title='<s:property value="#product.name" />'>
 												  </a>
 											  </div>

@@ -35,4 +35,18 @@
 		    now()
 		 )
 	</insert>
+	<select id="getOrderInvoiceByOrderId" parameterType="string" resultMap="orderInvoiceMap">
+		select 
+		    id,
+		    id_order,
+		    invoicetype,
+		    invocetoptype,
+		    invoicetop,
+		    invoicecontext,
+		    status,
+		    createdate,
+		    lastdate
+		from ord_invoice 
+		where id_order = #{value}
+	</select>
 </mapper>

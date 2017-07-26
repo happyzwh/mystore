@@ -26,7 +26,8 @@
 		<result property="lastDate" column="lastdate" />	
 		<association property="payLog" column="sn" select="com.mystore.business.dao.PayLogMapper.getPayLogByOrderSn"/> 
 		<association property="shipAddress" column="id" select="com.mystore.business.dao.OrderShipAddressMapper.getShipAddressByOrderId"/> 
-		<collection property="orderProudcts" select="com.mystore.business.dao.OrderProductMapper.getOrderProductByOrderId" column="id"/>
+		<association property="orderInvoice" column="id" select="com.mystore.business.dao.OrderInvoiceMapper.getOrderInvoiceByOrderId"/> 
+		<collection property="orderProudcts" column="id" select="com.mystore.business.dao.OrderProductMapper.getOrderProductByOrderId" />
 	</resultMap>
 	<insert id="addOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
 		insert into ord_order(

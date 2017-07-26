@@ -1,0 +1,364 @@
+.user {
+    width: 1000px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+    font-family: "宋体";
+    text-align: left;
+}
+.uBread {
+    height: 42px;
+    line-height: 42px;
+    padding-top: 3px;
+    font-family: "宋体";
+}
+.uBread a {
+    padding: 0 6px;
+}
+.uBread a b {
+    color: #333;
+    font-size: 18px;
+    padding-right: 7px;
+    font-family: "微软雅黑";
+}
+.uBread i {
+    font-style: normal;
+    vertical-align: baseline!important;
+}
+.uBread em {
+    color: #cc0000;
+    padding-left: 6px;
+    font-style: normal;
+}
+.userOrderPro {
+    line-height: 24px;
+    padding: 6px 0 0 6px;
+}
+.user img, .user span, .user i {
+    vertical-align: top;
+}
+.userOrderPro span {
+    color: #c00;
+}
+.zpOrderSum {
+    border: 1px solid #e4e4e4;
+    padding: 0 15px;
+    background-color: #fbfbfb;
+    margin: 10px auto 20px;
+    font-family: "宋体";
+}
+.zpOrderSum .zpTopHalf {
+    height: 41px;
+    border-bottom: 1px dotted #e4e4e4;
+    line-height: 41px;
+}
+.zpTopHalf .zpTopHalf-l {
+    float: left;
+    color: #333;
+    margin-right: 25px;
+}
+.zpTopHalf p {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+}
+.zpTopHalf p strong {
+    color: #cc0000;
+}
+.zpTopHalf p span {
+    font-weight: normal;
+}
+.zpBottomHalf a, .zpHeadlineMain a {
+    color: #0066cc;
+}
+.zpProcess .ProcessPic {
+    width: 588px;
+    height: 16px;
+    margin: 0 auto 14px;
+    background-position: 0 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.zpProcess .ProcessPic, .zpProcess .ProcessPic2 {
+    background: url(../../images/order.png) no-repeat;
+}
+.zpProcess .ProcessPic2.step1 {
+    width: 188px;
+}
+.zpProcess .ProcessPic2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 588px;
+    height: 16px;
+    background-position: 0 -27px;
+    z-index: 1;
+}
+.Processtext {
+    width: 620px;
+    margin: 0 auto 20px;
+}
+.Processtext span {
+    color: #999;
+}
+.Processtext span.step2 {
+    margin-left: 137px;
+}
+.Processtext span.step3 {
+    margin-left: 138px;
+}
+.Processtext span.step4 {
+    margin-left: 148px;
+}
+.zpDelivery, .zpOrderInfo {
+    border: 1px solid #e4e4e4;
+    margin-bottom: 13px;
+}
+.zpHeadlineMain {
+    height: 38px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e4e4e4;
+    color: #333;
+    padding-left: 18px;
+    line-height: 38px;
+    font-weight: bold;
+}
+.zpHeadlineSub {
+    height: 33px;
+    color: ;
+    border-bottom: 1px dotted #e4e4e4;
+    background-color: #fbfbfb;
+    line-height: 33px;
+    font-weight: bold;
+    padding-left: 45px;
+}
+.zpHeadlineSub p {
+    float: left;
+    display: inline-block;
+    margin-right: 239px;
+}
+.zpContent {
+    padding: 15px 10px 15px 45px;
+}
+.zpTimeline .time {
+    margin-right: 139px;
+}
+.zpTimeline p {
+    float: left;
+    display: inline-block;
+}
+.zpDelivery, .zpOrderInfo {
+    border: 1px solid #e4e4e4;
+    margin-bottom: 13px;
+}
+.zpHeadlineMain {
+    height: 38px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e4e4e4;
+    color: #333;
+    padding-left: 18px;
+    line-height: 38px;
+    font-weight: bold;
+}
+.zpHeadlineSub {
+    height: 33px;
+    color: ;
+    border-bottom: 1px dotted #e4e4e4;
+    background-color: #fbfbfb;
+    line-height: 33px;
+    font-weight: bold;
+    padding-left: 45px;
+}
+.zpOrderInfo .zpContent {
+    border-bottom: 1px solid #e4e4e4;
+}
+.zpContent {
+    padding: 15px 10px 15px 45px;
+}
+.zpOrderInfo .zpContent p {
+    padding: 6px 0;
+}
+.zpHeadlineSub {
+    height: 33px;
+    color: ;
+    border-bottom: 1px dotted #e4e4e4;
+    background-color: #fbfbfb;
+    line-height: 33px;
+    font-weight: bold;
+    padding-left: 45px;
+}
+.zpOrderInfo .zpContent {
+    border-bottom: 1px solid #e4e4e4;
+}
+.userBotW {
+    width: 100%;
+    height: auto;
+    border-top: 1px solid #e4e4e4;
+    padding-bottom: 25px;
+}
+.userBotBox {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+.uBotHistory {
+    width: 199px;
+    border-right: 1px solid #e4e4e4;
+    float: left;
+}
+.ubHisTitBox {
+    height: 22px;
+    padding: 15px 15px 0 0;
+}
+.ubHisTit {
+    height: 22px;
+    color: #333;
+    float: left;
+    font-size: 16px;
+    font-family: "Microsoft Yahei";
+}
+.ubHisPage {
+    float: right;
+    padding-top: 4px;
+}
+.ubHisPage .ubHis-Prev {
+    background-position: -167px -72px;
+}
+.ubHisPage a {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
+}
+.ubHisPage span {
+    padding: 0 3px;
+    position: relative;
+    top: 1px;
+    _top: 0px;
+}
+.ubHisPage span b {
+    color: #cc0000;
+}
+.ubHisPage span em {
+    font-style: normal;
+}
+.ubHisPage .ubHis-Next {
+    background-position: -200px -72px;
+}
+.ubHisPage a {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
+}
+.zpOrderInfo .zpContent.zpProList {
+    padding-bottom: 20px;
+}
+.zpOrderInfo .zpContent {
+    border-bottom: 1px solid #e4e4e4;
+}
+.zpContent {
+    padding: 15px 10px 15px 45px;
+}
+.zpContent table {
+    border-top: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+    width: 905px;
+}
+table[Attributes Style] {
+    border-spacing: 0px;
+}
+.zpContent .firstRow {
+    height: 35px;
+    line-height: 35px;
+    background-color: #f5f5f5;
+}
+.zpContent table td {
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: center;
+}
+.zpContent .detialRow {
+    height: 69px;
+}
+.zpOrderInfo .cashier {
+    background-color: #f5f5f5;
+    height: auto;
+    padding: 0 48px;
+}
+.cashierTopHalf {
+    border-bottom: 1px solid #e4e4e4;
+    height: auto;
+    padding-top: 14px;
+    padding-bottom: 8px;
+}
+.cashierTopHalf ul {
+    float: right;
+    display: inline-block;
+    margin-right: 10px;
+}
+.cashierTopHalf li {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 3px;
+}
+.cashierItem .cashierItemName {
+    width: 500px;
+    margin-right: 5px;
+    display: inline-block;
+    text-align: right;
+}
+.cashierItem em {
+    font-style: normal;
+    font-family: "微软雅黑";
+}
+.cashierBottomHalf .cashierItemAmount {
+    color: #cc0000;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-family: "微软雅黑";
+}
+.cashierBottomHalf p {
+    float: right;
+    display: inline-block;
+    line-height: 55px;
+}
+.cashierBottomHalf .cashierItemName {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+.cashierBottomHalf p {
+    float: right;
+    display: inline-block;
+    line-height: 55px;
+}
+.zpContent .tableImg {
+    width: 50px;
+    height: 50px;
+    float: left;
+    display: inline-block;
+    margin: 0 13px 0 14px;
+}
+.zpContent .frameIE6 {
+    float: left;
+    display: inline-block;
+}
+.oneNameRow.tableText {
+    margin-top: 18px;
+}
+.zpContent .tableText {
+    width: 330px;
+    height: 18px;
+    display: block;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+

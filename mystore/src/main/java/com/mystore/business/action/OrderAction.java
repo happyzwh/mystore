@@ -3,6 +3,7 @@ package com.mystore.business.action;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -69,6 +70,8 @@ public class OrderAction extends BaseAction {
 	private String sn;
 	
 	private List<Order> list;
+	
+	private Order order;
 	
 	public String order(){
 		
@@ -167,6 +170,16 @@ public class OrderAction extends BaseAction {
 		}
 		
 		return "list";
+	}
+	
+	public String detail(){
+		
+		if(StringUtils.isBlank(sn))return "detail";
+		
+		order = orderService.getOrderBySn(sn);
+		
+		return "detail";
+		
 	}
 	
 	public List<UserAddress> getAddress() {
@@ -271,6 +284,14 @@ public class OrderAction extends BaseAction {
 
 	public void setList(List<Order> list) {
 		this.list = list;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 	
 }

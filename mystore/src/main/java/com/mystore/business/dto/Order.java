@@ -35,10 +35,14 @@ public class Order extends BasicDto{
 	
 	private String ispaid;
 	
+	private String payName;
+	
 	private Date time_pay;
 	
 	private String isdelivery;
 	
+	private String deliveryName;
+
 	private String status;
 	
 	private String statusName;
@@ -58,6 +62,8 @@ public class Order extends BasicDto{
 	private PayLog payLog;
 	
 	private OrderShipAddress shipAddress;
+	
+	private OrderInvoice orderInvoice;
 
 	public Integer getId() {
 		return id;
@@ -255,6 +261,44 @@ public class Order extends BasicDto{
 
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
+	}
+
+	public OrderInvoice getOrderInvoice() {
+		return orderInvoice;
+	}
+
+	public void setOrderInvoice(OrderInvoice orderInvoice) {
+		this.orderInvoice = orderInvoice;
+	}
+	
+	public String getDeliveryName() {
+		deliveryName = "未发货";
+		if(isdelivery.equals("1")){
+			deliveryName = "已配送";
+		}else if(isdelivery.equals("2")){
+			deliveryName = "已拒收";
+		}else if(isdelivery.equals("3")){
+			deliveryName = "已签收";
+		}
+		return deliveryName;
+	}
+
+	public void setDeliveryName(String deliveryName) {
+		this.deliveryName = deliveryName;
+	}
+
+	public String getPayName() {
+		payName = "未付款";
+		if(ispaid.equals("1")){
+			payName = "付款中";
+		}else if(ispaid.equals("2")){
+			payName = "已付款";
+		}
+		return payName;
+	}
+
+	public void setPayName(String payName) {
+		this.payName = payName;
 	}
 	
 }
