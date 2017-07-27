@@ -122,7 +122,7 @@ public class OrderServiceImpl implements OrderService{
 		map.put("id", shopOrder.getAddreId());
 		UserAddress userAddress = userAddressMapper.getById(map);
 		OrderShipAddress orderShipAddress = new OrderShipAddress();
-		orderShipAddress.setAddress(userAddress.getProvinceName()+userAddress.getCityName()+userAddress.getCityName()+userAddress.getAddress());
+		orderShipAddress.setAddress(userAddress.getProvinceName()+userAddress.getCityName()+userAddress.getCountyName()+userAddress.getAddress());
 		orderShipAddress.setConsignee(userAddress.getReceiver());
 		orderShipAddress.setId_order(order.getId());
 		orderShipAddress.setMobile(userAddress.getMobile());

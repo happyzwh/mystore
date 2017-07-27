@@ -163,7 +163,7 @@ public class OrderAction extends BaseAction {
 		Order order = new Order();
 		order.setId_user(user.getId());
 		
-		Pager<Order> pager = orderService.getOrderByUserId(order, pageNo, pageSize);
+		Pager<Order> pager = orderService.getOrderByUserId(order, pageNo, 5);
 		if(pager != null && pager.getResultList() != null && pager.getResultList().size() > 0){
 			  list = pager.getResultList();
 			  pageInfo = PageInfo.setPage(pager.getPageNo(), pager.getPageSize(), pager.getPageCount(), pager.getRowCount());

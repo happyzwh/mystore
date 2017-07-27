@@ -150,6 +150,9 @@
 		from ord_order 
 		where id_user = #{id_user}
 		order by ispaid asc,createdate desc,status asc
+		 <if test="pageIndex != null and pageSize != null">
+               limit #{pageIndex},#{pageSize}
+        </if> 
 	</select>
 	<select id="getOrderCountByUserId" parameterType="order" resultType="int">
 		select count(*)

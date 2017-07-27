@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<div class="opePending"><s:property value="#order.statusName"/></div>
 										    </td>
 									        <td class="tdmoh5 last">
-												<p><a class="ope01" target="_blank" href="/trademanage/order_detail-109303942.htm">查看</a></p>
+												<p><a class="ope01" target="_blank" href='<%=path%>/product_detail.dhtml?id=<s:property value="#product.id_pro" />'>查看</a></p>
 												<!-- p><a class="ope03" target="_blank" href="javascript:void(0);"></a></p -->
 											</td>
 									      </tr>
@@ -96,6 +96,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	 </div>
  </div>
+ <form id="myForm" action="order_list.dhtml" method="post" target="_self">
+ 	<input type="hidden" name="pageNo" id="pageNo" value="<s:property value='pageNo'/>" />
+ </form>
   <!--#include file="<%=path%>/page/foot.html" --> 
 </body>
 </html>

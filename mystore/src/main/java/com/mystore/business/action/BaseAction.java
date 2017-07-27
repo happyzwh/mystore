@@ -11,7 +11,7 @@ public class BaseAction extends ActionSupport{
 
 	protected Integer pageNo = 1;
 	
-	protected Integer pageSize = 20;
+	protected Integer pageSize = 10;
 	
 	protected String pageInfo;
 
