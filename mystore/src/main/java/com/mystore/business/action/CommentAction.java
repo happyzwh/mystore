@@ -1,6 +1,7 @@
 package com.mystore.business.action;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -10,11 +11,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
+import com.mystore.business.common.Constants;
 import com.mystore.business.common.PageInfo;
 import com.mystore.business.common.Pager;
 import com.mystore.business.dto.Comment;
+import com.mystore.business.dto.User;
 import com.mystore.business.service.CommentService;
 
 @Controller("commentAction")
@@ -28,6 +32,9 @@ public class CommentAction extends BaseAction {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private RedisTemplate<String, Serializable> redisTemplate;
 	
 	private Integer proId;
 	
@@ -50,10 +57,15 @@ public class CommentAction extends BaseAction {
 				return;
 			}
 			
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
+			User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
+			
 			Comment comment = new Comment();
 			comment.setId_pro(proId);
 			comment.setContent(content);
 			comment.setScore(score);
+			comment.setId_user(user.getId());
+			comment.setUserName(user.getUserName());
 			
 			commentService.addComment(comment);
 			

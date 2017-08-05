@@ -17,6 +17,10 @@ $(function(){
      	$("#remnum_commnum").text("剩余100字符");
      });
      $("#save_comment").click(function(){
+    	if(!isLogin()){
+        	alert("请选登录再评论!");
+         	return false;
+        }
      	if($("input[name='comment_rank']:checked").val() == ''){
      	   alert("请选择评价等级!");
      	   return false;
@@ -25,11 +29,12 @@ $(function(){
      		alert("请输入评价内容!");
      		return false;
      	}
+     	alert($("#comment_content").val());
      	$.ajax({
 							url:'comment_save.dhtml',
 							type: 'post',
 							data: {'proId':$.trim($("#proId").val()),'score':$("input[name='comment_rank']:checked").val(),'content':$.trim($("#comment_content").val())},
-							async: true,
+							async: false,
 							dataType: "text",
 							success:function(data){
 				                if(data == -2){
@@ -46,3 +51,25 @@ $(function(){
 				 });
      });
 });
+function isLogin(){
+	var tf = false;
+	jQuery.ajax({
+        type:'post',
+        url:$("#path").val()+'/user_isLogin.dhtml',
+        data:{},
+        dataType:'text',
+        cache:false,
+        async:false,
+        success:function(data){
+            if(data > 0){
+            	tf = true;
+			}else if(data == -1){
+				alert("系统异常");
+			}
+        },
+        error:function(){
+        	alert("系统异常");
+        }
+   });
+   return tf;
+}

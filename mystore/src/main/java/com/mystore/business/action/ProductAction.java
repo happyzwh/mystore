@@ -14,6 +14,7 @@ import com.mystore.business.dto.ProInfo;
 import com.mystore.business.dto.ProPrice;
 import com.mystore.business.dto.Product;
 import com.mystore.business.service.CategoryService;
+import com.mystore.business.service.CommentService;
 import com.mystore.business.service.ProductService;
 
 @Controller("productAction")
@@ -36,6 +37,11 @@ public class ProductAction  extends BaseAction {
 	private ProPrice proPrice;
 	
 	private ProInfo proInfo;
+	
+	private Map<String,Object> proCommentStatis;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	private List<Map<String,Object>> proAttrMaps;
 	
@@ -68,6 +74,8 @@ public class ProductAction  extends BaseAction {
 		proInfo = productService.getProInfoByProId(id);
 		
 		proPrice = productService.getProPriceByProId(id);
+		
+		proCommentStatis = commentService.getCommentStatisByProId(id);
 		
 		return "detail";
 	}
@@ -134,6 +142,14 @@ public class ProductAction  extends BaseAction {
 
 	public void setCategorys(List<Category> categorys) {
 		this.categorys = categorys;
+	}
+
+	public Map<String, Object> getProCommentStatis() {
+		return proCommentStatis;
+	}
+
+	public void setProCommentStatis(Map<String, Object> proCommentStatis) {
+		this.proCommentStatis = proCommentStatis;
 	}
 
 	

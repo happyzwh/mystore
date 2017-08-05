@@ -17,6 +17,10 @@ $(function(){
      	$("#remnum_connum").text("剩余100字符");
      });
      $("#save_consult").click(function(){
+    	if(!isLogin()){
+    		alert("请选登录再咨询!");
+         	return false;
+        }
      	if($("input[name='consult_type']:checked").val() == ''){
      	   alert("请选择咨 询类别!");
      	   return false;
@@ -29,7 +33,7 @@ $(function(){
 							url:'consult_save.dhtml',
 							type: 'post',
 							data: {'proId':$.trim($("#proId").val()),'type':$("input[name='consult_type']:checked").val(),'content':$.trim($("#consult_content").val())},
-							async: true,
+							async: false,
 							dataType: "text",
 							success:function(data){
 				                if(data == -2){
@@ -46,3 +50,25 @@ $(function(){
 				 });
      });
 });
+function isLogin(){
+	var tf = false;
+	jQuery.ajax({
+        type:'post',
+        url:$("#path").val()+'/user_isLogin.dhtml',
+        data:{},
+        dataType:'text',
+        cache:false,
+        async:false,
+        success:function(data){
+            if(data > 0){
+            	tf = true;
+			}else if(data == -1){
+				alert("系统异常");
+			}
+        },
+        error:function(){
+        	alert("系统异常");
+        }
+   });
+   return tf;
+}

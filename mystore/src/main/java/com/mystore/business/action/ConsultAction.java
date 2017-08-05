@@ -1,6 +1,7 @@
 package com.mystore.business.action;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -10,11 +11,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 
+import com.mystore.business.common.Constants;
 import com.mystore.business.common.PageInfo;
 import com.mystore.business.common.Pager;
 import com.mystore.business.dto.Consult;
+import com.mystore.business.dto.User;
 import com.mystore.business.service.ConsultService;
 
 @Controller("consultAction")
@@ -28,6 +32,9 @@ public class ConsultAction extends BaseAction {
 	
 	@Autowired
 	private ConsultService consultService;
+	
+	@Autowired
+	private RedisTemplate<String, Serializable> redisTemplate;
 	
 	private Integer proId;
 	
@@ -48,10 +55,15 @@ public class ConsultAction extends BaseAction {
 				return;
 			}
 			
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
+			User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
+			
 			Consult consult = new Consult();
 			consult.setId_pro(proId);
 			consult.setContent(content);
 			consult.setType(type);
+			consult.setId_user(user.getId());
+			consult.setUserName(user.getUserName());
 			
 			consultService.addConsult(consult);
 			

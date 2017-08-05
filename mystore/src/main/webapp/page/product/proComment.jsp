@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									    <img src="themes/default/images/reviews/rank_.gif"/>			                   
 								    </div>	
 							        <div class="u-name">
-							            b***9		       
+							           <s:property value='userName.replaceAll("^(.)(.+)(.)$","$1****$3")'/>	       
 							        </div>                          
 						    </div>                        
 						    <div class="i-item clearfix">
@@ -118,9 +118,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<ul id="plbox">
 											    <li class="pLi">用户名：  匿名用户 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												   <a href="#" rel="nofollow">登 &nbsp;&nbsp;&nbsp;&nbsp;录</a> 
+												   <a href="<%=path%>/user_goLogin.dhtml" rel="nofollow">登 &nbsp;&nbsp;&nbsp;&nbsp;录</a> 
 												    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-												   <a href="#" rel="nofollow">注 &nbsp;&nbsp;&nbsp;&nbsp;册 </a>
+												   <a href="<%=path%>/user_goRegister.dhtml" rel="nofollow">注 &nbsp;&nbsp;&nbsp;&nbsp;册 </a>
 												   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
 												   <span class="tishi" id="maxnum_commnum">最多输入100字符</span>  
 												   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 

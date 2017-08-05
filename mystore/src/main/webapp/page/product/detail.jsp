@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						     	立省： ￥<s:text name="format.number"><s:param value="proPrice.markPrice-proPrice.shopPrice"/></s:text>
 						    </span>
 					     </li> 
-					     <li>好&nbsp;&nbsp;评&nbsp;&nbsp;度：&nbsp;&nbsp;<span class="comCountBar"><i style="width:90%"></i></span>&nbsp;&nbsp;(<a class="comCount" style="color:#f60;" href="#xx3" rel="nofollow">已有21人评论</a>)</li>
+					     <li>好&nbsp;&nbsp;评&nbsp;&nbsp;度：&nbsp;&nbsp;<span class="comCountBar"><i style="width: <s:property value='proCommentStatis.get("hr")'/>%;"></i></span>&nbsp;&nbsp;(<a class="comCount" style="color:#f60;" href="#xx3" rel="nofollow">已有<s:property value='proCommentStatis.get("count")'/>人评论</a>)</li>
 					     <li><span>商品货号：<s:property value='product.sn'/></span></li>  
 				    </ul>
 				    

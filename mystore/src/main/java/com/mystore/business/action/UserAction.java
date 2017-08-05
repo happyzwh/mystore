@@ -267,6 +267,27 @@ public class UserAction  extends BaseAction{
 		return "center";
 	}
 	
+	public void isLogin()  throws IOException{
+		
+		int code = 1;
+		
+		try{
+			String sessionId = ServletActionContext.getRequest().getSession().getId();
+			User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
+			if(user == null){
+				code = 0;
+			}
+		}catch(Exception e){
+			code = 0;
+		}finally{
+			HttpServletResponse response=ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().print(code);
+		}
+		
+		
+	}
+	
 	/**
 	 * 验证用户名是否存在
 	 * 
