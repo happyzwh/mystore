@@ -186,7 +186,7 @@
 		WHERE ct.id = #{value} AND c.id_cate = ct.id  AND t.id_cateattr = c.id AND c.id_attr = b.id AND 
 		CASE WHEN b.showtype = '3' THEN  CONCAT(',',v.id,',') REGEXP CONCAT(',(',REPLACE(SUBSTRING(t.attrvalue,2,LENGTH(t.attrvalue)-2),',','|'),'),') WHEN b.showtype = '1' OR b.showtype = '2' THEN v.id = t.id_attr ELSE t.id_attr IS NULL END
 		GROUP BY b.id
-		ORDER BY c.sort
+	<!--  ORDER BY c.sort -->
 	</select>
 	<select id="getAllProId" resultType="int">
 	    select p.id 

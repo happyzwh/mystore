@@ -29,7 +29,6 @@ $(function(){
      		alert("请输入评价内容!");
      		return false;
      	}
-     	alert($("#comment_content").val());
      	$.ajax({
 							url:'comment_save.dhtml',
 							type: 'post',
