@@ -140,6 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <!-- 订单信息end -->
 	  </div>
   </div>
+  </div>
   <!--#include file="<%=path%>/page/foot.html" --> 
 </body>
 </html>
