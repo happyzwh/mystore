@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</s:iterator>	               
 				   </div>                               		  
 				   <div class="Pagination">    
-						<span style="float:left">我在惠美购化妆品商城购买过此商品”<span style="cursor:pointer; color:#CB0009;" id="goComment">我要评价</span>”</span>
+						<span style="float:left"><span style="cursor:pointer; color:#CB0009;" id="goComment">我要评价</span></span>
 						<div style="float:right;">
 							${pageInfo}					
 						 </div>
