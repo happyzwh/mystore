@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.AccountLogMapper">
+	<resultMap type="accountLog" id="accountLogMap">
+		<result property="id" column="id" />
+		<result property="accountId" column="id_account" />
+		<result property="bizType" column="biztype" />
+		<result property="bizId" column="bizid" />
+		<result property="ioType" column="iotype" />
+		<result property="opType" column="optype" />
+		<result property="amount" column="amount" />
+		<result property="balance" column="balance" />
+		<result property="desc" column="desc" />
+		<result property="createDate" column="createdate" />
+		<result property="lastDate" column="lastdate" />
+	</resultMap>
+	<insert id="addAccountLog" parameterType="accountLog" useGeneratedKeys="true" keyProperty="id">
+		insert into log_account(
+		    id_account,
+			biztype,
+			bizid,
+			iotype,
+			optype,
+			amount,
+			balance,
+			desc,
+			createdate,
+			lastdate
+		 )values(
+		    #{accountId},
+		    #{bizType},
+		    #{bizId},
+		    #{ioType},
+		    #{opType},
+		    #{amount},
+		    #{balance},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<select id="getAccountLogListByUserId" parameterType="accountLog" resultMap="accountLogMap">
+	    select  al.id,
+		        al.id_account,
+				al.biztype,
+				al.bizid,
+				al.iotype,
+				al.optype,
+				al.amount,
+				al.balance,
+				al.desc,
+				al.createdate,
+				al.lastdate
+		from log_account al,user_account ua,user_user u
+	    where al.id_account = ua.id and ua.id_user = u.id and u.id = #{userId}
+	    <if test="accountType != null">
+	        and ua.type = #{accountType}
+	    </if>
+	    order by createdate desc
+	    <if test="pageIndex != null and pageSize != null">
+               limit #{pageIndex},#{pageSize}
+        </if> 
+	</select>
+	<select id="getAccountLogCountByUserId" parameterType="accountLog" resultType="int">
+	    select  count(*)
+		from log_account al,user_account ua,user_user u
+	    where al.id_account = ua.id and ua.id_user = u.id and u.id = #{userId}
+	    <if test="accountType != null">
+	        and ua.type = #{accountType}
+	    </if>
+	</select>
+</mapper>

@@ -44,6 +44,11 @@
       <typeAlias alias="orderShipAddress" type="com.mystore.business.dto.OrderShipAddress"/>
       
       <typeAlias alias="payLog" type="com.mystore.business.dto.PayLog"/>
+      <typeAlias alias="accountLog" type="com.mystore.business.dto.AccountLog"/>
+      <typeAlias alias="account" type="com.mystore.business.dto.Account"/>
+      
+      <typeAlias alias="userStatistics" type="com.mystore.business.dto.UserStatistics"/>
+      <typeAlias alias="accountStatistics" type="com.mystore.business.dto.AccountStatistics"/>
    </typeAliases>  
    <mappers>  
       <mapper resource="com/mystore/business/dao/SearchMapper.xml" />   
@@ -68,5 +73,10 @@
       <mapper resource="com/mystore/business/dao/OrderShipAddressMapper.xml" />
       
       <mapper resource="com/mystore/business/dao/PayLogMapper.xml" />
+      <mapper resource="com/mystore/business/dao/AccountLogMapper.xml" />
+      <mapper resource="com/mystore/business/dao/AccountMapper.xml" />
+      
+      <mapper resource="com/mystore/business/dao/UserStatisticsMapper.xml" />
+      <mapper resource="com/mystore/business/dao/AccountStatisticsMapper.xml" />
    </mappers>  
 </configuration>  

@@ -39,7 +39,7 @@
 	    <init-param>
 	        <param-name>includeUrl</param-name>
 	        <param-value>
-	            user_,address_,security_,mailedit.jsp,order_,security_
+	            user_,address_,security_,mailedit.jsp,order_,security_,account_
 	        </param-value>
 	    </init-param>
 	    <init-param>

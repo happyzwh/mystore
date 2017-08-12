@@ -66,6 +66,11 @@
 		     <result name="pay">/page/pay/pay.jsp</result>
 		     <result name="return_zfb">/page/pay/return_zfb.jsp</result>
         </action>
+        
+        <action name="account_*" class="accountAction" method="{1}">
+		     <result name="index">/page/user/account.jsp</result>
+		     <result name="list">/page/user/accountLog.jsp</result>
+        </action>
     </package>
     
 </struts>

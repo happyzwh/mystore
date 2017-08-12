@@ -1,0 +1,68 @@
+.golden-content {
+    background: #fbfbfb;
+    border-top: 1px solid #e4e4e4;
+    margin-bottom: 15px;
+    padding-bottom: 18px;
+}
+.golden .guoqiL {
+    margin-left: 30px;
+    margin-right: 100px;
+}
+.golden p {
+    float: left;
+    margin-top: 20px;
+    text-align: center;
+}
+.golden p span {
+    clear: both;
+    display: block;
+    margin-top: 10px;
+    font-size: 24px;
+    color: #cc0000;
+    font-family: "Microsoft Yahei";
+}
+.titles {
+    height: 30px;
+    line-height: 32px;
+    border-bottom: 2px solid #d0010e;
+    overflow: hidden;
+}
+.titles .on1-niubi {
+    text-align: center;
+    float: left;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 32px;
+    overflow: hidden;
+}
+.select{
+	background: #d0010e;
+	color: #fff;
+}
+.goldenTab {
+    border: 1px solid #e4e4e4;
+    width: 100%;
+}
+.goldenTab th {
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e4e4e4;
+    color: #888;
+}
+.goldenEmpty td, .niuCoinEmpty td {
+    border-top: none;
+}
+.goldenTab td {
+    height: 49px;
+    border-top: 1px dotted #e4e4e4;
+    line-height: 49px;
+    text-align: center;
+}
+.goldenTab .jianjian {
+    color: #cc0000;
+}
+.titles ul li {
+    cursor: pointer;
+}

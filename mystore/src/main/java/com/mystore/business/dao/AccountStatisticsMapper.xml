@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.AccountStatisticsMapper">
+	<resultMap type="accountStatistics" id="accountStatisticsMap">
+		<result property="id" column="id" />
+		<result property="accountId" column="id_account" />
+		<result property="amountOrder" column="amount_order" />
+		<result property="amountOrderIng" column="amount_order_ing" />
+		<result property="amountWithdrawFreeze" column="amount_withdraw_freeze" />
+		<result property="amountCashBack" column="amount_cashback" />
+		<result property="createDate" column="createdate" />
+		<result property="lastDate" column="lastdate" />
+	</resultMap>
+	<insert id="addAccountStatistics" parameterType="accountStatistics" useGeneratedKeys="true" keyProperty="id">
+		insert into statistics_account(
+		    id_account,
+			amount_order,
+			amount_order_ing,
+			amount_withdraw_freeze,
+			amountCashBack,
+			createdate,
+			lastdate
+		 )values(
+		    #{accountId},
+		    #{amountOrder},
+		    #{amountOrderIng},
+		    #{amountWithdrawFreeze},
+		    #{amount_cashback},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<update id="updateAccountStatisticsByUserId" parameterType="accountStatistics">
+	    update statistics_account
+	    <trim prefix="set" prefixOverrides=",">
+		  <if test="amountOrder != null">
+	        	amount_order = #{amountOrder},
+	       </if>
+	       <if test="amountOrderIng != null">
+	        	amount_order_ing = #{amountOrderIng},
+	       </if>
+	       <if test="amountWithdrawFreeze != null">
+				amount_withdraw_freeze = #{amountWithdrawFreeze},
+		   </if>
+		   <if test="amountCashBack != null">
+				amount_cashback = #{amountCashBack},
+		   </if>
+		   lastdate = now()
+		</trim>	
+	    where accountId = #{accountId}
+	</update>
+	<select id="getAccountStatisticsByAccountId" parameterType="int" resultMap="accountStatisticsMap">
+	    select  id,
+		     	id_account,
+				amount_order,
+				amount_order_ing,
+				amount_withdraw_freeze,
+				amountCashBack,
+				createdate,
+				lastdate
+		from statistics_account
+	    where  id_account = #{accountId}
+	</select>
+</mapper>

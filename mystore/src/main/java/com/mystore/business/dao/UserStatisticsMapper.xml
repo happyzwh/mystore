@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.UserStatisticsMapper">
+	<resultMap type="userStatistics" id="userStatisticsMap">
+		<result property="userId" column="id_user" />
+		<result property="amountOrder" column="amount_order" />
+		<result property="amountOrderIng" column="amount_order_ing" />
+		<result property="amountWithdrawFreeze" column="amount_withdraw_freeze" />
+		<result property="amountCashBack" column="amount_cashback" />
+	</resultMap>
+	<select id="getUserStatisticsByUserId" parameterType="int" resultMap="userStatisticsMap">
+	    select  u.id,
+				sum(amount_order) AS 'amount_order',
+				sum(amount_order_ing) AS 'amount_order_ing',
+				sum(amount_withdraw_freeze) AS 'amount_withdraw_freeze',
+				case when ua.type = '0' then sum(amount_cashback) else sum(0) end AS 'amount_cashback'
+		from statistics_account sa,user_account ua,user_user u
+	    where  sa.id_account = ua.id and ua.id_user = u.id and u.id = #{userId}
+	</select>
+</mapper>

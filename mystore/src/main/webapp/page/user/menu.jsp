@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		   </div>
       		   <div class="func func2">
       		       <p class="title"><i></i><span>我的钱包</span></p>
-      		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@MYACCOUNT.bh'>on</s:if>" href="/trademanage/my_order-9.htm" title=""><span>我的余额</span><i></i></a>
+      		       <a class="item <s:if test='bh==@com.mystore.business.pojo.MenuMap@MYACCOUNT.bh'>on</s:if>" href="<%=path%>/account_index.dhtml" title=""><span>我的余额</span><i></i></a>
       		   </div>
       		   <div class="func func3">
       		       <p class="title"><i></i><span>我的帐户</span></p>

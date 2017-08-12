@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mystore.business.dao.AccountMapper">
+	<resultMap type="account" id="accountMap">
+		<result property="id" column="id" />
+		<result property="userId" column="id_user" />
+		<result property="type" column="type" />
+		<result property="amount" column="amount" />
+		<result property="amount_freeze" column="amount_freeze" />
+		<result property="createDate" column="createdate" />
+		<result property="lastDate" column="lastdate" />
+	</resultMap>
+	<insert id="addAccount" parameterType="account" useGeneratedKeys="true" keyProperty="id">
+		insert into user_account(
+		    id_user,
+			type,
+			amount,
+			amount_freeze,
+			createdate,
+			lastdate
+		 )values(
+		    #{userId},
+		    #{type},
+		    #{amount},
+		    #{amount_freeze},
+		    now(),
+		    now()
+		 )
+	</insert>
+	<update id="upateAccount" parameterType="account">
+	    update user_account
+	    set amount = #{amount},amount_freeze = #{amount_freeze},lastdate = now()
+	    where userId = #{userId},type = #{type},
+	</update>
+	<select id="getAccount" parameterType="account" resultMap="accountMap">
+	    select  id,
+		     	id_user,
+				type,
+				amount,
+				amount_freeze,
+				createdate,
+				lastdate
+		from user_account
+	    where  id_user = #{userId} and type = #{type}
+	</select>
+	<select id="getAccountListByUserId" parameterType="int" resultMap="accountMap">
+	    select  id,
+		     	id_user,
+				type,
+				amount,
+				amount_freeze,
+				createdate,
+				lastdate
+		from user_account
+	    where  userId = #{userId}
+	</select>
+</mapper>
