@@ -86,15 +86,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      <div class="zpHeadlineSub clearfix">发票信息</div>
 	      <div class="zpContent">
 	        <p>发票类型： 
-	           <s:if test="order.orderInvoice.invoicetype == '1'">纸质发票</s:if>
-	           <s:elseif test="order.orderInvoice.invoicetype == '2'">电子发票</s:elseif>
+	           <s:if test='order.orderInvoice.invoicetype == "1"'>纸质发票</s:if>
+	           <s:elseif test='order.orderInvoice.invoicetype == "2"'>电子发票</s:elseif>
 	        </p>
-	        <p>发票抬头： <s:property value="order.invoicetype.invoicetop"/> </p>
+	        <p>发票抬头： <s:property value="order.orderInvoice.invoicetop"/> </p>
 	        <p>发票内容： 
-	           <s:if test="order.orderInvoice.invoicecontext == '1'">明细</s:if>
-	           <s:elseif test="order.orderInvoice.invoicecontext == '2'">办公用品</s:elseif>
-	           <s:elseif test="order.orderInvoice.invoicecontext == '3'">电脑配件</s:elseif>
-	           <s:elseif test="order.orderInvoice.invoicecontext == '4'">耗材</s:elseif>
+	           <s:if test='order.orderInvoice.invoicecontext == "1"'>明细</s:if>
+	           <s:elseif test='order.orderInvoice.invoicecontext == "2"'>办公用品</s:elseif>
+	           <s:elseif test='order.orderInvoice.invoicecontext == "3"'>电脑配件</s:elseif>
+	           <s:elseif test='order.orderInvoice.invoicecontext == "4"'>耗材</s:elseif>
 	         </p>
 	      </div>
 	      <div class="zpHeadlineSub clearfix">商品清单</div>
