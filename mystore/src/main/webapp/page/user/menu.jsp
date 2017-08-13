@@ -20,6 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		<div class="userInfo">
       		    <div class="headImg"><a href="javascrpt:void(0);"><img src="http://localhost:8080/picService/upload/pro/img/8/20161022114304_small.jpg"/></a></div>
       		    <div class="userName"><s:property value='user.userName'/></div>
+      		    <div class="userName">累计消费金额：￥<s:text name="format.numbers"><s:param value="userStatistics.amountOrder"/></s:text></div>
+      		    <div class="userName">待确认消费金额：￥<s:text name="format.numbers"><s:param value="userStatistics.amountOrderIng"/></s:text></div>
       		</div>
       		<div class="navList">
       		   <div class="func func1">

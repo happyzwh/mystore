@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                <p class="zpName">邮箱验证</p>
 						  	<p class="zpDetial">
 						  	    <s:if test='user.isEmailValid == "0"'>邮箱尚未验证,请先验证邮箱,增强帐户安全</s:if>
-						  		<s:else>已验证邮箱：<s:property value='user.email'/></s:else>
+						  		<s:else>已验证邮箱：<s:property value='user.email.replaceAll("^(.)(.+)(.@.+)$","$1****$3")'/></s:else>
 						  	</p>
 							<a href="<%=path%>/page/user/mailedit.jsp">
 							    <s:if test='user.isEmailValid == "0"'>设置</s:if>
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                <p class="zpName">手机验证</p>
 						  	<p class="zpDetial">
 						  	    <s:if test='user.isMobileValid == "0"'>手机尚未验证,请先验证手机,增强帐户安全</s:if>
-						  		<s:else>已验证手机： 150****7739 若已丢失或停用，请立即更换，避免账户被盗。</s:else>
+						  		<s:else>已验证手机： <s:property value='user.mobile.replaceAll("^(\\d{3})(\\d{4})(\\d{4})$","$1****$3")'/>若已丢失或停用，请立即更换，避免账户被盗。</s:else>
 						  	</p>
 							<a href="/myaccount/change_phone.htm">
 							    <s:if test='user.isMobileValid == "0"'>设置</s:if>

@@ -39,11 +39,11 @@
 	background: #d0010e;
 	color: #fff;
 }
-.goldenTab {
+.accountTab {
     border: 1px solid #e4e4e4;
     width: 100%;
 }
-.goldenTab th {
+.accountTab th {
     height: 37px;
     line-height: 37px;
     text-align: center;
@@ -54,13 +54,13 @@
 .goldenEmpty td, .niuCoinEmpty td {
     border-top: none;
 }
-.goldenTab td {
+.accountTab td {
     height: 49px;
     border-top: 1px dotted #e4e4e4;
     line-height: 49px;
     text-align: center;
 }
-.goldenTab .jianjian {
+.accountTab .jianjian {
     color: #cc0000;
 }
 .titles ul li {

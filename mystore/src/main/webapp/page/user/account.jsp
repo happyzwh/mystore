@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   <div class="golden clearfix">
 				      <p class="guoqi guoqiL">
 					    <strong>我的余额</strong>
-						<span>￥0.00 </span>
+						<span>￥<s:text name="format.numbers"><s:param value="account.amount"/></s:text></span>
 					  </p>
 				  </div>
 			 </div>

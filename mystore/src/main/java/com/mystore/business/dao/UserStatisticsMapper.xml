@@ -12,10 +12,14 @@
 	</resultMap>
 	<select id="getUserStatisticsByUserId" parameterType="int" resultMap="userStatisticsMap">
 	    select  u.id,
-				sum(amount_order) AS 'amount_order',
-				sum(amount_order_ing) AS 'amount_order_ing',
-				sum(amount_withdraw_freeze) AS 'amount_withdraw_freeze',
-				case when ua.type = '0' then sum(amount_cashback) else sum(0) end AS 'amount_cashback'
+				COALESCE(SUM(amount_order),0) AS 'amount_order',
+				COALESCE(SUM(amount_order_ing),0) AS 'amount_order_ing',
+				COALESCE(SUM(amount_withdraw_freeze),0) AS 'amount_withdraw_freeze',
+				COALESCE((CASE
+				    WHEN ua.type = '0' 
+				    THEN SUM(amount_cashback) 
+				    ELSE SUM(0) 
+				  END),0) AS 'amount_cashback' 
 		from statistics_account sa,user_account ua,user_user u
 	    where  sa.id_account = ua.id and ua.id_user = u.id and u.id = #{userId}
 	</select>

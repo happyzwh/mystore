@@ -18,12 +18,18 @@ import org.springframework.stereotype.Controller;
 import com.mystore.business.common.Constants;
 import com.mystore.business.core.PublicKeyMap;
 import com.mystore.business.core.RSAUtils;
+import com.mystore.business.dto.Account;
 import com.mystore.business.dto.User;
 import com.mystore.business.dto.UserCart;
+import com.mystore.business.dto.UserStatistics;
 import com.mystore.business.jcaptcha.CaptchaServiceSingleton;
+import com.mystore.business.pojo.AccountType;
 import com.mystore.business.pojo.CacheCart;
+import com.mystore.business.pojo.SecurityLevelMap;
+import com.mystore.business.service.AccountService;
 import com.mystore.business.service.UserCartService;
 import com.mystore.business.service.UserService;
+import com.mystore.business.service.UserStatisticsService;
 import com.mystore.business.util.CookieUtil;
 import com.mystore.business.util.MD5;
 
@@ -43,6 +49,12 @@ public class UserAction  extends BaseAction{
 	private UserCartService userCartService;
 	
 	@Autowired
+	private AccountService accountService;
+	
+	@Autowired
+	private UserStatisticsService userStatisticsService;
+	
+	@Autowired
 	private RedisTemplate<String, Serializable> redisTemplate;
 	
 	private Map<String, Object> model;
@@ -58,6 +70,12 @@ public class UserAction  extends BaseAction{
 	private User user;
 	
 	private String bh;
+	
+	private Account account;
+	
+	private String level;
+	
+	private UserStatistics userStatistics;
 	
 	public String goRegister(){
 		
@@ -264,6 +282,51 @@ public class UserAction  extends BaseAction{
 	}
 	
 	public String center(){
+		
+		String sessionId = ServletActionContext.getRequest().getSession().getId();
+		user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
+		
+		Account accountModel = new Account();
+		accountModel.setUserId(user.getId());
+		accountModel.setType(AccountType.GENERAL.getValue());
+		account = accountService.getAccount(accountModel);
+		
+		Object o = redisTemplate.opsForHash().get(Constants.KEY_LEVEL_SECURITY, user.getId().toString());
+		
+		if(o == null){
+			
+			int low = 0;
+			int mid = 0;
+			int high = 0;
+			int leve = 0;
+			
+			if(StringUtils.isNotBlank(user.getIsMobileValid()) && user.getIsMobileValid().equals("1")){
+				low = 1;
+			}
+			if(StringUtils.isNotBlank(user.getIsEmailValid()) && user.getIsEmailValid().equals("1")){
+				mid = 2;
+			}
+			if(StringUtils.isNotBlank(user.getPwdPay())){
+				high = 4;
+			}
+			
+			leve = low|mid|high;
+			
+			if(leve == 7){
+				level = SecurityLevelMap.HIGH.getBh();
+			}else if(leve > 4 || leve == 3){
+				level = SecurityLevelMap.MIDDLE.getBh();
+			}else{
+				level = SecurityLevelMap.LOW.getBh();
+			}
+			
+			redisTemplate.opsForHash().put(Constants.KEY_LEVEL_SECURITY, user.getId().toString(),level);
+			redisTemplate.expire(Constants.KEY_LEVEL_SECURITY, Constants.VALUE_TIME_LEVEL_SECURITY, TimeUnit.HOURS);
+		}else{
+			level = (String)o;
+		}
+		
+		
 		return "center";
 	}
 	
@@ -338,6 +401,8 @@ public class UserAction  extends BaseAction{
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
 		user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 		
+		userStatistics = userStatisticsService.getUserStatisticsByUserId(user.getId());
+		
 		return "menu";
 	} 
 
@@ -396,6 +461,30 @@ public class UserAction  extends BaseAction{
 
 	public void setBh(String bh) {
 		this.bh = bh;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public UserStatistics getUserStatistics() {
+		return userStatistics;
+	}
+
+	public void setUserStatistics(UserStatistics userStatistics) {
+		this.userStatistics = userStatistics;
 	}
 
 }

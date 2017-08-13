@@ -57,7 +57,7 @@
 	    <if test="accountType != null">
 	        and ua.type = #{accountType}
 	    </if>
-	    order by createdate desc
+	    order by al.createdate desc
 	    <if test="pageIndex != null and pageSize != null">
                limit #{pageIndex},#{pageSize}
         </if> 

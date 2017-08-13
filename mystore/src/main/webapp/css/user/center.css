@@ -177,3 +177,275 @@
     font-family: "宋体";
     height: auto;
 }
+.account {
+    width: 773px;
+    height: auto;
+    border: 1px solid #e4e4e4;
+    display: inline-block;
+}
+.account .money {
+    height: 81px;
+    padding: 20px 0 18px 0;
+    border-bottom: 1px solid #e4e4e4;
+}
+.money li.first {
+    width: 138px;
+    border-left: none;
+}
+.money li {
+    width: 139px;
+    height: 81px;
+    border-left: 1px dotted #e4e4e4;
+    float: left;
+    display: inline-block;
+}
+.money li .title {
+    height: 24px;
+    margin-bottom: 11px;
+}
+.money li.first .title i {
+    width: 21px;
+    height: 18px;
+    margin-left: 0px;
+    margin-right: 5px;
+    background-position: -239px 0;
+}
+.money li .title i {
+    margin-top: 2px;
+    background: url(../../images/user.png) no-repeat;
+    display: inline-block;
+}
+.money li .title span {
+    margin-top: 2px;
+    display: inline-block;
+}
+.money li p {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    font-family: "Microsoft Yahei";
+}
+.money li.second .title i {
+    width: 20px;
+    height: 20px;
+    margin-left: 9px;
+    margin-right: 8px;
+    background-position: -274px 0;
+}
+.money li.third .title i {
+    width: 21px;
+    height: 21px;
+    margin-left: 9px;
+    margin-right: 7px;
+    background-position: -308px 0;
+}
+.money li.fourth .title i {
+    width: 20px;
+    height: 14px;
+    margin-top: 5px;
+    margin-left: 9px;
+    margin-right: 5px;
+    background-position: -343px 0;
+}
+.account .security {
+    height: 51px;
+    border-bottom: 0px solid #e4e4e4;
+}
+.security .improve {
+    width: 270px;
+    margin-left: 10px;
+    margin-top: 20px;
+    float: left;
+    display: inline-block;
+}
+.improve strong, .improve i, .improve span {
+    float: left;
+}
+.improve strong.high {
+    color: #89ad00;
+}
+.improve i {
+    width: 129px;
+    height: 11px;
+    background: url(../../images/user.png) no-repeat -278px -133px;
+    margin: 3px 3px 5px;
+    position: relative;
+    overflow: hidden;
+}
+.improve i.high em {
+    width: 129px;
+}
+.improve i.low em {
+    width: 47px;
+}
+.improve i.middle em {
+    width: 84px;
+}
+.improve strong.high {
+    color: #89ad00;
+}
+.improve strong.middle {
+    color: #ff8100;
+}
+.improve strong.low {
+    color: #f42f2f;
+}
+.improve i em {
+    width: 129px;
+    height: 11px;
+    background: url(../../images/user.png) no-repeat -278px -118px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.security .yzHome {
+    float: right;
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.yzType.phone {
+    margin-right: 20px;
+}
+.yzHome .yzType {
+    float: left;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.yzType.phone .titIcon {
+    width: 12px;
+    height: 16px;
+    background-position: -372px 0;
+    margin-top: 1px;
+    _margin-top: 0;
+}
+.yzType .titIcon, .yzType .yzTit, .yzType .res {
+    float: left;
+    display: inline-block;
+}
+.yzType .titIcon {
+    display: inline-block;
+    background: url(../../images/user.png) no-repeat;
+    margin-right: 5px;
+}
+.yzType .titIcon, .yzType .yzTit, .yzType .res {
+    float: left;
+    display: inline-block;
+}
+.yzType .res {
+    color: #666;
+    border: 1px solid #fff;
+    padding: 3px;
+    margin-top: -4px;
+    position: relative;
+    background-color: #fff;
+}
+.yzType .res i {
+    width: 17px;
+    height: 17px;
+    background: url(../../images/user.png) no-repeat -451px 0;
+    float: left;
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 3px;
+    _margin-right: 0;
+    _margin-top: 1px;
+}
+.yzType .res i.wyz {
+    width: 17px;
+    height: 17px;
+    background: url(../../images/user.png) no-repeat  -361px -65px;
+    float: left;
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 3px;
+    _margin-right: 0;
+    _margin-top: 1px;
+}
+.yzType.mail .titIcon {
+    width: 16px;
+    height: 13px;
+    background-position: -396px 0;
+    margin-top: 3px;
+    _margin-top: 2px;
+}
+.account .order {
+    height: 308px;
+}
+.middle .line {
+    margin-bottom: 30px;
+}
+.order .title {
+    margin-right: 8px;
+    float: left;
+    display: inline-block;
+}
+.middle .line .title i {
+    width: 4px;
+    height: 21px;
+    font-size: 0;
+    line-height: 0;
+    background-color: #c40001;
+    margin-left: 13px;
+    margin-right: 8px;
+    margin-top: 10px;
+}
+.middle .line .title span {
+    font-size: 18px;
+    margin-top: 8px;
+    font-family: "Microsoft Yahei";
+}
+.order .status {
+    margin-top: 14px;
+}
+.order .status li {
+    padding-left: 10px;
+    float: left;
+    display: inline-block;
+    margin-top: 4px;
+}
+.order .status li span {
+    color: #c41921;
+    padding-left: 7px;
+    padding-right: 10px;
+}
+.order .more {
+    margin-top: 1px;
+    margin-right: 20px;
+    float: right;
+    display: inline-block;
+}
+.yzType .res:hover{
+	text-decoration: none;color: #666;
+}
+.yzType .res.on{
+	border: 1px solid #e4e4e4;
+	border-bottom: none;
+	padding-bottom: 4px;
+	z-index: 2;
+}
+.yzType .edit {
+    width: 180px;
+    height: 27px;
+    border: 1px solid #e4e4e4;
+    position: absolute;
+    top: 21px;
+    right: 0;
+    background: #fff;
+    line-height: 27px;
+    _right: -1px;
+    padding: 0 10px;
+    display: none;
+}
+.yzType .edit span {
+    float: left;
+    display: inline-block;
+}
+.yzType .edit a {
+    float: right;
+    display: inline-block;
+    color: #ff875a;
+}

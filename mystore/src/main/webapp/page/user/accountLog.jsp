@@ -13,39 +13,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
  <div class="list_content">
 	<table class="accountTab" cellpadding="0" cellspacing="0" border="0">
-				<tbody>
+				<thead>
 					<tr class="goldenTabTrTh">
 						<th width="200">时间</th>
-						<th width="100">类型</th>
+						<th width="100">业务类型</th>
+						<th width="100">出入类型</th>
 						<th width="180">金额</th>
 						<th width="300">备注</th>
 					</tr>
-					<tr>
-						<td>2014-02-09 14:59:55</td>
-						<td> 支出 </td>
-						<td class="jianjian">-6300.00</td>
-						<td class="niubi-li">金币兑换商品后扣减金币数量-6300!</td>
-					</tr>	
-					<tr>
-						<td>2014-02-09 09:15:07</td>
-						<td> 支出 </td>
-						<td class="jianjian">-6300.00</td>
-						<td class="niubi-li">金币兑换商品后扣减金币数量-6300!</td>
-					</tr>	
-					<tr>
-						<td>2014-02-07 00:25:53</td>
-						<td> 支出 </td>
-						<td class="jianjian">-6000.00</td>
-						<td class="niubi-li">金币兑换商品后扣减金币数量-6000!</td>
-					</tr>	
-					<tr>
-						<td>2014-02-05 20:20:13</td>
-						<td> 支出 </td>
-						<td class="jianjian">-6000.00</td>
-						<td class="niubi-li">金币兑换商品后扣减金币数量-6000!</td>
-					</tr>	
+				</thead>
+				<tbody>
+				 	 <s:iterator value="list" status="ind">
+						<tr>
+							<td><s:date name='createDate' format="yyyy-MM-dd HH:mm:ss" /></td>
+							<td>
+								<s:if test = 'bizType == "0"'>充值</s:if>
+								<s:elseif test = 'bizType == "1"'>提现冻结</s:elseif>
+								<s:elseif test = 'bizType == "2"'>提现付款</s:elseif>
+								<s:elseif test = 'bizType == "3"'>下单冻结</s:elseif>
+								<s:elseif test = 'bizType == "4"'>下单付款</s:elseif>
+								<s:elseif test = 'bizType == "5"'>退款</s:elseif>
+								<s:elseif test = 'bizType == "6"'>返现</s:elseif>
+							</td>
+							<td>
+								<s:if test = 'ioType == "0"'>出帐</s:if>
+								<s:elseif test = 'ioType == "1"'>入帐</s:elseif>
+							</td>
+							<td class="jianjian">¥<s:text name="format.numbers"><s:param value="amount"/></s:text></td>
+							<td class="niubi-li"><s:property value="desc" /></td>
+						</tr>	
+					</s:iterator>	
 				</tbody>
-	 </table>      
+	 </table> 
+	 <div class="Pagination"> 
+			<div style="float:right;">
+				${pageInfo}					
+			</div>
+     </div>     
   </div>
 </body>
 </html>

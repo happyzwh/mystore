@@ -74,7 +74,7 @@ public class AccountAction extends BaseAction{
 		String sessionId = ServletActionContext.getRequest().getSession().getId();
 		User user = (User)redisTemplate.opsForValue().get(Constants.KEY_SESSION+"_"+sessionId);
 		
-		Pager<AccountLog> pager = accountLogService.getAccountLogByUserId(user.getId(),AccountType.getAccountTypeByValue(accountType),BizType.getBizTypeByValue(bizType),this.pageNo, this.pageSize);
+		Pager<AccountLog> pager = accountLogService.getAccountLogByUserId(user.getId(),AccountType.getAccountTypeByValue("0"),BizType.getBizTypeByValue(bizType),this.pageNo, this.pageSize);
 		if(pager != null && pager.getResultList() != null && pager.getResultList().size() > 0){
 			  list = pager.getResultList();
 			  pageInfo = PageInfo.setPage(pager.getPageNo(), pager.getPageSize(), pager.getPageCount(), pager.getRowCount());
